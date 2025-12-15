@@ -151,7 +151,7 @@
         .text-content h1 {
             color: #2c2b29;
             margin-bottom: 15px;
-            font-size: 3.5rem;
+            font-size: 5rem;
             font-family: 'Roboto Serif', serif;
             font-weight: 700;
             line-height: 1.2;
@@ -162,9 +162,86 @@
             line-height: 1.6;
             margin-bottom: 15px;
             font-family: 'WindSong', cursive;
-            font-size: 2.8rem;
+            font-size: 3.2rem;
             font-weight: 500;
             color: #eeb82e;
+        }
+
+        /* Container ng dropdown, kailangan itong relative [citation:6] */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Ang mismong dropdown list (nakatago by default) [citation:6] */
+        .dropdown-content {
+            display: none; /* Nakatago sa simula */
+            position: absolute;
+            background-color: #f9f9f9; /* Light background */
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Parang card effect [citation:6] */
+            z-index: 1000; /* Siguraduhing nasa ibabaw ito */
+            border-top: 3px solid #eeb82e; /* Accent color */
+            border-radius: 0 0 5px 5px;
+            overflow: hidden;
+        }
+
+        /* Mga links sa loob ng dropdown */
+        .dropdown-content a {
+            color: #2c2b29 !important; /* Dark text */
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            font-size: 0.95rem;
+            border-bottom: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+
+        /* Hover effect sa dropdown links */
+        .dropdown-content a:hover {
+            background-color: #eeb82e; /* Gold background */
+            color: #2c2b29 !important;
+            padding-left: 20px;
+        }
+
+        /* MAGIC PART: Ipakita ang dropdown kapag naka-hover sa .dropdown container [citation:3][citation:6] */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Optional: Baguhin ang itsura ng main link kapag naka-hover */
+        .dropdown:hover .dropbtn {
+            color: #fff;
+        }
+
+        /* Style para sa dropdown button (main link) */
+        .dropbtn {
+            cursor: pointer;
+        }
+
+        .dropbtn .fa-caret-down {
+            font-size: 0.8em;
+            margin-left: 5px;
+        }
+
+        /* Para umayon sa mobile menu, itago ang dropdown caret */
+        @media screen and (max-width: 768px) {
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                background-color: transparent;
+                border: none;
+                display: none; /* Mananatiling nakatago hangga't hindi naka-hover */
+            }
+            
+            .dropdown.active .dropdown-content {
+                display: block; /* Ipakita lang kapag active (for mobile touch) */
+            }
+            
+            .dropbtn .fa-caret-down {
+                display: none; /* Itago ang caret sa mobile */
+            }
         }
 
         /* Footer General Styling */
@@ -348,9 +425,26 @@
 
         <div class="nav-links" id="navLinks">
             <a href="#">Home</a>
-            <a href="#">About Us</a>
-            <a href="#">Meet Our Team</a>
-            <a href="#">Services</a>
+            
+            <div class="dropdown">
+                <a href="#" class="dropbtn">Meet Our Team <i class="fas fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="#">Leadership</a>
+                    <a href="#">Account Specialists</a>
+                    <a href="#">Support Staff</a>
+                </div>
+            </div>
+            
+            <div class="dropdown">
+                <a href="#" class="dropbtn">Services <i class="fas fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="#">Bookkeeping</a>
+                    <a href="#">Tax Preparation</a>
+                    <a href="#">Financial Consulting</a>
+                    <a href="#">Payroll Services</a>
+                </div>
+            </div>
+            
             <a href="#">Contact</a>
         </div>
 
