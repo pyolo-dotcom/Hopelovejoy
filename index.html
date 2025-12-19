@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&family=WindSong:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="img/logo.png">
     
     <style>
         * {
@@ -34,6 +35,7 @@
             padding: 0 50px;
             position: sticky;
             top: 0;
+            z-index: 1000;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
@@ -118,7 +120,7 @@
             width: 100%;
         }
 
-        /* Baguhin ang existing na .content-section style */
+        /* Content Sections - Clean white design */
         .content-section {
             background-color: white;
             padding: 30px;
@@ -138,13 +140,13 @@
             width: 400px;
             height: auto;
             border-radius: 10px;
-            order: 2; /* Ilagay ang image sa kanan */
+            order: 2;
             flex: 1;
             max-width: 500px;
         }
 
         .text-content {
-            order: 1; /* Ilagay ang text sa kaliwa */
+            order: 1;
             flex: 1;
             min-width: 300px;
         }
@@ -168,81 +170,209 @@
             color: #eeb82e;
         }
 
-        /* Container ng dropdown, kailangan itong relative [citation:6] */
-        .dropdown {
-            position: relative;
-            display: inline-block;
+        /* About Us Section - Simple white design */
+        .about-us-section {
+            padding: 80px 20px;
+            background-color: white;
+            text-align: center;
         }
 
-        /* Ang mismong dropdown list (nakatago by default) [citation:6] */
-        .dropdown-content {
-            display: none; /* Nakatago sa simula */
-            position: absolute;
-            background-color: #f9f9f9; /* Light background */
-            min-width: 200px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Parang card effect [citation:6] */
-            z-index: 1000; /* Siguraduhing nasa ibabaw ito */
-            border-top: 3px solid #eeb82e; /* Accent color */
-            border-radius: 0 0 5px 5px;
+        .about-us-title {
+            font-family: 'Roboto Serif', serif;
+            font-size: 3rem;
+            margin-bottom: 50px;
+            color: #2c2b29;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .about-us-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .about-us-text {
+            flex: 1;
+            min-width: 300px;
+            text-align: left;
+        }
+
+        .about-us-text p {
+            font-family: 'Roboto Serif', serif;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        .about-us-map {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .about-us-map h3 {
+            font-family: 'Roboto Serif', serif;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #333;
+            font-weight: 600;
+            text-align: left;
+        }
+
+        .about-us-map img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Team Section - Simple white design */
+        .team-section {
+            padding: 80px 20px;
+            background-color: white;
+            text-align: center;
+        }
+
+        .team-title {
+            font-family: 'Roboto Serif', serif;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #2c2b29;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .team-subtitle {
+            font-family: 'Roboto Serif', serif;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .team-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-member {
+            width: 200px;
+            text-align: center;
+        }
+
+        .team-member-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            border: 3px solid #eeb82e;
+        }
+
+        .team-member-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-member h4 {
+            font-family: 'Roboto Serif', serif;
+            font-size: 1.2rem;
+            color: #2c2b29;
+            margin-bottom: 5px;
+        }
+
+        .team-member p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Services Section - Simple white design */
+        .services-section {
+            padding: 80px 20px;
+            background-color: white;
+            text-align: center;
+        }
+
+        .services-title {
+            font-family: 'Roboto Serif', serif;
+            font-size: 3rem;
+            margin-bottom: 50px;
+            color: #2c2b29;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-img {
+            width: 100%;
+            height: 200px;
             overflow: hidden;
         }
 
-        /* Mga links sa loob ng dropdown */
-        .dropdown-content a {
-            color: #2c2b29 !important; /* Dark text */
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .service-info {
+            padding: 25px;
             text-align: left;
+        }
+
+        .service-info h3 {
+            font-family: 'Roboto Serif', serif;
+            font-size: 1.3rem;
+            color: #2c2b29;
+            margin-bottom: 10px;
+        }
+
+        .service-info p {
+            color: #666;
             font-size: 0.95rem;
-            border-bottom: 1px solid #eee;
-            transition: all 0.3s ease;
+            line-height: 1.6;
+            margin-bottom: 15px;
         }
 
-        /* Hover effect sa dropdown links */
-        .dropdown-content a:hover {
-            background-color: #eeb82e; /* Gold background */
-            color: #2c2b29 !important;
-            padding-left: 20px;
-        }
-
-        /* MAGIC PART: Ipakita ang dropdown kapag naka-hover sa .dropdown container [citation:3][citation:6] */
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        /* Optional: Baguhin ang itsura ng main link kapag naka-hover */
-        .dropdown:hover .dropbtn {
-            color: #fff;
-        }
-
-        /* Style para sa dropdown button (main link) */
-        .dropbtn {
-            cursor: pointer;
-        }
-
-        .dropbtn .fa-caret-down {
-            font-size: 0.8em;
-            margin-left: 5px;
-        }
-
-        /* Para umayon sa mobile menu, itago ang dropdown caret */
-        @media screen and (max-width: 768px) {
-            .dropdown-content {
-                position: static;
-                box-shadow: none;
-                background-color: transparent;
-                border: none;
-                display: none; /* Mananatiling nakatago hangga't hindi naka-hover */
-            }
-            
-            .dropdown.active .dropdown-content {
-                display: block; /* Ipakita lang kapag active (for mobile touch) */
-            }
-            
-            .dropbtn .fa-caret-down {
-                display: none; /* Itago ang caret sa mobile */
-            }
+        .service-price {
+            color: #eeb82e;
+            font-size: 1.2rem;
+            font-weight: 700;
         }
 
         /* Footer General Styling */
@@ -382,6 +512,25 @@
                 flex: 0 0 50%;
                 min-width: 250px;
             }
+
+            .text-content h1 {
+                font-size: 3rem;
+            }
+
+            .text-content p {
+                font-size: 2.2rem;
+            }
+
+            .content-section img {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .about-us-title,
+            .team-title,
+            .services-title {
+                font-size: 2.2rem;
+            }
         }
 
         @media screen and (max-width: 480px) {
@@ -410,165 +559,84 @@
             .site-footer {
                 padding: 30px 0;
             }
-        }
 
-        /* About Us Section */
-        .about-us-section {
-            padding: 80px 20px;
-            background-color: #f7f7f7;
-            border-top: 1px solid #e0e0e0;
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        .about-us-title {
-            text-align: center;
-            font-family: 'Roboto Serif', serif;
-            font-size: 2.8rem;
-            margin-bottom: 60px;
-            color: #2c2b29;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .about-us-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 50px;
-        }
-
-        .about-us-row {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-        }
-
-        /* Order for the second row */
-        .about-us-row:nth-child(2) .about-us-text {
-            order: 2;
-        }
-        .about-us-row:nth-child(2) .about-us-map {
-            order: 1;
-        }
-
-        .about-us-text {
-            flex: 1;
-            font-family: 'Roboto Serif', serif;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #444;
-            text-align: justify;
-        }
-        
-        .about-us-text p {
-            font-family: 'Roboto Serif', serif;
-            color: #444;
-            font-size: 1.1rem;
-        }
-
-        .about-us-map {
-            flex: 1;
-            background-color: #e9e9e9;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-        }
-
-        .about-us-map h3 {
-            font-family: 'Roboto Serif', serif;
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: #333;
-            font-weight: 600;
-            text-align: left;
-        }
-
-        .about-us-map img {
-            width: 100%;
-            border-radius: 10px;
-            display: block;
-        }
-
-        @media screen and (max-width: 992px) {
-            .about-us-row {
-                flex-direction: column;
+            .text-content h1 {
+                font-size: 2.5rem;
             }
-            .about-us-row:nth-child(2) .about-us-text,
-            .about-us-row:nth-child(2) .about-us-map {
-                order: initial; /* Reset order for stacked layout */
-            }
-            .about-us-text {
-                text-align: left;
+
+            .text-content p {
+                font-size: 1.8rem;
             }
         }
 
-        /* New Team Section Styling */
-        .team-gallery-section {
-            padding: 80px 20px;
-            background-color: white;
-            text-align: center;
-        }
-
-        .team-gallery-title {
-            font-family: 'Roboto Serif', serif;
-            font-size: 2.5rem;
-            color: #2c2b29;
-            font-weight: 700;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        /* Dropdown Styles */
+        .dropdown {
             position: relative;
             display: inline-block;
         }
 
-        .team-gallery-title::after {
-            content: '';
+        .dropdown-content {
+            display: none;
             position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(to right, #eeb82e, #d43f3a);
-        }
-
-        .team-gallery-subtitle {
-            font-family: 'Roboto Serif', serif;
-            font-size: 1.1rem;
-            color: #666;
-            margin-bottom: 50px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .team-member {
             background-color: #f9f9f9;
-            border-radius: 10px;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1000;
+            border-top: 3px solid #eeb82e;
+            border-radius: 0 0 5px 5px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .team-member:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-        }
-
-        .team-member img {
-            width: 100%;
-            height: auto;
+        .dropdown-content a {
+            color: #2c2b29 !important;
+            padding: 12px 16px;
+            text-decoration: none;
             display: block;
+            text-align: left;
+            font-size: 0.95rem;
+            border-bottom: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #eeb82e;
+            color: #2c2b29 !important;
+            padding-left: 20px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            color: #fff;
+        }
+
+        .dropbtn {
+            cursor: pointer;
+        }
+
+        .dropbtn .fa-caret-down {
+            font-size: 0.8em;
+            margin-left: 5px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                background-color: transparent;
+                border: none;
+                display: none;
+            }
+            
+            .dropdown.active .dropdown-content {
+                display: block;
+            }
+            
+            .dropbtn .fa-caret-down {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -578,7 +646,6 @@
 
         <div class="logo-container">
             <div class="logo-circle">
-                <!-- Using a placeholder logo - replace with your actual logo -->
                 <img src="img/logo.png" alt="Logo">
             </div>
         </div>
@@ -616,6 +683,7 @@
     </nav>
 
     <div class="main-content">
+        <!-- Hero Section -->
         <div class="content-section">
             <div class="text-content">
                 <h1>Making Your Dreams</h1>
@@ -624,52 +692,91 @@
             <img src="img/logo.png" alt="Hope Account Specialist">
         </div>
 
-        <!-- About Us Section -->
+        <!-- About Us Section - Simple white design -->
         <div class="about-us-section">
             <h2 class="about-us-title">ABOUT US</h2>
             <div class="about-us-container">
-                <!-- First Row -->
-                <div class="about-us-row">
-                    <div class="about-us-text">
-                        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-                    </div>
-                    <div class="about-us-map">
-                        <h3>Get in Touch</h3>
-                        <img src="img/maps.png" alt="Location Map">
-                    </div>
+                <div class="about-us-text">
+                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."</p>
                 </div>
-                <!-- Second Row -->
-                <div class="about-us-row">
-                    <div class="about-us-map">
-                        <h3>Get in Touch</h3>
-                        <img src="img/maps.png" alt="Location Map">
-                    </div>
-                    <div class="about-us-text">
-                        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-                    </div>
+                <div class="about-us-map">
+                    <h3>Get in Touch</h3>
+                    <img src="img/maps.png" alt="Location Map">
                 </div>
             </div>
         </div>
 
-        <!-- New Team Section -->
-        <div class="team-gallery-section">
-            <h2 class="team-gallery-title">MEET OUR TEAM</h2>
-            <p class="team-gallery-subtitle">We're a team of professional people who love what we do. We care about the word quality, discipline and team work.</p>
-            <div class="team-grid">
-                <div class="team-member"><img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Team Member 1"></div>
-                <div class="team-member"><img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Team Member 2"></div>
-                <div class="team-member"><img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Team Member 3"></div>
-                <div class="team-member"><img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Team Member 4"></div>
-                <div class="team-member"><img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Team Member 5"></div>
-                <div class="team-member"><img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Team Member 6"></div>
-                <div class="team-member"><img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Team Member 7"></div>
-                <div class="team-member"><img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Team Member 8"></div>
-                <div class="team-member"><img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Team Member 9"></div>
-                <div class="team-member"><img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Team Member 10"></div>
-                <div class="team-member"><img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Team Member 11"></div>
-                <div class="team-member"><img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Team Member 12"></div>
-                <div class="team-member"><img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Team Member 13"></div>
-                <div class="team-member"><img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Team Member 14"></div>
+        <!-- Team Section - Simple white design -->
+        <div class="team-section">
+            <h2 class="team-title">MEET OUR TEAM</h2>
+            <p class="team-subtitle">We're a team of professional people who love what we do. We care about the word quality, discipline and team work.</p>
+            <div class="team-container">
+                <div class="team-member">
+                    <div class="team-member-img">
+                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Team Member 1">
+                    </div>
+                    <h4>John Smith</h4>
+                    <p>Senior Account Specialist</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-member-img">
+                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Team Member 2">
+                    </div>
+                    <h4>Sarah Johnson</h4>
+                    <p>Financial Analyst</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-member-img">
+                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Team Member 3">
+                    </div>
+                    <h4>Michael Chen</h4>
+                    <p>Tax Consultant</p>
+                </div>
+                <div class="team-member">
+                    <div class="team-member-img">
+                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Team Member 4">
+                    </div>
+                    <h4>Emily Rodriguez</h4>
+                    <p>Bookkeeping Manager</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Services Section - Simple white design -->
+        <div class="services-section">
+            <h2 class="services-title">OUR SERVICES</h2>
+            <div class="services-container">
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Tax Preparation">
+                    </div>
+                    <div class="service-info">
+                        <h3>Tax Preparation</h3>
+                        <p>Professional tax preparation services for individuals and businesses. Maximize your deductions.</p>
+                        <p class="service-price">Starting at $299</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Bookkeeping">
+                    </div>
+                    <div class="service-info">
+                        <h3>Bookkeeping</h3>
+                        <p>Comprehensive bookkeeping services to keep your finances organized and up-to-date.</p>
+                        <p class="service-price">Starting at $199/mo</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Financial Consulting">
+                    </div>
+                    <div class="service-info">
+                        <h3>Financial Consulting</h3>
+                        <p>Strategic financial advice and planning for business growth and personal wealth management.</p>
+                        <p class="service-price">Starting at $499</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -709,10 +816,8 @@
         const navLinks = document.getElementById('navLinks');
         
         burgerMenu.addEventListener('click', () => {
-            // Toggle the active class on the nav links
             navLinks.classList.toggle('active');
             
-            // Animate burger to X when active
             const burgerLines = document.querySelectorAll('.burger-line');
             if (navLinks.classList.contains('active')) {
                 burgerLines[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
@@ -725,12 +830,10 @@
             }
         });
         
-        // Close menu when clicking a link (optional)
         const navItems = document.querySelectorAll('.nav-links a');
         navItems.forEach(item => {
             item.addEventListener('click', () => {
                 navLinks.classList.remove('active');
-                // Reset burger animation
                 const burgerLines = document.querySelectorAll('.burger-line');
                 burgerLines[0].style.transform = 'rotate(0) translate(0, 0)';
                 burgerLines[1].style.opacity = '1';
@@ -738,17 +841,35 @@
             });
         });
         
-        // Close menu when clicking outside (optional)
         document.addEventListener('click', (event) => {
             const isClickInsideNav = navLinks.contains(event.target) || burgerMenu.contains(event.target);
             
             if (!isClickInsideNav && navLinks.classList.contains('active')) {
                 navLinks.classList.remove('active');
-                // Reset burger animation
                 const burgerLines = document.querySelectorAll('.burger-line');
                 burgerLines[0].style.transform = 'rotate(0) translate(0, 0)';
                 burgerLines[1].style.opacity = '1';
                 burgerLines[2].style.transform = 'rotate(0) translate(0, 0)';
+            }
+        });
+
+        // Simple dropdown functionality for mobile
+        document.querySelectorAll('.dropbtn').forEach(dropdown => {
+            dropdown.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    const dropdown = this.closest('.dropdown');
+                    dropdown.classList.toggle('active');
+                }
+            });
+        });
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!event.target.closest('.dropdown') && window.innerWidth <= 768) {
+                document.querySelectorAll('.dropdown').forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
             }
         });
     </script>
