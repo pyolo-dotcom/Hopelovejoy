@@ -32,7 +32,8 @@
             justify-content: space-between;
             align-items: center;
             padding: 0 50px;
-            position: relative;
+            position: sticky;
+            top: 0;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
@@ -410,6 +411,165 @@
                 padding: 30px 0;
             }
         }
+
+        /* About Us Section */
+        .about-us-section {
+            padding: 80px 20px;
+            background-color: #f7f7f7;
+            border-top: 1px solid #e0e0e0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .about-us-title {
+            text-align: center;
+            font-family: 'Roboto Serif', serif;
+            font-size: 2.8rem;
+            margin-bottom: 60px;
+            color: #2c2b29;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .about-us-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        .about-us-row {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        /* Order for the second row */
+        .about-us-row:nth-child(2) .about-us-text {
+            order: 2;
+        }
+        .about-us-row:nth-child(2) .about-us-map {
+            order: 1;
+        }
+
+        .about-us-text {
+            flex: 1;
+            font-family: 'Roboto Serif', serif;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #444;
+            text-align: justify;
+        }
+        
+        .about-us-text p {
+            font-family: 'Roboto Serif', serif;
+            color: #444;
+            font-size: 1.1rem;
+        }
+
+        .about-us-map {
+            flex: 1;
+            background-color: #e9e9e9;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .about-us-map h3 {
+            font-family: 'Roboto Serif', serif;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #333;
+            font-weight: 600;
+            text-align: left;
+        }
+
+        .about-us-map img {
+            width: 100%;
+            border-radius: 10px;
+            display: block;
+        }
+
+        @media screen and (max-width: 992px) {
+            .about-us-row {
+                flex-direction: column;
+            }
+            .about-us-row:nth-child(2) .about-us-text,
+            .about-us-row:nth-child(2) .about-us-map {
+                order: initial; /* Reset order for stacked layout */
+            }
+            .about-us-text {
+                text-align: left;
+            }
+        }
+
+        /* New Team Section Styling */
+        .team-gallery-section {
+            padding: 80px 20px;
+            background-color: white;
+            text-align: center;
+        }
+
+        .team-gallery-title {
+            font-family: 'Roboto Serif', serif;
+            font-size: 2.5rem;
+            color: #2c2b29;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .team-gallery-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #eeb82e, #d43f3a);
+        }
+
+        .team-gallery-subtitle {
+            font-family: 'Roboto Serif', serif;
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-member {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .team-member img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -462,6 +622,55 @@
                 <p>Turn Into Reality</p>
             </div>
             <img src="img/logo.png" alt="Hope Account Specialist">
+        </div>
+
+        <!-- About Us Section -->
+        <div class="about-us-section">
+            <h2 class="about-us-title">ABOUT US</h2>
+            <div class="about-us-container">
+                <!-- First Row -->
+                <div class="about-us-row">
+                    <div class="about-us-text">
+                        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                    </div>
+                    <div class="about-us-map">
+                        <h3>Get in Touch</h3>
+                        <img src="img/maps.png" alt="Location Map">
+                    </div>
+                </div>
+                <!-- Second Row -->
+                <div class="about-us-row">
+                    <div class="about-us-map">
+                        <h3>Get in Touch</h3>
+                        <img src="img/maps.png" alt="Location Map">
+                    </div>
+                    <div class="about-us-text">
+                        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- New Team Section -->
+        <div class="team-gallery-section">
+            <h2 class="team-gallery-title">MEET OUR TEAM</h2>
+            <p class="team-gallery-subtitle">We're a team of professional people who love what we do. We care about the word quality, discipline and team work.</p>
+            <div class="team-grid">
+                <div class="team-member"><img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Team Member 1"></div>
+                <div class="team-member"><img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Team Member 2"></div>
+                <div class="team-member"><img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Team Member 3"></div>
+                <div class="team-member"><img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Team Member 4"></div>
+                <div class="team-member"><img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Team Member 5"></div>
+                <div class="team-member"><img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Team Member 6"></div>
+                <div class="team-member"><img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Team Member 7"></div>
+                <div class="team-member"><img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Team Member 8"></div>
+                <div class="team-member"><img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Team Member 9"></div>
+                <div class="team-member"><img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Team Member 10"></div>
+                <div class="team-member"><img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Team Member 11"></div>
+                <div class="team-member"><img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Team Member 12"></div>
+                <div class="team-member"><img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Team Member 13"></div>
+                <div class="team-member"><img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Team Member 14"></div>
+            </div>
         </div>
     </div>
 
