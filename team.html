@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet Our Team - Hope Account Specialist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&family=WindSong:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="img/logo.png">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: #2c2b29;
+            height: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        /* Brand Name (Left) */
+        .brand-name {
+            color: #eeb82e;
+            font-weight: 900;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 11;
+        }
+
+        /* Navigation Links (Right) */
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            z-index: 11;
+        }
+
+        .nav-links a {
+            color: #eeb82e;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        /* Center Logo "Dip" Effect */
+        .logo-container {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        .logo-circle {
+            background-color: #2c2b29;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: -15px;
+            border: 4px solid #2c2b29;
+        }
+
+        .logo-circle img {
+            width: 120px;
+            height: auto;
+        }
+
+        /* Burger Menu (Hidden by default on desktop) */
+        .burger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            z-index: 11;
+            padding: 5px;
+        }
+
+        .burger-line {
+            width: 25px;
+            height: 3px;
+            background-color: #eeb82e;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Main content styling */
+        .main-content {
+            padding: 100px 20px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex: 1;
+            width: 100%;
+        }
+
+        /* Team Page Header */
+        .team-page-header {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: white;
+        }
+
+        .team-page-title {
+            font-family: 'Roboto Serif', serif;
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: #2c2b29;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .team-page-subtitle {
+            font-family: 'Roboto Serif', serif;
+            font-size: 1.5rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            line-height: 1.6;
+        }
+
+        /* Team Categories */
+        .team-category {
+            margin-bottom: 80px;
+            padding: 20px;
+        }
+
+        .category-title {
+            font-family: 'Roboto Serif', serif;
+            font-size: 2.5rem;
+            color: #2c2b29;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #eeb82e;
+            text-align: center;
+        }
+
+        .team-category-description {
+            font-family: 'Roboto Serif', serif;
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            text-align: center;
+        }
+
+        /* Team Container */
+        .team-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-member {
+            width: 280px;
+            text-align: center;
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(238, 184, 46, 0.15);
+        }
+
+        .team-member-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            border: 4px solid #eeb82e;
+            position: relative;
+        }
+
+        .team-member-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover .team-member-img img {
+            transform: scale(1.05);
+        }
+
+        .team-member h3 {
+            font-family: 'Roboto Serif', serif;
+            font-size: 1.4rem;
+            color: #2c2b29;
+            margin-bottom: 8px;
+        }
+
+        .team-member .position {
+            color: #eeb82e;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .team-member .experience {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .team-member .bio {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .team-member-contact {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: #f8f8f8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2c2b29;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-icon:hover {
+            background: #eeb82e;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* Footer General Styling */
+        .site-footer {
+            background-color: #302f2d;
+            color: #cccccc;
+            padding: 50px 0;
+            font-family: Arial, sans-serif;
+            margin-top: auto;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Column Styling */
+        .footer-col {
+            flex: 1;
+            text-align: center;
+            min-width: 200px;
+            padding: 0 15px;
+            margin-bottom: 20px;
+        }
+
+        /* Headings (Address, Social, Contact) */
+        .footer-col h4 {
+            color: #eeb82e;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: normal;
+        }
+
+        /* Paragraph Text */
+        .footer-col p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #cfcfcf;
+        }
+
+        /* Specific Styling for Logo Section (Leftmost) */
+        .logo-section img {
+            width: 100px;
+            height: auto;
+            margin-bottom: 10px;
+            border-radius: 50%;
+        }
+
+        .logo-section h3 {
+            color: #eeb82e;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .logo-section .tagline {
+            font-size: 0.7rem;
+            color: #888;
+            font-style: italic;
+        }
+
+        /* Mobile Responsive Styles */
+        @media screen and (max-width: 768px) {
+            .navbar {
+                padding: 0 20px;
+            }
+
+            /* Show burger menu on mobile */
+            .burger {
+                display: flex;
+            }
+
+            /* Hide regular nav links on mobile */
+            .nav-links {
+                position: fixed;
+                top: 60px;
+                right: 0;
+                height: 0;
+                width: 100%;
+                background-color: #2c2b29;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 0;
+                overflow: hidden;
+                transition: height 0.5s ease, padding-top 0.5s ease;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+                z-index: 100;
+            }
+
+            /* When menu is active */
+            .nav-links.active {
+                height: calc(100vh - 60px);
+                padding-top: 40px;
+            }
+
+            .nav-links a {
+                margin: 15px 0;
+                font-size: 1.2rem;
+                opacity: 0;
+                transform: translateY(-20px);
+                transition: opacity 0.5s ease, transform 0.5s ease;
+            }
+
+            .nav-links.active a {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            /* Adjust logo size on mobile */
+            .logo-circle {
+                width: 120px;
+                height: 120px;
+            }
+
+            .logo-circle img {
+                width: 90px;
+            }
+
+            /* Adjust brand name font size on smaller screens */
+            .brand-name {
+                font-size: 1rem;
+            }
+
+            /* Footer mobile adjustments */
+            .footer-container {
+                justify-content: center;
+            }
+
+            .footer-col {
+                flex: 0 0 50%;
+                min-width: 250px;
+            }
+
+            /* Team Page mobile adjustments */
+            .team-page-title {
+                font-size: 2.8rem;
+            }
+
+            .team-page-subtitle {
+                font-size: 1.2rem;
+                padding: 0 10px;
+            }
+
+            .category-title {
+                font-size: 2rem;
+            }
+
+            .team-member {
+                width: 100%;
+                max-width: 350px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .logo-circle {
+                width: 100px;
+                height: 100px;
+                margin-top: -10px;
+            }
+
+            .logo-circle img {
+                width: 70px;
+            }
+
+            .brand-name {
+                font-size: 0.8rem;
+                max-width: 120px;
+                line-height: 1.1;
+            }
+
+            /* Footer mobile adjustments for very small screens */
+            .footer-col {
+                flex: 0 0 100%;
+                min-width: 100%;
+            }
+
+            .site-footer {
+                padding: 30px 0;
+            }
+
+            /* Team Page very small screens */
+            .team-page-title {
+                font-size: 2.2rem;
+            }
+
+            .team-page-subtitle {
+                font-size: 1rem;
+            }
+
+            .category-title {
+                font-size: 1.8rem;
+            }
+
+            .team-member-img {
+                width: 180px;
+                height: 180px;
+            }
+        }
+
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1000;
+            border-top: 3px solid #eeb82e;
+            border-radius: 0 0 5px 5px;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            color: #2c2b29 !important;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            font-size: 0.95rem;
+            border-bottom: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #eeb82e;
+            color: #2c2b29 !important;
+            padding-left: 20px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            color: #fff;
+        }
+
+        .dropbtn {
+            cursor: pointer;
+        }
+
+        .dropbtn .fa-caret-down {
+            font-size: 0.8em;
+            margin-left: 5px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                background-color: transparent;
+                border: none;
+                display: none;
+            }
+            
+            .dropdown.active .dropdown-content {
+                display: block;
+            }
+            
+            .dropbtn .fa-caret-down {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="brand-name">HOPE ACCOUNT SPECIALIST</div>
+
+        <div class="logo-container">
+            <div class="logo-circle">
+                <img src="img/logo.png" alt="Logo">
+            </div>
+        </div>
+
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            
+            <div class="dropdown">
+                <a href="team.html" class="dropbtn">Meet Our Team <i class="fas fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="#leadership">Leadership</a>
+                    <a href="#specialists">Account Specialists</a>
+                    <a href="#support">Support Staff</a>
+                </div>
+            </div>
+            
+            <div class="dropdown">
+                <a href="#" class="dropbtn">Services <i class="fas fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="#">Bookkeeping</a>
+                    <a href="#">Tax Preparation</a>
+                    <a href="#">Financial Consulting</a>
+                    <a href="#">Payroll Services</a>
+                </div>
+            </div>
+            
+            <a href="#">Contact</a>
+        </div>
+
+        <div class="burger" id="burgerMenu">
+            <div class="burger-line"></div>
+            <div class="burger-line"></div>
+            <div class="burger-line"></div>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <!-- Team Page Header -->
+        <div class="team-page-header">
+            <h1 class="team-page-title">MEET OUR TEAM</h1>
+            <p class="team-page-subtitle">We're a team of professional people who love what we do. We care about the word quality, discipline and team work. Get to know the experts behind Hope Account Specialist.</p>
+        </div>
+
+        <!-- Leadership Section -->
+        <div class="team-category" id="leadership">
+            <h2 class="category-title">LEADERSHIP TEAM</h2>
+            <p class="team-category-description">Our leadership team brings decades of experience in financial management, strategic planning, and business development.</p>
+            
+            <div class="team-container">
+                <div class="team-member">
+                    <div class="team-member-img">
+                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="John Smith">
+                    </div>
+                    <h3>John Smith</h3>
+                    <span class="position">CEO & Founder</span>
+                    <span class="experience">15+ Years Experience</span>
+                    <p class="bio">John founded Hope Account Specialist with a vision to provide exceptional financial services to small and medium businesses.</p>
+                    <div class="team-member-contact">
+                        <a href="#" class="contact-icon"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="contact-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="contact-icon"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-member-img">
+                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Sarah Johnson">
+                    </div>
+                    <h3>Sarah Johnson</h3>
+                    <span class="position">Chief Financial Officer</span>
+                    <span class="experience">12+ Years Experience</span>
+                    <p class="bio">Sarah oversees all financial operations and ensures compliance with accounting standards and regulations.</p>
+                    <div class="team-member-contact">
+                        <a href="#" class="contact-icon"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="contact-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="contact-icon"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-member-img">
+                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Robert Williams">
+                    </div>
+                    <h3>Robert Williams</h3>
+                    <span class="position">Operations Director</span>
+                    <span class="experience">10+ Years Experience</span>
+                    <p class="bio">Robert manages daily operations and ensures smooth workflow across all departments.</p>
+                    <div class="team-member-contact">
+                        <a href="#" class="contact-icon"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="contact-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="contact-icon"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Account Specialists Section -->
+        <div class="team-category" id="specialists">
+            <h2 class="category-title">ACCOUNT SPECIALISTS</h2>
+            <p class="team-category-description">Our account specialists are certified professionals dedicated to providing personalized financial solutions.</p>
+            
+            <div class="team-container">
+                <div class="team-member">
+                    <div class="team-member-img">
+                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Michael Chen">
+                    </div>
+                    <h3>Michael Chen</h3>
+                    <span class="position">Senior Tax Consultant</span>
+                    <span class="experience">8+ Years Experience</span>
+                    <p class="bio">Specializes in tax planning and preparation for individuals and corporations.</p>
+                    <div class="team-member-contact">
+                        <a href="#" class="contact-icon"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="contact-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="contact-icon"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-member-img">
+                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Emily Rodriguez">
+                    </div>
+                    <h3>Emily Rodriguez</h3>
+                    <span class="position">Bookkeeping Manager</span>
+                    <span class="experience">7+ Years Experience</span>
+                    <p class="bio">Expert in bookkeeping, financial reporting, and QuickBooks implementation.</p>
+                    <div class="team-member-contact">
+                        <a href="#" class="contact-icon"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="contact-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="contact-icon"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-member-img">
+                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="David Kim">
+                    </div>
+                    <h3>David Kim</h3>
+                    <span class="position">Financial Analyst</span>
+                    <span class="experience">6+ Years Experience</span>
+                    <p class="bio">Provides financial analysis and business consulting for growth-oriented companies.</p>
+                    <div class="team-member-contact">
+                        <a href="#" class="contact-icon"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="contact-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="contact-icon"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-member-img">
+                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Lisa Wong">
+                    </div>
+                    <h3>Lisa Wong</h3>
+                    <span class="position">Audit Specialist</span>
+                    <span class="experience">9+ Years Experience</span>
+                    <p class="bio">CPA certified auditor with expertise in financial compliance and risk management.</p>
+                    <div class="team-member-contact">
+                        <a href="#" class="contact-icon"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="contact-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="contact-icon"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Support Staff Section -->
+        <div class="team-category" id="support">
+            <h2 class="category-title">SUPPORT STAFF</h2>
+            <p class="team-category-description">Our support team ensures seamless operations and exceptional client service experience.</p>
+            
+            <div class="team-container">
+                <div class="team-member">
+                    <div class="team-member-img">
+                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Jennifer Lee">
+                    </div>
+                    <h3>Jennifer Lee</h3>
+                    <span class="position">Client Relations Manager</span>
+                    <span class="experience">5+ Years Experience</span>
+                    <p class="bio">Dedicated to ensuring client satisfaction and managing client communications.</p>
+                    <div class="team-member-contact">
+                        <a href="#" class="contact-icon"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="contact-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="contact-icon"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-member-img">
+                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Kevin Brown">
+                    </div>
+                    <h3>Kevin Brown</h3>
+                    <span class="position">IT & Systems Administrator</span>
+                    <span class="experience">4+ Years Experience</span>
+                    <p class="bio">Manages our technology infrastructure and ensures data security and system reliability.</p>
+                    <div class="team-member-contact">
+                        <a href="#" class="contact-icon"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="contact-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="contact-icon"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-member-img">
+                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Maria Garcia">
+                    </div>
+                    <h3>Maria Garcia</h3>
+                    <span class="position">Administrative Coordinator</span>
+                    <span class="experience">3+ Years Experience</span>
+                    <p class="bio">Coordinates office operations and supports our team with administrative tasks.</p>
+                    <div class="team-member-contact">
+                        <a href="#" class="contact-icon"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="contact-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="contact-icon"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            
+            <div class="footer-col logo-section">
+                <div class="footer-logo">
+                    <img src="img/logo.png" alt="Hope Account Specialist Logo">
+                </div>
+                <h3>Hope Account Specialist</h3>
+                <p class="tagline">Making your dreams turn into reality.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Address</h4>
+                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut E"</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Social</h4>
+                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut E"</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut E"</p>
+            </div>
+
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle functionality
+        const burgerMenu = document.getElementById('burgerMenu');
+        const navLinks = document.getElementById('navLinks');
+        
+        burgerMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            
+            const burgerLines = document.querySelectorAll('.burger-line');
+            if (navLinks.classList.contains('active')) {
+                burgerLines[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
+                burgerLines[1].style.opacity = '0';
+                burgerLines[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+            } else {
+                burgerLines[0].style.transform = 'rotate(0) translate(0, 0)';
+                burgerLines[1].style.opacity = '1';
+                burgerLines[2].style.transform = 'rotate(0) translate(0, 0)';
+            }
+        });
+        
+        const navItems = document.querySelectorAll('.nav-links a');
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const burgerLines = document.querySelectorAll('.burger-line');
+                burgerLines[0].style.transform = 'rotate(0) translate(0, 0)';
+                burgerLines[1].style.opacity = '1';
+                burgerLines[2].style.transform = 'rotate(0) translate(0, 0)';
+            });
+        });
+        
+        document.addEventListener('click', (event) => {
+            const isClickInsideNav = navLinks.contains(event.target) || burgerMenu.contains(event.target);
+            
+            if (!isClickInsideNav && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                const burgerLines = document.querySelectorAll('.burger-line');
+                burgerLines[0].style.transform = 'rotate(0) translate(0, 0)';
+                burgerLines[1].style.opacity = '1';
+                burgerLines[2].style.transform = 'rotate(0) translate(0, 0)';
+            }
+        });
+
+        // Simple dropdown functionality for mobile
+        document.querySelectorAll('.dropbtn').forEach(dropdown => {
+            dropdown.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    const dropdown = this.closest('.dropdown');
+                    dropdown.classList.toggle('active');
+                }
+            });
+        });
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!event.target.closest('.dropdown') && window.innerWidth <= 768) {
+                document.querySelectorAll('.dropdown').forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
