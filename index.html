@@ -750,6 +750,123 @@
             font-style: italic;
         }
 
+        .partners-section {
+            padding: 80px 20px;
+            background-color: white;
+            text-align: center;
+        }
+
+        .partners-title {
+            font-family: 'Roboto Serif', serif;
+            font-size: 3rem;
+            margin-bottom: 50px;
+            color: #2c2b29;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .partners-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .partner-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border: 1px solid #f0f0f0;
+            padding: 30px;
+        }
+
+        .partner-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(238, 184, 46, 0.15);
+            border-color: #eeb82e;
+        }
+
+        .partner-logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f8f8;
+            border-radius: 50%;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .partner-card:hover .partner-logo {
+            background: #fff9e6;
+            transform: scale(1.05);
+        }
+
+        .partner-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .partner-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .partner-content h3 {
+            font-family: 'Roboto Serif', serif;
+            font-size: 1.5rem;
+            color: #2c2b29;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .partner-category {
+            display: inline-block;
+            background: #eeb82e;
+            color: #2c2b29;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .partner-content p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            flex-grow: 1;
+        }
+
+        .partner-years {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        .partner-years i {
+            color: #eeb82e;
+        }
+
         /* Mobile Responsive Styles */
         @media screen and (max-width: 768px) {
             .navbar {
@@ -891,6 +1008,30 @@
             .award-card {
                 margin: 0 10px;
             }
+
+            .partners-title {
+                font-size: 2.2rem;
+            }
+            
+            .partners-container {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+                padding: 10px;
+            }
+            
+            .partner-card {
+                padding: 20px;
+            }
+            
+            .partner-logo {
+                width: 100px;
+                height: 100px;
+                margin-bottom: 20px;
+            }
+            
+            .partner-content h3 {
+                font-size: 1.3rem;
+            }
         }
 
         @media screen and (max-width: 480px) {
@@ -963,6 +1104,19 @@
 
             .award-header h3 {
                 font-size: 1.3rem;
+            }
+
+            .partners-title {
+                font-size: 1.8rem;
+            }
+            
+            .partners-container {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .partner-card {
+                margin: 0 10px;
             }
         }
 
@@ -1069,7 +1223,7 @@
                 </div>
             </div>
             
-            <a href="#">Contact</a>
+            <a href="contact.html">Contact</a>
         </div>
 
         <div class="burger" id="burgerMenu">
@@ -1424,6 +1578,142 @@
         </div>
     </div>
 
+        <!-- Partners Section -->
+        <div class="partners-section" id="partners">
+            <h2 class="partners-title">OUR TRUSTED PARTNERS</h2>
+            
+            <div class="partners-container">
+                <!-- Toyota Partner -->
+                <div class="partner-card">
+                    <div class="partner-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Toyota_carlogo.svg/800px-Toyota_carlogo.svg.png" alt="Toyota Logo">
+                    </div>
+                    <div class="partner-content">
+                        <h3>Toyota Motor Corporation</h3>
+                        <span class="partner-category">Automotive</span>
+                        <p>World's largest automobile manufacturer. We provide comprehensive accounting and financial services for Toyota dealerships across the region.</p>
+                        <div class="partner-years">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Partner since 2012</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Honda Partner -->
+                <div class="partner-card">
+                    <div class="partner-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Honda.svg/800px-Honda.svg.png" alt="Honda Logo">
+                    </div>
+                    <div class="partner-content">
+                        <h3>Honda Motor Company</h3>
+                        <span class="partner-category">Automotive</span>
+                        <p>Global leader in motorcycle manufacturing and automobile industry. We manage financial operations for multiple Honda dealerships and service centers.</p>
+                        <div class="partner-years">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Partner since 2014</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ford Partner -->
+                <div class="partner-card">
+                    <div class="partner-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ford_logo_flat.svg/800px-Ford_logo_flat.svg.png" alt="Ford Logo">
+                    </div>
+                    <div class="partner-content">
+                        <h3>Ford Motor Company</h3>
+                        <span class="partner-category">Automotive</span>
+                        <p>American multinational automaker. We provide specialized accounting services for Ford's regional operations and dealership network.</p>
+                        <div class="partner-years">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Partner since 2015</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mercedes-Benz Partner -->
+                <div class="partner-card">
+                    <div class="partner-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Mercedes-Logo.svg/800px-Mercedes-Logo.svg.png" alt="Mercedes-Benz Logo">
+                    </div>
+                    <div class="partner-content">
+                        <h3>Mercedes-Benz</h3>
+                        <span class="partner-category">Luxury Automotive</span>
+                        <p>German luxury automobile manufacturer. We handle complex financial management for Mercedes-Benz dealerships and corporate accounts.</p>
+                        <div class="partner-years">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Partner since 2016</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BMW Partner -->
+                <div class="partner-card">
+                    <div class="partner-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/BMW.svg/800px-BMW.svg.png" alt="BMW Logo">
+                    </div>
+                    <div class="partner-content">
+                        <h3>BMW Group</h3>
+                        <span class="partner-category">Luxury Automotive</span>
+                        <p>German multinational company producing luxury vehicles and motorcycles. Our accounting specialists manage BMW's regional financial operations.</p>
+                        <div class="partner-years">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Partner since 2017</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nissan Partner -->
+                <div class="partner-card">
+                    <div class="partner-logo">
+                        <img src="https://e7.pngegg.com/pngimages/58/113/png-clipart-nissan-car-logo-nissan-emblem-trademark.png" alt="Nissan Logo">
+                    </div>
+                    <div class="partner-content">
+                        <h3>Nissan Motor Corporation</h3>
+                        <span class="partner-category">Automotive</span>
+                        <p>Japanese multinational automobile manufacturer. We provide comprehensive financial services for Nissan's dealership network and regional offices.</p>
+                        <div class="partner-years">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Partner since 2013</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mitsubishi Partner -->
+                <div class="partner-card">
+                    <div class="partner-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Mitsubishi_logo.svg/800px-Mitsubishi_logo.svg.png" alt="Mitsubishi Logo">
+                    </div>
+                    <div class="partner-content">
+                        <h3>Mitsubishi Motors</h3>
+                        <span class="partner-category">Automotive</span>
+                        <p>Japanese multinational automotive manufacturer. We manage financial operations and accounting for Mitsubishi dealerships and service centers.</p>
+                        <div class="partner-years">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Partner since 2018</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hyundai Partner -->
+                <div class="partner-card">
+                    <div class="partner-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Hyundai_Motor_Company_logo.svg/800px-Hyundai_Motor_Company_logo.svg.png" alt="Hyundai Logo">
+                    </div>
+                    <div class="partner-content">
+                        <h3>Hyundai Motor Company</h3>
+                        <span class="partner-category">Automotive</span>
+                        <p>South Korean multinational automotive manufacturer. We provide specialized accounting services for Hyundai's growing dealership network.</p>
+                        <div class="partner-years">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Partner since 2019</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer class="site-footer">
         <div class="footer-container">
             
@@ -1736,6 +2026,18 @@
             updateSlidesPerView();
             createDots();
             updateCarousel();
+
+            document.querySelectorAll('.partner-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    const logo = this.querySelector('.partner-logo');
+                    logo.style.transform = 'scale(1.05)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    const logo = this.querySelector('.partner-logo');
+                    logo.style.transform = 'scale(1)';
+                });
+            });
         });
     </script>
 </body>
