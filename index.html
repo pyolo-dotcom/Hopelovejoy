@@ -887,6 +887,167 @@
             color: #eeb82e;
         }
 
+        /* Mission & Vision Section */
+        .mission-vision-section {
+            padding: 80px 20px;
+            background-color: transparent;
+            text-align: center;
+        }
+
+        .mission-vision-title {
+            font-family: 'Roboto Serif', serif;
+            font-size: 3rem;
+            margin-bottom: 50px;
+            color: #2c2b29;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .mission-vision-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .mission-card, .vision-card {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .mission-card:hover, .vision-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(238, 184, 46, 0.15);
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, #2c2b29 0%, #3a3937 100%);
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #eeb82e;
+        }
+
+        .mission-card .card-header {
+            border-bottom: 4px solid #e74c3c;
+        }
+
+        .vision-card .card-header {
+            border-bottom: 4px solid #3498db;
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            color: #eeb82e;
+            margin-bottom: 15px;
+        }
+
+        .card-header h3 {
+            color: white;
+            font-family: 'Roboto Serif', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .card-subtitle {
+            display: inline-block;
+            background: rgba(238, 184, 46, 0.2);
+            color: #eeb82e;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 5px;
+            border: 1px solid #eeb82e;
+        }
+
+        .card-body {
+            padding: 35px;
+            text-align: left;
+        }
+
+        .card-body p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, rgba(238, 184, 46, 0.1) 0%, rgba(238, 184, 46, 0.05) 100%);
+            border-left: 4px solid #eeb82e;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .highlight p {
+            color: #2c2b29;
+            font-weight: 600;
+            font-style: italic;
+            margin: 0;
+        }
+
+        .core-values {
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid #eee;
+        }
+
+        .core-values h4 {
+            font-family: 'Roboto Serif', serif;
+            font-size: 1.2rem;
+            color: #2c2b29;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .core-values h4 i {
+            color: #eeb82e;
+        }
+
+        .core-values ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .core-values li {
+            color: #666;
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .core-values li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #eeb82e;
+            font-weight: bold;
+        }
+
         /* Mobile Responsive Styles */
         @media screen and (max-width: 768px) {
             .navbar {
@@ -1052,6 +1213,31 @@
             .partner-content h3 {
                 font-size: 1.3rem;
             }
+
+            .mission-vision-title {
+                font-size: 2.2rem;
+            }
+            
+            .mission-vision-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .card-body {
+                padding: 25px;
+            }
+            
+            .card-header {
+                padding: 25px;
+            }
+            
+            .card-header h3 {
+                font-size: 1.5rem;
+            }
+            
+            .card-body p {
+                font-size: 1rem;
+            }
         }
 
         @media screen and (max-width: 480px) {
@@ -1137,6 +1323,22 @@
             
             .partner-card {
                 margin: 0 10px;
+            }
+
+            .mission-vision-title {
+                font-size: 1.8rem;
+            }
+            
+            .card-body {
+                padding: 20px;
+            }
+            
+            .card-header {
+                padding: 20px;
+            }
+            
+            .highlight {
+                padding: 15px;
             }
         }
 
@@ -1314,6 +1516,73 @@
                 <div class="about-us-map">
                     <h3>Get in Touch</h3>
                     <img src="img/maps.png" alt="Location Map">
+                </div>
+            </div>
+        </div>
+
+        <!-- Mission & Vision Section -->
+        <div class="mission-vision-section">
+            <h2 class="mission-vision-title">MISSION & VISION</h2>
+            
+            <div class="mission-vision-container">
+                <!-- Mission Card -->
+                <div class="mission-card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3>Our Mission</h3>
+                        <span class="card-subtitle">Driving Excellence</span>
+                    </div>
+                    <div class="card-body">
+                        <p>To provide good and quality services to our clients and exceed their expectations, maintaining their loyalty for a lifetime.</p>
+                        
+                        <p>We aim to form partnerships with any bank and dealer to ensure long-term market leadership and profitability through teamwork, integrity, and excellence.</p>
+                        
+                        <div class="highlight">
+                            <p>Our ultimate goal is to become the preferred choice for our clients, ensuring their satisfaction and trust for a lifetime.</p>
+                        </div>
+                        
+                        <div class="core-values">
+                            <h4><i class="fas fa-star"></i> Core Values</h4>
+                            <ul>
+                                <li><strong>Integrity:</strong> Upholding the highest ethical standards in all our dealings</li>
+                                <li><strong>Excellence:</strong> Delivering superior quality in every service we provide</li>
+                                <li><strong>Teamwork:</strong> Collaborating effectively to achieve common goals</li>
+                                <li><strong>Client Focus:</strong> Prioritizing client needs and building lasting relationships</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Vision Card -->
+                <div class="vision-card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3>Our Vision</h3>
+                        <span class="card-subtitle">Shaping the Future</span>
+                    </div>
+                    <div class="card-body">
+                        <p>To be recognized as a leading marketing arm—an agency that continuously raises the bar for operations, sales, and service.</p>
+                        
+                        <p>Our goal is to help our partners, clients, and agents achieve better futures, guaranteeing market dealership longevity, profitability, and lasting customer loyalty.</p>
+                        
+                        <div class="highlight">
+                            <p>We envision a future where every partnership we forge and every service we deliver contributes to sustainable growth and mutual success.</p>
+                        </div>
+                        
+                        <div class="core-values">
+                            <h4><i class="fas fa-chart-line"></i> Strategic Goals</h4>
+                            <ul>
+                                <li><strong>Market Leadership:</strong> Becoming the top choice in our industry</li>
+                                <li><strong>Innovation:</strong> Continuously improving our processes and services</li>
+                                <li><strong>Sustainability:</strong> Building lasting relationships and sustainable growth</li>
+                                <li><strong>Community Impact:</strong> Contributing positively to our business community</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
