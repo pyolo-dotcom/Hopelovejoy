@@ -559,32 +559,32 @@
         </div>
         
         <div class="nav-links" id="navLinks">
-            <a href="index.html">Home</a>
+            <a href="index.php">Home</a>
             
             <div class="dropdown">
-                <a href="team.html" class="dropbtn">Meet Our Team <i class="fas fa-caret-down"></i></a>
+                <a href="team.php" class="dropbtn">Meet Our Team <i class="fas fa-caret-down"></i></a>
                 <div class="dropdown-content">
-                    <a href="team.html#leadership">Leadership</a>
-                    <a href="team.html#specialists">Account Specialists</a>
-                    <a href="team.html#support">Support Staff</a>
+                    <a href="team.php#leadership">Leadership</a>
+                    <a href="team.php#specialists">Account Specialists</a>
+                    <a href="team.php#support">Support Staff</a>
                 </div>
             </div>
             
             <div class="dropdown active">
-                <a href="services.html" class="dropbtn">Services <i class="fas fa-caret-down"></i></a>
+                <a href="services.php" class="dropbtn">Services <i class="fas fa-caret-down"></i></a>
                 <div class="dropdown-content">
-                    <a href="services.html#auto-acquisition">Auto acquisition and loan assistance</a>
-                    <a href="services.html#housing">House and lot acquisition and loan assistance</a>
-                    <a href="services.html#car-insurance">Car Insurance</a>
-                    <a href="services.html#housing-insurance">Housing Insurance</a>
-                    <a href="services.html#life-insurance">Life Insurance</a>
-                    <a href="services.html#second-hand">Second hand car loan assistance</a>
-                    <a href="services.html#sangla">Sangla title and OR/CR</a>
-                    <a href="services.html#trade-in">Trade In</a>
+                    <a href="services.php#auto-acquisition">Auto acquisition and loan assistance</a>
+                    <a href="services.php#housing">House and lot acquisition and loan assistance</a>
+                    <a href="services.php#car-insurance">Car Insurance</a>
+                    <a href="services.php#housing-insurance">Housing Insurance</a>
+                    <a href="services.php#life-insurance">Life Insurance</a>
+                    <a href="services.php#second-hand">Second hand car loan assistance</a>
+                    <a href="services.php#sangla">Sangla title and OR/CR</a>
+                    <a href="services.php#trade-in">Trade In</a>
                 </div>
             </div>
             
-            <a href="contact.html">Contact</a>
+            <a href="contact.php">Contact</a>
         </div>
 
         <div class="burger" id="burgerMenu">
