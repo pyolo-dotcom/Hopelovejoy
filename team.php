@@ -720,7 +720,7 @@
             <div class="ceo-container">
                 <div class="ceo-image-container">
                     <div class="ceo-image">
-                        <img src="img/paul.jpg" alt="CEO - Mark Dela Cruz">
+                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="CEO - Mark Dela Cruz">
                     </div>
                 </div>
                 
