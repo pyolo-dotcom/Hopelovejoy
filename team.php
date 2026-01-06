@@ -37,7 +37,7 @@
         /* Team Page Header */
         .team-page-header {
             text-align: center;
-            padding: 60px 20px;
+            padding: 60px 20px 40px;
             background-color: white;
         }
 
@@ -56,8 +56,150 @@
             font-size: 1.5rem;
             color: #666;
             max-width: 800px;
-            margin: 0 auto 50px;
+            margin: 0 auto 30px;
             line-height: 1.6;
+        }
+
+        /* CEO Section - SMALLER VERSION */
+        .ceo-section {
+            background: linear-gradient(135deg, #2c2b29 0%, #3a3937 100%);
+            padding: 50px 20px;
+            margin: 30px 0;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .ceo-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #eeb82e 0%, #ffd700 50%, #eeb82e 100%);
+        }
+
+        .ceo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .ceo-image-container {
+            flex: 0 0 220px;
+        }
+
+        .ceo-image {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 6px solid rgba(238, 184, 46, 0.3);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .ceo-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .ceo-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .ceo-details {
+            flex: 1;
+            color: white;
+        }
+
+        .ceo-badge {
+            display: inline-block;
+            background: #eeb82e;
+            color: #2c2b29;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .ceo-name {
+            font-family: 'Roboto Serif', serif;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .ceo-position {
+            font-size: 1.1rem;
+            color: #eeb82e;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .ceo-experience {
+            font-size: 1rem;
+            color: #ddd;
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 3px solid #eeb82e;
+        }
+
+        .ceo-message {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #ddd;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .ceo-quote {
+            font-size: 1.1rem;
+            color: #eeb82e;
+            font-weight: 600;
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(238, 184, 46, 0.1);
+            border-radius: 8px;
+            border-left: 4px solid #eeb82e;
+        }
+
+        .ceo-contact {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .ceo-contact-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .ceo-contact-icon:hover {
+            background: #eeb82e;
+            color: #2c2b29;
+            transform: translateY(-3px);
         }
 
         /* Team Categories */
@@ -258,6 +400,56 @@
             .team-page-subtitle {
                 font-size: 1.2rem;
                 padding: 0 10px;
+                margin-bottom: 20px;
+            }
+
+            /* CEO Section mobile */
+            .ceo-section {
+                padding: 30px 15px;
+                margin: 20px 0;
+            }
+
+            .ceo-container {
+                flex-direction: column;
+                gap: 25px;
+            }
+
+            .ceo-image-container {
+                flex: 0 0 auto;
+            }
+
+            .ceo-image {
+                width: 180px;
+                height: 180px;
+                border: 5px solid rgba(238, 184, 46, 0.3);
+            }
+
+            .ceo-name {
+                font-size: 1.8rem;
+                text-align: center;
+            }
+
+            .ceo-position {
+                text-align: center;
+                font-size: 1rem;
+            }
+
+            .ceo-experience {
+                text-align: center;
+                padding-left: 0;
+                border-left: none;
+                border-top: 2px solid #eeb82e;
+                border-bottom: 2px solid #eeb82e;
+                padding: 10px 0;
+            }
+
+            .ceo-quote {
+                font-size: 1rem;
+                padding: 12px;
+            }
+
+            .ceo-contact {
+                justify-content: center;
             }
 
             .category-title {
@@ -294,6 +486,26 @@
 
             .team-page-subtitle {
                 font-size: 1rem;
+            }
+
+            /* CEO Section very small screens */
+            .ceo-image {
+                width: 160px;
+                height: 160px;
+            }
+
+            .ceo-name {
+                font-size: 1.6rem;
+            }
+
+            .ceo-position {
+                font-size: 0.9rem;
+            }
+
+            .ceo-contact-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
             }
 
             .category-title {
@@ -387,6 +599,44 @@
             <p class="team-page-subtitle">We're a team of professional people who love what we do. We care about the word quality, discipline and team work. Get to know the experts behind Hope Account Specialist.</p>
         </div>
 
+        <!-- CEO Section - SMALLER VERSION -->
+        <div class="ceo-section" id="ceo">
+            <div class="ceo-container">
+                <div class="ceo-image-container">
+                    <div class="ceo-image">
+                        <img src="img/paul.jpg" alt="CEO - Mark Dela Cruz">
+                    </div>
+                </div>
+                
+                <div class="ceo-details">
+                    <span class="ceo-badge">Chief Executive Officer</span>
+                    <h2 class="ceo-name">Paul Kester Vicente</h2>
+                    <div class="ceo-position">Founder & CEO</div>
+                    <div class="ceo-experience">20+ Years in Financial Services</div>
+                    <p class="ceo-message">With over two decades of experience in financial management and business development, Mark founded Hope Account Specialist with a vision to revolutionize financial services in the Philippines.</p>
+                    
+                    <div class="ceo-quote">
+                        "Our mission is to provide hope through financial solutions that empower individuals and businesses."
+                    </div>
+                    
+                    <div class="ceo-contact">
+                        <a href="mailto:mark.delacruz@hopeaccountspecialist.com" class="ceo-contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="#" class="ceo-contact-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="tel:+639171234567" class="ceo-contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                        <a href="#" class="ceo-contact-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Leadership Section -->
         <div class="team-category" id="leadership">
             <h2 class="category-title">LEADERSHIP TEAM</h2>
@@ -398,9 +648,9 @@
                         <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="John Smith">
                     </div>
                     <h3>John Smith</h3>
-                    <span class="position">CEO & Founder</span>
+                    <span class="position">Chief Operating Officer</span>
                     <span class="experience">15+ Years Experience</span>
-                    <p class="bio">John founded Hope Account Specialist with a vision to provide exceptional financial services to small and medium businesses.</p>
+                    <p class="bio">John manages daily operations and ensures smooth workflow across all departments at Hope Account Specialist.</p>
                     <div class="team-member-contact">
                         <a href="#" class="contact-icon"><i class="fas fa-envelope"></i></a>
                         <a href="#" class="contact-icon"><i class="fab fa-linkedin-in"></i></a>
@@ -564,7 +814,6 @@
 
     <?php include 'footer.php'; ?>
 
-
     <script>
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -582,6 +831,17 @@
                     });
                 }
             });
+        });
+
+        // Add CEO to dropdown menu
+        document.addEventListener('DOMContentLoaded', function() {
+            // Find the dropdown content for Meet Our Team
+            const meetOurTeamDropdown = document.querySelector('a[href="team.php"]').closest('.dropdown').querySelector('.dropdown-content');
+            
+            // Add it as the first item in the dropdown
+            if (meetOurTeamDropdown && meetOurTeamDropdown.firstChild) {
+                meetOurTeamDropdown.insertBefore(ceoLink, meetOurTeamDropdown.firstChild);
+            }
         });
     </script>
 </body>
