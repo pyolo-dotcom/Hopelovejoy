@@ -11,17 +11,29 @@
 
         <div class="footer-col">
             <h4>Address</h4>
-            <p>123 Financial District, Business City, BC 1000 Philippines</p>
+            <p>Brgy. Concepcion, Maharlika Hi-way Cabanatuan City</p>
         </div>
 
         <div class="footer-col">
             <h4>Social</h4>
             <p>Follow us on social media for updates and financial tips.</p>
             <div class="social-icons" style="display: flex; justify-content: center; gap: 15px; margin-top: 10px;">
-                <a href="#" style="color: #eeb82e; font-size: 1.2rem;"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" style="color: #eeb82e; font-size: 1.2rem;"><i class="fab fa-twitter"></i></a>
-                <a href="#" style="color: #eeb82e; font-size: 1.2rem;"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" style="color: #eeb82e; font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/HopeAccountSpecialist2022" target="_blank" rel="noopener noreferrer" 
+                   style="color: #eeb82e; font-size: 1.2rem; transition: all 0.3s ease;">
+                   <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://twitter.com/hopeaccountspec" target="_blank" rel="noopener noreferrer" 
+                   style="color: #eeb82e; font-size: 1.2rem; transition: all 0.3s ease;">
+                   <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://linkedin.com/company/hope-account-specialist" target="_blank" rel="noopener noreferrer" 
+                   style="color: #eeb82e; font-size: 1.2rem; transition: all 0.3s ease;">
+                   <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://instagram.com/hopeaccountspecialist" target="_blank" rel="noopener noreferrer" 
+                   style="color: #eeb82e; font-size: 1.2rem; transition: all 0.3s ease;">
+                   <i class="fab fa-instagram"></i>
+                </a>
             </div>
         </div>
 
@@ -30,7 +42,7 @@
             <p>
                 Phone: (02) 8123-4567<br>
                 Mobile: (+63) 917-123-4567<br>
-                Email: info@hopeaccountspecialist.com
+                Email: hopeacct2022@gmail.com
             </p>
         </div>
 
@@ -38,7 +50,7 @@
 </footer>
 
 <style>
-    /* Footer General Styling */
+/* Footer General Styling */
 .site-footer {
     background-color: #302f2d;
     color: #cccccc;
@@ -101,6 +113,25 @@
     font-size: 0.7rem;
     color: #888;
     font-style: italic;
+}
+
+/* Social Icons Styling */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.social-icons a {
+    color: #eeb82e;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #ffffff;
+    transform: translateY(-3px);
 }
 
 /* Mobile Responsive Styles */
