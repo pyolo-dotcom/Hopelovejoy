@@ -228,16 +228,112 @@
             text-align: center;
         }
 
-        /* Team Container */
+        /* Team Container - ADJUSTED FOR MORE MEMBERS */
         .team-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 40px;
+            gap: 30px; /* Reduced from 40px */
             max-width: 1200px;
             margin: 0 auto;
         }
 
+        /* SMALLER TEAM MEMBER CARD - FOR ACCOUNT SPECIALISTS */
+        .team-member-smaller {
+            width: 250px; /* Reduced from 280px */
+            text-align: center;
+            background: white;
+            border-radius: 15px;
+            padding: 20px; /* Reduced from 25px */
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .team-member-smaller:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(238, 184, 46, 0.15);
+        }
+
+        .team-member-img-smaller {
+            width: 180px; /* Reduced from 200px */
+            height: 180px; /* Reduced from 200px */
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 15px; /* Reduced from 20px */
+            border: 4px solid #eeb82e;
+            position: relative;
+        }
+
+        .team-member-img-smaller img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .team-member-smaller:hover .team-member-img-smaller img {
+            transform: scale(1.05);
+        }
+
+        .team-member-smaller h3 {
+            font-family: 'Roboto Serif', serif;
+            font-size: 1.2rem; /* Reduced from 1.4rem */
+            color: #2c2b29;
+            margin-bottom: 5px; /* Reduced from 8px */
+        }
+
+        .team-member-smaller .position {
+            color: #eeb82e;
+            font-weight: 600;
+            font-size: 0.9rem; /* Reduced from 1rem */
+            margin-bottom: 10px; /* Reduced from 15px */
+            display: block;
+        }
+
+        .team-member-smaller .experience {
+            color: #666;
+            font-size: 0.8rem; /* Reduced from 0.9rem */
+            margin-bottom: 10px; /* Reduced from 15px */
+            display: block;
+        }
+
+        .team-member-smaller .bio {
+            color: #555;
+            font-size: 0.85rem; /* Reduced from 0.95rem */
+            line-height: 1.5; /* Reduced from 1.6 */
+            margin-bottom: 15px; /* Reduced from 20px */
+            height: 60px; /* Fixed height for uniform cards */
+            overflow: hidden;
+        }
+
+        .team-member-contact-smaller {
+            display: flex;
+            justify-content: center;
+            gap: 10px; /* Reduced from 15px */
+            margin-top: 15px; /* Reduced from 20px */
+        }
+
+        .contact-icon-smaller {
+            width: 35px; /* Reduced from 40px */
+            height: 35px; /* Reduced from 40px */
+            background: #f8f8f8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2c2b29;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem; /* Reduced font size */
+        }
+
+        .contact-icon-smaller:hover {
+            background: #eeb82e;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* Original team member style for other sections */
         .team-member {
             width: 280px;
             text-align: center;
@@ -456,9 +552,29 @@
                 font-size: 2rem;
             }
 
+            .team-member-smaller,
             .team-member {
                 width: 100%;
-                max-width: 350px;
+                max-width: 320px;
+            }
+
+            /* Mobile adjustments for smaller team member cards */
+            .team-member-smaller {
+                padding: 15px;
+            }
+
+            .team-member-img-smaller {
+                width: 150px;
+                height: 150px;
+            }
+
+            .team-member-smaller h3 {
+                font-size: 1.1rem;
+            }
+
+            .team-member-smaller .bio {
+                height: auto;
+                margin-bottom: 10px;
             }
         }
 
@@ -512,9 +628,9 @@
                 font-size: 1.8rem;
             }
 
-            .team-member-img {
-                width: 180px;
-                height: 180px;
+            .team-member-img-smaller {
+                width: 140px;
+                height: 140px;
             }
         }
 
@@ -744,63 +860,279 @@
             <p class="team-category-description">Our account specialists are certified professionals dedicated to providing personalized financial solutions.</p>
             
             <div class="team-container">
-                <div class="team-member">
-                    <div class="team-member-img">
+                <!-- Using the smaller team member cards for account specialists -->
+                <!-- First Row - 4 members -->
+                <div class="team-member-smaller">
+                    <div class="team-member-img-smaller">
                         <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Michael Chen">
                     </div>
                     <h3>Michael Chen</h3>
                     <span class="position">Senior Tax Consultant</span>
                     <span class="experience">8+ Years Experience</span>
                     <p class="bio">Specializes in tax planning and preparation for individuals and corporations.</p>
-                    <div class="team-member-contact">
-                        <a href="#" class="contact-icon"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="contact-icon"><i class="fas fa-phone"></i></a>
+                    <div class="team-member-contact-smaller">
+                        <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
                     </div>
                 </div>
                 
-                <div class="team-member">
-                    <div class="team-member-img">
+                <div class="team-member-smaller">
+                    <div class="team-member-img-smaller">
                         <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Emily Rodriguez">
                     </div>
                     <h3>Emily Rodriguez</h3>
                     <span class="position">Bookkeeping Manager</span>
                     <span class="experience">7+ Years Experience</span>
                     <p class="bio">Expert in bookkeeping, financial reporting, and QuickBooks implementation.</p>
-                    <div class="team-member-contact">
-                        <a href="#" class="contact-icon"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="contact-icon"><i class="fas fa-phone"></i></a>
+                    <div class="team-member-contact-smaller">
+                        <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
                     </div>
                 </div>
                 
-                <div class="team-member">
-                    <div class="team-member-img">
+                <div class="team-member-smaller">
+                    <div class="team-member-img-smaller">
                         <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="David Kim">
                     </div>
                     <h3>David Kim</h3>
                     <span class="position">Financial Analyst</span>
                     <span class="experience">6+ Years Experience</span>
                     <p class="bio">Provides financial analysis and business consulting for growth-oriented companies.</p>
-                    <div class="team-member-contact">
-                        <a href="#" class="contact-icon"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="contact-icon"><i class="fas fa-phone"></i></a>
+                    <div class="team-member-contact-smaller">
+                        <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
                     </div>
                 </div>
                 
-                <div class="team-member">
-                    <div class="team-member-img">
+                <div class="team-member-smaller">
+                    <div class="team-member-img-smaller">
                         <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Lisa Wong">
                     </div>
                     <h3>Lisa Wong</h3>
                     <span class="position">Audit Specialist</span>
                     <span class="experience">9+ Years Experience</span>
                     <p class="bio">CPA certified auditor with expertise in financial compliance and risk management.</p>
-                    <div class="team-member-contact">
-                        <a href="#" class="contact-icon"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="contact-icon"><i class="fas fa-phone"></i></a>
+                    <div class="team-member-contact-smaller">
+                        <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+
+                <!-- Second Row - 4 members -->
+                <div class="team-member-smaller">
+                    <div class="team-member-img-smaller">
+                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Member 5">
+                    </div>
+                    <h3>Member 5</h3>
+                    <span class="position">Account Specialist</span>
+                    <span class="experience">5+ Years Experience</span>
+                    <p class="bio">Specializes in financial management and client consulting services.</p>
+                    <div class="team-member-contact-smaller">
+                        <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-member-smaller">
+                    <div class="team-member-img-smaller">
+                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Member 6">
+                    </div>
+                    <h3>Member 6</h3>
+                    <span class="position">Account Specialist</span>
+                    <span class="experience">4+ Years Experience</span>
+                    <p class="bio">Expert in financial reporting and business strategy development.</p>
+                    <div class="team-member-contact-smaller">
+                        <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-member-smaller">
+                    <div class="team-member-img-smaller">
+                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Member 7">
+                    </div>
+                    <h3>Member 7</h3>
+                    <span class="position">Account Specialist</span>
+                    <span class="experience">6+ Years Experience</span>
+                    <p class="bio">Provides financial analysis and growth strategies for businesses.</p>
+                    <div class="team-member-contact-smaller">
+                        <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-member-smaller">
+                    <div class="team-member-img-smaller">
+                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Member 8">
+                    </div>
+                    <h3>Member 8</h3>
+                    <span class="position">Account Specialist</span>
+                    <span class="experience">3+ Years Experience</span>
+                    <p class="bio">CPA certified with expertise in financial compliance and auditing.</p>
+                    <div class="team-member-contact-smaller">
+                        <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+
+                <!-- Third Row - 4 members -->
+                <div class="team-member-smaller">
+                    <div class="team-member-img-smaller">
+                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Member 9">
+                    </div>
+                    <h3>Member 9</h3>
+                    <span class="position">Account Specialist</span>
+                    <span class="experience">7+ Years Experience</span>
+                    <p class="bio">Specializes in tax planning and corporate financial management.</p>
+                    <div class="team-member-contact-smaller">
+                        <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-member-smaller">
+                    <div class="team-member-img-smaller">
+                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Member 10">
+                    </div>
+                    <h3>Member 10</h3>
+                    <span class="position">Account Specialist</span>
+                    <span class="experience">5+ Years Experience</span>
+                    <p class="bio">Expert in bookkeeping and financial software implementation.</p>
+                    <div class="team-member-contact-smaller">
+                        <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-member-smaller">
+                    <div class="team-member-img-smaller">
+                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Member 11">
+                    </div>
+                    <h3>Member 11</h3>
+                    <span class="position">Account Specialist</span>
+                    <span class="experience">4+ Years Experience</span>
+                    <p class="bio">Provides business consulting and financial strategy development.</p>
+                    <div class="team-member-contact-smaller">
+                        <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-member-smaller">
+                    <div class="team-member-img-smaller">
+                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Member 12">
+                    </div>
+                    <h3>Member 12</h3>
+                    <span class="position">Account Specialist</span>
+                    <span class="experience">8+ Years Experience</span>
+                    <p class="bio">Specializes in risk management and financial compliance auditing.</p>
+                    <div class="team-member-contact-smaller">
+                        <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+
+                <!-- Fourth Row - 4 members -->
+                <div class="team-member-smaller">
+                    <div class="team-member-img-smaller">
+                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Member 13">
+                    </div>
+                    <h3>Member 13</h3>
+                    <span class="position">Account Specialist</span>
+                    <span class="experience">6+ Years Experience</span>
+                    <p class="bio">Expert in financial analysis and corporate restructuring.</p>
+                    <div class="team-member-contact-smaller">
+                        <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-member-smaller">
+                    <div class="team-member-img-smaller">
+                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Member 14">
+                    </div>
+                    <h3>Member 14</h3>
+                    <span class="position">Account Specialist</span>
+                    <span class="experience">5+ Years Experience</span>
+                    <p class="bio">Specializes in investment analysis and portfolio management.</p>
+                    <div class="team-member-contact-smaller">
+                        <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-member-smaller">
+                    <div class="team-member-img-smaller">
+                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Member 15">
+                    </div>
+                    <h3>Member 15</h3>
+                    <span class="position">Account Specialist</span>
+                    <span class="experience">7+ Years Experience</span>
+                    <p class="bio">Expert in international finance and cross-border transactions.</p>
+                    <div class="team-member-contact-smaller">
+                        <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-member-smaller">
+                    <div class="team-member-img-smaller">
+                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Member 16">
+                    </div>
+                    <h3>Member 16</h3>
+                    <span class="position">Account Specialist</span>
+                    <span class="experience">4+ Years Experience</span>
+                    <p class="bio">Specializes in small business accounting and financial planning.</p>
+                    <div class="team-member-contact-smaller">
+                        <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+
+                <!-- Fifth Row - 2 members -->
+                <div class="team-member-smaller">
+                    <div class="team-member-img-smaller">
+                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Member 17">
+                    </div>
+                    <h3>Member 17</h3>
+                    <span class="position">Account Specialist</span>
+                    <span class="experience">3+ Years Experience</span>
+                    <p class="bio">Expert in digital accounting and financial technology solutions.</p>
+                    <div class="team-member-contact-smaller">
+                        <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-member-smaller">
+                    <div class="team-member-img-smaller">
+                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Member 18">
+                    </div>
+                    <h3>Member 18</h3>
+                    <span class="position">Account Specialist</span>
+                    <span class="experience">5+ Years Experience</span>
+                    <p class="bio">Specializes in audit services and financial risk assessment.</p>
+                    <div class="team-member-contact-smaller">
+                        <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
                     </div>
                 </div>
             </div>
