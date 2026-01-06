@@ -1,11 +1,11 @@
 <nav class="navbar">
-    <div class="brand-name">HOPE ACCOUNT SPECIALIST</div>
+    <a href="index.php" class="brand-name">HOPE ACCOUNT SPECIALIST</a>
 
-    <div class="logo-container">
+    <a href="index.php" class="logo-container">
         <div class="logo-circle">
             <img src="img/logo.png" alt="Logo">
         </div>
-    </div>
+    </a>
     
     <div class="nav-links" id="navLinks">
         <a href="index.php" <?php echo (basename($_SERVER['PHP_SELF']) == 'index.php') ? 'class="active"' : ''; ?>>Home</a>
@@ -58,7 +58,7 @@
         box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
 
-    /* Brand Name (Left) */
+    /* Brand Name (Left) - Now a clickable link */
     .brand-name {
         color: #eeb82e;
         font-weight: 900;
@@ -66,6 +66,51 @@
         text-transform: uppercase;
         letter-spacing: 1px;
         z-index: 11;
+        text-decoration: none;
+        cursor: pointer;
+        transition: color 0.3s;
+    }
+
+    .brand-name:hover {
+        color: #fff;
+    }
+
+    /* Logo Container - Now a clickable link */
+    .logo-container {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .logo-circle {
+        background-color: #2c2b29;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: -15px;
+        border: 4px solid #2c2b29;
+        transition: transform 0.3s ease;
+    }
+
+    .logo-container:hover .logo-circle {
+        transform: scale(1.05);
+    }
+
+    .logo-circle img {
+        width: 120px;
+        height: auto;
+        transition: transform 0.3s ease;
+    }
+
+    .logo-container:hover .logo-circle img {
+        transform: scale(1.05);
     }
 
     /* Navigation Links (Right) */
@@ -86,32 +131,6 @@
     .nav-links a:hover,
     .nav-links a.active {
         color: #fff;
-    }
-
-    /* Center Logo "Dip" Effect */
-    .logo-container {
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 10;
-    }
-
-    .logo-circle {
-        background-color: #2c2b29;
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: -15px;
-        border: 4px solid #2c2b29;
-    }
-
-    .logo-circle img {
-        width: 120px;
-        height: auto;
     }
 
     /* Burger Menu (Hidden by default on desktop) */
@@ -265,6 +284,12 @@
         .dropbtn .fa-caret-down {
             display: none;
         }
+        
+        /* Ensure logo is clickable on mobile */
+        .logo-container {
+            cursor: pointer;
+            z-index: 12;
+        }
     }
 
     @media screen and (max-width: 480px) {
@@ -347,6 +372,17 @@
                 document.querySelectorAll('.dropdown').forEach(dropdown => {
                     dropdown.classList.remove('active');
                 });
+            }
+        });
+        
+        // Prevent logo click from interfering with mobile menu
+        document.querySelector('.logo-container').addEventListener('click', (e) => {
+            if (window.innerWidth <= 768 && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                const burgerLines = document.querySelectorAll('.burger-line');
+                burgerLines[0].style.transform = 'rotate(0) translate(0, 0)';
+                burgerLines[1].style.opacity = '1';
+                burgerLines[2].style.transform = 'rotate(0) translate(0, 0)';
             }
         });
     }
