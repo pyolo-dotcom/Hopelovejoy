@@ -13,6 +13,7 @@
         <div class="dropdown <?php echo (basename($_SERVER['PHP_SELF']) == 'team.php') ? 'active' : ''; ?>">
             <a href="team.php" class="dropbtn">Meet Our Team <i class="fas fa-caret-down"></i></a>
             <div class="dropdown-content">
+                <a href="team.php#ceo">CEO</a>
                 <a href="team.php#leadership">Leadership</a>
                 <a href="team.php#specialists">Account Specialists</a>
                 <a href="team.php#support">Support Staff</a>
