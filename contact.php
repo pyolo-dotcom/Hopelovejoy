@@ -25,92 +25,6 @@
             flex-direction: column;
         }
 
-        /* Navbar Styling */
-        .navbar {
-            background-color: #2c2b29;
-            height: 60px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 50px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-
-        /* Brand Name (Left) */
-        .brand-name {
-            color: #eeb82e;
-            font-weight: 900;
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            z-index: 11;
-        }
-
-        /* Navigation Links (Right) */
-        .nav-links {
-            display: flex;
-            gap: 20px;
-            z-index: 11;
-        }
-
-        .nav-links a {
-            color: #eeb82e;
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #fff;
-        }
-
-        /* Center Logo "Dip" Effect */
-        .logo-container {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 10;
-        }
-
-        .logo-circle {
-            background-color: #2c2b29;
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: -15px;
-            border: 4px solid #2c2b29;
-        }
-
-        .logo-circle img {
-            width: 120px;
-            height: auto;
-        }
-
-        /* Burger Menu (Hidden by default on desktop) */
-        .burger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            z-index: 11;
-            padding: 5px;
-        }
-
-        .burger-line {
-            width: 25px;
-            height: 3px;
-            background-color: #eeb82e;
-            margin: 3px 0;
-            transition: 0.3s;
-        }
-
         /* Main content styling */
         .main-content {
             padding: 100px 20px 20px;
@@ -445,71 +359,6 @@
             font-size: 1rem;
         }
 
-        /* Footer General Styling */
-        .site-footer {
-            background-color: #302f2d;
-            color: #cccccc;
-            padding: 50px 0;
-            font-family: Arial, sans-serif;
-            margin-top: auto;
-        }
-
-        .footer-container {
-            display: flex;
-            justify-content: space-around;
-            align-items: flex-start;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            flex-wrap: wrap;
-        }
-
-        /* Column Styling */
-        .footer-col {
-            flex: 1;
-            text-align: center;
-            min-width: 200px;
-            padding: 0 15px;
-            margin-bottom: 20px;
-        }
-
-        /* Headings (Address, Social, Contact) */
-        .footer-col h4 {
-            color: #eeb82e;
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            font-weight: normal;
-        }
-
-        /* Paragraph Text */
-        .footer-col p {
-            font-size: 0.9rem;
-            line-height: 1.5;
-            color: #cfcfcf;
-        }
-
-        /* Specific Styling for Logo Section (Leftmost) */
-        .logo-section img {
-            width: 100px;
-            height: auto;
-            margin-bottom: 10px;
-            border-radius: 50%;
-        }
-
-        .logo-section h3 {
-            color: #eeb82e;
-            font-size: 1rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-bottom: 5px;
-        }
-
-        .logo-section .tagline {
-            font-size: 0.7rem;
-            color: #888;
-            font-style: italic;
-        }
-
         /* Mobile Responsive Styles */
         @media screen and (max-width: 768px) {
             .navbar {
@@ -573,16 +422,6 @@
                 font-size: 1rem;
             }
 
-            /* Footer mobile adjustments */
-            .footer-container {
-                justify-content: center;
-            }
-
-            .footer-col {
-                flex: 0 0 50%;
-                min-width: 250px;
-            }
-
             /* Contact Page mobile adjustments */
             .contact-page-title {
                 font-size: 2.8rem;
@@ -627,16 +466,6 @@
                 font-size: 0.8rem;
                 max-width: 120px;
                 line-height: 1.1;
-            }
-
-            /* Footer mobile adjustments for very small screens */
-            .footer-col {
-                flex: 0 0 100%;
-                min-width: 100%;
-            }
-
-            .site-footer {
-                padding: 30px 0;
             }
 
             /* Contact Page very small screens */
@@ -735,50 +564,7 @@
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="brand-name">HOPE ACCOUNT SPECIALIST</div>
-
-        <div class="logo-container">
-            <div class="logo-circle">
-                <img src="img/logo.png" alt="Logo">
-            </div>
-        </div>
-        
-        <div class="nav-links" id="navLinks">
-            <a href="index.html">Home</a>
-            
-            <div class="dropdown">
-                <a href="team.html" class="dropbtn">Meet Our Team <i class="fas fa-caret-down"></i></a>
-                <div class="dropdown-content">
-                    <a href="team.html#leadership">Leadership</a>
-                    <a href="team.html#specialists">Account Specialists</a>
-                    <a href="team.html#support">Support Staff</a>
-                </div>
-            </div>
-            
-            <div class="dropdown active">
-                <a href="services.html" class="dropbtn">Services <i class="fas fa-caret-down"></i></a>
-                <div class="dropdown-content">
-                    <a href="services.html#auto-acquisition">Auto acquisition and loan assistance</a>
-                    <a href="services.html#housing">House and lot acquisition and loan assistance</a>
-                    <a href="services.html#car-insurance">Car Insurance</a>
-                    <a href="services.html#housing-insurance">Housing Insurance</a>
-                    <a href="services.html#life-insurance">Life Insurance</a>
-                    <a href="services.html#second-hand">Second hand car loan assistance</a>
-                    <a href="services.html#sangla">Sangla title and OR/CR</a>
-                    <a href="services.html#trade-in">Trade In</a>
-                </div>
-            </div>
-            
-            <a href="contact.html">Contact</a>
-        </div>
-
-        <div class="burger" id="burgerMenu">
-            <div class="burger-line"></div>
-            <div class="burger-line"></div>
-            <div class="burger-line"></div>
-        </div>
-    </nav>
+    <?php include 'navbar.php'; ?>
 
     <div class="main-content">
         <!-- Contact Page Header -->
@@ -967,98 +753,9 @@
         </div>
     </div>
 
-    <footer class="site-footer">
-        <div class="footer-container">
-            
-            <div class="footer-col logo-section">
-                <div class="footer-logo">
-                    <img src="img/logo.png" alt="Hope Account Specialist Logo">
-                </div>
-                <h3>Hope Account Specialist</h3>
-                <p class="tagline">Making your dreams turn into reality.</p>
-            </div>
-
-            <div class="footer-col">
-                <h4>Address</h4>
-                <p>123 Financial District, Business City, BC 1000 Philippines</p>
-            </div>
-
-            <div class="footer-col">
-                <h4>Social</h4>
-                <p>Follow us on social media for updates and financial tips.</p>
-            </div>
-
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <p>Phone: (02) 8123-4567<br>Email: info@hopeaccountspecialist.com</p>
-            </div>
-
-        </div>
-    </footer>
+    <?php include 'footer.php'; ?>
 
     <script>
-        // Mobile menu toggle functionality
-        const burgerMenu = document.getElementById('burgerMenu');
-        const navLinks = document.getElementById('navLinks');
-        
-        burgerMenu.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            
-            const burgerLines = document.querySelectorAll('.burger-line');
-            if (navLinks.classList.contains('active')) {
-                burgerLines[0].style.transform = 'rotate(45deg) translate(5px, 6px)';
-                burgerLines[1].style.opacity = '0';
-                burgerLines[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
-            } else {
-                burgerLines[0].style.transform = 'rotate(0) translate(0, 0)';
-                burgerLines[1].style.opacity = '1';
-                burgerLines[2].style.transform = 'rotate(0) translate(0, 0)';
-            }
-        });
-        
-        const navItems = document.querySelectorAll('.nav-links a');
-        navItems.forEach(item => {
-            item.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                const burgerLines = document.querySelectorAll('.burger-line');
-                burgerLines[0].style.transform = 'rotate(0) translate(0, 0)';
-                burgerLines[1].style.opacity = '1';
-                burgerLines[2].style.transform = 'rotate(0) translate(0, 0)';
-            });
-        });
-        
-        document.addEventListener('click', (event) => {
-            const isClickInsideNav = navLinks.contains(event.target) || burgerMenu.contains(event.target);
-            
-            if (!isClickInsideNav && navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
-                const burgerLines = document.querySelectorAll('.burger-line');
-                burgerLines[0].style.transform = 'rotate(0) translate(0, 0)';
-                burgerLines[1].style.opacity = '1';
-                burgerLines[2].style.transform = 'rotate(0) translate(0, 0)';
-            }
-        });
-
-        // Simple dropdown functionality for mobile
-        document.querySelectorAll('.dropbtn').forEach(dropdown => {
-            dropdown.addEventListener('click', function(e) {
-                if (window.innerWidth <= 768) {
-                    e.preventDefault();
-                    const dropdown = this.closest('.dropdown');
-                    dropdown.classList.toggle('active');
-                }
-            });
-        });
-
-        // Close dropdowns when clicking outside
-        document.addEventListener('click', (event) => {
-            if (!event.target.closest('.dropdown') && window.innerWidth <= 768) {
-                document.querySelectorAll('.dropdown').forEach(dropdown => {
-                    dropdown.classList.remove('active');
-                });
-            }
-        });
-
         // Contact Form Submission
         const contactForm = document.getElementById('contactForm');
         if (contactForm) {
