@@ -610,7 +610,7 @@
                 
                 <div class="ceo-details">
                     <span class="ceo-badge">Chief Executive Officer</span>
-                    <h2 class="ceo-name">Paul Kester Vicente</h2>
+                    <h2 class="ceo-name">Maritess S. Bauto</h2>
                     <div class="ceo-position">Founder & CEO</div>
                     <div class="ceo-experience">20+ Years in Financial Services</div>
                     <p class="ceo-message">With over two decades of experience in financial management and business development, Mark founded Hope Account Specialist with a vision to revolutionize financial services in the Philippines.</p>
@@ -637,6 +637,7 @@
             </div>
         </div>
 
+
         <!-- Leadership Section -->
         <div class="team-category" id="leadership">
             <h2 class="category-title">LEADERSHIP TEAM</h2>
@@ -647,9 +648,9 @@
                     <div class="team-member-img">
                         <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="John Smith">
                     </div>
-                    <h3>John Smith</h3>
-                    <span class="position">Chief Operating Officer</span>
-                    <span class="experience">15+ Years Experience</span>
+                    <h3>Atty. Israel Bonite</h3>
+                    <span class="position">Legal Consultant</span>
+                    <span class="experience">blank</span>
                     <p class="bio">John manages daily operations and ensures smooth workflow across all departments at Hope Account Specialist.</p>
                     <div class="team-member-contact">
                         <a href="#" class="contact-icon"><i class="fas fa-envelope"></i></a>
@@ -662,9 +663,9 @@
                     <div class="team-member-img">
                         <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Sarah Johnson">
                     </div>
-                    <h3>Sarah Johnson</h3>
-                    <span class="position">Chief Financial Officer</span>
-                    <span class="experience">12+ Years Experience</span>
+                    <h3>Richcar Fernandez</h3>
+                    <span class="position">Executive Officer</span>
+                    <span class="experience">blank</span>
                     <p class="bio">Sarah oversees all financial operations and ensures compliance with accounting standards and regulations.</p>
                     <div class="team-member-contact">
                         <a href="#" class="contact-icon"><i class="fas fa-envelope"></i></a>
@@ -677,9 +678,9 @@
                     <div class="team-member-img">
                         <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Robert Williams">
                     </div>
-                    <h3>Robert Williams</h3>
-                    <span class="position">Operations Director</span>
-                    <span class="experience">10+ Years Experience</span>
+                    <h3>Nelson Fernandez</h3>
+                    <span class="position">Engineering Dept.</span>
+                    <span class="experience">blank</span>
                     <p class="bio">Robert manages daily operations and ensures smooth workflow across all departments.</p>
                     <div class="team-member-contact">
                         <a href="#" class="contact-icon"><i class="fas fa-envelope"></i></a>
@@ -688,8 +689,55 @@
                     </div>
                 </div>
             </div>
-        </div>
 
+            <!-- Additional Leadership Team Members -->
+            <div class="team-container" style="margin-top: 30px;">
+                <div class="team-member">
+                    <div class="team-member-img">
+                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Jane Doe">
+                    </div>
+                    <h3>Dyna Layco</h3>
+                    <span class="position">Team Head</span>
+                    <span class="experience">blank</span>
+                    <p class="bio">Jane ensures operational excellence and drives process improvements across all teams.</p>
+                    <div class="team-member-contact">
+                        <a href="#" class="contact-icon"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="contact-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="contact-icon"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-member-img">
+                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Alex Smith">
+                    </div>
+                    <h3>Donnabel Cruz</h3>
+                    <span class="position">Team Head</span>
+                    <span class="experience">blank</span>
+                    <p class="bio">Alex leads strategic initiatives and partnerships to expand our service offerings.</p>
+                    <div class="team-member-contact">
+                        <a href="#" class="contact-icon"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="contact-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="contact-icon"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="team-member-img">
+                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Maria Johnson">
+                    </div>
+                    <h3>Mariel De Guzman</h3>
+                    <span class="position">Team Head</span>
+                    <span class="experience">blank</span>
+                    <p class="bio">Maria oversees talent acquisition and employee development programs.</p>
+                    <div class="team-member-contact">
+                        <a href="#" class="contact-icon"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="contact-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="contact-icon"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Account Specialists Section -->
         <div class="team-category" id="specialists">
             <h2 class="category-title">ACCOUNT SPECIALISTS</h2>
