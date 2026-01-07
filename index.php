@@ -1314,8 +1314,7 @@
                     <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."</p>
                 </div>
                 <div class="about-us-map">
-                    <h3>Get in Touch</h3>
-                    <img src="img/maps.png" alt="Location Map">
+                    <img src="img/indexpics.jpg" alt="Location Map">
                 </div>
             </div>
         </div>

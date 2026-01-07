@@ -598,11 +598,14 @@
                         <label for="service">Service Interested In</label>
                         <select id="service" name="service">
                             <option value="">Select a service</option>
-                            <option value="bookkeeping">Bookkeeping</option>
-                            <option value="tax">Tax Preparation</option>
-                            <option value="consulting">Financial Consulting</option>
-                            <option value="payroll">Payroll Services</option>
-                            <option value="other">Other</option>
+                            <option value="loanassistance">Auto acquisition and loan assistance</option>
+                            <option value="houseandlotloan">House and lot acquisition and loan assistance</option>
+                            <option value="carinsurance">Car Insurance</option>
+                            <option value="houseinsurance">Housing Insurance</option>
+                            <option value="lifeinsurance">Life Insurance</option>
+                            <option value="secondhandcarloan">Second hand car loan assistance</option>
+                            <option value="sanglaorcr">Sangla title and OR/CR</option>
+                            <option value="tradein">Trade In</option>
                         </select>
                     </div>
                     
@@ -625,7 +628,7 @@
                         </div>
                         <div class="info-content">
                             <h3>Our Address</h3>
-                            <p>123 Financial District,<br>Business City, BC 1000<br>Philippines</p>
+                            <p>Brgy. Concepcion, Maharlika Hi-way Cabanatuan City<br>Philippines</p>
                         </div>
                     </div>
                     
@@ -649,8 +652,7 @@
                         <div class="info-content">
                             <h3>Email Address</h3>
                             <p>
-                                <a href="mailto:info@hopeaccountspecialist.com">info@hopeaccountspecialist.com</a><br>
-                                <a href="mailto:support@hopeaccountspecialist.com">support@hopeaccountspecialist.com</a>
+                                <a href="mailto:hopeacct2022@gmail.com">hopeacct2022@gmail.com</a>
                             </p>
                         </div>
                     </div>
@@ -660,10 +662,10 @@
                             <i class="fas fa-clock"></i>
                         </div>
                         <div class="info-content">
-                            <h3>Business Hours</h3>
+                            <h3>Office Hours</h3>
                             <p>
-                                Monday - Friday: 8:00 AM - 6:00 PM<br>
-                                Saturday: 9:00 AM - 1:00 PM<br>
+                                Monday - Friday: 8:00 AM - 5:00 PM<br>
+                                Saturday: TBA<br>
                                 Sunday: Closed
                             </p>
                         </div>
