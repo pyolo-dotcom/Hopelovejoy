@@ -289,26 +289,6 @@
             letter-spacing: 1px;
         }
 
-        .sale-details {
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid #eee;
-        }
-
-        .sale-details p {
-            font-size: 0.85rem;
-            color: #666;
-            margin-bottom: 5px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .sale-details i {
-            color: #eeb82e;
-            width: 16px;
-        }
-
         /* Carousel Container */
         .carousel-container {
             position: relative;
@@ -343,23 +323,10 @@
             position: relative;
         }
 
-        /* Sale Badge */
-        .sale-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: #e74c3c;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            z-index: 2;
-        }
-
+        /* MALAKING IMAGE - PINALAKI KO DITO */
         .item-img {
             width: 100%;
-            height: 200px;
+            height: 350px; /* Pinalaki mula 200px */
             overflow: hidden;
         }
 
@@ -367,68 +334,12 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.5s ease;
         }
 
-        .item-info {
-            padding: 25px;
-            text-align: left;
-        }
-
-        .item-info h3 {
-            font-family: 'Roboto Serif', serif;
-            font-size: 1.3rem;
-            color: #2c2b29;
-            margin-bottom: 10px;
-        }
-
-        .item-info p {
-            color: #666;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-
-        .item-price {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .current-price {
-            color: #eeb82e;
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-        .original-price {
-            color: #999;
-            font-size: 1rem;
-            text-decoration: line-through;
-        }
-
-        .discount {
-            color: #e74c3c;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        .buy-btn {
-            background: #2c2b29;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
-            font-size: 1rem;
-        }
-
-        .buy-btn:hover {
-            background: #eeb82e;
-            color: #2c2b29;
+        /* Hover effect para mas lalong lumaki ang image */
+        .item-img:hover img {
+            transform: scale(1.05);
         }
 
         /* Carousel Navigation Buttons */
@@ -621,74 +532,6 @@
             color: #777;
             font-size: 0.9rem;
             margin: 0;
-        }
-
-        .partners-section {
-            padding: 80px 20px;
-            background-color: white;
-            text-align: center;
-        }
-
-        .partners-title {
-            font-family: 'Roboto Serif', serif;
-            font-size: 3rem;
-            margin-bottom: 50px;
-            color: #2c2b29;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .partners-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            padding: 20px;
-        }
-
-        .partner-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            border: 1px solid #f0f0f0;
-            padding: 30px;
-        }
-
-        .partner-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(238, 184, 46, 0.15);
-            border-color: #eeb82e;
-        }
-
-        .partner-logo {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #f8f8f8;
-            border-radius: 50%;
-            padding: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .partner-card:hover .partner-logo {
-            background: #fff9e6;
-            transform: scale(1.05);
-        }
-
-        .partner-logo img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
         }
 
         .partner-content {
@@ -901,6 +744,129 @@
             font-weight: bold;
         }
 
+        /* Affiliated Houses Section */
+        .affiliated-section {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .affiliated-title {
+            font-family: 'Roboto Serif', serif;
+            font-size: 3rem;
+            margin-bottom: 50px;
+            color: #2c2b29;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .affiliated-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .affiliated-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border: 1px solid #f0f0f0;
+            padding: 30px;
+        }
+
+        .affiliated-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(238, 184, 46, 0.15);
+            border-color: #eeb82e;
+        }
+
+        .affiliated-logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f8f8;
+            border-radius: 50%;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .affiliated-card:hover .affiliated-logo {
+            background: #fff9e6;
+            transform: scale(1.05);
+        }
+
+        .logo-placeholder {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #eeb82e;
+            border-radius: 50%;
+            color: #2c2b29;
+            font-size: 2.5rem;
+        }
+
+        .affiliated-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .affiliated-content h3 {
+            font-family: 'Roboto Serif', serif;
+            font-size: 1.5rem;
+            color: #2c2b29;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .affiliated-category {
+            display: inline-block;
+            background: #eeb82e;
+            color: #2c2b29;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .affiliated-content p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            flex-grow: 1;
+        }
+
+        .affiliated-years {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        .affiliated-years i {
+            color: #eeb82e;
+        }
+
         /* Mobile Responsive Styles */
         @media screen and (max-width: 768px) {
             .navbar {
@@ -1050,7 +1016,6 @@
             .partner-logo {
                 width: 100px;
                 height: 100px;
-                margin-bottom: 20px;
             }
             
             .partner-content h3 {
@@ -1079,6 +1044,55 @@
             }
             
             .card-body p {
+                font-size: 1rem;
+            }
+
+            .affiliated-title {
+                font-size: 2.2rem;
+            }
+            
+            .affiliated-container {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 20px;
+                padding: 10px;
+            }
+            
+            .affiliated-card {
+                padding: 20px;
+            }
+            
+            .affiliated-logo {
+                width: 100px;
+                height: 100px;
+                margin-bottom: 20px;
+            }
+            
+            .logo-placeholder {
+                width: 60px;
+                height: 60px;
+                font-size: 2rem;
+            }
+            
+            .affiliated-content h3 {
+                font-size: 1.3rem;
+            }
+
+            /* Adjust image height for tablet */
+            .item-img {
+                height: 300px; /* Bahagyang mas mababa para sa tablet */
+            }
+            
+            .carousel-slide {
+                min-width: calc(50% - 15px);
+            }
+            
+            .carousel-container {
+                padding: 0 50px;
+            }
+            
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
                 font-size: 1rem;
             }
         }
@@ -1138,6 +1152,14 @@
                 min-width: 100%;
             }
             
+            .item-img {
+                height: 250px; /* Slightly smaller for mobile but still larger than original */
+            }
+            
+            .carousel-slide {
+                min-width: 100%;
+            }
+            
             .carousel-container {
                 padding: 0 40px;
             }
@@ -1182,6 +1204,19 @@
             
             .highlight {
                 padding: 15px;
+            }
+
+            .affiliated-title {
+                font-size: 1.8rem;
+            }
+            
+            .affiliated-container {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .affiliated-card {
+                margin: 0 10px;
             }
         }
 
@@ -1399,22 +1434,8 @@
                     <!-- Vehicle Sale 1 -->
                     <div class="carousel-slide">
                         <div class="sales-item">
-                            <div class="sale-badge">SOLD</div>
                             <div class="item-img">
-                                <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Toyota Fortuner">
-                            </div>
-                            <div class="item-info">
-                                <h3>Toyota Fortuner 2022</h3>
-                                <p>Premium SUV with only 15,000 km mileage. Fully loaded with leather seats, sunroof, and advanced safety features.</p>
-                                <div class="item-price">
-                                    <span class="current-price">₱1,850,000</span>
-                                    <span class="original-price">₱2,100,000</span>
-                                    <span class="discount">Sold in Dec 2023</span>
-                                </div>
-                                <div class="sale-details">
-                                    <p><i class="fas fa-user"></i> Buyer: Juan Dela Cruz</p>
-                                    <p><i class="fas fa-calendar"></i> Date Sold: December 15, 2023</p>
-                                </div>
+                                <img src="img/pastsales.jpg" alt="Toyota Fortuner">
                             </div>
                         </div>
                     </div>
@@ -1422,22 +1443,8 @@
                     <!-- Vehicle Sale 2 -->
                     <div class="carousel-slide">
                         <div class="sales-item">
-                            <div class="sale-badge">SOLD</div>
                             <div class="item-img">
-                                <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Honda Civic">
-                            </div>
-                            <div class="item-info">
-                                <h3>Honda Civic RS 2021</h3>
-                                <p>Turbocharged sedan with 10,000 km mileage. Excellent condition, maintained with Honda PMS records.</p>
-                                <div class="item-price">
-                                    <span class="current-price">₱1,150,000</span>
-                                    <span class="original-price">₱1,350,000</span>
-                                    <span class="discount">Sold in Nov 2023</span>
-                                </div>
-                                <div class="sale-details">
-                                    <p><i class="fas fa-user"></i> Buyer: Maria Santos</p>
-                                    <p><i class="fas fa-calendar"></i> Date Sold: November 8, 2023</p>
-                                </div>
+                                <img src="img/pastsales1.jpg" alt="Honda Civic">
                             </div>
                         </div>
                     </div>
@@ -1445,22 +1452,8 @@
                     <!-- Land Sale 1 -->
                     <div class="carousel-slide">
                         <div class="sales-item">
-                            <div class="sale-badge">SOLD</div>
                             <div class="item-img">
-                                <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Residential Lot">
-                            </div>
-                            <div class="item-info">
-                                <h3>Residential Lot - Quezon City</h3>
-                                <p>250 sqm prime residential lot in a gated community. With ROW, electricity, and water connections.</p>
-                                <div class="item-price">
-                                    <span class="current-price">₱3,500,000</span>
-                                    <span class="original-price">₱3,800,000</span>
-                                    <span class="discount">Sold in Oct 2023</span>
-                                </div>
-                                <div class="sale-details">
-                                    <p><i class="fas fa-user"></i> Buyer: The Garcia Family</p>
-                                    <p><i class="fas fa-calendar"></i> Date Sold: October 20, 2023</p>
-                                </div>
+                                <img src="img/pastsales2.jpg" alt="Residential Lot">
                             </div>
                         </div>
                     </div>
@@ -1468,22 +1461,8 @@
                     <!-- Vehicle Sale 3 -->
                     <div class="carousel-slide">
                         <div class="sales-item">
-                            <div class="sale-badge">SOLD</div>
                             <div class="item-img">
-                                <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Ford Ranger">
-                            </div>
-                            <div class="item-info">
-                                <h3>Ford Ranger Raptor 2020</h3>
-                                <p>High-performance pickup with off-road capabilities. Only 25,000 km, complete with service history.</p>
-                                <div class="item-price">
-                                    <span class="current-price">₱1,650,000</span>
-                                    <span class="original-price">₱1,950,000</span>
-                                    <span class="discount">Sold in Sep 2023</span>
-                                </div>
-                                <div class="sale-details">
-                                    <p><i class="fas fa-user"></i> Buyer: Robert Lim</p>
-                                    <p><i class="fas fa-calendar"></i> Date Sold: September 5, 2023</p>
-                                </div>
+                                <img src="img/pastsales3.jpg" alt="Ford Ranger">
                             </div>
                         </div>
                     </div>
@@ -1491,22 +1470,8 @@
                     <!-- Land Sale 2 -->
                     <div class="carousel-slide">
                         <div class="sales-item">
-                            <div class="sale-badge">SOLD</div>
                             <div class="item-img">
-                                <img src="https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Agricultural Land">
-                            </div>
-                            <div class="item-info">
-                                <h3>Agricultural Land - Bulacan</h3>
-                                <p>1-hectare farm land with irrigation system. Suitable for rice, vegetable farming, or livestock.</p>
-                                <div class="item-price">
-                                    <span class="current-price">₱2,800,000</span>
-                                    <span class="original-price">₱3,200,000</span>
-                                    <span class="discount">Sold in Aug 2023</span>
-                                </div>
-                                <div class="sale-details">
-                                    <p><i class="fas fa-user"></i> Buyer: Farmer's Cooperative</p>
-                                    <p><i class="fas fa-calendar"></i> Date Sold: August 12, 2023</p>
-                                </div>
+                                <img src="img/pastsales4.jpg" alt="Agricultural Land">
                             </div>
                         </div>
                     </div>
@@ -1514,22 +1479,17 @@
                     <!-- Vehicle Sale 4 -->
                     <div class="carousel-slide">
                         <div class="sales-item">
-                            <div class="sale-badge">SOLD</div>
                             <div class="item-img">
-                                <img src="https://images.unsplash.com/photo-1563720223486-3294265d5a5d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Mitsubishi Montero">
+                                <img src="img/pastsales5.jpg" alt="Mitsubishi Montero">
                             </div>
-                            <div class="item-info">
-                                <h3>Mitsubishi Montero Sport 2019</h3>
-                                <p>Premium 4x4 SUV with 30,000 km mileage. Well-maintained with complete papers and records.</p>
-                                <div class="item-price">
-                                    <span class="current-price">₱1,250,000</span>
-                                    <span class="original-price">₱1,500,000</span>
-                                    <span class="discount">Sold in Jul 2023</span>
-                                </div>
-                                <div class="sale-details">
-                                    <p><i class="fas fa-user"></i> Buyer: Anna Reyes</p>
-                                    <p><i class="fas fa-calendar"></i> Date Sold: July 18, 2023</p>
-                                </div>
+                        </div>
+                    </div>
+
+                    <!-- Vehicle Sale 5 -->
+                    <div class="carousel-slide">
+                        <div class="sales-item">
+                            <div class="item-img">
+                                <img src="img/pastsales6.jpg" alt="Mitsubishi Montero">
                             </div>
                         </div>
                     </div>
@@ -1688,140 +1648,121 @@
         </div>
     </div>
 
-        <!-- Partners Section -->
-        <div class="partners-section" id="partners">
-            <h2 class="partners-title">OUR TRUSTED PARTNERS</h2>
+                <!-- Affiliated Houses Section -->
+                <div class="affiliated-section" id="affiliated">
+            <h2 class="affiliated-title">AFFILIATED HOUSES</h2>
             
-            <div class="partners-container">
-                <!-- Toyota Partner -->
-                <div class="partner-card">
-                    <div class="partner-logo">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Toyota_carlogo.svg/800px-Toyota_carlogo.svg.png" alt="Toyota Logo">
+            <div class="affiliated-container">
+                <!-- Grand Victoria -->
+                <div class="affiliated-card">
+                    <div class="affiliated-logo">
+                        <div class="logo-placeholder">
+                            <i class="fas fa-home"></i>
+                        </div>
                     </div>
-                    <div class="partner-content">
-                        <h3>Toyota Motor Corporation</h3>
-                        <span class="partner-category">Automotive</span>
-                        <p>World's largest automobile manufacturer. We provide comprehensive accounting and financial services for Toyota dealerships across the region.</p>
-                        <div class="partner-years">
-                            <i class="fas fa-calendar-alt"></i>
-                            <span>Partner since 2012</span>
+                    <div class="affiliated-content">
+                        <h3>Grand Victoria</h3>
+                        <span class="affiliated-category">Luxury Residential</span>
+                        <p>Premium luxury residential development offering world-class amenities and sophisticated living spaces for discerning homeowners.</p>
+                        <div class="affiliated-years">
+                            <i class="fas fa-handshake"></i>
+                            <span>Affiliated since 2018</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Honda Partner -->
-                <div class="partner-card">
-                    <div class="partner-logo">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Honda.svg/800px-Honda.svg.png" alt="Honda Logo">
+                <!-- Bella Vita -->
+                <div class="affiliated-card">
+                    <div class="affiliated-logo">
+                        <div class="logo-placeholder">
+                            <i class="fas fa-building"></i>
+                        </div>
                     </div>
-                    <div class="partner-content">
-                        <h3>Honda Motor Company</h3>
-                        <span class="partner-category">Automotive</span>
-                        <p>Global leader in motorcycle manufacturing and automobile industry. We manage financial operations for multiple Honda dealerships and service centers.</p>
-                        <div class="partner-years">
-                            <i class="fas fa-calendar-alt"></i>
-                            <span>Partner since 2014</span>
+                    <div class="affiliated-content">
+                        <h3>Bella Vita</h3>
+                        <span class="affiliated-category">Condominium</span>
+                        <p>Modern condominium living with Italian-inspired architecture, offering comfort and convenience in prime locations.</p>
+                        <div class="affiliated-years">
+                            <i class="fas fa-handshake"></i>
+                            <span>Affiliated since 2019</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Ford Partner -->
-                <div class="partner-card">
-                    <div class="partner-logo">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ford_logo_flat.svg/800px-Ford_logo_flat.svg.png" alt="Ford Logo">
+                <!-- Boarland -->
+                <div class="affiliated-card">
+                    <div class="affiliated-logo">
+                        <div class="logo-placeholder">
+                            <i class="fas fa-warehouse"></i>
+                        </div>
                     </div>
-                    <div class="partner-content">
-                        <h3>Ford Motor Company</h3>
-                        <span class="partner-category">Automotive</span>
-                        <p>American multinational automaker. We provide specialized accounting services for Ford's regional operations and dealership network.</p>
-                        <div class="partner-years">
-                            <i class="fas fa-calendar-alt"></i>
-                            <span>Partner since 2015</span>
+                    <div class="affiliated-content">
+                        <h3>Borland</h3>
+                        <span class="affiliated-category">Commercial & Residential</span>
+                        <p>Diversified property developer specializing in both commercial spaces and residential communities with innovative designs.</p>
+                        <div class="affiliated-years">
+                            <i class="fas fa-handshake"></i>
+                            <span>Affiliated since 2020</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Mercedes-Benz Partner -->
-                <div class="partner-card">
-                    <div class="partner-logo">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Mercedes-Logo.svg/800px-Mercedes-Logo.svg.png" alt="Mercedes-Benz Logo">
+                <!-- Camella -->
+                <div class="affiliated-card">
+                    <div class="affiliated-logo">
+                        <div class="logo-placeholder">
+                            <i class="fas fa-city"></i>
+                        </div>
                     </div>
-                    <div class="partner-content">
-                        <h3>Mercedes-Benz</h3>
-                        <span class="partner-category">Luxury Automotive</span>
-                        <p>German luxury automobile manufacturer. We handle complex financial management for Mercedes-Benz dealerships and corporate accounts.</p>
-                        <div class="partner-years">
-                            <i class="fas fa-calendar-alt"></i>
-                            <span>Partner since 2016</span>
+                    <div class="affiliated-content">
+                        <h3>Camella</h3>
+                        <span class="affiliated-category">Township Development</span>
+                        <p>One of the country's leading township developers, creating complete communities with homes, amenities, and facilities.</p>
+                        <div class="affiliated-years">
+                            <i class="fas fa-handshake"></i>
+                            <span>Affiliated since 2015</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- BMW Partner -->
-                <div class="partner-card">
-                    <div class="partner-logo">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/BMW.svg/800px-BMW.svg.png" alt="BMW Logo">
+                <!-- Ajoya -->
+                <div class="affiliated-card">
+                    <div class="affiliated-logo">
+                        <div class="logo-placeholder">
+                            <i class="fas fa-tree"></i>
+                        </div>
                     </div>
-                    <div class="partner-content">
-                        <h3>BMW Group</h3>
-                        <span class="partner-category">Luxury Automotive</span>
-                        <p>German multinational company producing luxury vehicles and motorcycles. Our accounting specialists manage BMW's regional financial operations.</p>
-                        <div class="partner-years">
-                            <i class="fas fa-calendar-alt"></i>
-                            <span>Partner since 2017</span>
+                    <div class="affiliated-content">
+                        <h3>Ajoya</h3>
+                        <span class="affiliated-category">Eco-Friendly Homes</span>
+                        <p>Sustainable and eco-friendly residential communities that promote green living and environmental consciousness.</p>
+                        <div class="affiliated-years">
+                            <i class="fas fa-handshake"></i>
+                            <span>Affiliated since 2021</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Nissan Partner -->
-                <div class="partner-card">
-                    <div class="partner-logo">
-                        <img src="https://e7.pngegg.com/pngimages/58/113/png-clipart-nissan-car-logo-nissan-emblem-trademark.png" alt="Nissan Logo">
-                    </div>
-                    <div class="partner-content">
-                        <h3>Nissan Motor Corporation</h3>
-                        <span class="partner-category">Automotive</span>
-                        <p>Japanese multinational automobile manufacturer. We provide comprehensive financial services for Nissan's dealership network and regional offices.</p>
-                        <div class="partner-years">
-                            <i class="fas fa-calendar-alt"></i>
-                            <span>Partner since 2013</span>
+                <!-- Deca Homes -->
+                <div class="affiliated-card">
+                    <div class="affiliated-logo">
+                        <div class="logo-placeholder">
+                            <i class="fas fa-house-user"></i>
                         </div>
                     </div>
-                </div>
-
-                <!-- Mitsubishi Partner -->
-                <div class="partner-card">
-                    <div class="partner-logo">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Mitsubishi_logo.svg/800px-Mitsubishi_logo.svg.png" alt="Mitsubishi Logo">
-                    </div>
-                    <div class="partner-content">
-                        <h3>Mitsubishi Motors</h3>
-                        <span class="partner-category">Automotive</span>
-                        <p>Japanese multinational automotive manufacturer. We manage financial operations and accounting for Mitsubishi dealerships and service centers.</p>
-                        <div class="partner-years">
-                            <i class="fas fa-calendar-alt"></i>
-                            <span>Partner since 2018</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Hyundai Partner -->
-                <div class="partner-card">
-                    <div class="partner-logo">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Hyundai_Motor_Company_logo.svg/800px-Hyundai_Motor_Company_logo.svg.png" alt="Hyundai Logo">
-                    </div>
-                    <div class="partner-content">
-                        <h3>Hyundai Motor Company</h3>
-                        <span class="partner-category">Automotive</span>
-                        <p>South Korean multinational automotive manufacturer. We provide specialized accounting services for Hyundai's growing dealership network.</p>
-                        <div class="partner-years">
-                            <i class="fas fa-calendar-alt"></i>
-                            <span>Partner since 2019</span>
+                    <div class="affiliated-content">
+                        <h3>Deca Homes</h3>
+                        <span class="affiliated-category">Affordable Housing</span>
+                        <p>Providing quality affordable housing solutions for Filipino families, making home ownership accessible to more people.</p>
+                        <div class="affiliated-years">
+                            <i class="fas fa-handshake"></i>
+                            <span>Affiliated since 2017</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 
     <?php include 'footer.php'; ?>
@@ -2034,15 +1975,6 @@
                 createDots();
                 updateCarousel();
                 updateHeroCarousel();
-            });
-            
-            // Buy Now button functionality
-            document.querySelectorAll('.buy-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    const itemName = this.closest('.sales-item').querySelector('h3').textContent;
-                    const itemPrice = this.closest('.sales-item').querySelector('.current-price').textContent;
-                    alert(`Thank you for your interest in purchasing "${itemName}" for ${itemPrice}! Our team will contact you shortly to complete the transaction.`);
-                });
             });
             
             // Initialize sales carousel

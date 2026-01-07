@@ -97,9 +97,9 @@
         }
 
         .ceo-image {
-            width: 220px;
-            height: 220px;
-            border-radius: 50%;
+            width: 320px;
+            height: 320px;
+            border-radius: 0;
             overflow: hidden;
             border: 6px solid rgba(238, 184, 46, 0.3);
             box-shadow: 0 8px 20px rgba(0,0,0,0.2);
@@ -113,26 +113,10 @@
             transition: transform 0.5s ease;
         }
 
-        .ceo-image:hover img {
-            transform: scale(1.05);
-        }
 
         .ceo-details {
             flex: 1;
             color: white;
-        }
-
-        .ceo-badge {
-            display: inline-block;
-            background: #eeb82e;
-            color: #2c2b29;
-            padding: 6px 16px;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
         }
 
         .ceo-name {
@@ -257,7 +241,7 @@
         .team-member-img-smaller {
             width: 180px; /* Reduced from 200px */
             height: 180px; /* Reduced from 200px */
-            border-radius: 50%;
+            border-radius: 0; /* Changed to box shape */
             overflow: hidden;
             margin: 0 auto 15px; /* Reduced from 20px */
             border: 4px solid #eeb82e;
@@ -352,7 +336,7 @@
         .team-member-img {
             width: 200px;
             height: 200px;
-            border-radius: 50%;
+            border-radius: 0;
             overflow: hidden;
             margin: 0 auto 20px;
             border: 4px solid #eeb82e;
@@ -686,6 +670,69 @@
             margin-left: 5px;
         }
 
+        /* Modal Styles */
+        .modal {
+                            display: none;
+                            position: fixed;
+                            z-index: 2000;
+                            left: 0;
+                            top: 0;
+                            width: 100%;
+                            height: 100%;
+                            background-color: rgba(0,0,0,0.5);
+                        }
+
+                        .modal-content {
+                            background-color: #fefefe;
+                            margin: 15% auto;
+                            padding: 30px;
+                            border: 1px solid #888;
+                            width: 90%;
+                            max-width: 400px;
+                            border-radius: 10px;
+                            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                            text-align: center;
+                        }
+
+                        .modal-content h3 {
+                            font-family: 'Roboto Serif', serif;
+                            color: #2c2b29;
+                            margin-bottom: 20px;
+                            font-size: 1.5rem;
+                        }
+
+                        .modal-content p {
+                            margin: 10px 0;
+                            font-size: 1.1rem;
+                            color: #555;
+                        }
+
+                        .modal-content strong {
+                            color: #eeb82e;
+                        }
+
+                        .close {
+                            color: #aaa;
+                            float: right;
+                            font-size: 28px;
+                            font-weight: bold;
+                            cursor: pointer;
+                            margin-top: -20px;
+                            margin-right: -10px;
+                        }
+
+                        .close:hover,
+                        .close:focus {
+                            color: #eeb82e;
+                        }
+
+                        @media screen and (max-width: 768px) {
+                            .modal-content {
+                                margin: 30% auto;
+                                padding: 20px;
+                            }
+                        }
+
         @media screen and (max-width: 768px) {
             .dropdown-content {
                 position: static;
@@ -720,12 +767,11 @@
             <div class="ceo-container">
                 <div class="ceo-image-container">
                     <div class="ceo-image">
-                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="CEO - Mark Dela Cruz">
+                        <img src="img/TEAM/TESS.jpg" alt="CEO - Maritess S. Bauto">
                     </div>
                 </div>
                 
                 <div class="ceo-details">
-                    <span class="ceo-badge">Chief Executive Officer</span>
                     <h2 class="ceo-name">Maritess S. Bauto</h2>
                     <div class="ceo-position">Founder & CEO</div>
                     <div class="ceo-experience">20+ Years in Financial Services</div>
@@ -736,16 +782,23 @@
                     </div>
                     
                     <div class="ceo-contact">
-                        <a href="mailto:mark.delacruz@hopeaccountspecialist.com" class="ceo-contact-icon">
+                        <a href="#" class="ceo-contact-icon" onclick="openContactModal(); return false;">
                             <i class="fas fa-envelope"></i>
                         </a>
-                        <a href="#" class="ceo-contact-icon">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="tel:+639171234567" class="ceo-contact-icon">
+                        <a href="#" class="ceo-contact-icon" onclick="openContactModal(); return false;">
                             <i class="fas fa-phone"></i>
                         </a>
-                        <a href="#" class="ceo-contact-icon">
+
+                        <!-- Contact Modal -->
+                        <div id="ceoContactModal" class="modal">
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <h3>Contact CEO</h3>
+                                <p><strong>Email:</strong> ceo@hopeaccountspecialist.com</p>
+                                <p><strong>Phone:</strong> +63 912 345 6789</p>
+                            </div>
+                        </div>
+                        <a href="https://www.facebook.com/maritess.santos.50" class="ceo-contact-icon">
                             <i class="fab fa-facebook-f"></i>
                         </a>
                     </div>
@@ -770,14 +823,14 @@
                     <p class="bio">John manages daily operations and ensures smooth workflow across all departments at Hope Account Specialist.</p>
                     <div class="team-member-contact">
                         <a href="#" class="contact-icon"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="contact-icon"><i class="fas fa-phone"></i></a>
+                        <a href="#" class="contact-icon"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
                 
                 <div class="team-member">
                     <div class="team-member-img">
-                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Sarah Johnson">
+                        <img src="img/TEAM/RICH.jpg" alt="richcar fernandez">
                     </div>
                     <h3>Richcar Fernandez</h3>
                     <span class="position">Executive Officer</span>
@@ -785,8 +838,8 @@
                     <p class="bio">Sarah oversees all financial operations and ensures compliance with accounting standards and regulations.</p>
                     <div class="team-member-contact">
                         <a href="#" class="contact-icon"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="contact-icon"><i class="fas fa-phone"></i></a>
+                        <a href="https://www.facebook.com/richcar.ochoco.fernandez" class="contact-icon"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
                 
@@ -800,17 +853,16 @@
                     <p class="bio">Robert manages daily operations and ensures smooth workflow across all departments.</p>
                     <div class="team-member-contact">
                         <a href="#" class="contact-icon"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="contact-icon"><i class="fas fa-phone"></i></a>
+                        <a href="#" class="contact-icon"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
             </div>
 
-            <!-- Additional Leadership Team Members -->
             <div class="team-container" style="margin-top: 30px;">
                 <div class="team-member">
                     <div class="team-member-img">
-                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Jane Doe">
+                        <img src="img/TEAM/dyna.jpg" alt="Jane Doe">
                     </div>
                     <h3>Dyna Layco</h3>
                     <span class="position">Team Head</span>
@@ -818,14 +870,14 @@
                     <p class="bio">Jane ensures operational excellence and drives process improvements across all teams.</p>
                     <div class="team-member-contact">
                         <a href="#" class="contact-icon"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="contact-icon"><i class="fas fa-phone"></i></a>
+                        <a href="https://www.facebook.com/dyna.layco" class="contact-icon"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
                 
                 <div class="team-member">
                     <div class="team-member-img">
-                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Alex Smith">
+                        <img src="img/TEAM/DONNA.jpg" alt="Alex Smith">
                     </div>
                     <h3>Donnabel Cruz</h3>
                     <span class="position">Team Head</span>
@@ -833,14 +885,14 @@
                     <p class="bio">Alex leads strategic initiatives and partnerships to expand our service offerings.</p>
                     <div class="team-member-contact">
                         <a href="#" class="contact-icon"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="contact-icon"><i class="fas fa-phone"></i></a>
+                        <a href="#" class="contact-icon"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
                 
                 <div class="team-member">
                     <div class="team-member-img">
-                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Maria Johnson">
+                        <img src="img/TEAM/Mariel.jpg" alt="Maria Johnson">
                     </div>
                     <h3>Mariel De Guzman</h3>
                     <span class="position">Team Head</span>
@@ -848,8 +900,8 @@
                     <p class="bio">Maria oversees talent acquisition and employee development programs.</p>
                     <div class="team-member-contact">
                         <a href="#" class="contact-icon"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="contact-icon"><i class="fas fa-phone"></i></a>
+                        <a href="#" class="contact-icon"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
             </div>
@@ -857,11 +909,7 @@
         <!-- Account Specialists Section -->
         <div class="team-category" id="specialists">
             <h2 class="category-title">ACCOUNT SPECIALISTS</h2>
-            <p class="team-category-description">Our account specialists are certified professionals dedicated to providing personalized financial solutions.</p>
-            
             <div class="team-container">
-                <!-- Using the smaller team member cards for account specialists -->
-                <!-- First Row - 4 members -->
                 <div class="team-member-smaller">
                     <div class="team-member-img-smaller">
                         <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Michael Chen">
@@ -869,11 +917,10 @@
                     <h3>Michael Chen</h3>
                     <span class="position">Senior Tax Consultant</span>
                     <span class="experience">8+ Years Experience</span>
-                    <p class="bio">Specializes in tax planning and preparation for individuals and corporations.</p>
                     <div class="team-member-contact-smaller">
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
                 
@@ -884,11 +931,10 @@
                     <h3>Emily Rodriguez</h3>
                     <span class="position">Bookkeeping Manager</span>
                     <span class="experience">7+ Years Experience</span>
-                    <p class="bio">Expert in bookkeeping, financial reporting, and QuickBooks implementation.</p>
                     <div class="team-member-contact-smaller">
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
                 
@@ -899,11 +945,10 @@
                     <h3>David Kim</h3>
                     <span class="position">Financial Analyst</span>
                     <span class="experience">6+ Years Experience</span>
-                    <p class="bio">Provides financial analysis and business consulting for growth-oriented companies.</p>
                     <div class="team-member-contact-smaller">
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
                 
@@ -914,11 +959,10 @@
                     <h3>Lisa Wong</h3>
                     <span class="position">Audit Specialist</span>
                     <span class="experience">9+ Years Experience</span>
-                    <p class="bio">CPA certified auditor with expertise in financial compliance and risk management.</p>
                     <div class="team-member-contact-smaller">
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
 
@@ -930,11 +974,10 @@
                     <h3>Member 5</h3>
                     <span class="position">Account Specialist</span>
                     <span class="experience">5+ Years Experience</span>
-                    <p class="bio">Specializes in financial management and client consulting services.</p>
                     <div class="team-member-contact-smaller">
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
                 
@@ -945,11 +988,10 @@
                     <h3>Member 6</h3>
                     <span class="position">Account Specialist</span>
                     <span class="experience">4+ Years Experience</span>
-                    <p class="bio">Expert in financial reporting and business strategy development.</p>
                     <div class="team-member-contact-smaller">
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
                 
@@ -960,11 +1002,10 @@
                     <h3>Member 7</h3>
                     <span class="position">Account Specialist</span>
                     <span class="experience">6+ Years Experience</span>
-                    <p class="bio">Provides financial analysis and growth strategies for businesses.</p>
                     <div class="team-member-contact-smaller">
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
                 
@@ -975,11 +1016,10 @@
                     <h3>Member 8</h3>
                     <span class="position">Account Specialist</span>
                     <span class="experience">3+ Years Experience</span>
-                    <p class="bio">CPA certified with expertise in financial compliance and auditing.</p>
                     <div class="team-member-contact-smaller">
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
 
@@ -991,11 +1031,10 @@
                     <h3>Member 9</h3>
                     <span class="position">Account Specialist</span>
                     <span class="experience">7+ Years Experience</span>
-                    <p class="bio">Specializes in tax planning and corporate financial management.</p>
                     <div class="team-member-contact-smaller">
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
                 
@@ -1006,11 +1045,10 @@
                     <h3>Member 10</h3>
                     <span class="position">Account Specialist</span>
                     <span class="experience">5+ Years Experience</span>
-                    <p class="bio">Expert in bookkeeping and financial software implementation.</p>
                     <div class="team-member-contact-smaller">
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
                 
@@ -1021,11 +1059,10 @@
                     <h3>Member 11</h3>
                     <span class="position">Account Specialist</span>
                     <span class="experience">4+ Years Experience</span>
-                    <p class="bio">Provides business consulting and financial strategy development.</p>
                     <div class="team-member-contact-smaller">
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
                 
@@ -1036,11 +1073,10 @@
                     <h3>Member 12</h3>
                     <span class="position">Account Specialist</span>
                     <span class="experience">8+ Years Experience</span>
-                    <p class="bio">Specializes in risk management and financial compliance auditing.</p>
                     <div class="team-member-contact-smaller">
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
 
@@ -1052,11 +1088,10 @@
                     <h3>Member 13</h3>
                     <span class="position">Account Specialist</span>
                     <span class="experience">6+ Years Experience</span>
-                    <p class="bio">Expert in financial analysis and corporate restructuring.</p>
                     <div class="team-member-contact-smaller">
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
                 
@@ -1067,11 +1102,10 @@
                     <h3>Member 14</h3>
                     <span class="position">Account Specialist</span>
                     <span class="experience">5+ Years Experience</span>
-                    <p class="bio">Specializes in investment analysis and portfolio management.</p>
                     <div class="team-member-contact-smaller">
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
                 
@@ -1082,11 +1116,10 @@
                     <h3>Member 15</h3>
                     <span class="position">Account Specialist</span>
                     <span class="experience">7+ Years Experience</span>
-                    <p class="bio">Expert in international finance and cross-border transactions.</p>
                     <div class="team-member-contact-smaller">
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
                 
@@ -1097,11 +1130,10 @@
                     <h3>Member 16</h3>
                     <span class="position">Account Specialist</span>
                     <span class="experience">4+ Years Experience</span>
-                    <p class="bio">Specializes in small business accounting and financial planning.</p>
                     <div class="team-member-contact-smaller">
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
 
@@ -1113,11 +1145,10 @@
                     <h3>Member 17</h3>
                     <span class="position">Account Specialist</span>
                     <span class="experience">3+ Years Experience</span>
-                    <p class="bio">Expert in digital accounting and financial technology solutions.</p>
                     <div class="team-member-contact-smaller">
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
                 
@@ -1128,101 +1159,68 @@
                     <h3>Member 18</h3>
                     <span class="position">Account Specialist</span>
                     <span class="experience">5+ Years Experience</span>
-                    <p class="bio">Specializes in audit services and financial risk assessment.</p>
                     <div class="team-member-contact-smaller">
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
+                        <a href="#" class="contact-icon-smaller"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Support Staff Section -->
-        <div class="team-category" id="support">
-            <h2 class="category-title">SUPPORT STAFF</h2>
-            <p class="team-category-description">Our support team ensures seamless operations and exceptional client service experience.</p>
-            
-            <div class="team-container">
-                <div class="team-member">
-                    <div class="team-member-img">
-                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Jennifer Lee">
-                    </div>
-                    <h3>Jennifer Lee</h3>
-                    <span class="position">Client Relations Manager</span>
-                    <span class="experience">5+ Years Experience</span>
-                    <p class="bio">Dedicated to ensuring client satisfaction and managing client communications.</p>
-                    <div class="team-member-contact">
-                        <a href="#" class="contact-icon"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="contact-icon"><i class="fas fa-phone"></i></a>
-                    </div>
-                </div>
-                
-                <div class="team-member">
-                    <div class="team-member-img">
-                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Kevin Brown">
-                    </div>
-                    <h3>Kevin Brown</h3>
-                    <span class="position">IT & Systems Administrator</span>
-                    <span class="experience">4+ Years Experience</span>
-                    <p class="bio">Manages our technology infrastructure and ensures data security and system reliability.</p>
-                    <div class="team-member-contact">
-                        <a href="#" class="contact-icon"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="contact-icon"><i class="fas fa-phone"></i></a>
-                    </div>
-                </div>
-                
-                <div class="team-member">
-                    <div class="team-member-img">
-                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Maria Garcia">
-                    </div>
-                    <h3>Maria Garcia</h3>
-                    <span class="position">Administrative Coordinator</span>
-                    <span class="experience">3+ Years Experience</span>
-                    <p class="bio">Coordinates office operations and supports our team with administrative tasks.</p>
-                    <div class="team-member-contact">
-                        <a href="#" class="contact-icon"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="contact-icon"><i class="fas fa-phone"></i></a>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
     <?php include 'footer.php'; ?>
 
-    <script>
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
+                        <script>
+                            // Smooth scrolling for anchor links
+                            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                                anchor.addEventListener('click', function (e) {
+                                    e.preventDefault();
+                                    
+                                    const targetId = this.getAttribute('href');
+                                    if (targetId === '#') return;
+                                    
+                                    const targetElement = document.querySelector(targetId);
+                                    if (targetElement) {
+                                        window.scrollTo({
+                                            top: targetElement.offsetTop - 100,
+                                            behavior: 'smooth'
+                                        });
+                                    }
+                                });
+                            });
 
-        // Add CEO to dropdown menu
-        document.addEventListener('DOMContentLoaded', function() {
-            // Find the dropdown content for Meet Our Team
-            const meetOurTeamDropdown = document.querySelector('a[href="team.php"]').closest('.dropdown').querySelector('.dropdown-content');
-            
-            // Add it as the first item in the dropdown
-            if (meetOurTeamDropdown && meetOurTeamDropdown.firstChild) {
-                meetOurTeamDropdown.insertBefore(ceoLink, meetOurTeamDropdown.firstChild);
-            }
-        });
-    </script>
+                            // Add CEO to dropdown menu
+                            document.addEventListener('DOMContentLoaded', function() {
+                                // Find the dropdown content for Meet Our Team
+                                const meetOurTeamDropdown = document.querySelector('a[href="team.php"]').closest('.dropdown').querySelector('.dropdown-content');
+                                
+                                // Add it as the first item in the dropdown
+                                if (meetOurTeamDropdown && meetOurTeamDropdown.firstChild) {
+                                    meetOurTeamDropdown.insertBefore(ceoLink, meetOurTeamDropdown.firstChild);
+                                }
+                            });
+                        </script>
+                        <script>
+                        function openContactModal() {
+                            document.getElementById('ceoContactModal').style.display = 'block';
+                        }
+
+                        // Close modal when clicking the X or outside the modal
+                        document.addEventListener('click', function(event) {
+                            const modal = document.getElementById('ceoContactModal');
+                            if (event.target.classList.contains('close') || event.target === modal) {
+                                modal.style.display = 'none';
+                            }
+                        });
+
+                        // Close modal with Escape key
+                        document.addEventListener('keydown', function(event) {
+                            if (event.key === 'Escape') {
+                                document.getElementById('ceoContactModal').style.display = 'none';
+                            }
+                        });
+                        </script>
 </body>
 </html>
