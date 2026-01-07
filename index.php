@@ -18,6 +18,10 @@
             font-family: Arial, sans-serif;
         }
 
+        :root {
+            --bank-logo-width: 140px; /* adjust if needed to match BDO */
+        }
+
         body {
             background-color: white;
             min-height: 100vh;
