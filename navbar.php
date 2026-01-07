@@ -16,7 +16,6 @@
                 <a href="team.php#ceo">CEO</a>
                 <a href="team.php#leadership">Leadership</a>
                 <a href="team.php#specialists">Account Specialists</a>
-                <a href="team.php#support">Support Staff</a>
             </div>
         </div>
         
