@@ -23,7 +23,7 @@
         }
 
         body {
-            background-color: white;
+            background-color: #f5f5f5; /* Light gray background for entire page */
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -89,21 +89,38 @@
             z-index: 1;
         }
 
-        /* Services Grid Section - SINGLE COLUMN */
+        /* Services Grid Section - SINGLE COLUMN with SAME BACKGROUND as Hero */
         .services-section {
             padding: 80px 20px;
-            background-color: white;
+            background: linear-gradient(135deg, #2c2b29 0%, #3a3937 100%); /* SAME as hero */
             text-align: center;
+            border-radius: 15px;
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .services-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80') center/cover;
+            opacity: 0.1;
         }
 
         .services-title {
             font-family: 'Roboto Serif', serif;
             font-size: 3rem;
             margin-bottom: 50px;
-            color: #2c2b29;
+            color: white; /* Changed to white to match hero */
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
+            position: relative;
+            z-index: 1;
         }
 
         /* SINGLE COLUMN CONTAINER */
@@ -114,24 +131,25 @@
             flex-direction: column;
             gap: 40px;
             padding: 20px;
+            position: relative;
+            z-index: 1;
         }
 
         .service-card {
             background: white;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* Darker shadow for contrast on dark bg */
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
             height: 100%;
-            border: 1px solid #f0f0f0;
-            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(238, 184, 46, 0.15);
+            box-shadow: 0 15px 40px rgba(238, 184, 46, 0.3); /* Brighter shadow on hover */
             border-color: #eeb82e;
         }
 
@@ -339,6 +357,8 @@
             padding: 80px 20px;
             background-color: white;
             text-align: center;
+            border-radius: 15px;
+            margin: 50px 0;
         }
 
         .faq-title {
@@ -603,6 +623,8 @@
             padding: 80px 20px;
             background-color: white;
             text-align: center;
+            border-radius: 15px;
+            margin: 50px 0;
         }
 
         .bank-partners-title {
@@ -992,7 +1014,7 @@
             </p>
         </div>
 
-        <!-- Services Grid Section - SINGLE COLUMN -->
+        <!-- Services Grid Section - SINGLE COLUMN with SAME BACKGROUND -->
         <div class="services-section">
             <h2 class="services-title">OUR SERVICES</h2>
             
