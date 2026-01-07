@@ -89,7 +89,7 @@
             z-index: 1;
         }
 
-        /* Services Grid Section */
+        /* Services Grid Section - SINGLE COLUMN */
         .services-section {
             padding: 80px 20px;
             background-color: white;
@@ -106,11 +106,12 @@
             letter-spacing: 1px;
         }
 
+        /* SINGLE COLUMN CONTAINER */
         .services-container {
-            max-width: 1200px;
+            max-width: 800px; /* Narrower width for single column */
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            display: flex;
+            flex-direction: column;
             gap: 40px;
             padding: 20px;
         }
@@ -125,6 +126,7 @@
             flex-direction: column;
             height: 100%;
             border: 1px solid #f0f0f0;
+            margin-bottom: 30px;
         }
 
         .service-card:hover {
@@ -820,9 +822,9 @@
                 font-size: 2.2rem;
             }
 
+            /* Single column is already set */
             .services-container {
-                grid-template-columns: 1fr;
-                gap: 30px;
+                max-width: 100%;
                 padding: 10px;
             }
 
@@ -870,6 +872,11 @@
             
             .requirements-container {
                 grid-template-columns: 1fr;
+            }
+            
+            /* Single column already set for mobile */
+            .services-container {
+                gap: 30px;
             }
         }
 
@@ -985,7 +992,7 @@
             </p>
         </div>
 
-        <!-- Services Grid Section -->
+        <!-- Services Grid Section - SINGLE COLUMN -->
         <div class="services-section">
             <h2 class="services-title">OUR SERVICES</h2>
             
