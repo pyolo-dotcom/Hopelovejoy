@@ -1449,6 +1449,11 @@
 
     <div class="bank-partners-container">
         <div class="bank-logo">
+            <a href="https://www.byd.com" target="_blank" rel="noopener noreferrer">
+                <img src="img/byd.svg" alt="BYD">
+            </a>
+        </div>
+        <div class="bank-logo">
             <a href="https://www.chevrolet.com" target="_blank" rel="noopener noreferrer">
                 <img src="img/Chevrolet.jpg" alt="Chevrolet">
             </a>
@@ -1502,12 +1507,13 @@
             </a>
         </div>
 
-        <div class="bank-logo">
-            <a href="https://www.subaru.com" target="_blank" rel="noopener noreferrer">
-                <img src="img/subaru.png" alt="Subaru">
-            </a>
-        </div>
+
         <div class="bank-logo-group">
+            <div class="bank-logo">
+                <a href="https://www.subaru.com" target="_blank" rel="noopener noreferrer">
+                    <img src="img/subaru.png" alt="Subaru">
+                </a>
+            </div>
             <div class="bank-logo">
                 <a href="https://www.globalsuzuki.com" target="_blank" rel="noopener noreferrer">
                     <img src="img/susuki.svg" alt="Suzuki">
