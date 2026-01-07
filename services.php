@@ -1358,99 +1358,172 @@
             </div>
         </div>
 
-        <!-- Bank Partners Section -->
-        <div class="bank-partners-section">
-    <h2 class="bank-partners-title">OUR BANKING PARTNERS</h2>
+<!-- AFFILIATED BANKS -->
+<div class="bank-partners-section">
+    <h2 class="bank-partners-title">AFFILIATED BANKS</h2>
 
-            <div class="bank-partners-container">
-                <div class="bank-logo">
-                    <a href="https://www.bdo.com.ph" target="_blank" rel="noopener noreferrer">
-                        <img src="img/bdo.jpg.webp" alt="BDO">
-                    </a>
-                </div>
-
-                <div class="bank-logo">
-                    <a href="https://www.bpi.com.ph" target="_blank" rel="noopener noreferrer">
-                        <img src="img/bpi.jpg" alt="BPI">
-                    </a>
-                </div>
-
-                <div class="bank-logo">
-                    <a href="https://www.cbs.com.ph" target="_blank" rel="noopener noreferrer">
-                        <img src="img/cbs.jpg" alt="CBS">
-                    </a>
-                </div>
-
-                <div class="bank-logo">
-                    <a href="https://www.chinabank.ph" target="_blank" rel="noopener noreferrer">
-                        <img src="img/chinabank.jpg" alt="China Bank">
-                    </a>
-                </div>
-
-                <div class="bank-logo">
-                    <a href="https://www.eastwestbanker.com" target="_blank" rel="noopener noreferrer">
-                        <img src="img/eastwest.jpg" alt="EastWest Bank">
-                    </a>
-                </div>
-
-                <div class="bank-logo">
-                    <a href="https://www.ldb.com.ph" target="_blank" rel="noopener noreferrer">
-                        <img src="img/ldb.png" alt="LDB">
-                    </a>
-                </div>
-
-                <div class="bank-logo">
-                    <a href="https://www.maybank.com.ph" target="_blank" rel="noopener noreferrer">
-                        <img src="img/Maybank-logo.svg" alt="Maybank">
-                    </a>
-                </div>
-
-                <div class="bank-logo">
-                    <a href="https://www.metrobank.com.ph" target="_blank" rel="noopener noreferrer">
-                        <img src="img/metrobank.png" alt="Metrobank">
-                    </a>
-                </div>
-
-                <div class="bank-logo">
-                    <a href="https://www.pbcom.com.ph" target="_blank" rel="noopener noreferrer">
-                        <img src="img/pbcom.png" alt="PBCOM">
-                    </a>
-                </div>
-
-                <div class="bank-logo">
-                    <a href="https://www.psbank.com.ph" target="_blank" rel="noopener noreferrer">
-                        <img src="img/psbank.png" alt="PSBank">
-                    </a>
-                </div>
-
-                <div class="bank-logo-group">
-                    <div class="bank-logo">
-                        <a href="https://www.rcbc.com" target="_blank" rel="noopener noreferrer">
-                            <img src="img/rcbc.png" alt="RCBC">
-                        </a>
-                    </div>
-
-                    <div class="bank-logo">
-                        <a href="https://www.securitybank.com" target="_blank" rel="noopener noreferrer">
-                            <img src="img/securitybank.png" alt="Security Bank">
-                        </a>
-                    </div>
-
-                    <div class="bank-logo">
-                        <a href="https://www.unionbankph.com" target="_blank" rel="noopener noreferrer">
-                            <img src="img/unionbank.png" alt="UnionBank">
-                        </a>
-                    </div>
-                </div>
-            </div>
+    <div class="bank-partners-container">
+        <div class="bank-logo">
+            <a href="https://www.bdo.com.ph" target="_blank" rel="noopener noreferrer">
+                <img src="img/bdo.jpg.webp" alt="BDO">
+            </a>
         </div>
 
-            </div>
-        </div>
-            </div>
+        <div class="bank-logo">
+            <a href="https://www.bpi.com.ph" target="_blank" rel="noopener noreferrer">
+                <img src="img/bpi.jpg" alt="BPI">
+            </a>
         </div>
 
-        <!-- Requirements Section -->
+        <div class="bank-logo">
+            <a href="https://www.cbs.com.ph" target="_blank" rel="noopener noreferrer">
+                <img src="img/cbs.jpg" alt="CBS">
+            </a>
+        </div>
+
+        <div class="bank-logo">
+            <a href="https://www.chinabank.ph" target="_blank" rel="noopener noreferrer">
+                <img src="img/chinabank.jpg" alt="China Bank">
+            </a>
+        </div>
+
+        <div class="bank-logo">
+            <a href="https://www.eastwestbanker.com" target="_blank" rel="noopener noreferrer">
+                <img src="img/eastwest.jpg" alt="EastWest Bank">
+            </a>
+        </div>
+
+        <div class="bank-logo">
+            <a href="https://www.ldb.com.ph" target="_blank" rel="noopener noreferrer">
+                <img src="img/ldb.png" alt="LDB">
+            </a>
+        </div>
+
+        <div class="bank-logo">
+            <a href="https://www.maybank.com.ph" target="_blank" rel="noopener noreferrer">
+                <img src="img/maybank-logo.svg" alt="Maybank">
+            </a>
+        </div>
+
+        <div class="bank-logo">
+            <a href="https://www.metrobank.com.ph" target="_blank" rel="noopener noreferrer">
+                <img src="img/metrobank.png" alt="Metrobank">
+            </a>
+        </div>
+
+        <div class="bank-logo">
+            <a href="https://www.pbcom.com.ph" target="_blank" rel="noopener noreferrer">
+                <img src="img/pbcom.png" alt="PBCOM">
+            </a>
+        </div>
+
+        <div class="bank-logo">
+            <a href="https://www.psbank.com.ph" target="_blank" rel="noopener noreferrer">
+                <img src="img/psbank.png" alt="PSBank">
+            </a>
+        </div>
+        <div class="bank-logo-group">
+            <div class="bank-logo">
+                <a href="https://www.rcbc.com" target="_blank" rel="noopener noreferrer">
+                    <img src="img/rcbc.png" alt="RCBC">
+                </a>
+            </div>
+
+            <div class="bank-logo">
+                <a href="https://www.securitybank.com" target="_blank" rel="noopener noreferrer">
+                    <img src="img/securitybank.png" alt="Security Bank">
+                </a>
+            </div>
+
+            <div class="bank-logo">
+                <a href="https://www.unionbankph.com" target="_blank" rel="noopener noreferrer">
+                    <img src="img/unionbank.png" alt="UnionBank">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bank-partners-section">
+    <h2 class="bank-partners-title">AFFILIATED CAR COMPANIES</h2>
+
+    <div class="bank-partners-container">
+        <div class="bank-logo">
+            <a href="https://www.chevrolet.com" target="_blank" rel="noopener noreferrer">
+                <img src="img/Chevrolet.jpg" alt="Chevrolet">
+            </a>
+        </div>
+
+        <div class="bank-logo">
+            <a href="https://www.ford.com" target="_blank" rel="noopener noreferrer">
+                <img src="img/Ford.png" alt="Ford">
+            </a>
+        </div>
+
+        <div class="bank-logo">
+            <a href="https://www.geely.com" target="_blank" rel="noopener noreferrer">
+                <img src="img/Geely.webp" alt="Geely">
+            </a>
+        </div>
+
+        <div class="bank-logo">
+            <a href="https://www.honda.com" target="_blank" rel="noopener noreferrer">
+                <img src="img/honda.webp" alt="Honda">
+            </a>
+        </div>
+
+        <div class="bank-logo">
+            <a href="https://www.hyundai.com" target="_blank" rel="noopener noreferrer">
+                <img src="img/hyundai.png" alt="Hyundai">
+            </a>
+        </div>
+
+        <div class="bank-logo">
+            <a href="https://www.isuzu.co.jp" target="_blank" rel="noopener noreferrer">
+                <img src="img/isuzu.svg" alt="Isuzu">
+            </a>
+        </div>
+
+        <div class="bank-logo">
+            <a href="https://www.kia.com" target="_blank" rel="noopener noreferrer">
+                <img src="img/kia.png" alt="Kia">
+            </a>
+        </div>
+
+        <div class="bank-logo">
+            <a href="https://www.mgmotor.com" target="_blank" rel="noopener noreferrer">
+                <img src="img/mg.png" alt="MG">
+            </a>
+        </div>
+
+        <div class="bank-logo">
+            <a href="https://www.nissan.com" target="_blank" rel="noopener noreferrer">
+                <img src="img/nissan.jpg" alt="Nissan">
+            </a>
+        </div>
+
+        <div class="bank-logo">
+            <a href="https://www.subaru.com" target="_blank" rel="noopener noreferrer">
+                <img src="img/subaru.png" alt="Subaru">
+            </a>
+        </div>
+        <div class="bank-logo-group">
+            <div class="bank-logo">
+                <a href="https://www.globalsuzuki.com" target="_blank" rel="noopener noreferrer">
+                    <img src="img/susuki.svg" alt="Suzuki">
+                </a>
+            </div>
+
+            <div class="bank-logo">
+                <a href="https://www.toyota.com" target="_blank" rel="noopener noreferrer">
+                    <img src="img/toyota.png" alt="Toyota">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
         <div class="requirements-section">
             <h2 class="requirements-title">GENERAL REQUIREMENTS</h2>
             
