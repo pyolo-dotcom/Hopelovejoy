@@ -18,8 +18,12 @@
             font-family: Arial, sans-serif;
         }
 
+        :root {
+            --bank-logo-width: 140px; /* adjust if needed to exactly match BDO */
+        }
+
         body {
-            background-color: white;
+            background-color: #f5f5f5; /* Light gray background for entire page */
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -85,47 +89,67 @@
             z-index: 1;
         }
 
-        /* Services Grid Section */
+        /* Services Grid Section - SINGLE COLUMN with SAME BACKGROUND as Hero */
         .services-section {
             padding: 80px 20px;
-            background-color: white;
+            background: linear-gradient(135deg, #2c2b29 0%, #3a3937 100%); /* SAME as hero */
             text-align: center;
+            border-radius: 15px;
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .services-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80') center/cover;
+            opacity: 0.1;
         }
 
         .services-title {
             font-family: 'Roboto Serif', serif;
             font-size: 3rem;
             margin-bottom: 50px;
-            color: #2c2b29;
+            color: white; /* Changed to white to match hero */
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
+            position: relative;
+            z-index: 1;
         }
 
+        /* SINGLE COLUMN CONTAINER */
         .services-container {
-            max-width: 1200px;
+            max-width: 800px; /* Narrower width for single column */
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            display: flex;
+            flex-direction: column;
             gap: 40px;
             padding: 20px;
+            position: relative;
+            z-index: 1;
         }
 
         .service-card {
             background: white;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* Darker shadow for contrast on dark bg */
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
             height: 100%;
-            border: 1px solid #f0f0f0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(238, 184, 46, 0.15);
+            box-shadow: 0 15px 40px rgba(238, 184, 46, 0.3); /* Brighter shadow on hover */
             border-color: #eeb82e;
         }
 
@@ -333,6 +357,8 @@
             padding: 80px 20px;
             background-color: white;
             text-align: center;
+            border-radius: 15px;
+            margin: 50px 0;
         }
 
         .faq-title {
@@ -597,6 +623,8 @@
             padding: 80px 20px;
             background-color: white;
             text-align: center;
+            border-radius: 15px;
+            margin: 50px 0;
         }
 
         .bank-partners-title {
@@ -632,22 +660,38 @@
         }
 
         .bank-logo:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(238, 184, 46, 0.1);
-            border-color: #eeb82e;
+            transform: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-color: #eee;
         }
 
         .bank-logo img {
+            width: var(--bank-logo-width);
+            height: auto;
             max-width: 100%;
-            max-height: 60px;
-            filter: grayscale(100%);
-            opacity: 0.7;
-            transition: all 0.3s ease;
+            transition: none;
         }
 
-        .bank-logo:hover img {
-            filter: grayscale(0%);
-            opacity: 1;
+
+        .bank-logo-group {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 0 20px;
+            align-items: center;
+        }
+
+        .bank-logo-group .bank-logo {
+            flex: 0 0 auto;
+            width: auto;
+        }
+
+        .bank-logo-group .bank-logo img {
+            width: var(--bank-logo-width);
+            height: auto;
+            display: block;
+            object-fit: contain;
         }
 
         /* Requirements Section */
@@ -720,97 +764,6 @@
             font-size: 1.2rem;
         }
 
-        /* Testimonials Section */
-        .testimonials-section {
-            padding: 80px 20px;
-            background-color: white;
-            text-align: center;
-        }
-
-        .testimonials-title {
-            font-family: 'Roboto Serif', serif;
-            font-size: 3rem;
-            margin-bottom: 50px;
-            color: #2c2b29;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .testimonials-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            padding: 20px;
-        }
-
-        .testimonial-card {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            text-align: left;
-            position: relative;
-            border: 1px solid #f0f0f0;
-        }
-
-        .testimonial-card:before {
-            content: '"';
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 4rem;
-            color: #eeb82e;
-            font-family: Georgia, serif;
-            opacity: 0.2;
-        }
-
-        .testimonial-content {
-            margin-top: 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .testimonial-text {
-            color: #555;
-            line-height: 1.8;
-            font-style: italic;
-            margin-bottom: 20px;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-        }
-
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: #2c2b29;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #eeb82e;
-            font-weight: bold;
-        }
-
-        .author-info h4 {
-            font-family: 'Roboto Serif', serif;
-            font-size: 1.1rem;
-            color: #2c2b29;
-            margin-bottom: 5px;
-        }
-
-        .author-info p {
-            color: #666;
-            font-size: 0.9rem;
-        }
 
         /* Mobile Responsive Styles */
         @media screen and (max-width: 768px) {
@@ -891,9 +844,9 @@
                 font-size: 2.2rem;
             }
 
+            /* Single column is already set */
             .services-container {
-                grid-template-columns: 1fr;
-                gap: 30px;
+                max-width: 100%;
                 padding: 10px;
             }
 
@@ -941,6 +894,11 @@
             
             .requirements-container {
                 grid-template-columns: 1fr;
+            }
+            
+            /* Single column already set for mobile */
+            .services-container {
+                gap: 30px;
             }
         }
 
@@ -1056,7 +1014,7 @@
             </p>
         </div>
 
-        <!-- Services Grid Section -->
+        <!-- Services Grid Section - SINGLE COLUMN with SAME BACKGROUND -->
         <div class="services-section">
             <h2 class="services-title">OUR SERVICES</h2>
             
@@ -1429,46 +1387,172 @@
             </div>
         </div>
 
-        <!-- Bank Partners Section -->
-        <div class="bank-partners-section">
-            <h2 class="bank-partners-title">OUR BANKING PARTNERS</h2>
-            
-            <div class="bank-partners-container">
-                <div class="bank-logo">
-                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/30/BDO_Unibank_%28logo%29.svg/800px-BDO_Unibank_%28logo%29.svg.png" alt="BDO">
-                </div>
-                
-                <div class="bank-logo">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Bank_of_the_Philippine_Islands_logo.svg/800px-Bank_of_the_Philippine_Islands_logo.svg.png" alt="BPI">
-                </div>
-                
-                <div class="bank-logo">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Metrobank_%28logo%29.svg/800px-Metrobank_%28logo%29.svg.png" alt="Metrobank">
-                </div>
-                
-                <div class="bank-logo">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/PSBank.svg/800px-PSBank.svg.png" alt="PSBank">
-                </div>
-                
-                <div class="bank-logo">
-                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/55/Security_Bank_logo.svg/800px-Security_Bank_logo.svg.png" alt="Security Bank">
-                </div>
-                
-                <div class="bank-logo">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/China_Bank_%28logo%29.svg/800px-China_Bank_%28logo%29.svg.png" alt="China Bank">
-                </div>
-                
-                <div class="bank-logo">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/RCBC_Logo.svg/800px-RCBC_Logo.svg.png" alt="RCBC">
-                </div>
-                
-                <div class="bank-logo">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/UnionBank_of_the_Philippines_Logo.svg/800px-UnionBank_of_the_Philippines_Logo.svg.png" alt="UnionBank">
-                </div>
-            </div>
+<!-- AFFILIATED BANKS -->
+<div class="bank-partners-section">
+    <h2 class="bank-partners-title">AFFILIATED BANKS</h2>
+
+    <div class="bank-partners-container">
+        <div class="bank-logo">
+            <a href="https://www.bdo.com.ph" target="_blank" rel="noopener noreferrer">
+                <img src="img/bdo.jpg.webp" alt="BDO">
+            </a>
         </div>
 
-        <!-- Requirements Section -->
+        <div class="bank-logo">
+            <a href="https://www.bpi.com.ph" target="_blank" rel="noopener noreferrer">
+                <img src="img/bpi.jpg" alt="BPI">
+            </a>
+        </div>
+
+        <div class="bank-logo">
+            <a href="https://www.cbs.com.ph" target="_blank" rel="noopener noreferrer">
+                <img src="img/cbs.jpg" alt="CBS">
+            </a>
+        </div>
+
+        <div class="bank-logo">
+            <a href="https://www.chinabank.ph" target="_blank" rel="noopener noreferrer">
+                <img src="img/chinabank.jpg" alt="China Bank">
+            </a>
+        </div>
+
+        <div class="bank-logo">
+            <a href="https://www.eastwestbanker.com" target="_blank" rel="noopener noreferrer">
+                <img src="img/eastwest.jpg" alt="EastWest Bank">
+            </a>
+        </div>
+
+        <div class="bank-logo">
+            <a href="https://www.ldb.com.ph" target="_blank" rel="noopener noreferrer">
+                <img src="img/ldb.png" alt="LDB">
+            </a>
+        </div>
+
+        <div class="bank-logo">
+            <a href="https://www.maybank.com.ph" target="_blank" rel="noopener noreferrer">
+                <img src="img/maybank-logo.svg" alt="Maybank">
+            </a>
+        </div>
+
+        <div class="bank-logo">
+            <a href="https://www.metrobank.com.ph" target="_blank" rel="noopener noreferrer">
+                <img src="img/metrobank.png" alt="Metrobank">
+            </a>
+        </div>
+
+        <div class="bank-logo">
+            <a href="https://www.pbcom.com.ph" target="_blank" rel="noopener noreferrer">
+                <img src="img/pbcom.png" alt="PBCOM">
+            </a>
+        </div>
+
+        <div class="bank-logo">
+            <a href="https://www.psbank.com.ph" target="_blank" rel="noopener noreferrer">
+                <img src="img/psbank.png" alt="PSBank">
+            </a>
+        </div>
+        <div class="bank-logo-group">
+            <div class="bank-logo">
+                <a href="https://www.rcbc.com" target="_blank" rel="noopener noreferrer">
+                    <img src="img/rcbc.png" alt="RCBC">
+                </a>
+            </div>
+
+            <div class="bank-logo">
+                <a href="https://www.securitybank.com" target="_blank" rel="noopener noreferrer">
+                    <img src="img/securitybank.png" alt="Security Bank">
+                </a>
+            </div>
+
+            <div class="bank-logo">
+                <a href="https://www.unionbankph.com" target="_blank" rel="noopener noreferrer">
+                    <img src="img/unionbank.png" alt="UnionBank">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bank-partners-section">
+    <h2 class="bank-partners-title">AFFILIATED CAR COMPANIES</h2>
+
+    <div class="bank-partners-container">
+        <div class="bank-logo">
+            <a href="https://www.chevrolet.com" target="_blank" rel="noopener noreferrer">
+                <img src="img/Chevrolet.jpg" alt="Chevrolet">
+            </a>
+        </div>
+
+        <div class="bank-logo">
+            <a href="https://www.ford.com" target="_blank" rel="noopener noreferrer">
+                <img src="img/Ford.png" alt="Ford">
+            </a>
+        </div>
+
+        <div class="bank-logo">
+            <a href="https://www.geely.com" target="_blank" rel="noopener noreferrer">
+                <img src="img/Geely.webp" alt="Geely">
+            </a>
+        </div>
+
+        <div class="bank-logo">
+            <a href="https://www.honda.com" target="_blank" rel="noopener noreferrer">
+                <img src="img/honda.webp" alt="Honda">
+            </a>
+        </div>
+
+        <div class="bank-logo">
+            <a href="https://www.hyundai.com" target="_blank" rel="noopener noreferrer">
+                <img src="img/hyundai.png" alt="Hyundai">
+            </a>
+        </div>
+
+        <div class="bank-logo">
+            <a href="https://www.isuzu.co.jp" target="_blank" rel="noopener noreferrer">
+                <img src="img/isuzu.svg" alt="Isuzu">
+            </a>
+        </div>
+
+        <div class="bank-logo">
+            <a href="https://www.kia.com" target="_blank" rel="noopener noreferrer">
+                <img src="img/kia.png" alt="Kia">
+            </a>
+        </div>
+
+        <div class="bank-logo">
+            <a href="https://www.mgmotor.com" target="_blank" rel="noopener noreferrer">
+                <img src="img/mg.png" alt="MG">
+            </a>
+        </div>
+
+        <div class="bank-logo">
+            <a href="https://www.nissan.com" target="_blank" rel="noopener noreferrer">
+                <img src="img/nissan.jpg" alt="Nissan">
+            </a>
+        </div>
+
+        <div class="bank-logo">
+            <a href="https://www.subaru.com" target="_blank" rel="noopener noreferrer">
+                <img src="img/subaru.png" alt="Subaru">
+            </a>
+        </div>
+        <div class="bank-logo-group">
+            <div class="bank-logo">
+                <a href="https://www.globalsuzuki.com" target="_blank" rel="noopener noreferrer">
+                    <img src="img/susuki.svg" alt="Suzuki">
+                </a>
+            </div>
+
+            <div class="bank-logo">
+                <a href="https://www.toyota.com" target="_blank" rel="noopener noreferrer">
+                    <img src="img/toyota.png" alt="Toyota">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
         <div class="requirements-section">
             <h2 class="requirements-title">GENERAL REQUIREMENTS</h2>
             
@@ -1507,52 +1591,6 @@
                         <li>Location Plan</li>
                         <li>Appraisal Documents</li>
                     </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Testimonials Section -->
-        <div class="testimonials-section">
-            <h2 class="testimonials-title">CLIENT TESTIMONIALS</h2>
-            
-            <div class="testimonials-container">
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p class="testimonial-text">"Hope Account Specialist made buying my first car so easy! They handled all the paperwork and got me a great loan deal. Highly recommended!"</p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">JR</div>
-                            <div class="author-info">
-                                <h4>Juan Reyes</h4>
-                                <p>First-time Car Buyer</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p class="testimonial-text">"Thanks to their housing loan assistance, we finally got our dream home. Professional service from start to finish."</p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">MS</div>
-                            <div class="author-info">
-                                <h4>Maria Santos</h4>
-                                <p>Homeowner</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p class="testimonial-text">"The insurance package they arranged for our family vehicles saved us thousands. Excellent service and support!"</p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">RG</div>
-                            <div class="author-info">
-                                <h4>Robert Gomez</h4>
-                                <p>Business Owner</p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
