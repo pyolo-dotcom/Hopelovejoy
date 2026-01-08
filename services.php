@@ -18,10 +18,6 @@
             font-family: Arial, sans-serif;
         }
 
-        :root {
-            --bank-logo-width: 140px;
-        }
-
         body {
             background-color: white;
             min-height: 100vh;
@@ -602,52 +598,66 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 100px;
+            height: 120px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
-            border: 1px solid #eee;
+            border: 2px solid transparent;
+            position: relative;
             overflow: hidden;
+            cursor: default;
+        }
+
+        .bank-logo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(238, 184, 46, 0.1) 0%, rgba(44, 43, 41, 0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .bank-logo::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s ease;
         }
 
         .bank-logo:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(238, 184, 46, 0.2);
             border-color: #eeb82e;
+        }
+
+        .bank-logo:hover::before {
+            opacity: 1;
+        }
+
+        .bank-logo:hover::after {
+            left: 100%;
         }
 
         .bank-logo img {
             max-width: 100%;
-            max-height: 60px;
+            max-height: 80px;
             object-fit: contain;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            filter: grayscale(20%);
+            position: relative;
+            z-index: 2;
         }
 
         .bank-logo:hover img {
             transform: scale(1.1);
-        }
-
-        .bank-logo a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
-            text-decoration: none;
-        }
-
-        .bank-logo-group {
-            grid-column: 1 / -1;
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            padding: 0 20px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .bank-logo-group .bank-logo {
-            flex: 0 0 auto;
-            width: auto;
+            filter: grayscale(0%);
         }
 
         /* Requirements Section */
@@ -683,6 +693,13 @@
             text-align: left;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(238, 184, 46, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .requirement-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(238, 184, 46, 0.4);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
 
         .requirement-card h3 {
@@ -710,6 +727,12 @@
             padding-left: 25px;
             position: relative;
             line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        .requirement-list li:hover {
+            color: #eeb82e;
+            transform: translateX(5px);
         }
 
         .requirement-list li:before {
@@ -718,6 +741,11 @@
             left: 10px;
             color: #eeb82e;
             font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .requirement-list li:hover:before {
+            transform: scale(1.5);
         }
 
         /* Mobile Responsive Styles */
@@ -813,12 +841,8 @@
             }
 
             .bank-logo {
-                height: 80px;
+                height: 100px;
                 padding: 15px;
-            }
-
-            .bank-logo-group {
-                gap: 20px;
             }
 
             .faq-question {
@@ -919,12 +943,8 @@
             }
 
             .bank-logo {
-                height: 70px;
+                height: 80px;
                 padding: 10px;
-            }
-
-            .bank-logo-group {
-                gap: 15px;
             }
 
             .cta-title {
@@ -947,7 +967,7 @@
             }
             
             .bank-logo {
-                height: 60px;
+                height: 70px;
             }
             
             .service-header h3 {
@@ -1350,81 +1370,55 @@
 
             <div class="bank-partners-container">
                 <div class="bank-logo">
-                    <a href="https://www.bdo.com.ph" target="_blank" rel="noopener noreferrer">
-                        <img src="img/bdo.jpg.webp" alt="BDO">
-                    </a>
+                    <img src="img/bdo.jpg.webp" alt="BDO">
                 </div>
 
                 <div class="bank-logo">
-                    <a href="https://www.bpi.com.ph" target="_blank" rel="noopener noreferrer">
-                        <img src="img/bpi.jpg" alt="BPI">
-                    </a>
+                    <img src="img/bpi.jpg" alt="BPI">
                 </div>
 
                 <div class="bank-logo">
-                    <a href="https://www.cbs.com.ph" target="_blank" rel="noopener noreferrer">
-                        <img src="img/cbs.jpg" alt="CBS">
-                    </a>
+                    <img src="img/cbs.jpg" alt="CBS">
                 </div>
 
                 <div class="bank-logo">
-                    <a href="https://www.chinabank.ph" target="_blank" rel="noopener noreferrer">
-                        <img src="img/chinabank.jpg" alt="China Bank">
-                    </a>
+                    <img src="img/chinabank.jpg" alt="China Bank">
                 </div>
 
                 <div class="bank-logo">
-                    <a href="https://www.eastwestbanker.com" target="_blank" rel="noopener noreferrer">
-                        <img src="img/eastwest.jpg" alt="EastWest Bank">
-                    </a>
+                    <img src="img/eastwest.jpg" alt="EastWest Bank">
                 </div>
 
                 <div class="bank-logo">
-                    <a href="https://www.ldb.com.ph" target="_blank" rel="noopener noreferrer">
-                        <img src="img/ldb.png" alt="LDB">
-                    </a>
+                    <img src="img/ldb.png" alt="LDB">
                 </div>
 
                 <div class="bank-logo">
-                    <a href="https://www.maybank.com.ph" target="_blank" rel="noopener noreferrer">
-                        <img src="img/maybank-logo.svg" alt="Maybank">
-                    </a>
+                    <img src="img/maybank-logo.svg" alt="Maybank">
                 </div>
 
                 <div class="bank-logo">
-                    <a href="https://www.metrobank.com.ph" target="_blank" rel="noopener noreferrer">
-                        <img src="img/metrobank.png" alt="Metrobank">
-                    </a>
+                    <img src="img/metrobank.png" alt="Metrobank">
                 </div>
 
                 <div class="bank-logo">
-                    <a href="https://www.pbcom.com.ph" target="_blank" rel="noopener noreferrer">
-                        <img src="img/pbcom.png" alt="PBCOM">
-                    </a>
+                    <img src="img/pbcom.png" alt="PBCOM">
                 </div>
 
                 <div class="bank-logo">
-                    <a href="https://www.psbank.com.ph" target="_blank" rel="noopener noreferrer">
-                        <img src="img/psbank.png" alt="PSBank">
-                    </a>
+                    <img src="img/psbank.png" alt="PSBank">
                 </div>
                 
                 <div class="bank-logo">
-                    <a href="https://www.rcbc.com" target="_blank" rel="noopener noreferrer">
-                        <img src="img/rcbc.png" alt="RCBC">
-                    </a>
+                    <img src="img/rcbc.png" alt="RCBC">
                 </div>
 
                 <div class="bank-logo">
-                    <a href="https://www.securitybank.com" target="_blank" rel="noopener noreferrer">
-                        <img src="img/securitybank.png" alt="Security Bank">
-                    </a>
+                    <img src="img/securitybank.png" alt="Security Bank">
                 </div>
 
                 <div class="bank-logo">
-                    <a href="https://www.unionbankph.com" target="_blank" rel="noopener noreferrer">
-                        <img src="img/unionbank.png" alt="UnionBank">
-                    </a>
+                    <img src="img/unionbank.png" alt="UnionBank">
                 </div>
             </div>
         </div>
@@ -1435,80 +1429,54 @@
 
             <div class="bank-partners-container">
                 <div class="bank-logo">
-                    <a href="https://www.byd.com" target="_blank" rel="noopener noreferrer">
-                        <img src="img/byd.svg" alt="BYD">
-                    </a>
+                    <img src="img/byd.svg" alt="BYD">
                 </div>
                 <div class="bank-logo">
-                    <a href="https://www.chevrolet.com" target="_blank" rel="noopener noreferrer">
-                        <img src="img/Chevrolet.jpg" alt="Chevrolet">
-                    </a>
+                    <img src="img/Chevrolet.jpg" alt="Chevrolet">
                 </div>
 
                 <div class="bank-logo">
-                    <a href="https://www.ford.com" target="_blank" rel="noopener noreferrer">
-                        <img src="img/Ford.png" alt="Ford">
-                    </a>
+                    <img src="img/Ford.png" alt="Ford">
                 </div>
 
                 <div class="bank-logo">
-                    <a href="https://www.geely.com" target="_blank" rel="noopener noreferrer">
-                        <img src="img/Geely.webp" alt="Geely">
-                    </a>
+                    <img src="img/Geely.webp" alt="Geely">
                 </div>
 
                 <div class="bank-logo">
-                    <a href="https://www.honda.com" target="_blank" rel="noopener noreferrer">
-                        <img src="img/honda.webp" alt="Honda">
-                    </a>
+                    <img src="img/honda.webp" alt="Honda">
                 </div>
 
                 <div class="bank-logo">
-                    <a href="https://www.hyundai.com" target="_blank" rel="noopener noreferrer">
-                        <img src="img/hyundai.png" alt="Hyundai">
-                    </a>
+                    <img src="img/hyundai.png" alt="Hyundai">
                 </div>
 
                 <div class="bank-logo">
-                    <a href="https://www.isuzu.co.jp" target="_blank" rel="noopener noreferrer">
-                        <img src="img/isuzu.svg" alt="Isuzu">
-                    </a>
+                    <img src="img/isuzu.svg" alt="Isuzu">
                 </div>
 
                 <div class="bank-logo">
-                    <a href="https://www.kia.com" target="_blank" rel="noopener noreferrer">
-                        <img src="img/kia.png" alt="Kia">
-                    </a>
+                    <img src="img/kia.png" alt="Kia">
                 </div>
 
                 <div class="bank-logo">
-                    <a href="https://www.mgmotor.com" target="_blank" rel="noopener noreferrer">
-                        <img src="img/mg.png" alt="MG">
-                    </a>
+                    <img src="img/mg.png" alt="MG">
                 </div>
 
                 <div class="bank-logo">
-                    <a href="https://www.nissan.com" target="_blank" rel="noopener noreferrer">
-                        <img src="img/nissan.jpg" alt="Nissan">
-                    </a>
+                    <img src="img/nissan.jpg" alt="Nissan">
                 </div>
 
                 <div class="bank-logo">
-                    <a href="https://www.subaru.com" target="_blank" rel="noopener noreferrer">
-                        <img src="img/subaru.png" alt="Subaru">
-                    </a>
+                    <img src="img/subaru.png" alt="Subaru">
                 </div>
                 
                 <div class="bank-logo">
-                    <a href="https://www.globalsuzuki.com" target="_blank" rel="noopener noreferrer">
-                        <img src="img/susuki.svg" alt="Suzuki">
-                    </a>
+                    <img src="img/susuki.svg" alt="Suzuki">
                 </div>
 
                 <div class="bank-logo">
-                    <a href="https://www.toyota.com" target="_blank" rel="noopener noreferrer">
-                        <img src="img/toyota.png" alt="Toyota">
-                    </a>
+                    <img src="img/toyota.png" alt="Toyota">
                 </div>
             </div>
         </div>
