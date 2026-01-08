@@ -19,11 +19,11 @@
         }
 
         :root {
-            --bank-logo-width: 140px; /* adjust if needed to exactly match BDO */
+            --bank-logo-width: 140px;
         }
 
         body {
-            background-color: #f5f5f5; /* Light gray background for entire page */
+            background-color: white;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -89,67 +89,47 @@
             z-index: 1;
         }
 
-        /* Services Grid Section - SINGLE COLUMN with SAME BACKGROUND as Hero */
+        /* Services Grid Section */
         .services-section {
             padding: 80px 20px;
-            background: linear-gradient(135deg, #2c2b29 0%, #3a3937 100%); /* SAME as hero */
+            background-color: white;
             text-align: center;
-            border-radius: 15px;
-            margin-bottom: 50px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .services-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80') center/cover;
-            opacity: 0.1;
         }
 
         .services-title {
             font-family: 'Roboto Serif', serif;
             font-size: 3rem;
             margin-bottom: 50px;
-            color: white; /* Changed to white to match hero */
+            color: #2c2b29;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            position: relative;
-            z-index: 1;
         }
 
-        /* SINGLE COLUMN CONTAINER */
         .services-container {
-            max-width: 800px; /* Narrower width for single column */
+            max-width: 1200px;
             margin: 0 auto;
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 40px;
             padding: 20px;
-            position: relative;
-            z-index: 1;
         }
 
         .service-card {
             background: white;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* Darker shadow for contrast on dark bg */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
             height: 100%;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid #f0f0f0;
         }
 
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(238, 184, 46, 0.3); /* Brighter shadow on hover */
+            box-shadow: 0 15px 40px rgba(238, 184, 46, 0.15);
             border-color: #eeb82e;
         }
 
@@ -357,8 +337,6 @@
             padding: 80px 20px;
             background-color: white;
             text-align: center;
-            border-radius: 15px;
-            margin: 50px 0;
         }
 
         .faq-title {
@@ -371,9 +349,31 @@
             letter-spacing: 1px;
         }
 
-        .faq-container {
-            max-width: 800px;
+        .faq-layout {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+            max-width: 1200px;
             margin: 0 auto;
+        }
+
+        .faq-container {
+            flex: 1;
+        }
+
+        .faq-image {
+            flex: 1;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .faq-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         .faq-item {
@@ -404,6 +404,7 @@
             font-size: 1.2rem;
             color: #2c2b29;
             text-align: left;
+            margin: 0;
         }
 
         .faq-icon {
@@ -433,6 +434,7 @@
             color: #666;
             line-height: 1.7;
             text-align: left;
+            margin: 0;
         }
 
         /* CTA Section */
@@ -497,58 +499,7 @@
             color: #2c2b29;
         }
 
-        /* Dropdown Styles */
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 200px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1000;
-            border-top: 3px solid #eeb82e;
-            border-radius: 0 0 5px 5px;
-            overflow: hidden;
-        }
-
-        .dropdown-content a {
-            color: #2c2b29 !important;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            text-align: left;
-            font-size: 0.95rem;
-            border-bottom: 1px solid #eee;
-            transition: all 0.3s ease;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #eeb82e;
-            color: #2c2b29 !important;
-            padding-left: 20px;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .dropdown:hover .dropbtn {
-            color: #fff;
-        }
-
-        .dropbtn {
-            cursor: pointer;
-        }
-
-        .dropbtn .fa-caret-down {
-            font-size: 0.8em;
-            margin-left: 5px;
-        }
-
+        /* Benefits Section */
         .benefits-section {
             padding: 80px 20px;
             background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
@@ -623,8 +574,6 @@
             padding: 80px 20px;
             background-color: white;
             text-align: center;
-            border-radius: 15px;
-            margin: 50px 0;
         }
 
         .bank-partners-title {
@@ -657,21 +606,34 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
             border: 1px solid #eee;
+            overflow: hidden;
         }
 
         .bank-logo:hover {
-            transform: none;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            border-color: #eee;
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-color: #eeb82e;
         }
 
         .bank-logo img {
-            width: var(--bank-logo-width);
-            height: auto;
             max-width: 100%;
-            transition: none;
+            max-height: 60px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
         }
 
+        .bank-logo:hover img {
+            transform: scale(1.1);
+        }
+
+        .bank-logo a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+        }
 
         .bank-logo-group {
             grid-column: 1 / -1;
@@ -680,18 +642,12 @@
             gap: 40px;
             padding: 0 20px;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .bank-logo-group .bank-logo {
             flex: 0 0 auto;
             width: auto;
-        }
-
-        .bank-logo-group .bank-logo img {
-            width: var(--bank-logo-width);
-            height: auto;
-            display: block;
-            object-fit: contain;
         }
 
         /* Requirements Section */
@@ -764,71 +720,33 @@
             font-size: 1.2rem;
         }
 
-
         /* Mobile Responsive Styles */
-        @media screen and (max-width: 768px) {
-            .navbar {
-                padding: 0 20px;
+        @media screen and (max-width: 1200px) {
+            .process-step:not(:last-child)::after {
+                display: none;
             }
+        }
 
-            /* Show burger menu on mobile */
-            .burger {
-                display: flex;
+        @media screen and (max-width: 1024px) {
+            .services-container {
+                grid-template-columns: repeat(2, 1fr);
             }
-
-            /* Hide regular nav links on mobile */
-            .nav-links {
-                position: fixed;
-                top: 60px;
-                right: 0;
-                height: 0;
-                width: 100%;
-                background-color: #2c2b29;
+            
+            .faq-layout {
                 flex-direction: column;
-                align-items: center;
-                justify-content: flex-start;
-                padding-top: 0;
-                overflow: hidden;
-                transition: height 0.5s ease, padding-top 0.5s ease;
-                box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-                z-index: 100;
+                gap: 50px;
+            }
+            
+            .faq-image {
+                order: -1;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .main-content {
+                padding: 80px 15px 15px;
             }
 
-            /* When menu is active */
-            .nav-links.active {
-                height: calc(100vh - 60px);
-                padding-top: 40px;
-            }
-
-            .nav-links a {
-                margin: 15px 0;
-                font-size: 1.2rem;
-                opacity: 0;
-                transform: translateY(-20px);
-                transition: opacity 0.5s ease, transform 0.5s ease;
-            }
-
-            .nav-links.active a {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            /* Adjust logo size on mobile */
-            .logo-circle {
-                width: 120px;
-                height: 120px;
-            }
-
-            .logo-circle img {
-                width: 90px;
-            }
-
-            /* Adjust brand name font size on smaller screens */
-            .brand-name {
-                font-size: 1rem;
-            }
-
-            /* Services responsive adjustments */
             .services-hero-title {
                 font-size: 2.5rem;
             }
@@ -837,21 +755,35 @@
                 font-size: 2rem;
             }
 
+            .services-hero-description {
+                font-size: 1.1rem;
+            }
+
             .services-title,
             .process-title,
             .faq-title,
-            .cta-title {
+            .benefits-title,
+            .bank-partners-title,
+            .requirements-title {
                 font-size: 2.2rem;
             }
 
-            /* Single column is already set */
             .services-container {
-                max-width: 100%;
+                grid-template-columns: 1fr;
+                gap: 30px;
                 padding: 10px;
             }
 
             .service-card {
-                margin: 0 10px;
+                margin: 0 5px;
+            }
+
+            .service-header {
+                padding: 25px;
+            }
+
+            .service-body {
+                padding: 25px;
             }
 
             .process-container {
@@ -863,6 +795,48 @@
                 display: none;
             }
 
+            .step-number {
+                width: 100px;
+                height: 100px;
+                font-size: 2rem;
+            }
+
+            .benefits-container,
+            .requirements-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .bank-partners-container {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+
+            .bank-logo {
+                height: 80px;
+                padding: 15px;
+            }
+
+            .bank-logo-group {
+                gap: 20px;
+            }
+
+            .faq-question {
+                padding: 15px 20px;
+            }
+
+            .faq-question h3 {
+                font-size: 1.1rem;
+            }
+
+            .faq-answer {
+                padding: 0 20px;
+            }
+
+            .faq-item.active .faq-answer {
+                padding: 15px 20px;
+            }
+
             .cta-buttons {
                 flex-direction: column;
                 align-items: center;
@@ -872,54 +846,9 @@
                 width: 100%;
                 max-width: 300px;
             }
-
-            .benefits-title,
-            .bank-partners-title,
-            .requirements-title,
-            .testimonials-title {
-                font-size: 2.2rem;
-            }
-            
-            .benefits-container,
-            .testimonials-container {
-                grid-template-columns: 1fr;
-                gap: 20px;
-                padding: 10px;
-            }
-            
-            .bank-partners-container {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
-            }
-            
-            .requirements-container {
-                grid-template-columns: 1fr;
-            }
-            
-            /* Single column already set for mobile */
-            .services-container {
-                gap: 30px;
-            }
         }
 
         @media screen and (max-width: 480px) {
-            .logo-circle {
-                width: 100px;
-                height: 100px;
-                margin-top: -10px;
-            }
-
-            .logo-circle img {
-                width: 70px;
-            }
-
-            .brand-name {
-                font-size: 0.8rem;
-                max-width: 120px;
-                line-height: 1.1;
-            }
-
-            /* Services mobile adjustments */
             .services-hero-title {
                 font-size: 2rem;
             }
@@ -935,66 +864,94 @@
             .services-title,
             .process-title,
             .faq-title,
-            .cta-title {
+            .benefits-title,
+            .bank-partners-title,
+            .requirements-title {
                 font-size: 1.8rem;
+                margin-bottom: 30px;
             }
 
-            .service-header {
-                padding: 25px;
+            .services-section,
+            .process-section,
+            .benefits-section,
+            .bank-partners-section,
+            .requirements-section,
+            .faq-section,
+            .cta-section {
+                padding: 50px 15px;
             }
 
-            .service-body {
-                padding: 20px;
+            .services-hero-section {
+                padding: 50px 15px;
+                margin-bottom: 30px;
+            }
+
+            .service-icon {
+                font-size: 2.8rem;
+            }
+
+            .service-header h3 {
+                font-size: 1.3rem;
             }
 
             .step-number {
-                width: 100px;
-                height: 100px;
-                font-size: 2rem;
-            }
-
-            .faq-question {
-                padding: 15px 20px;
-            }
-
-            .faq-question h3 {
-                font-size: 1.1rem;
-            }
-
-            .benefits-title,
-            .bank-partners-title,
-            .requirements-title,
-            .testimonials-title {
+                width: 80px;
+                height: 80px;
                 font-size: 1.8rem;
             }
-            
+
+            .step-content h3 {
+                font-size: 1.2rem;
+            }
+
+            .step-content p {
+                font-size: 0.95rem;
+            }
+
             .benefit-card,
-            .testimonial-card,
             .requirement-card {
                 padding: 20px;
             }
-            
+
             .bank-partners-container {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
             }
+
+            .bank-logo {
+                height: 70px;
+                padding: 10px;
+            }
+
+            .bank-logo-group {
+                gap: 15px;
+            }
+
+            .cta-title {
+                font-size: 2rem;
+            }
+
+            .cta-description {
+                font-size: 1rem;
+            }
+
+            .faq-question h3 {
+                font-size: 1rem;
+            }
         }
 
-        @media screen and (max-width: 768px) {
-            .dropdown-content {
-                position: static;
-                box-shadow: none;
-                background-color: transparent;
-                border: none;
-                display: none;
+        @media screen and (max-width: 360px) {
+            .bank-partners-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
             }
             
-            .dropdown.active .dropdown-content {
-                display: block;
+            .bank-logo {
+                height: 60px;
             }
             
-            .dropbtn .fa-caret-down {
-                display: none;
+            .service-header h3 {
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -1014,7 +971,7 @@
             </p>
         </div>
 
-        <!-- Services Grid Section - SINGLE COLUMN with SAME BACKGROUND -->
+        <!-- Services Grid Section -->
         <div class="services-section">
             <h2 class="services-title">OUR SERVICES</h2>
             
@@ -1387,172 +1344,176 @@
             </div>
         </div>
 
-<!-- AFFILIATED BANKS -->
-<div class="bank-partners-section">
-    <h2 class="bank-partners-title">AFFILIATED BANKS</h2>
+        <!-- AFFILIATED BANKS -->
+        <div class="bank-partners-section">
+            <h2 class="bank-partners-title">AFFILIATED BANKS</h2>
 
-    <div class="bank-partners-container">
-        <div class="bank-logo">
-            <a href="https://www.bdo.com.ph" target="_blank" rel="noopener noreferrer">
-                <img src="img/bdo.jpg.webp" alt="BDO">
-            </a>
-        </div>
+            <div class="bank-partners-container">
+                <div class="bank-logo">
+                    <a href="https://www.bdo.com.ph" target="_blank" rel="noopener noreferrer">
+                        <img src="img/bdo.jpg.webp" alt="BDO">
+                    </a>
+                </div>
 
-        <div class="bank-logo">
-            <a href="https://www.bpi.com.ph" target="_blank" rel="noopener noreferrer">
-                <img src="img/bpi.jpg" alt="BPI">
-            </a>
-        </div>
+                <div class="bank-logo">
+                    <a href="https://www.bpi.com.ph" target="_blank" rel="noopener noreferrer">
+                        <img src="img/bpi.jpg" alt="BPI">
+                    </a>
+                </div>
 
-        <div class="bank-logo">
-            <a href="https://www.cbs.com.ph" target="_blank" rel="noopener noreferrer">
-                <img src="img/cbs.jpg" alt="CBS">
-            </a>
-        </div>
+                <div class="bank-logo">
+                    <a href="https://www.cbs.com.ph" target="_blank" rel="noopener noreferrer">
+                        <img src="img/cbs.jpg" alt="CBS">
+                    </a>
+                </div>
 
-        <div class="bank-logo">
-            <a href="https://www.chinabank.ph" target="_blank" rel="noopener noreferrer">
-                <img src="img/chinabank.jpg" alt="China Bank">
-            </a>
-        </div>
+                <div class="bank-logo">
+                    <a href="https://www.chinabank.ph" target="_blank" rel="noopener noreferrer">
+                        <img src="img/chinabank.jpg" alt="China Bank">
+                    </a>
+                </div>
 
-        <div class="bank-logo">
-            <a href="https://www.eastwestbanker.com" target="_blank" rel="noopener noreferrer">
-                <img src="img/eastwest.jpg" alt="EastWest Bank">
-            </a>
-        </div>
+                <div class="bank-logo">
+                    <a href="https://www.eastwestbanker.com" target="_blank" rel="noopener noreferrer">
+                        <img src="img/eastwest.jpg" alt="EastWest Bank">
+                    </a>
+                </div>
 
-        <div class="bank-logo">
-            <a href="https://www.ldb.com.ph" target="_blank" rel="noopener noreferrer">
-                <img src="img/ldb.png" alt="LDB">
-            </a>
-        </div>
+                <div class="bank-logo">
+                    <a href="https://www.ldb.com.ph" target="_blank" rel="noopener noreferrer">
+                        <img src="img/ldb.png" alt="LDB">
+                    </a>
+                </div>
 
-        <div class="bank-logo">
-            <a href="https://www.maybank.com.ph" target="_blank" rel="noopener noreferrer">
-                <img src="img/maybank-logo.svg" alt="Maybank">
-            </a>
-        </div>
+                <div class="bank-logo">
+                    <a href="https://www.maybank.com.ph" target="_blank" rel="noopener noreferrer">
+                        <img src="img/maybank-logo.svg" alt="Maybank">
+                    </a>
+                </div>
 
-        <div class="bank-logo">
-            <a href="https://www.metrobank.com.ph" target="_blank" rel="noopener noreferrer">
-                <img src="img/metrobank.png" alt="Metrobank">
-            </a>
-        </div>
+                <div class="bank-logo">
+                    <a href="https://www.metrobank.com.ph" target="_blank" rel="noopener noreferrer">
+                        <img src="img/metrobank.png" alt="Metrobank">
+                    </a>
+                </div>
 
-        <div class="bank-logo">
-            <a href="https://www.pbcom.com.ph" target="_blank" rel="noopener noreferrer">
-                <img src="img/pbcom.png" alt="PBCOM">
-            </a>
-        </div>
+                <div class="bank-logo">
+                    <a href="https://www.pbcom.com.ph" target="_blank" rel="noopener noreferrer">
+                        <img src="img/pbcom.png" alt="PBCOM">
+                    </a>
+                </div>
 
-        <div class="bank-logo">
-            <a href="https://www.psbank.com.ph" target="_blank" rel="noopener noreferrer">
-                <img src="img/psbank.png" alt="PSBank">
-            </a>
-        </div>
-        <div class="bank-logo-group">
-            <div class="bank-logo">
-                <a href="https://www.rcbc.com" target="_blank" rel="noopener noreferrer">
-                    <img src="img/rcbc.png" alt="RCBC">
-                </a>
-            </div>
+                <div class="bank-logo">
+                    <a href="https://www.psbank.com.ph" target="_blank" rel="noopener noreferrer">
+                        <img src="img/psbank.png" alt="PSBank">
+                    </a>
+                </div>
+                
+                <div class="bank-logo">
+                    <a href="https://www.rcbc.com" target="_blank" rel="noopener noreferrer">
+                        <img src="img/rcbc.png" alt="RCBC">
+                    </a>
+                </div>
 
-            <div class="bank-logo">
-                <a href="https://www.securitybank.com" target="_blank" rel="noopener noreferrer">
-                    <img src="img/securitybank.png" alt="Security Bank">
-                </a>
-            </div>
+                <div class="bank-logo">
+                    <a href="https://www.securitybank.com" target="_blank" rel="noopener noreferrer">
+                        <img src="img/securitybank.png" alt="Security Bank">
+                    </a>
+                </div>
 
-            <div class="bank-logo">
-                <a href="https://www.unionbankph.com" target="_blank" rel="noopener noreferrer">
-                    <img src="img/unionbank.png" alt="UnionBank">
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="bank-partners-section">
-    <h2 class="bank-partners-title">AFFILIATED CAR COMPANIES</h2>
-
-    <div class="bank-partners-container">
-        <div class="bank-logo">
-            <a href="https://www.chevrolet.com" target="_blank" rel="noopener noreferrer">
-                <img src="img/Chevrolet.jpg" alt="Chevrolet">
-            </a>
-        </div>
-
-        <div class="bank-logo">
-            <a href="https://www.ford.com" target="_blank" rel="noopener noreferrer">
-                <img src="img/Ford.png" alt="Ford">
-            </a>
-        </div>
-
-        <div class="bank-logo">
-            <a href="https://www.geely.com" target="_blank" rel="noopener noreferrer">
-                <img src="img/Geely.webp" alt="Geely">
-            </a>
-        </div>
-
-        <div class="bank-logo">
-            <a href="https://www.honda.com" target="_blank" rel="noopener noreferrer">
-                <img src="img/honda.webp" alt="Honda">
-            </a>
-        </div>
-
-        <div class="bank-logo">
-            <a href="https://www.hyundai.com" target="_blank" rel="noopener noreferrer">
-                <img src="img/hyundai.png" alt="Hyundai">
-            </a>
-        </div>
-
-        <div class="bank-logo">
-            <a href="https://www.isuzu.co.jp" target="_blank" rel="noopener noreferrer">
-                <img src="img/isuzu.svg" alt="Isuzu">
-            </a>
-        </div>
-
-        <div class="bank-logo">
-            <a href="https://www.kia.com" target="_blank" rel="noopener noreferrer">
-                <img src="img/kia.png" alt="Kia">
-            </a>
-        </div>
-
-        <div class="bank-logo">
-            <a href="https://www.mgmotor.com" target="_blank" rel="noopener noreferrer">
-                <img src="img/mg.png" alt="MG">
-            </a>
-        </div>
-
-        <div class="bank-logo">
-            <a href="https://www.nissan.com" target="_blank" rel="noopener noreferrer">
-                <img src="img/nissan.jpg" alt="Nissan">
-            </a>
-        </div>
-
-        <div class="bank-logo">
-            <a href="https://www.subaru.com" target="_blank" rel="noopener noreferrer">
-                <img src="img/subaru.png" alt="Subaru">
-            </a>
-        </div>
-        <div class="bank-logo-group">
-            <div class="bank-logo">
-                <a href="https://www.globalsuzuki.com" target="_blank" rel="noopener noreferrer">
-                    <img src="img/susuki.svg" alt="Suzuki">
-                </a>
-            </div>
-
-            <div class="bank-logo">
-                <a href="https://www.toyota.com" target="_blank" rel="noopener noreferrer">
-                    <img src="img/toyota.png" alt="Toyota">
-                </a>
+                <div class="bank-logo">
+                    <a href="https://www.unionbankph.com" target="_blank" rel="noopener noreferrer">
+                        <img src="img/unionbank.png" alt="UnionBank">
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
+        <!-- AFFILIATED CAR COMPANIES -->
+        <div class="bank-partners-section">
+            <h2 class="bank-partners-title">AFFILIATED CAR COMPANIES</h2>
 
+            <div class="bank-partners-container">
+                <div class="bank-logo">
+                    <a href="https://www.byd.com" target="_blank" rel="noopener noreferrer">
+                        <img src="img/byd.svg" alt="BYD">
+                    </a>
+                </div>
+                <div class="bank-logo">
+                    <a href="https://www.chevrolet.com" target="_blank" rel="noopener noreferrer">
+                        <img src="img/Chevrolet.jpg" alt="Chevrolet">
+                    </a>
+                </div>
+
+                <div class="bank-logo">
+                    <a href="https://www.ford.com" target="_blank" rel="noopener noreferrer">
+                        <img src="img/Ford.png" alt="Ford">
+                    </a>
+                </div>
+
+                <div class="bank-logo">
+                    <a href="https://www.geely.com" target="_blank" rel="noopener noreferrer">
+                        <img src="img/Geely.webp" alt="Geely">
+                    </a>
+                </div>
+
+                <div class="bank-logo">
+                    <a href="https://www.honda.com" target="_blank" rel="noopener noreferrer">
+                        <img src="img/honda.webp" alt="Honda">
+                    </a>
+                </div>
+
+                <div class="bank-logo">
+                    <a href="https://www.hyundai.com" target="_blank" rel="noopener noreferrer">
+                        <img src="img/hyundai.png" alt="Hyundai">
+                    </a>
+                </div>
+
+                <div class="bank-logo">
+                    <a href="https://www.isuzu.co.jp" target="_blank" rel="noopener noreferrer">
+                        <img src="img/isuzu.svg" alt="Isuzu">
+                    </a>
+                </div>
+
+                <div class="bank-logo">
+                    <a href="https://www.kia.com" target="_blank" rel="noopener noreferrer">
+                        <img src="img/kia.png" alt="Kia">
+                    </a>
+                </div>
+
+                <div class="bank-logo">
+                    <a href="https://www.mgmotor.com" target="_blank" rel="noopener noreferrer">
+                        <img src="img/mg.png" alt="MG">
+                    </a>
+                </div>
+
+                <div class="bank-logo">
+                    <a href="https://www.nissan.com" target="_blank" rel="noopener noreferrer">
+                        <img src="img/nissan.jpg" alt="Nissan">
+                    </a>
+                </div>
+
+                <div class="bank-logo">
+                    <a href="https://www.subaru.com" target="_blank" rel="noopener noreferrer">
+                        <img src="img/subaru.png" alt="Subaru">
+                    </a>
+                </div>
+                
+                <div class="bank-logo">
+                    <a href="https://www.globalsuzuki.com" target="_blank" rel="noopener noreferrer">
+                        <img src="img/susuki.svg" alt="Suzuki">
+                    </a>
+                </div>
+
+                <div class="bank-logo">
+                    <a href="https://www.toyota.com" target="_blank" rel="noopener noreferrer">
+                        <img src="img/toyota.png" alt="Toyota">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Requirements Section -->
         <div class="requirements-section">
             <h2 class="requirements-title">GENERAL REQUIREMENTS</h2>
             
@@ -1598,78 +1559,86 @@
         <!-- FAQ Section -->
         <div class="faq-section">
             <h2 class="faq-title">FREQUENTLY ASKED QUESTIONS</h2>
-            
-            <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
-                        <h3>How long does the loan approval process take?</h3>
-                        <div class="faq-icon">
-                            <i class="fas fa-chevron-down"></i>
+
+            <div class="faq-layout">
+                <!-- LEFT: FAQ -->
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>How long does the loan approval process take?</h3>
+                            <div class="faq-icon">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>The loan approval process typically takes 3-5 working days for complete documentation.</p>
                         </div>
                     </div>
-                    <div class="faq-answer">
-                        <p>The loan approval process typically takes 3-5 working days for complete documentation. However, this may vary depending on the bank's requirements and your credit profile. We work to expedite the process through our established relationships with banking partners.</p>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>What documents are needed for auto loan applications?</h3>
+                            <div class="faq-icon">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Valid IDs, proof of income, proof of billing, and bank statements.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>Can I get insurance without purchasing a vehicle or property?</h3>
+                            <div class="faq-icon">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, standalone insurance policies are available.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>Do you offer services for business/commercial vehicles?</h3>
+                            <div class="faq-icon">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, we support commercial and fleet vehicles.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>What makes your services different from going directly to banks?</h3>
+                            <div class="faq-icon">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We compare banks, manage documents, and secure better deals.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>What if I have a low credit score?</h3>
+                            <div class="faq-icon">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We help explore flexible financing options.</p>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
-                        <h3>What documents are needed for auto loan applications?</h3>
-                        <div class="faq-icon">
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Typically required documents include: valid IDs, proof of income (latest payslip, ITR, or COE), proof of billing, and bank statements. For self-employed individuals, additional business documents may be required. We provide a complete checklist during consultation.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
-                        <h3>Can I get insurance without purchasing a vehicle or property?</h3>
-                        <div class="faq-icon">
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Yes, you can purchase standalone insurance policies for existing vehicles or properties. We offer various insurance products that can be purchased separately from acquisition services.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
-                        <h3>Do you offer services for business/commercial vehicles?</h3>
-                        <div class="faq-icon">
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Yes, we provide services for both personal and commercial vehicles. We have specialized programs for fleet acquisition, commercial vehicle loans, and business insurance packages.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
-                        <h3>What makes your services different from going directly to banks?</h3>
-                        <div class="faq-icon">
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                    </div>
-                    <div class="faq-answer">
-                        <p>We offer multiple bank options, comparative rate analysis, personalized guidance, and handle all documentation and coordination. Our expertise helps you get the best deals and avoids common pitfalls in the application process.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
-                        <h3>What if I have a low credit score?</h3>
-                        <div class="faq-icon">
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                    </div>
-                    <div class="faq-answer">
-                        <p>We work with various banks and financing institutions that have different credit requirements. We can help you explore options and provide guidance on improving your credit profile for better loan terms.</p>
-                    </div>
+
+                <!-- RIGHT: IMAGE -->
+                <div class="faq-image">
+                    <img src="img/faq.png" alt="FAQ Illustration">
                 </div>
             </div>
         </div>
@@ -1698,6 +1667,16 @@
         // FAQ toggle functionality
         function toggleFAQ(element) {
             const faqItem = element.closest('.faq-item');
+            const allFaqItems = document.querySelectorAll('.faq-item');
+            
+            // Close all other FAQ items
+            allFaqItems.forEach(item => {
+                if (item !== faqItem) {
+                    item.classList.remove('active');
+                }
+            });
+            
+            // Toggle current FAQ item
             faqItem.classList.toggle('active');
         }
 
@@ -1728,19 +1707,27 @@
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
                 const targetId = this.getAttribute('href');
                 if (targetId === '#') return;
                 
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
+                    e.preventDefault();
                     window.scrollTo({
                         top: targetElement.offsetTop - 80,
                         behavior: 'smooth'
                     });
                 }
             });
+        });
+
+        // Add click event to close FAQ when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.faq-item')) {
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+            }
         });
     </script>
 </body>
