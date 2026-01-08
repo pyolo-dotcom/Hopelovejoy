@@ -733,6 +733,72 @@
                             }
                         }
 
+                        .team-member-contact-smaller {
+    position: relative;
+}
+
+.contact-icon-smaller {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Tooltip styling - nasa TAAS na ngayon */
+.contact-icon-smaller.tooltip::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%; /* Ilalagay sa taas ng icon */
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 8px; /* Espasyo sa pagitan ng tooltip at icon */
+    
+    /* Tooltip design */
+    background-color: #333;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    
+    /* Hidden by default */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    
+    /* Pointer/arrow */
+    z-index: 100;
+}
+
+/* Tooltip arrow */
+.contact-icon-smaller.tooltip::after {
+    content: '';
+    position: absolute;
+    bottom: 100%; /* Sa taas ng icon */
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 2px; /* Mas malapit sa tooltip */
+    
+    /* Arrow shape */
+    border-width: 5px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+    
+    /* Hidden by default */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    
+    z-index: 100;
+}
+
+/* Show tooltip and arrow on hover */
+.contact-icon-smaller.tooltip:hover::before,
+.contact-icon-smaller.tooltip:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
         @media screen and (max-width: 768px) {
             .dropdown-content {
                 position: static;
@@ -912,11 +978,30 @@
             <div class="team-container">
                 <div class="team-member-smaller">
                     <div class="team-member-img-smaller">
-                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Michael Chen">
+                        <img src="img/TEAM/JACQ.jpg" alt="Jacqueline Manabat">
                     </div>
-                    <h3>Michael Chen</h3>
-                    <span class="position">Senior Tax Consultant</span>
-                    <span class="experience">8+ Years Experience</span>
+                    <h3>Jacqueline Manabat</h3>
+                    <span class="position">Account Specialist</span>
+                    <div class="team-member-contact-smaller">
+                        <a href="mailto:michael.chen@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="michael.chen@hopeaccount.com">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="tel:+639123456789" class="contact-icon-smaller tooltip" data-tooltip="+63 912 345 6789">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                        <a href="https://www.facebook.com/michaelchen.hopeaccount" target="_blank" class="contact-icon-smaller">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </div>
+                </div>
+
+                
+                <div class="team-member-smaller">
+                    <div class="team-member-img-smaller">
+                        <img src="img/TEAM/CLARISSA.jpg" alt="Clarissa Celis ">
+                    </div>
+                    <h3>Clarissa Celis </h3>
+                    <span class="position">Account Specialist</span>
                     <div class="team-member-contact-smaller">
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
@@ -926,11 +1011,10 @@
                 
                 <div class="team-member-smaller">
                     <div class="team-member-img-smaller">
-                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Emily Rodriguez">
+                        <img src="img/TEAM/dmple.jpg" alt="Dmple Manabat">
                     </div>
-                    <h3>Emily Rodriguez</h3>
-                    <span class="position">Bookkeeping Manager</span>
-                    <span class="experience">7+ Years Experience</span>
+                    <h3>Dmple Manabat</h3>
+                    <span class="position">Account Specialist</span>
                     <div class="team-member-contact-smaller">
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
@@ -940,25 +1024,10 @@
                 
                 <div class="team-member-smaller">
                     <div class="team-member-img-smaller">
-                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="David Kim">
+                        <img src="img/TEAM/joeb.jpg" alt="Joebelle Macapagal">
                     </div>
-                    <h3>David Kim</h3>
-                    <span class="position">Financial Analyst</span>
-                    <span class="experience">6+ Years Experience</span>
-                    <div class="team-member-contact-smaller">
-                        <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fab fa-facebook-f"></i></a>
-                    </div>
-                </div>
-                
-                <div class="team-member-smaller">
-                    <div class="team-member-img-smaller">
-                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Lisa Wong">
-                    </div>
-                    <h3>Lisa Wong</h3>
-                    <span class="position">Audit Specialist</span>
-                    <span class="experience">9+ Years Experience</span>
+                    <h3>Joebelle Macapagal</h3>
+                    <span class="position">Account Specialist</span>
                     <div class="team-member-contact-smaller">
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
@@ -973,7 +1042,6 @@
                     </div>
                     <h3>Member 5</h3>
                     <span class="position">Account Specialist</span>
-                    <span class="experience">5+ Years Experience</span>
                     <div class="team-member-contact-smaller">
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
@@ -987,7 +1055,6 @@
                     </div>
                     <h3>Member 6</h3>
                     <span class="position">Account Specialist</span>
-                    <span class="experience">4+ Years Experience</span>
                     <div class="team-member-contact-smaller">
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
@@ -1001,7 +1068,6 @@
                     </div>
                     <h3>Member 7</h3>
                     <span class="position">Account Specialist</span>
-                    <span class="experience">6+ Years Experience</span>
                     <div class="team-member-contact-smaller">
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
@@ -1015,7 +1081,6 @@
                     </div>
                     <h3>Member 8</h3>
                     <span class="position">Account Specialist</span>
-                    <span class="experience">3+ Years Experience</span>
                     <div class="team-member-contact-smaller">
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
@@ -1030,7 +1095,6 @@
                     </div>
                     <h3>Member 9</h3>
                     <span class="position">Account Specialist</span>
-                    <span class="experience">7+ Years Experience</span>
                     <div class="team-member-contact-smaller">
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
@@ -1044,7 +1108,6 @@
                     </div>
                     <h3>Member 10</h3>
                     <span class="position">Account Specialist</span>
-                    <span class="experience">5+ Years Experience</span>
                     <div class="team-member-contact-smaller">
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
@@ -1058,7 +1121,6 @@
                     </div>
                     <h3>Member 11</h3>
                     <span class="position">Account Specialist</span>
-                    <span class="experience">4+ Years Experience</span>
                     <div class="team-member-contact-smaller">
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
@@ -1072,7 +1134,6 @@
                     </div>
                     <h3>Member 12</h3>
                     <span class="position">Account Specialist</span>
-                    <span class="experience">8+ Years Experience</span>
                     <div class="team-member-contact-smaller">
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
@@ -1087,7 +1148,6 @@
                     </div>
                     <h3>Member 13</h3>
                     <span class="position">Account Specialist</span>
-                    <span class="experience">6+ Years Experience</span>
                     <div class="team-member-contact-smaller">
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
@@ -1101,7 +1161,6 @@
                     </div>
                     <h3>Member 14</h3>
                     <span class="position">Account Specialist</span>
-                    <span class="experience">5+ Years Experience</span>
                     <div class="team-member-contact-smaller">
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
@@ -1115,7 +1174,6 @@
                     </div>
                     <h3>Member 15</h3>
                     <span class="position">Account Specialist</span>
-                    <span class="experience">7+ Years Experience</span>
                     <div class="team-member-contact-smaller">
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
@@ -1129,7 +1187,6 @@
                     </div>
                     <h3>Member 16</h3>
                     <span class="position">Account Specialist</span>
-                    <span class="experience">4+ Years Experience</span>
                     <div class="team-member-contact-smaller">
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
@@ -1144,7 +1201,6 @@
                     </div>
                     <h3>Member 17</h3>
                     <span class="position">Account Specialist</span>
-                    <span class="experience">3+ Years Experience</span>
                     <div class="team-member-contact-smaller">
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
@@ -1158,7 +1214,6 @@
                     </div>
                     <h3>Member 18</h3>
                     <span class="position">Account Specialist</span>
-                    <span class="experience">5+ Years Experience</span>
                     <div class="team-member-contact-smaller">
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
                         <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
