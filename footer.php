@@ -25,8 +25,6 @@
                     <li><a href="team.php"><i class="fas fa-chevron-right"></i> Our Team</a></li>
                     <li><a href="services.php"><i class="fas fa-chevron-right"></i> Services</a></li>
                     <li><a href="contact.php"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
-                    <li><a href="privacy.php"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
-                    <li><a href="terms.php"><i class="fas fa-chevron-right"></i> Terms & Conditions</a></li>
                 </ul>
             </div>
 
@@ -139,16 +137,6 @@
                 <p class="copyright">
                     &copy; <span id="current-year"><?php echo date('Y'); ?></span> Hope Account Specialist. All rights reserved.
                 </p>
-                <div class="payment-methods">
-                    <span>We Accept:</span>
-                    <div class="payment-icons">
-                        <i class="fab fa-cc-visa" title="Visa"></i>
-                        <i class="fab fa-cc-mastercard" title="Mastercard"></i>
-                        <i class="fab fa-cc-paypal" title="PayPal"></i>
-                        <i class="fab fa-cc-amazon-pay" title="Amazon Pay"></i>
-                        <i class="fas fa-money-bill-wave" title="Cash"></i>
-                    </div>
-                </div>
                 <div class="back-to-top">
                     <a href="#top" class="back-to-top-btn" aria-label="Back to top">
                         <i class="fas fa-chevron-up"></i>

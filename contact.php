@@ -160,7 +160,6 @@
         }
 
         .contact-info {
-            background: white;
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.08);
