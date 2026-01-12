@@ -34,16 +34,15 @@
             width: 100%;
         }
 
-        /* ENHANCED: Hero Carousel Section - New Modern Design */
+        /* Hero Carousel Section */
         .hero-carousel-section {
             padding: 0;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
             position: relative;
-            min-height: 85vh;
-            background: linear-gradient(135deg, #2c2b29 0%, #1a1a1a 100%);
-            border-radius: 20px;
+            min-height: 80vh;
+            background-color: white;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
         }
 
         .hero-carousel-container {
@@ -51,14 +50,12 @@
             height: 100%;
             position: relative;
             overflow: hidden;
-            border-radius: 20px;
         }
 
         .hero-carousel-track {
             display: flex;
             height: 100%;
-            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            will-change: transform;
+            transition: transform 0.8s ease-in-out;
         }
 
         .hero-carousel-slide {
@@ -67,202 +64,109 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 80px;
-            gap: 60px;
+            padding: 0 50px;
+            gap: 50px;
             flex-wrap: wrap;
-            position: relative;
-        }
-
-        /* New: Gradient overlay for better text readability */
-        .hero-carousel-slide::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(90deg, rgba(44,43,41,0.9) 0%, rgba(44,43,41,0.7) 50%, rgba(44,43,41,0.3) 100%);
-            z-index: 1;
         }
 
         .hero-text-content {
             flex: 1;
             min-width: 300px;
-            position: relative;
-            z-index: 2;
-            animation: textSlideIn 1s ease-out;
-        }
-
-        @keyframes textSlideIn {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
         }
 
         .hero-text-content h1 {
-            color: #ffffff;
-            margin-bottom: 20px;
-            font-size: 4.5rem;
+            color: #2c2b29;
+            margin-bottom: 15px;
+            font-size: 5rem;
             font-family: 'Roboto Serif', serif;
             font-weight: 700;
-            line-height: 1.1;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-            position: relative;
-            display: inline-block;
-        }
-
-        /* New: Underline effect for headings */
-        .hero-text-content h1::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 100px;
-            height: 4px;
-            background: #eeb82e;
-            border-radius: 2px;
+            line-height: 1.2;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
         .hero-text-content p {
-            color: #eeb82e;
-            line-height: 1.3;
-            margin: 30px 0;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
             font-family: 'WindSong', cursive;
-            font-size: 3.5rem;
+            font-size: 3.2rem;
             font-weight: 500;
-            text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
-            animation: fadeInUp 1s ease-out 0.3s both;
+            color: #eeb82e;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* New: CTA Button */
-        .hero-cta-button {
-            display: inline-block;
-            padding: 15px 35px;
-            background: #eeb82e;
-            color: #2c2b29;
-            border: none;
-            border-radius: 30px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(238, 184, 46, 0.3);
-            margin-top: 20px;
-            animation: fadeInUp 1s ease-out 0.6s both;
-        }
-
-        .hero-cta-button:hover {
-            background: #ffd95a;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(238, 184, 46, 0.4);
+        .hero-carousel-slide.active .hero-text-content h1,
+        .hero-carousel-slide.active .hero-text-content p {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .hero-carousel-slide img {
-            width: 450px;
-            height: 450px;
-            border-radius: 20px;
-            object-fit: cover;
-            position: relative;
-            z-index: 2;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-            border: 5px solid rgba(255,255,255,0.1);
-            animation: floatAnimation 3s ease-in-out infinite;
+            width: 400px;
+            height: auto;
+            border-radius: 10px;
+            flex: 1;
+            max-width: 500px;
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s;
         }
 
-        @keyframes floatAnimation {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
+        .hero-carousel-slide.active img {
+            opacity: 1;
+            transform: translateX(0);
         }
 
-        /* ENHANCED: Hero Carousel Navigation */
+        /* Hero Carousel Navigation */
         .hero-carousel-nav {
             position: absolute;
-            bottom: 40px;
+            bottom: 30px;
             left: 0;
             right: 0;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            padding: 0 80px;
+            gap: 30px;
             z-index: 100;
         }
 
         .hero-carousel-btn {
-            background: rgba(255,255,255,0.1);
-            border: 2px solid rgba(238, 184, 46, 0.3);
-            width: 60px;
-            height: 60px;
+            background: #2c2b29;
+            border: none;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: #eeb82e;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-carousel-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(238, 184, 46, 0.2), transparent);
-            transition: left 0.7s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
 
         .hero-carousel-btn:hover {
             background: #eeb82e;
             color: #2c2b29;
             transform: scale(1.1);
-            border-color: #eeb82e;
-        }
-
-        .hero-carousel-btn:hover::before {
-            left: 100%;
         }
 
         .hero-carousel-dots {
             display: flex;
             gap: 15px;
-            background: rgba(0,0,0,0.3);
-            padding: 15px 25px;
-            border-radius: 30px;
-            backdrop-filter: blur(10px);
         }
 
         .hero-carousel-dot {
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.3);
-            border: 2px solid rgba(255,255,255,0.2);
+            background: #ddd;
+            border: none;
             cursor: pointer;
             transition: all 0.3s ease;
             position: relative;
@@ -271,7 +175,6 @@
         .hero-carousel-dot.active {
             background: #eeb82e;
             transform: scale(1.2);
-            border-color: #eeb82e;
         }
 
         .hero-carousel-dot.active::after {
@@ -293,320 +196,11 @@
             }
             50% {
                 transform: scale(1.1);
-                opacity: 0.5;
+                opacity: 0.7;
             }
             100% {
                 transform: scale(1);
                 opacity: 1;
-            }
-        }
-
-        /* New: Slide Progress Bar */
-        .slide-progress {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: rgba(255,255,255,0.1);
-            z-index: 101;
-        }
-
-        .progress-bar {
-            height: 100%;
-            background: #eeb82e;
-            width: 0%;
-            transition: width 5s linear;
-        }
-
-        .hero-carousel-slide.active .progress-bar {
-            width: 100%;
-        }
-
-        /* ENHANCED: SALES Section - Modern Carousel */
-        .sales-section {
-            padding: 80px 0;
-            background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
-            text-align: center;
-            position: relative;
-        }
-
-        .sales-title {
-            font-family: 'Roboto Serif', serif;
-            font-size: 3.2rem;
-            margin-bottom: 60px;
-            color: #2c2b29;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .sales-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: #eeb82e;
-            border-radius: 2px;
-        }
-
-        /* Enhanced Carousel Container */
-        .carousel-container {
-            position: relative;
-            max-width: 1400px;
-            margin: 0 auto;
-            overflow: hidden;
-            padding: 40px 80px;
-        }
-
-        .carousel-track {
-            display: flex;
-            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            will-change: transform;
-            gap: 30px;
-        }
-
-        .carousel-slide {
-            min-width: calc(33.333% - 20px);
-            flex: 0 0 auto;
-            transition: all 0.4s ease;
-            perspective: 1000px;
-        }
-
-        .carousel-slide:hover {
-            transform: translateY(-15px) scale(1.02);
-        }
-
-        .sales-item {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            height: 100%;
-            position: relative;
-            transition: all 0.4s ease;
-        }
-
-        .sales-item:hover {
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        /* Enhanced Image Container */
-        .item-img {
-            width: 100%;
-            height: 380px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .item-img::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to bottom, transparent 70%, rgba(0,0,0,0.5) 100%);
-            z-index: 1;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .sales-item:hover .item-img::before {
-            opacity: 1;
-        }
-
-        .item-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.7s ease;
-        }
-
-        /* Hover effect with zoom and overlay */
-        .sales-item:hover .item-img img {
-            transform: scale(1.1);
-        }
-
-        /* New: Sale Info Overlay */
-        .sale-info {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(44, 43, 41, 0.9);
-            color: white;
-            padding: 20px;
-            transform: translateY(100%);
-            transition: transform 0.4s ease;
-            z-index: 2;
-            backdrop-filter: blur(10px);
-        }
-
-        .sales-item:hover .sale-info {
-            transform: translateY(0);
-        }
-
-        .sale-info h3 {
-            font-family: 'Roboto Serif', serif;
-            font-size: 1.3rem;
-            margin-bottom: 5px;
-            color: #eeb82e;
-        }
-
-        .sale-info p {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            margin-bottom: 10px;
-        }
-
-        .sale-price {
-            display: inline-block;
-            background: #eeb82e;
-            color: #2c2b29;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
-        /* Enhanced Carousel Navigation Buttons */
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(44, 43, 41, 0.9);
-            border: 2px solid rgba(238, 184, 46, 0.3);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            color: #eeb82e;
-            cursor: pointer;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            backdrop-filter: blur(10px);
-        }
-
-        .carousel-btn:hover {
-            background: #eeb82e;
-            color: #2c2b29;
-            transform: translateY(-50%) scale(1.1);
-            border-color: #eeb82e;
-        }
-
-        .carousel-btn.prev {
-            left: 10px;
-        }
-
-        .carousel-btn.next {
-            right: 10px;
-        }
-
-        /* Enhanced Carousel Dots */
-        .carousel-dots {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 50px;
-        }
-
-        .carousel-dot {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: #ddd;
-            border: 2px solid transparent;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .carousel-dot.active {
-            background: #eeb82e;
-            transform: scale(1.3);
-            border-color: #eeb82e;
-        }
-
-        .carousel-dot::after {
-            content: '';
-            position: absolute;
-            top: -4px;
-            left: -4px;
-            right: -4px;
-            bottom: -4px;
-            border: 2px solid #eeb82e;
-            border-radius: 50%;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .carousel-dot.active::after {
-            opacity: 1;
-            animation: dotPulse 1.5s infinite;
-        }
-
-        @keyframes dotPulse {
-            0%, 100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            50% {
-                transform: scale(1.2);
-                opacity: 0.5;
-            }
-        }
-
-        /* New: Carousel Counter */
-        .carousel-counter {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(44, 43, 41, 0.9);
-            color: #eeb82e;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            backdrop-filter: blur(10px);
-            z-index: 11;
-        }
-
-        /* New: Loading Animation */
-        .carousel-loader {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: rgba(238, 184, 46, 0.2);
-            z-index: 12;
-            display: none;
-        }
-
-        .carousel-loader::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 0;
-            background: #eeb82e;
-            animation: loading 3s linear;
-        }
-
-        @keyframes loading {
-            to {
-                width: 100%;
             }
         }
 
@@ -671,6 +265,134 @@
             width: 100%;
             height: auto;
             display: block;
+        }
+
+        /* SALES Section - CAROUSEL */
+        .sales-section {
+            padding: 80px 20px;
+            background-color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .sales-title {
+            font-family: 'Roboto Serif', serif;
+            font-size: 3rem;
+            margin-bottom: 50px;
+            color: #2c2b29;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Carousel Container */
+        .carousel-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+            padding: 0 60px;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            gap: 30px;
+        }
+
+        .carousel-slide {
+            min-width: calc(33.333% - 20px);
+            flex: 0 0 auto;
+            transition: transform 0.3s ease;
+        }
+
+        .carousel-slide:hover {
+            transform: translateY(-5px);
+        }
+
+        .sales-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: 100%;
+            position: relative;
+        }
+
+        /* MALAKING IMAGE - PINALAKI KO DITO */
+        .item-img {
+            width: 100%;
+            height: 350px; /* Pinalaki mula 200px */
+            overflow: hidden;
+        }
+
+        .item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        /* Hover effect para mas lalong lumaki ang image */
+        .item-img:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Carousel Navigation Buttons */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #2c2b29;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            color: #eeb82e;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .carousel-btn:hover {
+            background: #eeb82e;
+            color: #2c2b29;
+        }
+
+        .carousel-btn.prev {
+            left: 0;
+        }
+
+        .carousel-btn.next {
+            right: 0;
+        }
+
+        /* Carousel Dots */
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 40px;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background: #eeb82e;
+            transform: scale(1.2);
         }
 
         /* Awards & Recognition Section */
@@ -1338,76 +1060,105 @@
         }
 
         /* Mobile Responsive Styles */
-        @media screen and (max-width: 1200px) {
-            .hero-carousel-slide {
-                padding: 0 40px;
-                gap: 40px;
-            }
-            
-            .hero-text-content h1 {
-                font-size: 3.5rem;
-            }
-            
-            .hero-text-content p {
-                font-size: 2.8rem;
-            }
-            
-            .hero-carousel-slide img {
-                width: 400px;
-                height: 400px;
-            }
-            
-            .carousel-slide {
-                min-width: calc(50% - 15px);
-            }
-            
-            .carousel-container {
-                padding: 40px 60px;
-            }
-        }
-
         @media screen and (max-width: 768px) {
+            .navbar {
+                padding: 0 20px;
+            }
+
+            /* Show burger menu on mobile */
+            .burger {
+                display: flex;
+            }
+
+            /* Hide regular nav links on mobile */
+            .nav-links {
+                position: fixed;
+                top: 60px;
+                right: 0;
+                height: 0;
+                width: 100%;
+                background-color: #2c2b29;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 0;
+                overflow: hidden;
+                transition: height 0.5s ease, padding-top 0.5s ease;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+                z-index: 100;
+            }
+
+            /* When menu is active */
+            .nav-links.active {
+                height: calc(100vh - 60px);
+                padding-top: 40px;
+            }
+
+            .nav-links a {
+                margin: 15px 0;
+                font-size: 1.2rem;
+                opacity: 0;
+                transform: translateY(-20px);
+                transition: opacity 0.5s ease, transform 0.5s ease;
+            }
+
+            .nav-links.active a {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            /* Adjust logo size on mobile */
+            .logo-circle {
+                width: 120px;
+                height: 120px;
+            }
+
+            .logo-circle img {
+                width: 90px;
+            }
+
+            /* Adjust brand name font size on smaller screens */
+            .brand-name {
+                font-size: 1rem;
+            }
+
+            /* Hero Carousel mobile adjustments */
             .hero-carousel-section {
                 min-height: 70vh;
-                border-radius: 15px;
             }
-            
+
             .hero-carousel-slide {
                 padding: 40px 20px;
                 flex-direction: column;
                 text-align: center;
-                gap: 40px;
+                gap: 30px;
             }
-            
+
             .hero-text-content h1 {
-                font-size: 2.8rem;
+                font-size: 3rem;
             }
-            
-            .hero-text-content h1::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-            
+
             .hero-text-content p {
                 font-size: 2.2rem;
             }
-            
+
             .hero-carousel-slide img {
-                width: 300px;
-                height: 300px;
+                width: 100%;
+                max-width: 400px;
+                margin: 0 auto;
             }
-            
+
             .hero-carousel-nav {
-                padding: 0 20px;
                 bottom: 20px;
+                gap: 20px;
             }
-            
+
             .hero-carousel-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
             }
-            
+
             .about-us-title,
             .sales-title,
             .awards-title,
@@ -1415,39 +1166,85 @@
             .affiliated-title {
                 font-size: 2.2rem;
             }
-            
-            .carousel-container {
-                padding: 40px 50px;
-            }
-            
-            .carousel-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
-            }
-            
-            .item-img {
-                height: 300px;
-            }
-            
-            .sale-info {
-                transform: translateY(0);
-                position: relative;
-                background: #2c2b29;
-            }
-            
+
+            /* Carousel adjustments for mobile */
             .carousel-slide {
                 min-width: calc(50% - 15px);
             }
             
+            .carousel-container {
+                padding: 0 50px;
+            }
+            
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            /* Awards section mobile adjustments */
             .awards-container {
                 grid-template-columns: 1fr;
                 gap: 30px;
                 padding: 10px;
             }
-            
+
             .award-card {
                 margin: 0 10px;
+            }
+
+            .awards-title {
+                font-size: 2.2rem;
+            }
+
+            .awards-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 10px;
+            }
+
+            .award-card {
+                margin: 0 10px;
+            }
+
+            .award-header {
+                min-height: 160px;
+            }
+
+            .award-main-image {
+                max-width: 120px;
+                max-height: 120px;
+            }
+
+            .award-header h3 {
+                font-size: 1.3rem;
+            }
+
+            .partners-title {
+                font-size: 2.2rem;
+            }
+            
+            .partners-container {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+                padding: 10px;
+            }
+            
+            .partner-card {
+                padding: 20px;
+            }
+            
+            .partner-logo {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .partner-content h3 {
+                font-size: 1.3rem;
+            }
+
+            .mission-vision-title {
+                font-size: 2.2rem;
             }
             
             .mission-vision-container {
@@ -1455,71 +1252,231 @@
                 gap: 30px;
             }
             
-            .affiliated-container {
-                grid-template-columns: 1fr;
-                gap: 20px;
+            .card-body {
+                padding: 25px;
             }
             
+            .card-header {
+                padding: 25px;
+            }
+            
+            .card-header h3 {
+                font-size: 1.5rem;
+            }
+            
+            .card-body p {
+                font-size: 1rem;
+            }
+
+            .affiliated-title {
+                font-size: 2.2rem;
+            }
+            
+            .affiliated-container {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 20px;
+                padding: 10px;
+            }
+            
+            .affiliated-card {
+                padding: 20px;
+            }
+            
+            .affiliated-logo {
+                width: 100px;
+                height: 100px;
+                margin-bottom: 20px;
+            }
+            
+            .logo-placeholder {
+                width: 60px;
+                height: 60px;
+                font-size: 2rem;
+            }
+            
+            .affiliated-content h3 {
+                font-size: 1.3rem;
+            }
+
+            /* Adjust image height for tablet */
+            .item-img {
+                height: 300px; /* Bahagyang mas mababa para sa tablet */
+            }
+            
+            .carousel-slide {
+                min-width: calc(50% - 15px);
+            }
+            
+            .carousel-container {
+                padding: 0 50px;
+            }
+            
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            /* Bank partners mobile adjustments */
             .bank-partners-container {
                 grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
                 gap: 20px;
+                padding: 10px;
+            }
+            
+            .bank-logo {
+                height: 100px;
+                padding: 15px;
             }
         }
 
         @media screen and (max-width: 480px) {
+            .logo-circle {
+                width: 100px;
+                height: 100px;
+                margin-top: -10px;
+            }
+
+            .logo-circle img {
+                width: 70px;
+            }
+
+            .brand-name {
+                font-size: 0.8rem;
+                max-width: 120px;
+                line-height: 1.1;
+            }
+
+            /* Footer mobile adjustments for very small screens */
+            .footer-col {
+                flex: 0 0 100%;
+                min-width: 100%;
+            }
+
+            .site-footer {
+                padding: 30px 0;
+            }
+
+            /* Hero Carousel very small screens */
             .hero-carousel-section {
                 min-height: 60vh;
             }
-            
+
             .hero-text-content h1 {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
-            
+
             .hero-text-content p {
                 font-size: 1.8rem;
             }
-            
-            .hero-carousel-slide img {
-                width: 250px;
-                height: 250px;
-            }
-            
+
             .hero-carousel-nav {
-                flex-direction: column;
-                gap: 20px;
-                bottom: 10px;
+                bottom: 15px;
+                gap: 15px;
+            }
+
+            .hero-carousel-btn {
+                width: 35px;
+                height: 35px;
+            }
+
+            /* Carousel adjustments for very small screens */
+            .carousel-slide {
+                min-width: 100%;
             }
             
-            .sales-title {
-                font-size: 2.2rem;
-            }
-            
-            .carousel-container {
-                padding: 40px;
+            .item-img {
+                height: 250px; /* Slightly smaller for mobile but still larger than original */
             }
             
             .carousel-slide {
                 min-width: 100%;
             }
             
-            .item-img {
-                height: 250px;
+            .carousel-container {
+                padding: 0 40px;
             }
-            
+
+            /* Awards section very small screens */
+            .award-header {
+                padding: 20px;
+            }
+
+            .award-body {
+                padding: 20px;
+            }
+
+            .award-header h3 {
+                font-size: 1.3rem;
+            }
+
             .awards-title {
                 font-size: 1.8rem;
             }
+
+            .award-header {
+                min-height: 140px;
+            }
+
+            .award-main-image {
+                max-width: 100px;
+                max-height: 100px;
+            }
+
+            .award-header h3 {
+                font-size: 1.2rem;
+            }
+
+            .award-body {
+                padding: 20px;
+            }
+
+            .partners-title {
+                font-size: 1.8rem;
+            }
             
+            .partners-container {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .partner-card {
+                margin: 0 10px;
+            }
+
             .mission-vision-title {
                 font-size: 1.8rem;
             }
             
+            .card-body {
+                padding: 20px;
+            }
+            
+            .card-header {
+                padding: 20px;
+            }
+            
+            .highlight {
+                padding: 15px;
+            }
+
             .affiliated-title {
                 font-size: 1.8rem;
             }
             
+            .affiliated-container {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .affiliated-card {
+                margin: 0 10px;
+            }
+
+            /* Bank partners very small screens */
             .bank-partners-title {
                 font-size: 1.8rem;
+                margin-bottom: 30px;
             }
             
             .bank-partners-container {
@@ -1608,20 +1565,15 @@
     <?php include 'navbar.php'; ?>
 
     <div class="main-content">
-        <!-- ENHANCED Hero Carousel Section -->
+        <!-- Hero Carousel Section -->
         <div class="hero-carousel-section">
             <div class="hero-carousel-container">
-                <div class="slide-progress">
-                    <div class="progress-bar"></div>
-                </div>
-                <div class="carousel-loader" id="heroLoader"></div>
                 <div class="hero-carousel-track" id="heroCarouselTrack">
                     <!-- Slide 1 -->
                     <div class="hero-carousel-slide active">
                         <div class="hero-text-content">
                             <h1>Making Your Dreams</h1>
                             <p>Turn Into Reality</p>
-                            <a href="#contact" class="hero-cta-button">Start Your Journey <i class="fas fa-arrow-right"></i></a>
                         </div>
                         <img src="img/logo.png" alt="Hope Account Specialist">
                     </div>
@@ -1631,7 +1583,6 @@
                         <div class="hero-text-content">
                             <h1>Expert Financial</h1>
                             <p>Solutions For You</p>
-                            <a href="#services" class="hero-cta-button">Our Services <i class="fas fa-arrow-right"></i></a>
                         </div>
                         <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Financial Planning">
                     </div>
@@ -1641,7 +1592,6 @@
                         <div class="hero-text-content">
                             <h1>Trusted Accounting</h1>
                             <p>Partners Since 2010</p>
-                            <a href="#about" class="hero-cta-button">About Us <i class="fas fa-arrow-right"></i></a>
                         </div>
                         <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Team Collaboration">
                     </div>
@@ -1651,7 +1601,6 @@
                         <div class="hero-text-content">
                             <h1>Your Success</h1>
                             <p>Is Our Priority</p>
-                            <a href="#contact" class="hero-cta-button">Contact Us <i class="fas fa-arrow-right"></i></a>
                         </div>
                         <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Business Growth">
                     </div>
@@ -1746,24 +1695,17 @@
             </div>
         </div>
 
-        <!-- ENHANCED SALES Section - PAST SALES HISTORY -->
+        <!-- SALES Section - PAST SALES HISTORY -->
         <div class="sales-section">
             <h2 class="sales-title">PAST SALES HISTORY</h2>
-            <div class="carousel-counter" id="carouselCounter">1/7</div>
             
             <div class="carousel-container">
-                <div class="carousel-loader" id="salesLoader"></div>
                 <div class="carousel-track" id="carouselTrack">
                     <!-- Vehicle Sale 1 -->
                     <div class="carousel-slide">
                         <div class="sales-item">
                             <div class="item-img">
                                 <img src="img/pastsales.jpg" alt="Toyota Fortuner">
-                            </div>
-                            <div class="sale-info">
-                                <h3>Toyota Fortuner</h3>
-                                <p>2023 Model • Luxury SUV</p>
-                                <span class="sale-price">₱2,150,000</span>
                             </div>
                         </div>
                     </div>
@@ -1774,11 +1716,6 @@
                             <div class="item-img">
                                 <img src="img/pastsales1.jpg" alt="Honda Civic">
                             </div>
-                            <div class="sale-info">
-                                <h3>Honda Civic</h3>
-                                <p>2022 Model • Executive Sedan</p>
-                                <span class="sale-price">₱1,450,000</span>
-                            </div>
                         </div>
                     </div>
                     
@@ -1787,11 +1724,6 @@
                         <div class="sales-item">
                             <div class="item-img">
                                 <img src="img/pastsales2.jpg" alt="Residential Lot">
-                            </div>
-                            <div class="sale-info">
-                                <h3>Residential Lot</h3>
-                                <p>200 sqm • Prime Location</p>
-                                <span class="sale-price">₱3,800,000</span>
                             </div>
                         </div>
                     </div>
@@ -1802,11 +1734,6 @@
                             <div class="item-img">
                                 <img src="img/pastsales3.jpg" alt="Ford Ranger">
                             </div>
-                            <div class="sale-info">
-                                <h3>Ford Ranger</h3>
-                                <p>2023 Model • Pickup Truck</p>
-                                <span class="sale-price">₱1,850,000</span>
-                            </div>
                         </div>
                     </div>
                     
@@ -1815,11 +1742,6 @@
                         <div class="sales-item">
                             <div class="item-img">
                                 <img src="img/pastsales4.jpg" alt="Agricultural Land">
-                            </div>
-                            <div class="sale-info">
-                                <h3>Agricultural Land</h3>
-                                <p>5 hectares • Fertile Soil</p>
-                                <span class="sale-price">₱8,500,000</span>
                             </div>
                         </div>
                     </div>
@@ -1830,11 +1752,6 @@
                             <div class="item-img">
                                 <img src="img/pastsales5.jpg" alt="Mitsubishi Montero">
                             </div>
-                            <div class="sale-info">
-                                <h3>Mitsubishi Montero</h3>
-                                <p>2023 Model • Premium SUV</p>
-                                <span class="sale-price">₱2,050,000</span>
-                            </div>
                         </div>
                     </div>
 
@@ -1842,12 +1759,7 @@
                     <div class="carousel-slide">
                         <div class="sales-item">
                             <div class="item-img">
-                                <img src="img/pastsales6.jpg" alt="Hyundai Tucson">
-                            </div>
-                            <div class="sale-info">
-                                <h3>Hyundai Tucson</h3>
-                                <p>2023 Model • Crossover SUV</p>
-                                <span class="sale-price">₱1,650,000</span>
+                                <img src="img/pastsales6.jpg" alt="Mitsubishi Montero">
                             </div>
                         </div>
                     </div>
@@ -2256,21 +2168,19 @@
     <?php include 'footer.php'; ?>
 
     <script>
-        // Enhanced Hero Carousel Functionality
+        // Hero Carousel Functionality
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize Hero Carousel
             const heroTrack = document.getElementById('heroCarouselTrack');
             const heroPrevBtn = document.getElementById('heroPrevBtn');
             const heroNextBtn = document.getElementById('heroNextBtn');
             const heroDotsContainer = document.getElementById('heroCarouselDots');
-            const heroLoader = document.getElementById('heroLoader');
             
             if (!heroTrack) return;
             
             const heroSlides = Array.from(heroTrack.children);
             let heroCurrentIndex = 0;
             let heroAutoPlayInterval;
-            let heroProgressInterval;
             
             // Create dots for hero carousel
             function createHeroDots() {
@@ -2285,23 +2195,8 @@
                 }
             }
             
-            // Show loading animation
-            function showHeroLoader() {
-                heroLoader.style.display = 'block';
-                // Reset animation
-                const afterElement = document.createElement('div');
-                heroLoader.innerHTML = '';
-                heroLoader.appendChild(afterElement);
-                afterElement.style.animation = 'loading 3s linear';
-                setTimeout(() => {
-                    heroLoader.style.display = 'none';
-                }, 3000);
-            }
-            
             // Update hero carousel position
             function updateHeroCarousel() {
-                showHeroLoader();
-                
                 // Remove active class from all slides
                 heroSlides.forEach(slide => {
                     slide.classList.remove('active');
@@ -2310,16 +2205,7 @@
                 // Add active class to current slide
                 heroSlides[heroCurrentIndex].classList.add('active');
                 
-                // Reset progress bar
-                const progressBar = document.querySelector('.progress-bar');
-                if (progressBar) {
-                    progressBar.style.width = '0%';
-                    void progressBar.offsetWidth;
-                    progressBar.style.width = '100%';
-                    progressBar.style.transition = 'width 5s linear';
-                }
-                
-                // Move track with smooth animation
+                // Move track
                 const slideWidth = heroSlides[0].offsetWidth;
                 const offset = -heroCurrentIndex * slideWidth;
                 heroTrack.style.transform = `translateX(${offset}px)`;
@@ -2353,7 +2239,6 @@
             
             function resetHeroAutoPlay() {
                 clearInterval(heroAutoPlayInterval);
-                clearInterval(heroProgressInterval);
                 startHeroAutoPlay();
             }
             
@@ -2368,104 +2253,34 @@
                 resetHeroAutoPlay();
             });
             
-            // Touch/swipe support for hero carousel
-            let touchStartX = 0;
-            let touchEndX = 0;
-            
-            heroTrack.addEventListener('touchstart', e => {
-                touchStartX = e.changedTouches[0].screenX;
-            });
-            
-            heroTrack.addEventListener('touchend', e => {
-                touchEndX = e.changedTouches[0].screenX;
-                handleHeroSwipe();
-            });
-            
-            function handleHeroSwipe() {
-                const swipeThreshold = 50;
-                const diff = touchStartX - touchEndX;
-                
-                if (Math.abs(diff) > swipeThreshold) {
-                    if (diff > 0) {
-                        nextHeroSlide();
-                    } else {
-                        prevHeroSlide();
-                    }
-                    resetHeroAutoPlay();
-                }
-            }
-            
             // Pause auto-play on hover
-            heroTrack.addEventListener('mouseenter', () => {
-                clearInterval(heroAutoPlayInterval);
-                clearInterval(heroProgressInterval);
-                const progressBar = document.querySelector('.progress-bar');
-                if (progressBar) {
-                    progressBar.style.transition = 'none';
-                    const computedStyle = window.getComputedStyle(progressBar);
-                    progressBar.style.width = computedStyle.width;
-                }
-            });
-            
-            heroTrack.addEventListener('mouseleave', () => {
-                startHeroAutoPlay();
-                const progressBar = document.querySelector('.progress-bar');
-                if (progressBar) {
-                    progressBar.style.transition = 'width 5s linear';
-                    void progressBar.offsetWidth;
-                    progressBar.style.width = '100%';
-                }
-            });
+            heroTrack.addEventListener('mouseenter', () => clearInterval(heroAutoPlayInterval));
+            heroTrack.addEventListener('mouseleave', startHeroAutoPlay);
             
             // Handle window resize
-            let resizeTimeout;
-            window.addEventListener('resize', () => {
-                clearTimeout(resizeTimeout);
-                resizeTimeout = setTimeout(() => {
-                    updateHeroCarousel();
-                }, 250);
-            });
+            window.addEventListener('resize', updateHeroCarousel);
             
             // Initialize hero carousel
             createHeroDots();
-            updateHeroCarousel();
             startHeroAutoPlay();
 
-            // ENHANCED Sales Carousel Functionality
+            // Sales Carousel Functionality
             const track = document.getElementById('carouselTrack');
             const prevBtn = document.getElementById('prevBtn');
             const nextBtn = document.getElementById('nextBtn');
             const dotsContainer = document.getElementById('carouselDots');
-            const counter = document.getElementById('carouselCounter');
-            const salesLoader = document.getElementById('salesLoader');
             
             if (!track) return;
             
             const slides = Array.from(track.children);
             let currentIndex = 0;
-            let slidesPerView = 3;
-            let isTransitioning = false;
-            
-            // Show loading animation for sales carousel
-            function showSalesLoader() {
-                salesLoader.style.display = 'block';
-                // Reset animation
-                const afterElement = document.createElement('div');
-                salesLoader.innerHTML = '';
-                salesLoader.appendChild(afterElement);
-                afterElement.style.animation = 'loading 0.6s linear';
-                setTimeout(() => {
-                    salesLoader.style.display = 'none';
-                }, 600);
-            }
+            let slidesPerView = 3; // Default for desktop
             
             // Update slides per view based on screen size
             function updateSlidesPerView() {
                 if (window.innerWidth <= 480) {
                     slidesPerView = 1;
                 } else if (window.innerWidth <= 768) {
-                    slidesPerView = 2;
-                } else if (window.innerWidth <= 1200) {
                     slidesPerView = 2;
                 } else {
                     slidesPerView = 3;
@@ -2486,25 +2301,10 @@
                 }
             }
             
-            // Update counter
-            function updateCounter() {
-                const currentSlide = Math.floor(currentIndex / slidesPerView) + 1;
-                const totalSlides = Math.ceil(slides.length / slidesPerView);
-                counter.textContent = `${currentSlide}/${totalSlides}`;
-            }
-            
-            // Update carousel position with smooth transition
+            // Update carousel position
             function updateCarousel() {
-                if (isTransitioning) return;
-                
-                isTransitioning = true;
-                showSalesLoader();
-                
                 const slideWidth = slides[0].offsetWidth;
-                const gap = 30;
-                const offset = -currentIndex * (slideWidth + gap);
-                
-                track.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                const offset = -currentIndex * (slideWidth + 30); // 30px is the gap
                 track.style.transform = `translateX(${offset}px)`;
                 
                 // Update dots
@@ -2513,13 +2313,6 @@
                 dots.forEach((dot, index) => {
                     dot.classList.toggle('active', index === activeDotIndex);
                 });
-                
-                updateCounter();
-                
-                // Reset transitioning state
-                setTimeout(() => {
-                    isTransitioning = false;
-                }, 600);
             }
             
             function goToSlide(index) {
@@ -2544,16 +2337,7 @@
                 if (currentIndex < maxIndex) {
                     currentIndex += 1;
                 } else {
-                    // Add bounce effect when reaching the end
-                    track.style.transition = 'transform 0.3s ease';
-                    track.style.transform = `translateX(-${currentIndex * (slides[0].offsetWidth + 30)}px) scale(0.98)`;
-                    setTimeout(() => {
-                        track.style.transition = 'transform 0.3s ease';
-                        track.style.transform = `translateX(-${currentIndex * (slides[0].offsetWidth + 30)}px) scale(1)`;
-                        currentIndex = 0;
-                        setTimeout(updateCarousel, 300);
-                    }, 300);
-                    return;
+                    currentIndex = 0; // Loop back to start
                 }
                 updateCarousel();
             }
@@ -2564,139 +2348,48 @@
                 if (currentIndex > 0) {
                     currentIndex -= 1;
                 } else {
-                    // Add bounce effect when reaching the start
-                    track.style.transition = 'transform 0.3s ease';
-                    track.style.transform = 'translateX(0px) scale(0.98)';
-                    setTimeout(() => {
-                        track.style.transition = 'transform 0.3s ease';
-                        track.style.transform = 'translateX(0px) scale(1)';
-                        currentIndex = totalSlides - slidesPerView;
-                        setTimeout(updateCarousel, 300);
-                    }, 300);
-                    return;
+                    const maxIndex = totalSlides - slidesPerView;
+                    currentIndex = maxIndex; // Loop to end
                 }
                 updateCarousel();
             }
             
             // Event listeners
-            nextBtn.addEventListener('click', () => {
-                if (!isTransitioning) nextSlide();
-            });
-            
-            prevBtn.addEventListener('click', () => {
-                if (!isTransitioning) prevSlide();
-            });
-            
-            // Keyboard navigation
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowLeft') {
-                    e.preventDefault();
-                    if (!isTransitioning) prevSlide();
-                } else if (e.key === 'ArrowRight') {
-                    e.preventDefault();
-                    if (!isTransitioning) nextSlide();
-                }
-            });
-            
-            // Touch/swipe support for sales carousel
-            let salesTouchStartX = 0;
-            
-            track.addEventListener('touchstart', e => {
-                salesTouchStartX = e.changedTouches[0].screenX;
-            });
-            
-            track.addEventListener('touchend', e => {
-                if (isTransitioning) return;
-                
-                const salesTouchEndX = e.changedTouches[0].screenX;
-                const salesDiff = salesTouchStartX - salesTouchEndX;
-                const swipeThreshold = 50;
-                
-                if (Math.abs(salesDiff) > swipeThreshold) {
-                    if (salesDiff > 0) {
-                        nextSlide();
-                    } else {
-                        prevSlide();
-                    }
-                }
-            });
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
             
             // Auto-play functionality
-            let autoPlayInterval = setInterval(() => {
-                if (!isTransitioning && !track.matches(':hover')) {
-                    nextSlide();
-                }
-            }, 5000);
+            let autoPlayInterval = setInterval(nextSlide, 4000);
             
             // Pause auto-play on hover
             track.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
             track.addEventListener('mouseleave', () => {
-                autoPlayInterval = setInterval(() => {
-                    if (!isTransitioning) {
-                        nextSlide();
-                    }
-                }, 5000);
+                autoPlayInterval = setInterval(nextSlide, 4000);
             });
             
             // Handle window resize
             window.addEventListener('resize', () => {
-                clearTimeout(resizeTimeout);
-                resizeTimeout = setTimeout(() => {
-                    updateSlidesPerView();
-                    createDots();
-                    updateCarousel();
-                    updateHeroCarousel();
-                }, 250);
+                updateSlidesPerView();
+                createDots();
+                updateCarousel();
+                updateHeroCarousel();
             });
             
             // Initialize sales carousel
             updateSlidesPerView();
             createDots();
-            updateCounter();
             updateCarousel();
 
-            // Add hover effect to sales items
-            document.querySelectorAll('.sales-item').forEach(item => {
-                item.addEventListener('mouseenter', function() {
-                    if (!isTransitioning) {
-                        this.style.transform = 'translateY(-15px) scale(1.02)';
-                    }
+            document.querySelectorAll('.partner-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    const logo = this.querySelector('.partner-logo');
+                    logo.style.transform = 'scale(1.05)';
                 });
                 
-                item.addEventListener('mouseleave', function() {
-                    this.style.transform = '';
+                card.addEventListener('mouseleave', function() {
+                    const logo = this.querySelector('.partner-logo');
+                    logo.style.transform = 'scale(1)';
                 });
-            });
-
-            // Add intersection observer for animations
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, observerOptions);
-            
-            // Observe carousel slides
-            slides.forEach(slide => {
-                slide.style.opacity = '0';
-                slide.style.transform = 'translateY(30px)';
-                slide.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(slide);
-            });
-
-            // Observe hero slides
-            heroSlides.forEach(slide => {
-                slide.style.opacity = '0';
-                slide.style.transform = 'translateX(50px)';
-                slide.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-                observer.observe(slide);
             });
         });
     </script>
