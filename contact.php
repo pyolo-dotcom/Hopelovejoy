@@ -651,7 +651,7 @@
                         <div class="info-content">
                             <h3>Email Address</h3>
                             <p>
-                                <a href="mailto:hopeacct2022@gmail.com">hopeacct2022@gmail.com</a>
+                                <a href="mailto:hopeacct2022@gmail.com">Hopeacct2022@gmail.com</a>
                             </p>
                         </div>
                     </div>
