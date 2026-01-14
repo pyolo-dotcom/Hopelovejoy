@@ -1801,8 +1801,6 @@
                         }
                     }
                     
-                    // Close connection
-                    mysqli_close($conn);
                     ?>
                 </div>
                 
@@ -1825,7 +1823,7 @@
                             <!-- Background Image -->
                             <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Accounting Background" class="award-image-bg">
                             <!-- Main Award Image -->
-                            <img src="img/awards/trophy.png" alt="Trophy Award" class="award-main-image">
+                            <img src="" alt="Trophy Award" class="award-main-image">
                             <div class="award-header-content">
                                 <h3>Excellence in Accounting</h3>
                                 <span class="award-year">2023</span>
@@ -1851,7 +1849,7 @@
                     <div class="award-header">
                         <div class="award-image-container">
                             <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Business Support Background" class="award-image-bg">
-                            <img src="img/awards/medal.png" alt="Medal Award" class="award-main-image">
+                            <img src="" alt="Medal Award" class="award-main-image">
                             <div class="award-header-content">
                                 <h3>Best Small Business Support</h3>
                                 <span class="award-year">2022</span>
@@ -1877,7 +1875,7 @@
                     <div class="award-header">
                         <div class="award-image-container">
                             <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Customer Service Background" class="award-image-bg">
-                            <img src="img/awards/star.png" alt="Star Award" class="award-main-image">
+                            <img src="" alt="Star Award" class="award-main-image">
                             <div class="award-header-content">
                                 <h3>Client Service Excellence</h3>
                                 <span class="award-year">2023</span>
@@ -1903,7 +1901,7 @@
                     <div class="award-header">
                         <div class="award-image-container">
                             <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Technology Background" class="award-image-bg">
-                            <img src="img/awards/gem.png" alt="Gem Award" class="award-main-image">
+                            <img src="" alt="Gem Award" class="award-main-image">
                             <div class="award-header-content">
                                 <h3>Innovation in Financial Tech</h3>
                                 <span class="award-year">2021</span>
@@ -1929,7 +1927,7 @@
                     <div class="award-header">
                         <div class="award-image-container">
                             <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Compliance Background" class="award-image-bg">
-                            <img src="img/awards/shield.png" alt="Shield Award" class="award-main-image">
+                            <img src="" alt="Shield Award" class="award-main-image">
                             <div class="award-header-content">
                                 <h3>Ethics & Compliance Award</h3>
                                 <span class="award-year">2022</span>
@@ -1955,7 +1953,7 @@
                     <div class="award-header">
                         <div class="award-image-container">
                             <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Community Background" class="award-image-bg">
-                            <img src="img/awards/heart.png" alt="Heart Award" class="award-main-image">
+                            <img src="" alt="Heart Award" class="award-main-image">
                             <div class="award-header-content">
                                 <h3>Community Service Recognition</h3>
                                 <span class="award-year">2023</span>
@@ -1982,58 +1980,26 @@
         <div class="bank-partners-section">
             <h2 class="bank-partners-title">AFFILIATED BANKS</h2>
 
+            <?php
+            // Include database connection
+            require_once 'config.php';
+            
+            // Query to fetch active banks
+            $banks_sql = "SELECT * FROM affiliated_banks WHERE is_active = 1 ORDER BY display_order ASC, name ASC";
+            $banks_result = mysqli_query($conn, $banks_sql);
+            ?>
+            
             <div class="bank-partners-container">
-                <div class="bank-logo">
-                    <img src="img/bdo.jpg.webp" alt="BDO">
-                </div>
-
-                <div class="bank-logo">
-                    <img src="img/bpi.jpg" alt="BPI">
-                </div>
-
-                <div class="bank-logo">
-                    <img src="img/cbs.jpg" alt="CBS">
-                </div>
-
-                <div class="bank-logo">
-                    <img src="img/chinabank.jpg" alt="China Bank">
-                </div>
-
-                <div class="bank-logo">
-                    <img src="img/eastwest.jpg" alt="EastWest Bank">
-                </div>
-
-                <div class="bank-logo">
-                    <img src="img/ldb.png" alt="LDB">
-                </div>
-
-                <div class="bank-logo">
-                    <img src="img/maybank-logo.svg" alt="Maybank">
-                </div>
-
-                <div class="bank-logo">
-                    <img src="img/metrobank.png" alt="Metrobank">
-                </div>
-
-                <div class="bank-logo">
-                    <img src="img/pbcom.png" alt="PBCOM">
-                </div>
-
-                <div class="bank-logo">
-                    <img src="img/psbank.png" alt="PSBank">
-                </div>
-                
-                <div class="bank-logo">
-                    <img src="img/rcbc.png" alt="RCBC">
-                </div>
-
-                <div class="bank-logo">
-                    <img src="img/securitybank.png" alt="Security Bank">
-                </div>
-
-                <div class="bank-logo">
-                    <img src="img/unionbank.png" alt="UnionBank">
-                </div>
+                <?php if (mysqli_num_rows($banks_result) > 0): ?>
+                    <?php while ($bank = mysqli_fetch_assoc($banks_result)): ?>
+                        <div class="bank-logo">
+                            <img src="<?php echo $bank['logo_path']; ?>" 
+                                alt="<?php echo htmlspecialchars($bank['name']); ?>"
+                                onerror="this.src='https://via.placeholder.com/150x100?text=Bank+Logo'">
+                        </div>
+                    <?php endwhile; ?>
+                <?php else: ?>
+                <?php endif; ?>
             </div>
         </div>
 
@@ -2041,57 +2007,23 @@
         <div class="bank-partners-section">
             <h2 class="bank-partners-title">AFFILIATED CAR COMPANIES</h2>
 
+            <?php
+            // Query to fetch active car companies
+            $cars_sql = "SELECT * FROM affiliated_cars WHERE is_active = 1 ORDER BY display_order ASC, name ASC";
+            $cars_result = mysqli_query($conn, $cars_sql);
+            ?>
+            
             <div class="bank-partners-container">
-                <div class="bank-logo">
-                    <img src="img/byd.svg" alt="BYD">
-                </div>
-                <div class="bank-logo">
-                    <img src="img/Chevrolet.jpg" alt="Chevrolet">
-                </div>
-
-                <div class="bank-logo">
-                    <img src="img/Ford.png" alt="Ford">
-                </div>
-
-                <div class="bank-logo">
-                    <img src="img/Geely.webp" alt="Geely">
-                </div>
-
-                <div class="bank-logo">
-                    <img src="img/honda.webp" alt="Honda">
-                </div>
-
-                <div class="bank-logo">
-                    <img src="img/hyundai.png" alt="Hyundai">
-                </div>
-
-                <div class="bank-logo">
-                    <img src="img/isuzu.svg" alt="Isuzu">
-                </div>
-
-                <div class="bank-logo">
-                    <img src="img/kia.png" alt="Kia">
-                </div>
-
-                <div class="bank-logo">
-                    <img src="img/mg.png" alt="MG">
-                </div>
-
-                <div class="bank-logo">
-                    <img src="img/nissan.jpg" alt="Nissan">
-                </div>
-
-                <div class="bank-logo">
-                    <img src="img/subaru.png" alt="Subaru">
-                </div>
-                
-                <div class="bank-logo">
-                    <img src="img/susuki.svg" alt="Suzuki">
-                </div>
-
-                <div class="bank-logo">
-                    <img src="img/toyota.png" alt="Toyota">
-                </div>
+                <?php if (mysqli_num_rows($cars_result) > 0): ?>
+                    <?php while ($car = mysqli_fetch_assoc($cars_result)): ?>
+                        <div class="bank-logo">
+                            <img src="<?php echo $car['logo_path']; ?>" 
+                                alt="<?php echo htmlspecialchars($car['name']); ?>"
+                                onerror="this.src='https://via.placeholder.com/150x100?text=Car+Logo'">
+                        </div>
+                    <?php endwhile; ?>
+                <?php else: ?>
+                <?php endif; ?>
             </div>
         </div>
 
@@ -2100,107 +2032,59 @@
             <h2 class="affiliated-title">AFFILIATED HOUSES</h2>
             
             <div class="affiliated-container">
-                <!-- Grand Victoria -->
-                <div class="affiliated-card">
-                    <div class="affiliated-logo">
-                        <!-- PALITAN ANG ICON NG PICTURE -->
-                        <img src="img/gv.webp" alt="Grand Victoria Logo" class="affiliated-logo-img">
-                    </div>
-                    <div class="affiliated-content">
-                        <h3>Grand Victoria</h3>
-                        <span class="affiliated-category">Luxury Residential</span>
-                        <p>Premium luxury residential development offering world-class amenities and sophisticated living spaces for discerning homeowners.</p>
-                        <div class="affiliated-years">
-                            <i class="fas fa-handshake"></i>
-                            <span>Affiliated since 2018</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Bella Vita -->
-                <div class="affiliated-card">
-                    <div class="affiliated-logo">
-                        <!-- PALITAN ANG ICON NG PICTURE -->
-                        <img src="img/bv.jpg" alt="Bella Vita Logo" class="affiliated-logo-img">
-                    </div>
-                    <div class="affiliated-content">
-                        <h3>Bella Vita</h3>
-                        <span class="affiliated-category">Condominium</span>
-                        <p>Modern condominium living with Italian-inspired architecture, offering comfort and convenience in prime locations.</p>
-                        <div class="affiliated-years">
-                            <i class="fas fa-handshake"></i>
-                            <span>Affiliated since 2019</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Borland -->
-                <div class="affiliated-card">
-                    <div class="affiliated-logo">
-                        <!-- PALITAN ANG ICON NG PICTURE -->
-                        <img src="img/bl.jpg" alt="Borland Logo" class="affiliated-logo-img">
-                    </div>
-                    <div class="affiliated-content">
-                        <h3>Borland</h3>
-                        <span class="affiliated-category">Commercial & Residential</span>
-                        <p>Diversified property developer specializing in both commercial spaces and residential communities with innovative designs.</p>
-                        <div class="affiliated-years">
-                            <i class="fas fa-handshake"></i>
-                            <span>Affiliated since 2020</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Camella -->
-                <div class="affiliated-card">
-                    <div class="affiliated-logo">
-                        <!-- PALITAN ANG ICON NG PICTURE -->
-                        <img src="img/camella.png" alt="Camella Logo" class="affiliated-logo-img">
-                    </div>
-                    <div class="affiliated-content">
-                        <h3>Camella</h3>
-                        <span class="affiliated-category">Township Development</span>
-                        <p>One of the country's leading township developers, creating complete communities with homes, amenities, and facilities.</p>
-                        <div class="affiliated-years">
-                            <i class="fas fa-handshake"></i>
-                            <span>Affiliated since 2015</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Ajoya -->
-                <div class="affiliated-card">
-                    <div class="affiliated-logo">
-                        <!-- PALITAN ANG ICON NG PICTURE -->
-                        <img src="img/ajoya.jpg" alt="Ajoya Logo" class="affiliated-logo-img">
-                    </div>
-                    <div class="affiliated-content">
-                        <h3>Ajoya</h3>
-                        <span class="affiliated-category">Eco-Friendly Homes</span>
-                        <p>Sustainable and eco-friendly residential communities that promote green living and environmental consciousness.</p>
-                        <div class="affiliated-years">
-                            <i class="fas fa-handshake"></i>
-                            <span>Affiliated since 2021</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Deca Homes -->
-                <div class="affiliated-card">
-                    <div class="affiliated-logo">
-                        <!-- PALITAN ANG ICON NG PICTURE -->
-                        <img src="img/dh.jpg" alt="Deca Homes Logo" class="affiliated-logo-img">
-                    </div>
-                    <div class="affiliated-content">
-                        <h3>Deca Homes</h3>
-                        <span class="affiliated-category">Affordable Housing</span>
-                        <p>Providing quality affordable housing solutions for Filipino families, making home ownership accessible to more people.</p>
-                        <div class="affiliated-years">
-                            <i class="fas fa-handshake"></i>
-                            <span>Affiliated since 2017</span>
-                        </div>
-                    </div>
-                </div>
+                <?php
+                // Include database connection
+                require_once 'config.php';
+                
+                // Query to fetch active affiliated houses
+                $affiliated_sql = "SELECT * FROM affiliated_houses WHERE is_active = 1 ORDER BY display_order ASC, name ASC";
+                $affiliated_result = mysqli_query($conn, $affiliated_sql);
+                
+                if (mysqli_num_rows($affiliated_result) > 0) {
+                    while ($affiliated = mysqli_fetch_assoc($affiliated_result)) {
+                        $name = htmlspecialchars($affiliated['name']);
+                        $category = htmlspecialchars($affiliated['category']);
+                        $description = htmlspecialchars($affiliated['description']);
+                        $image_path = $affiliated['image_path'];
+                        $years = htmlspecialchars($affiliated['years_affiliated']);
+                        
+                        echo '
+                        <div class="affiliated-card">
+                            <div class="affiliated-logo">
+                                <img src="' . $image_path . '" alt="' . $name . ' Logo" class="affiliated-logo-img"
+                                    onerror="this.src=\'https://via.placeholder.com/100x100?text=' . urlencode($name) . '\'">
+                            </div>
+                            <div class="affiliated-content">
+                                <h3>' . $name . '</h3>
+                                <span class="affiliated-category">' . $category . '</span>
+                                <p>' . $description . '</p>
+                                <div class="affiliated-years">
+                                    <i class="fas fa-handshake"></i>
+                                    <span>' . $years . '</span>
+                                </div>
+                            </div>
+                        </div>';
+                    }
+                } else {
+                    foreach ($default_houses as $house) {
+                        echo '
+                        <div class="affiliated-card">
+                            <div class="affiliated-logo">
+                                <img src="' . $house['image'] . '" alt="' . $house['name'] . ' Logo" class="affiliated-logo-img">
+                            </div>
+                            <div class="affiliated-content">
+                                <h3>' . $house['name'] . '</h3>
+                                <span class="affiliated-category">' . $house['category'] . '</span>
+                                <p>' . $house['description'] . '</p>
+                                <div class="affiliated-years">
+                                    <i class="fas fa-handshake"></i>
+                                    <span>' . $house['years'] . '</span>
+                                </div>
+                            </div>
+                        </div>';
+                    }
+                }
+                ?>
             </div>
         </div>
 
