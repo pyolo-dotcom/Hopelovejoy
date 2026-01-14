@@ -1059,6 +1059,51 @@
             filter: grayscale(0%);
         }
 
+        .item-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .item-info h3 {
+            font-family: 'Roboto Serif', serif;
+            font-size: 1.2rem;
+            color: #2c2b29;
+            margin-bottom: 5px;
+        }
+
+        .item-category {
+            display: inline-block;
+            background: #eeb82e;
+            color: #2c2b29;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .item-description {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .item-price {
+            font-weight: 700;
+            color: #2c2b29;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .item-date {
+            color: #999;
+            font-size: 0.85rem;
+            font-style: italic;
+        }
+
         /* Mobile Responsive Styles */
         @media screen and (max-width: 768px) {
             .navbar {
@@ -1701,68 +1746,64 @@
             
             <div class="carousel-container">
                 <div class="carousel-track" id="carouselTrack">
-                    <!-- Vehicle Sale 1 -->
-                    <div class="carousel-slide">
-                        <div class="sales-item">
-                            <div class="item-img">
-                                <img src="img/pastsales.jpg" alt="Toyota Fortuner">
-                            </div>
-                        </div>
-                    </div>
+                    <?php
+                    // Include database connection
+                    require_once 'config.php';
                     
-                    <!-- Vehicle Sale 2 -->
-                    <div class="carousel-slide">
-                        <div class="sales-item">
-                            <div class="item-img">
-                                <img src="img/pastsales1.jpg" alt="Honda Civic">
-                            </div>
-                        </div>
-                    </div>
+                    // Query to fetch active past sales
+                    $sql = "SELECT * FROM past_sales WHERE is_active = 1 ORDER BY sale_date DESC";
+                    $result = mysqli_query($conn, $sql);
                     
-                    <!-- Land Sale 1 -->
-                    <div class="carousel-slide">
-                        <div class="sales-item">
-                            <div class="item-img">
-                                <img src="img/pastsales2.jpg" alt="Residential Lot">
-                            </div>
-                        </div>
-                    </div>
+                    if (mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $image_path = $row['image_path'];
+                            $title = htmlspecialchars($row['title']);
+                            $description = htmlspecialchars($row['description']);
+                            $price = $row['price'] ? '₱' . number_format($row['price'], 2) : '';
+                            $category = $row['category'];
+                            
+                            echo '
+                            <!-- Vehicle Sale -->
+                            <div class="carousel-slide">
+                                <div class="sales-item">
+                                    <div class="item-img">
+                                        <img src="' . $image_path . '" alt="' . $title . '" 
+                                            onerror="this.src=\'https://via.placeholder.com/400x350?text=No+Image\'">
+                                    </div>
+                                    <div class="item-info">
+                                        <h3>' . $title . '</h3>
+                                        <div class="item-category">' . ucfirst($category) . '</div>';
+                            
+                            if (!empty($description)) {
+                                echo '<p class="item-description">' . $description . '</p>';
+                            }
+                            
+                            if (!empty($price)) {
+                                echo '<div class="item-price">' . $price . '</div>';
+                            }
+                            
+                            echo '
+                                        <div class="item-date">' . date('M d, Y', strtotime($row['sale_date'])) . '</div>
+                                    </div>
+                                </div>
+                            </div>';
+                        }
+                    } else {                        
+                        foreach ($default_images as $image) {
+                            echo '
+                            <div class="carousel-slide">
+                                <div class="sales-item">
+                                    <div class="item-img">
+                                        <img src="' . $image . '" alt="Past Sale">
+                                    </div>
+                                </div>
+                            </div>';
+                        }
+                    }
                     
-                    <!-- Vehicle Sale 3 -->
-                    <div class="carousel-slide">
-                        <div class="sales-item">
-                            <div class="item-img">
-                                <img src="img/pastsales3.jpg" alt="Ford Ranger">
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Land Sale 2 -->
-                    <div class="carousel-slide">
-                        <div class="sales-item">
-                            <div class="item-img">
-                                <img src="img/pastsales4.jpg" alt="Agricultural Land">
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Vehicle Sale 4 -->
-                    <div class="carousel-slide">
-                        <div class="sales-item">
-                            <div class="item-img">
-                                <img src="img/pastsales5.jpg" alt="Mitsubishi Montero">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Vehicle Sale 5 -->
-                    <div class="carousel-slide">
-                        <div class="sales-item">
-                            <div class="item-img">
-                                <img src="img/pastsales6.jpg" alt="Mitsubishi Montero">
-                            </div>
-                        </div>
-                    </div>
+                    // Close connection
+                    mysqli_close($conn);
+                    ?>
                 </div>
                 
                 <button class="carousel-btn prev" id="prevBtn">&#10094;</button>
