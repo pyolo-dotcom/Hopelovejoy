@@ -25,8 +25,6 @@
                     <li><a href="team.php"><i class="fas fa-chevron-right"></i> Our Team</a></li>
                     <li><a href="services.php"><i class="fas fa-chevron-right"></i> Services</a></li>
                     <li><a href="contact.php"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
-                    <li><a href="privacy.php"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
-                    <li><a href="terms.php"><i class="fas fa-chevron-right"></i> Terms & Conditions</a></li>
                 </ul>
             </div>
 
@@ -62,14 +60,14 @@
                         <i class="fas fa-envelope"></i>
                         <div>
                             <strong>Email:</strong>
-                            <p>hopeacct2022@gmail.com</p>
+                            <p>Hopeacct2022@gmail.com</p>
                         </div>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-clock"></i>
                         <div>
                             <strong>Business Hours:</strong>
-                            <p>Mon-Fri: 9:00 AM - 6:00 PM<br>Sat: 9:00 AM - 1:00 PM</p>
+                            <p>Mon-Fri: 8:00 AM - 5:00 PM<br>Sat: TBA</p>
                         </div>
                     </div>
                 </div>
@@ -77,25 +75,6 @@
 
             <!-- Newsletter & Social -->
             <div class="footer-col">
-                <h4 class="footer-title">
-                    <i class="fas fa-newspaper"></i>
-                    <span>Stay Updated</span>
-                </h4>
-                <p class="newsletter-desc">Subscribe to our newsletter for financial tips and updates.</p>
-                
-                <form class="newsletter-form">
-                    <div class="input-group">
-                        <input type="email" placeholder="Enter your email" required>
-                        <button type="submit" class="subscribe-btn">
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </div>
-                    <div class="form-notice">
-                        <i class="fas fa-info-circle"></i>
-                        <small>We respect your privacy. Unsubscribe anytime.</small>
-                    </div>
-                </form>
-
                 <div class="social-section">
                     <h5>Follow Us</h5>
                     <div class="social-icons">
@@ -104,27 +83,7 @@
                            <i class="fab fa-facebook-f"></i>
                            <span class="tooltip">Facebook</span>
                         </a>
-                        <a href="https://twitter.com/hopeaccountspec" target="_blank" rel="noopener noreferrer" 
-                           class="social-icon twitter" aria-label="Twitter">
-                           <i class="fab fa-twitter"></i>
-                           <span class="tooltip">Twitter</span>
-                        </a>
-                        <a href="https://linkedin.com/company/hope-account-specialist" target="_blank" rel="noopener noreferrer" 
-                           class="social-icon linkedin" aria-label="LinkedIn">
-                           <i class="fab fa-linkedin-in"></i>
-                           <span class="tooltip">LinkedIn</span>
-                        </a>
-                        <a href="https://instagram.com/hopeaccountspecialist" target="_blank" rel="noopener noreferrer" 
-                           class="social-icon instagram" aria-label="Instagram">
-                           <i class="fab fa-instagram"></i>
-                           <span class="tooltip">Instagram</span>
-                        </a>
-                        <a href="https://youtube.com/c/HopeAccountSpecialist" target="_blank" rel="noopener noreferrer" 
-                           class="social-icon youtube" aria-label="YouTube">
-                           <i class="fab fa-youtube"></i>
-                           <span class="tooltip">YouTube</span>
-                        </a>
-                        <a href="mailto:hopeacct2022@gmail.com" class="social-icon email" aria-label="Email">
+                        <a href="mailto:Hopeacct2022@gmail.com" class="social-icon email" aria-label="Email">
                            <i class="fas fa-envelope"></i>
                            <span class="tooltip">Email</span>
                         </a>
@@ -139,16 +98,6 @@
                 <p class="copyright">
                     &copy; <span id="current-year"><?php echo date('Y'); ?></span> Hope Account Specialist. All rights reserved.
                 </p>
-                <div class="payment-methods">
-                    <span>We Accept:</span>
-                    <div class="payment-icons">
-                        <i class="fab fa-cc-visa" title="Visa"></i>
-                        <i class="fab fa-cc-mastercard" title="Mastercard"></i>
-                        <i class="fab fa-cc-paypal" title="PayPal"></i>
-                        <i class="fab fa-cc-amazon-pay" title="Amazon Pay"></i>
-                        <i class="fas fa-money-bill-wave" title="Cash"></i>
-                    </div>
-                </div>
                 <div class="back-to-top">
                     <a href="#top" class="back-to-top-btn" aria-label="Back to top">
                         <i class="fas fa-chevron-up"></i>

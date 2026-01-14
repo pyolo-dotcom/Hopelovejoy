@@ -441,10 +441,14 @@
 
         .award-header {
             background: linear-gradient(135deg, #2c2b29 0%, #3a3937 100%);
-            padding: 25px;
+            padding: 0;
             text-align: center;
             position: relative;
             overflow: hidden;
+            min-height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .award-header::before {
@@ -457,10 +461,48 @@
             background: #eeb82e;
         }
 
-        .award-icon {
-            font-size: 3.5rem;
-            color: #eeb82e;
-            margin-bottom: 15px;
+        /* NEW: Award Image Container */
+        .award-image-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .award-image-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.15;
+            filter: brightness(0.8);
+        }
+
+        .award-main-image {
+            position: relative;
+            z-index: 2;
+            max-width: 150px;
+            max-height: 150px;
+            object-fit: contain;
+            transition: all 0.3s ease;
+        }
+
+        .award-card:hover .award-main-image {
+            transform: scale(1.1);
+        }
+
+        .award-header-content {
+            position: relative;
+            z-index: 3;
+            padding: 20px;
+            width: 100%;
+            background: rgba(44, 43, 41, 0.8);
         }
 
         .award-header h3 {
@@ -469,6 +511,7 @@
             font-size: 1.5rem;
             font-weight: 600;
             margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
         }
 
         .award-year {
@@ -480,6 +523,7 @@
             font-size: 0.9rem;
             font-weight: 600;
             margin-top: 5px;
+            border: 2px solid #2c2b29;
         }
 
         .award-body {
@@ -503,6 +547,31 @@
             gap: 15px;
             padding-top: 20px;
             border-top: 1px solid #eee;
+        }
+
+        .issuer-icon {
+            width: 50px;
+            height: 50px;
+            background: #f8f8f8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #eeb82e;
+        }
+
+        .issuer-info h4 {
+            color: #2c2b29;
+            font-family: 'Roboto Serif', serif;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .issuer-info p {
+            color: #777;
+            font-size: 0.9rem;
+            margin: 0;
         }
 
         .issuer-icon {
@@ -863,6 +932,178 @@
             color: #eeb82e;
         }
 
+        .affiliated-logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .affiliated-card:hover .affiliated-logo-img {
+            transform: scale(1.05);
+        }
+
+        /* Puwede mong i-update ang .affiliated-logo para mas maayos ang presentasyon */
+        .affiliated-logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            transition: all 0.3s ease;
+            border: 2px solid #f0f0f0;
+        }
+
+        .affiliated-card:hover .affiliated-logo {
+            background: #fff9e6;
+            transform: scale(1.05);
+            border-color: #eeb82e;
+        }
+
+        /* Bank & Car Partners Sections */
+        .bank-partners-section {
+            padding: 80px 20px;
+            background-color: white;
+            text-align: center;
+        }
+
+        .bank-partners-title {
+            font-family: 'Roboto Serif', serif;
+            font-size: 3rem;
+            margin-bottom: 50px;
+            color: #2c2b29;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .bank-partners-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 40px;
+            padding: 20px;
+        }
+
+        .bank-logo {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 120px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            cursor: default;
+        }
+
+        .bank-logo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(238, 184, 46, 0.1) 0%, rgba(44, 43, 41, 0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .bank-logo::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s ease;
+        }
+
+        .bank-logo:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(238, 184, 46, 0.2);
+            border-color: #eeb82e;
+        }
+
+        .bank-logo:hover::before {
+            opacity: 1;
+        }
+
+        .bank-logo:hover::after {
+            left: 100%;
+        }
+
+        .bank-logo img {
+            max-width: 100%;
+            max-height: 80px;
+            object-fit: contain;
+            transition: all 0.3s ease;
+            filter: grayscale(20%);
+            position: relative;
+            z-index: 2;
+        }
+
+        .bank-logo:hover img {
+            transform: scale(1.1);
+            filter: grayscale(0%);
+        }
+
+        .item-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .item-info h3 {
+            font-family: 'Roboto Serif', serif;
+            font-size: 1.2rem;
+            color: #2c2b29;
+            margin-bottom: 5px;
+        }
+
+        .item-category {
+            display: inline-block;
+            background: #eeb82e;
+            color: #2c2b29;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .item-description {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .item-price {
+            font-weight: 700;
+            color: #2c2b29;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .item-date {
+            color: #999;
+            font-size: 0.85rem;
+            font-style: italic;
+        }
+
         /* Mobile Responsive Styles */
         @media screen and (max-width: 768px) {
             .navbar {
@@ -965,7 +1206,9 @@
 
             .about-us-title,
             .sales-title,
-            .awards-title {
+            .awards-title,
+            .bank-partners-title,
+            .affiliated-title {
                 font-size: 2.2rem;
             }
 
@@ -993,6 +1236,33 @@
 
             .award-card {
                 margin: 0 10px;
+            }
+
+            .awards-title {
+                font-size: 2.2rem;
+            }
+
+            .awards-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 10px;
+            }
+
+            .award-card {
+                margin: 0 10px;
+            }
+
+            .award-header {
+                min-height: 160px;
+            }
+
+            .award-main-image {
+                max-width: 120px;
+                max-height: 120px;
+            }
+
+            .award-header h3 {
+                font-size: 1.3rem;
             }
 
             .partners-title {
@@ -1091,6 +1361,18 @@
                 height: 40px;
                 font-size: 1rem;
             }
+
+            /* Bank partners mobile adjustments */
+            .bank-partners-container {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 20px;
+                padding: 10px;
+            }
+            
+            .bank-logo {
+                height: 100px;
+                padding: 15px;
+            }
         }
 
         @media screen and (max-width: 480px) {
@@ -1173,6 +1455,27 @@
                 font-size: 1.3rem;
             }
 
+            .awards-title {
+                font-size: 1.8rem;
+            }
+
+            .award-header {
+                min-height: 140px;
+            }
+
+            .award-main-image {
+                max-width: 100px;
+                max-height: 100px;
+            }
+
+            .award-header h3 {
+                font-size: 1.2rem;
+            }
+
+            .award-body {
+                padding: 20px;
+            }
+
             .partners-title {
                 font-size: 1.8rem;
             }
@@ -1213,6 +1516,22 @@
             
             .affiliated-card {
                 margin: 0 10px;
+            }
+
+            /* Bank partners very small screens */
+            .bank-partners-title {
+                font-size: 1.8rem;
+                margin-bottom: 30px;
+            }
+            
+            .bank-partners-container {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+            }
+            
+            .bank-logo {
+                height: 80px;
+                padding: 10px;
             }
         }
 
@@ -1427,68 +1746,64 @@
             
             <div class="carousel-container">
                 <div class="carousel-track" id="carouselTrack">
-                    <!-- Vehicle Sale 1 -->
-                    <div class="carousel-slide">
-                        <div class="sales-item">
-                            <div class="item-img">
-                                <img src="img/pastsales.jpg" alt="Toyota Fortuner">
-                            </div>
-                        </div>
-                    </div>
+                    <?php
+                    // Include database connection
+                    require_once 'config.php';
                     
-                    <!-- Vehicle Sale 2 -->
-                    <div class="carousel-slide">
-                        <div class="sales-item">
-                            <div class="item-img">
-                                <img src="img/pastsales1.jpg" alt="Honda Civic">
-                            </div>
-                        </div>
-                    </div>
+                    // Query to fetch active past sales
+                    $sql = "SELECT * FROM past_sales WHERE is_active = 1 ORDER BY sale_date DESC";
+                    $result = mysqli_query($conn, $sql);
                     
-                    <!-- Land Sale 1 -->
-                    <div class="carousel-slide">
-                        <div class="sales-item">
-                            <div class="item-img">
-                                <img src="img/pastsales2.jpg" alt="Residential Lot">
-                            </div>
-                        </div>
-                    </div>
+                    if (mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $image_path = $row['image_path'];
+                            $title = htmlspecialchars($row['title']);
+                            $description = htmlspecialchars($row['description']);
+                            $price = $row['price'] ? '₱' . number_format($row['price'], 2) : '';
+                            $category = $row['category'];
+                            
+                            echo '
+                            <!-- Vehicle Sale -->
+                            <div class="carousel-slide">
+                                <div class="sales-item">
+                                    <div class="item-img">
+                                        <img src="' . $image_path . '" alt="' . $title . '" 
+                                            onerror="this.src=\'https://via.placeholder.com/400x350?text=No+Image\'">
+                                    </div>
+                                    <div class="item-info">
+                                        <h3>' . $title . '</h3>
+                                        <div class="item-category">' . ucfirst($category) . '</div>';
+                            
+                            if (!empty($description)) {
+                                echo '<p class="item-description">' . $description . '</p>';
+                            }
+                            
+                            if (!empty($price)) {
+                                echo '<div class="item-price">' . $price . '</div>';
+                            }
+                            
+                            echo '
+                                        <div class="item-date">' . date('M d, Y', strtotime($row['sale_date'])) . '</div>
+                                    </div>
+                                </div>
+                            </div>';
+                        }
+                    } else {                        
+                        foreach ($default_images as $image) {
+                            echo '
+                            <div class="carousel-slide">
+                                <div class="sales-item">
+                                    <div class="item-img">
+                                        <img src="' . $image . '" alt="Past Sale">
+                                    </div>
+                                </div>
+                            </div>';
+                        }
+                    }
                     
-                    <!-- Vehicle Sale 3 -->
-                    <div class="carousel-slide">
-                        <div class="sales-item">
-                            <div class="item-img">
-                                <img src="img/pastsales3.jpg" alt="Ford Ranger">
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Land Sale 2 -->
-                    <div class="carousel-slide">
-                        <div class="sales-item">
-                            <div class="item-img">
-                                <img src="img/pastsales4.jpg" alt="Agricultural Land">
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Vehicle Sale 4 -->
-                    <div class="carousel-slide">
-                        <div class="sales-item">
-                            <div class="item-img">
-                                <img src="img/pastsales5.jpg" alt="Mitsubishi Montero">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Vehicle Sale 5 -->
-                    <div class="carousel-slide">
-                        <div class="sales-item">
-                            <div class="item-img">
-                                <img src="img/pastsales6.jpg" alt="Mitsubishi Montero">
-                            </div>
-                        </div>
-                    </div>
+                    // Close connection
+                    mysqli_close($conn);
+                    ?>
                 </div>
                 
                 <button class="carousel-btn prev" id="prevBtn">&#10094;</button>
@@ -1498,19 +1813,24 @@
             <div class="carousel-dots" id="carouselDots"></div>
         </div>
 
-        <!-- Awards & Recognition Section -->
+        <!-- Awards & Recognition Section - UPDATED WITH IMAGES -->
         <div class="awards-section" id="awards">
             <h2 class="awards-title">AWARDS & RECOGNITION</h2>
             
             <div class="awards-container">
-                <!-- Award 1 -->
+                <!-- Award 1 - Excellence in Accounting -->
                 <div class="award-card">
                     <div class="award-header">
-                        <div class="award-icon">
-                            <i class="fas fa-trophy"></i>
+                        <div class="award-image-container">
+                            <!-- Background Image -->
+                            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Accounting Background" class="award-image-bg">
+                            <!-- Main Award Image -->
+                            <img src="img/awards/trophy.png" alt="Trophy Award" class="award-main-image">
+                            <div class="award-header-content">
+                                <h3>Excellence in Accounting</h3>
+                                <span class="award-year">2023</span>
+                            </div>
                         </div>
-                        <h3>Excellence in Accounting</h3>
-                        <span class="award-year">2023</span>
                     </div>
                     <div class="award-body">
                         <p>Recognized for outstanding accounting services and client satisfaction. Awarded for innovation in financial management solutions and exceptional client retention rates.</p>
@@ -1526,14 +1846,17 @@
                     </div>
                 </div>
 
-                <!-- Award 2 -->
+                <!-- Award 2 - Best Small Business Support -->
                 <div class="award-card">
                     <div class="award-header">
-                        <div class="award-icon">
-                            <i class="fas fa-medal"></i>
+                        <div class="award-image-container">
+                            <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Business Support Background" class="award-image-bg">
+                            <img src="img/awards/medal.png" alt="Medal Award" class="award-main-image">
+                            <div class="award-header-content">
+                                <h3>Best Small Business Support</h3>
+                                <span class="award-year">2022</span>
+                            </div>
                         </div>
-                        <h3>Best Small Business Support</h3>
-                        <span class="award-year">2022</span>
                     </div>
                     <div class="award-body">
                         <p>Awarded for exceptional support services to small and medium-sized businesses, helping them achieve financial stability and growth during challenging economic times.</p>
@@ -1549,14 +1872,17 @@
                     </div>
                 </div>
 
-                <!-- Award 3 -->
+                <!-- Award 3 - Client Service Excellence -->
                 <div class="award-card">
                     <div class="award-header">
-                        <div class="award-icon">
-                            <i class="fas fa-star"></i>
+                        <div class="award-image-container">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Customer Service Background" class="award-image-bg">
+                            <img src="img/awards/star.png" alt="Star Award" class="award-main-image">
+                            <div class="award-header-content">
+                                <h3>Client Service Excellence</h3>
+                                <span class="award-year">2023</span>
+                            </div>
                         </div>
-                        <h3>Client Service Excellence</h3>
-                        <span class="award-year">2023</span>
                     </div>
                     <div class="award-body">
                         <p>Recognized for exceptional client service with a 98% satisfaction rating. Commended for personalized approach and timely response to client needs and inquiries.</p>
@@ -1572,14 +1898,17 @@
                     </div>
                 </div>
 
-                <!-- Award 4 -->
+                <!-- Award 4 - Innovation in Financial Tech -->
                 <div class="award-card">
                     <div class="award-header">
-                        <div class="award-icon">
-                            <i class="fas fa-gem"></i>
+                        <div class="award-image-container">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Technology Background" class="award-image-bg">
+                            <img src="img/awards/gem.png" alt="Gem Award" class="award-main-image">
+                            <div class="award-header-content">
+                                <h3>Innovation in Financial Tech</h3>
+                                <span class="award-year">2021</span>
+                            </div>
                         </div>
-                        <h3>Innovation in Financial Tech</h3>
-                        <span class="award-year">2021</span>
                     </div>
                     <div class="award-body">
                         <p>Awarded for innovative implementation of financial technology solutions, streamlining accounting processes and providing clients with cutting-edge digital tools.</p>
@@ -1595,14 +1924,17 @@
                     </div>
                 </div>
 
-                <!-- Award 5 -->
+                <!-- Award 5 - Ethics & Compliance Award -->
                 <div class="award-card">
                     <div class="award-header">
-                        <div class="award-icon">
-                            <i class="fas fa-shield-alt"></i>
+                        <div class="award-image-container">
+                            <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Compliance Background" class="award-image-bg">
+                            <img src="img/awards/shield.png" alt="Shield Award" class="award-main-image">
+                            <div class="award-header-content">
+                                <h3>Ethics & Compliance Award</h3>
+                                <span class="award-year">2022</span>
+                            </div>
                         </div>
-                        <h3>Ethics & Compliance Award</h3>
-                        <span class="award-year">2022</span>
                     </div>
                     <div class="award-body">
                         <p>Recognized for maintaining the highest ethical standards and compliance with financial regulations. Zero compliance violations over 5 consecutive years.</p>
@@ -1618,14 +1950,17 @@
                     </div>
                 </div>
 
-                <!-- Award 6 -->
+                <!-- Award 6 - Community Service Recognition -->
                 <div class="award-card">
                     <div class="award-header">
-                        <div class="award-icon">
-                            <i class="fas fa-heart"></i>
+                        <div class="award-image-container">
+                            <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Community Background" class="award-image-bg">
+                            <img src="img/awards/heart.png" alt="Heart Award" class="award-main-image">
+                            <div class="award-header-content">
+                                <h3>Community Service Recognition</h3>
+                                <span class="award-year">2023</span>
+                            </div>
                         </div>
-                        <h3>Community Service Recognition</h3>
-                        <span class="award-year">2023</span>
                     </div>
                     <div class="award-body">
                         <p>Awarded for outstanding contributions to the community, including pro bono services for non-profits and financial literacy programs for underserved communities.</p>
@@ -1642,19 +1977,134 @@
                 </div>
             </div>
         </div>
-    </div>
 
-                <!-- Affiliated Houses Section -->
-                <div class="affiliated-section" id="affiliated">
+        <!-- AFFILIATED BANKS Section -->
+        <div class="bank-partners-section">
+            <h2 class="bank-partners-title">AFFILIATED BANKS</h2>
+
+            <div class="bank-partners-container">
+                <div class="bank-logo">
+                    <img src="img/bdo.jpg.webp" alt="BDO">
+                </div>
+
+                <div class="bank-logo">
+                    <img src="img/bpi.jpg" alt="BPI">
+                </div>
+
+                <div class="bank-logo">
+                    <img src="img/cbs.jpg" alt="CBS">
+                </div>
+
+                <div class="bank-logo">
+                    <img src="img/chinabank.jpg" alt="China Bank">
+                </div>
+
+                <div class="bank-logo">
+                    <img src="img/eastwest.jpg" alt="EastWest Bank">
+                </div>
+
+                <div class="bank-logo">
+                    <img src="img/ldb.png" alt="LDB">
+                </div>
+
+                <div class="bank-logo">
+                    <img src="img/maybank-logo.svg" alt="Maybank">
+                </div>
+
+                <div class="bank-logo">
+                    <img src="img/metrobank.png" alt="Metrobank">
+                </div>
+
+                <div class="bank-logo">
+                    <img src="img/pbcom.png" alt="PBCOM">
+                </div>
+
+                <div class="bank-logo">
+                    <img src="img/psbank.png" alt="PSBank">
+                </div>
+                
+                <div class="bank-logo">
+                    <img src="img/rcbc.png" alt="RCBC">
+                </div>
+
+                <div class="bank-logo">
+                    <img src="img/securitybank.png" alt="Security Bank">
+                </div>
+
+                <div class="bank-logo">
+                    <img src="img/unionbank.png" alt="UnionBank">
+                </div>
+            </div>
+        </div>
+
+        <!-- AFFILIATED CAR COMPANIES Section -->
+        <div class="bank-partners-section">
+            <h2 class="bank-partners-title">AFFILIATED CAR COMPANIES</h2>
+
+            <div class="bank-partners-container">
+                <div class="bank-logo">
+                    <img src="img/byd.svg" alt="BYD">
+                </div>
+                <div class="bank-logo">
+                    <img src="img/Chevrolet.jpg" alt="Chevrolet">
+                </div>
+
+                <div class="bank-logo">
+                    <img src="img/Ford.png" alt="Ford">
+                </div>
+
+                <div class="bank-logo">
+                    <img src="img/Geely.webp" alt="Geely">
+                </div>
+
+                <div class="bank-logo">
+                    <img src="img/honda.webp" alt="Honda">
+                </div>
+
+                <div class="bank-logo">
+                    <img src="img/hyundai.png" alt="Hyundai">
+                </div>
+
+                <div class="bank-logo">
+                    <img src="img/isuzu.svg" alt="Isuzu">
+                </div>
+
+                <div class="bank-logo">
+                    <img src="img/kia.png" alt="Kia">
+                </div>
+
+                <div class="bank-logo">
+                    <img src="img/mg.png" alt="MG">
+                </div>
+
+                <div class="bank-logo">
+                    <img src="img/nissan.jpg" alt="Nissan">
+                </div>
+
+                <div class="bank-logo">
+                    <img src="img/subaru.png" alt="Subaru">
+                </div>
+                
+                <div class="bank-logo">
+                    <img src="img/susuki.svg" alt="Suzuki">
+                </div>
+
+                <div class="bank-logo">
+                    <img src="img/toyota.png" alt="Toyota">
+                </div>
+            </div>
+        </div>
+
+        <!-- Affiliated Houses Section -->
+        <div class="affiliated-section" id="affiliated">
             <h2 class="affiliated-title">AFFILIATED HOUSES</h2>
             
             <div class="affiliated-container">
                 <!-- Grand Victoria -->
                 <div class="affiliated-card">
                     <div class="affiliated-logo">
-                        <div class="logo-placeholder">
-                            <i class="fas fa-home"></i>
-                        </div>
+                        <!-- PALITAN ANG ICON NG PICTURE -->
+                        <img src="img/gv.webp" alt="Grand Victoria Logo" class="affiliated-logo-img">
                     </div>
                     <div class="affiliated-content">
                         <h3>Grand Victoria</h3>
@@ -1670,9 +2120,8 @@
                 <!-- Bella Vita -->
                 <div class="affiliated-card">
                     <div class="affiliated-logo">
-                        <div class="logo-placeholder">
-                            <i class="fas fa-building"></i>
-                        </div>
+                        <!-- PALITAN ANG ICON NG PICTURE -->
+                        <img src="img/bv.jpg" alt="Bella Vita Logo" class="affiliated-logo-img">
                     </div>
                     <div class="affiliated-content">
                         <h3>Bella Vita</h3>
@@ -1685,12 +2134,11 @@
                     </div>
                 </div>
 
-                <!-- Boarland -->
+                <!-- Borland -->
                 <div class="affiliated-card">
                     <div class="affiliated-logo">
-                        <div class="logo-placeholder">
-                            <i class="fas fa-warehouse"></i>
-                        </div>
+                        <!-- PALITAN ANG ICON NG PICTURE -->
+                        <img src="img/bl.jpg" alt="Borland Logo" class="affiliated-logo-img">
                     </div>
                     <div class="affiliated-content">
                         <h3>Borland</h3>
@@ -1706,9 +2154,8 @@
                 <!-- Camella -->
                 <div class="affiliated-card">
                     <div class="affiliated-logo">
-                        <div class="logo-placeholder">
-                            <i class="fas fa-city"></i>
-                        </div>
+                        <!-- PALITAN ANG ICON NG PICTURE -->
+                        <img src="img/camella.png" alt="Camella Logo" class="affiliated-logo-img">
                     </div>
                     <div class="affiliated-content">
                         <h3>Camella</h3>
@@ -1724,9 +2171,8 @@
                 <!-- Ajoya -->
                 <div class="affiliated-card">
                     <div class="affiliated-logo">
-                        <div class="logo-placeholder">
-                            <i class="fas fa-tree"></i>
-                        </div>
+                        <!-- PALITAN ANG ICON NG PICTURE -->
+                        <img src="img/ajoya.jpg" alt="Ajoya Logo" class="affiliated-logo-img">
                     </div>
                     <div class="affiliated-content">
                         <h3>Ajoya</h3>
@@ -1742,9 +2188,8 @@
                 <!-- Deca Homes -->
                 <div class="affiliated-card">
                     <div class="affiliated-logo">
-                        <div class="logo-placeholder">
-                            <i class="fas fa-house-user"></i>
-                        </div>
+                        <!-- PALITAN ANG ICON NG PICTURE -->
+                        <img src="img/dh.jpg" alt="Deca Homes Logo" class="affiliated-logo-img">
                     </div>
                     <div class="affiliated-content">
                         <h3>Deca Homes</h3>
@@ -1762,8 +2207,6 @@
     </div>
 
     <?php include 'footer.php'; ?>
-
-    
 
     <script>
         // Hero Carousel Functionality
