@@ -701,7 +701,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // ============================================
-    // SECRET ADMIN ACCESS FEATURES - UPDATED
+    // SECRET ADMIN ACCESS FEATURES - UPDATED WITH ALT+CLICK MODAL
     // ============================================
     
     // Logo click handler with updated methods
@@ -711,9 +711,10 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
         }
         
-        // Method 1: Alt + Click (Direct admin access - NO MODAL)
+        // Method 1: Alt + Click (Show modal confirmation - UPDATED)
         if (e.altKey) {
-            window.location.href = 'admin_login.php';
+            e.preventDefault();
+            showAltClickModal();
             return;
         }
         
@@ -764,13 +765,48 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // ============================================
-    // MODAL FUNCTIONS - UPDATED
+    // MODAL FUNCTIONS - UPDATED WITH ALT+CLICK MODAL
     // ============================================
     
-    // Ctrl+Click Modal (simplified without password)
+    // Alt+Click Modal
+    function showAltClickModal() {
+        createModal({
+            title: 'Admin Access (Alt+Click)',
+            icon: 'fa-user-lock',
+            iconColor: '#eeb82e',
+            message: 'Alt+Click detected. Direct admin access. Proceed to admin panel?',
+            showPassword: false,
+            buttons: [
+                {
+                    text: 'Go to Admin',
+                    icon: 'fa-sign-in-alt',
+                    color: '#2c2b29',
+                    bgColor: '#eeb82e',
+                    action: function() {
+                        window.location.href = 'admin_login.php';
+                    }
+                },
+                {
+                    text: 'Cancel',
+                    icon: 'fa-times',
+                    color: 'white',
+                    bgColor: '#6c757d',
+                    action: function() {
+                        // Just close modal
+                        const modal = document.querySelector('.secret-admin-modal');
+                        if (modal) {
+                            document.body.removeChild(modal);
+                        }
+                    }
+                }
+            ]
+        });
+    }
+    
+    // Ctrl+Click Modal
     function showCtrlClickModal() {
         createModal({
-            title: 'Admin Access',
+            title: 'Admin Access (Ctrl+Click)',
             icon: 'fa-user-secret',
             iconColor: '#eeb82e',
             message: 'Ctrl+Click detected. Proceed to admin panel?',
@@ -1040,7 +1076,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 100);
         }
         
-        // Add button event listeners - FIXED CLOSE BUTTON
+        // Add button event listeners
         config.buttons.forEach((btn, index) => {
             const buttonElement = document.getElementById(`modalBtn${index}`);
             buttonElement.addEventListener('click', function() {
