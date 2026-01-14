@@ -901,7 +901,7 @@
                     <h3>Richcar Fernandez</h3>
                     <span class="position">Executive Officer</span>
                     <span class="experience">blank</span>
-                    <p class="bio">Sarah oversees all financial operations and ensures compliance with accounting standards and regulations.</p>
+                    <p class="bio">Building Financial Futures with Confidence.</p>
                     <div class="team-member-contact">
                         <a href="#" class="contact-icon tooltip" data-tooltip="richcar.fernandez@hopeaccount.com"><i class="fas fa-envelope"></i></a>
                         <a href="#" class="contact-icon tooltip" data-tooltip="+63 987 654 3210"><i class="fas fa-phone"></i></a>
@@ -916,7 +916,7 @@
                     <h3>Nelson Fernandez</h3>
                     <span class="position">Engineering Dept.</span>
                     <span class="experience">blank</span>
-                    <p class="bio">Robert manages daily operations and ensures smooth workflow across all departments.</p>
+                    <p class="bio">Your Partner in Financial Success.</p>
                     <div class="team-member-contact">
                         <a href="#" class="contact-icon tooltip" data-tooltip="nelson.fernandez@hopeaccount.com"><i class="fas fa-envelope"></i></a>
                         <a href="#" class="contact-icon tooltip" data-tooltip="+63 987 654 3211"><i class="fas fa-phone"></i></a>
@@ -933,7 +933,7 @@
                     <h3>Dyna Layco</h3>
                     <span class="position">Team Head</span>
                     <span class="experience">blank</span>
-                    <p class="bio">Jane ensures operational excellence and drives process improvements across all teams.</p>
+                    <p class="bio">Turning Vision into Financial Victory.</p>
                     <div class="team-member-contact">
                         <a href="#" class="contact-icon tooltip" data-tooltip="dyna.layco@hopeaccount.com"><i class="fas fa-envelope"></i></a>
                         <a href="#" class="contact-icon tooltip" data-tooltip="+63 987 654 3212"><i class="fas fa-phone"></i></a>
@@ -948,7 +948,7 @@
                     <h3>Donnabel Cruz</h3>
                     <span class="position">Team Head</span>
                     <span class="experience">blank</span>
-                    <p class="bio">Alex leads strategic initiatives and partnerships to expand our service offerings.</p>
+                    <p class="bio">Trusted Financial Growth</p>
                     <div class="team-member-contact">
                         <a href="#" class="contact-icon tooltip" data-tooltip="donnabel.cruz@hopeaccount.com"><i class="fas fa-envelope"></i></a>
                         <a href="#" class="contact-icon tooltip" data-tooltip="+63 987 654 3213"><i class="fas fa-phone"></i></a>
@@ -963,7 +963,7 @@
                     <h3>Mariel De Guzman</h3>
                     <span class="position">Team Head</span>
                     <span class="experience">blank</span>
-                    <p class="bio">Maria oversees talent acquisition and employee development programs.</p>
+                    <p class="bio">Smart Finance. Strong Future.</p>
                     <div class="team-member-contact">
                         <a href="#" class="contact-icon tooltip" data-tooltip="mariel.deguzman@hopeaccount.com"><i class="fas fa-envelope"></i></a>
                         <a href="#" class="contact-icon tooltip" data-tooltip="+63 987 654 3214"><i class="fas fa-phone"></i></a>
@@ -1056,9 +1056,9 @@
                 <!-- Second Row - 4 members -->
                 <div class="team-member-smaller">
                     <div class="team-member-img-smaller">
-                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Member 5">
+                        <img src="img/TEAM/anjanete.jpg" alt="anjanete Reyes">
                     </div>
-                    <h3>Member 5</h3>
+                    <h3>Anjanete Reyes</h3>
                     <span class="position">Account Specialist</span>
                     <div class="team-member-contact-smaller">
                         <a href="mailto:member5@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="member5@hopeaccount.com">
@@ -1075,9 +1075,9 @@
                 
                 <div class="team-member-smaller">
                     <div class="team-member-img-smaller">
-                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Member 6">
+                        <img src="img/TEAM/sarah.jpg" alt="Sarah Calara">
                     </div>
-                    <h3>Member 6</h3>
+                    <h3>Sarah Calara</h3>
                     <span class="position">Account Specialist</span>
                     <div class="team-member-contact-smaller">
                         <a href="mailto:member6@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="member6@hopeaccount.com">
@@ -1094,9 +1094,9 @@
                 
                 <div class="team-member-smaller">
                     <div class="team-member-img-smaller">
-                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Member 7">
+                        <img src="img/TEAM/nathania.jpg" alt="Nathania Fajardo">
                     </div>
-                    <h3>Member 7</h3>
+                    <h3>Nathania Fajardo</h3>
                     <span class="position">Account Specialist</span>
                     <div class="team-member-contact-smaller">
                         <a href="mailto:member7@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="member7@hopeaccount.com">
@@ -1113,9 +1113,9 @@
                 
                 <div class="team-member-smaller">
                     <div class="team-member-img-smaller">
-                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Member 8">
+                        <img src="img/TEAM/marichu.jpg" alt="Marichu Besa">
                     </div>
-                    <h3>Member 8</h3>
+                    <h3>Marichu Besa</h3>
                     <span class="position">Account Specialist</span>
                     <div class="team-member-contact-smaller">
                         <a href="mailto:member8@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="member8@hopeaccount.com">
@@ -1133,9 +1133,9 @@
                 <!-- Third Row - 4 members -->
                 <div class="team-member-smaller">
                     <div class="team-member-img-smaller">
-                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Member 9">
+                        <img src="img/TEAM/joe.jpg" alt="Joe Lacaden">
                     </div>
-                    <h3>Member 9</h3>
+                    <h3>Joe Lacaden</h3>
                     <span class="position">Account Specialist</span>
                     <div class="team-member-contact-smaller">
                         <a href="mailto:member9@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="member9@hopeaccount.com">
@@ -1152,9 +1152,9 @@
                 
                 <div class="team-member-smaller">
                     <div class="team-member-img-smaller">
-                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Member 10">
+                        <img src="img/TEAM/ivy.jpg" alt="Ivy Alarilla">
                     </div>
-                    <h3>Member 10</h3>
+                    <h3>Ivy Alarilla</h3>
                     <span class="position">Account Specialist</span>
                     <div class="team-member-contact-smaller">
                         <a href="mailto:member10@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="member10@hopeaccount.com">
@@ -1171,9 +1171,9 @@
                 
                 <div class="team-member-smaller">
                     <div class="team-member-img-smaller">
-                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Member 11">
+                        <img src="img/TEAM/Arviey.jpg" alt="Arviey Matias">
                     </div>
-                    <h3>Member 11</h3>
+                    <h3>Arviey Matias</h3>
                     <span class="position">Account Specialist</span>
                     <div class="team-member-contact-smaller">
                         <a href="mailto:member11@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="member11@hopeaccount.com">
@@ -1190,9 +1190,9 @@
                 
                 <div class="team-member-smaller">
                     <div class="team-member-img-smaller">
-                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Member 12">
+                        <img src="img/TEAM/papa dave.jpg" alt="Dave Cruz">
                     </div>
-                    <h3>Member 12</h3>
+                    <h3>Dave Cruz</h3>
                     <span class="position">Account Specialist</span>
                     <div class="team-member-contact-smaller">
                         <a href="mailto:member12@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="member12@hopeaccount.com">
@@ -1210,9 +1210,9 @@
                 <!-- Fourth Row - 4 members -->
                 <div class="team-member-smaller">
                     <div class="team-member-img-smaller">
-                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Member 13">
+                        <img src="img/TEAM/Ally.jpg" alt="Ally Viloria">
                     </div>
-                    <h3>Member 13</h3>
+                    <h3>Ally Viloria</h3>
                     <span class="position">Account Specialist</span>
                     <div class="team-member-contact-smaller">
                         <a href="mailto:member13@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="member13@hopeaccount.com">
