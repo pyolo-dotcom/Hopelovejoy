@@ -47,17 +47,6 @@
             overflow: hidden;
         }
 
-        .services-hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80') center/cover;
-            opacity: 0.1;
-        }
-
         .services-hero-title {
             font-family: 'Roboto Serif', serif;
             font-size: 2.8rem;
@@ -89,7 +78,7 @@
             padding: 0 10px;
         }
 
-        /* Services Grid Section */
+        /* Compact Services Grid Section */
         .services-section {
             padding: 60px 15px;
             background-color: white;
@@ -111,16 +100,17 @@
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
             padding: 15px;
         }
 
+        /* Compact Service Card */
         .service-card {
             background: white;
-            border-radius: 15px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
@@ -128,16 +118,17 @@
             border: 1px solid #f0f0f0;
             cursor: pointer;
             position: relative;
+            min-height: 220px;
         }
 
         .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 35px rgba(238, 184, 46, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(238, 184, 46, 0.15);
             border-color: #eeb82e;
         }
 
         .service-card::after {
-            content: 'Tap to view details';
+            content: 'View Details';
             position: absolute;
             top: 0;
             left: 0;
@@ -153,9 +144,8 @@
             font-size: 1rem;
             opacity: 0;
             transition: opacity 0.3s ease;
-            border-radius: 15px;
+            border-radius: 12px;
             z-index: 2;
-            padding: 20px;
             text-align: center;
         }
 
@@ -165,10 +155,15 @@
 
         .service-header {
             background: linear-gradient(135deg, #2c2b29 0%, #3a3937 100%);
-            padding: 25px 20px;
+            padding: 20px 15px;
             text-align: center;
             position: relative;
             overflow: hidden;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .service-header::before {
@@ -182,115 +177,72 @@
         }
 
         .service-icon {
-            font-size: 3rem;
+            font-size: 2.2rem;
             color: #eeb82e;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         .service-header h3 {
             color: white;
             font-family: 'Roboto Serif', serif;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-weight: 600;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
             line-height: 1.3;
+            max-width: 100%;
         }
 
         .service-tag {
             display: inline-block;
             background: #eeb82e;
             color: #2c2b29;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.75rem;
             font-weight: 600;
             margin-top: 5px;
         }
 
         .service-body {
-            padding: 25px 20px;
+            padding: 15px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
+            justify-content: center;
         }
 
         .service-body p {
             color: #555;
-            line-height: 1.6;
-            margin-bottom: 15px;
-            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 0;
+            font-size: 0.85rem;
             flex-grow: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-align: center;
         }
 
-        .service-features {
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid #eee;
-        }
-
-        .service-features h4 {
-            font-family: 'Roboto Serif', serif;
-            font-size: 1rem;
-            color: #2c2b29;
-            margin-bottom: 12px;
+        /* "View More" indicator */
+        .service-more {
             display: flex;
             align-items: center;
-            gap: 8px;
-        }
-
-        .service-features h4 i {
+            justify-content: center;
+            margin-top: 8px;
             color: #eeb82e;
-        }
-
-        .service-features ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .service-features li {
-            color: #666;
-            margin-bottom: 8px;
-            padding-left: 22px;
-            position: relative;
-            line-height: 1.5;
-            text-align: left;
-            font-size: 0.9rem;
-        }
-
-        .service-features li:before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #eeb82e;
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-
-        .service-cta {
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px solid #eee;
-        }
-
-        .service-btn {
-            background: #2c2b29;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 5px;
+            font-size: 0.8rem;
             font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-            width: 100%;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            gap: 5px;
         }
 
-        .service-btn:hover {
-            background: #eeb82e;
-            color: #2c2b29;
-            transform: scale(1.02);
+        .service-more i {
+            font-size: 0.7rem;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover .service-more i {
+            transform: translateX(3px);
         }
 
         /* Modal Styles */
@@ -537,6 +489,7 @@
             color: white;
         }
 
+        /* Other sections remain the same as before */
         /* Process Section */
         .process-section {
             padding: 60px 15px;
@@ -1095,33 +1048,51 @@
             }
 
             .services-container {
-                grid-template-columns: 1fr;
-                gap: 20px;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
                 padding: 10px;
             }
 
             .service-card {
                 margin: 0;
+                min-height: 200px;
             }
 
             .service-card::after {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
+                padding: 10px;
             }
 
             .service-header {
-                padding: 20px 15px;
+                padding: 15px 10px;
+                min-height: 100px;
             }
 
             .service-header h3 {
-                font-size: 1.2rem;
+                font-size: 1rem;
             }
 
             .service-icon {
-                font-size: 2.5rem;
+                font-size: 1.8rem;
             }
 
             .service-body {
-                padding: 20px 15px;
+                padding: 12px 10px;
+            }
+
+            .service-body p {
+                font-size: 0.8rem;
+                -webkit-line-clamp: 2;
+            }
+
+            .service-tag {
+                font-size: 0.7rem;
+                padding: 2px 8px;
+            }
+
+            .service-more {
+                font-size: 0.75rem;
+                margin-top: 5px;
             }
 
             .process-step:not(:last-child)::after {
@@ -1129,8 +1100,8 @@
             }
 
             .process-container {
-                grid-template-columns: 1fr;
-                gap: 30px;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
             }
 
             .step-number {
@@ -1158,7 +1129,7 @@
             }
 
             .bank-partners-container {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(3, 1fr);
                 gap: 15px;
             }
 
@@ -1278,19 +1249,26 @@
             }
 
             .services-container {
+                grid-template-columns: 1fr;
+                gap: 12px;
                 padding: 5px;
             }
 
+            .service-card {
+                min-height: 180px;
+            }
+
             .service-header h3 {
-                font-size: 1.1rem;
+                font-size: 0.95rem;
             }
 
             .service-icon {
-                font-size: 2.2rem;
+                font-size: 1.6rem;
             }
 
-            .service-features li {
-                font-size: 0.85rem;
+            .service-body p {
+                font-size: 0.75rem;
+                -webkit-line-clamp: 2;
             }
 
             .process-step {
@@ -1405,6 +1383,14 @@
                 font-size: 1.5rem;
             }
 
+            .service-header h3 {
+                font-size: 0.9rem;
+            }
+
+            .service-icon {
+                font-size: 1.5rem;
+            }
+
             .bank-partners-container {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 8px;
@@ -1435,6 +1421,34 @@
 
         /* Landscape orientation optimizations */
         @media (max-height: 600px) and (orientation: landscape) {
+            .services-container {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+            }
+
+            .service-card {
+                min-height: 160px;
+            }
+
+            .service-header {
+                min-height: 80px;
+                padding: 10px;
+            }
+
+            .service-icon {
+                font-size: 1.5rem;
+                margin-bottom: 5px;
+            }
+
+            .service-header h3 {
+                font-size: 0.9rem;
+            }
+
+            .service-body p {
+                font-size: 0.75rem;
+                -webkit-line-clamp: 2;
+            }
+
             .modal-content {
                 margin: 10px auto;
                 max-height: 90vh;
@@ -1531,18 +1545,9 @@
                         <span class="service-tag">Vehicles</span>
                     </div>
                     <div class="service-body">
-                        <p>Comprehensive assistance in acquiring new vehicles with flexible financing options. We help you navigate through loan applications, documentation, and approval processes...</p>
-                        
-                        <div class="service-features">
-                            <h4><i class="fas fa-check-circle"></i> What We Offer:</h4>
-                            <ul>
-                                <li>New car acquisition assistance</li>
-                                <li>Loan application processing</li>
-                                <li>Bank financing coordination</li>
-                                <li>Documentation assistance</li>
-                                <li>Insurance package bundling</li>
-                                <li>Free consultation and assessment</li>
-                            </ul>
+                        <p>Comprehensive assistance in acquiring new vehicles with flexible financing options...</p>
+                        <div class="service-more">
+                            View Details <i class="fas fa-arrow-right"></i>
                         </div>
                     </div>
                 </div>
@@ -1557,18 +1562,9 @@
                         <span class="service-tag">Real Estate</span>
                     </div>
                     <div class="service-body">
-                        <p>Complete support for your dream home acquisition. From property selection to mortgage processing, we ensure a smooth transaction...</p>
-                        
-                        <div class="service-features">
-                            <h4><i class="fas fa-check-circle"></i> What We Offer:</h4>
-                            <ul>
-                                <li>Property selection assistance</li>
-                                <li>Mortgage loan processing</li>
-                                <li>Developer coordination</li>
-                                <li>Document preparation</li>
-                                <li>Transfer of title assistance</li>
-                                <li>Legal documentation support</li>
-                            </ul>
+                        <p>Complete support for your dream home acquisition. From property selection...</p>
+                        <div class="service-more">
+                            View Details <i class="fas fa-arrow-right"></i>
                         </div>
                     </div>
                 </div>
@@ -1583,18 +1579,9 @@
                         <span class="service-tag">Insurance</span>
                     </div>
                     <div class="service-body">
-                        <p>Comprehensive car insurance solutions from top providers. We offer various coverage options including comprehensive, third-party liability...</p>
-                        
-                        <div class="service-features">
-                            <h4><i class="fas fa-check-circle"></i> Coverage Options:</h4>
-                            <ul>
-                                <li>Comprehensive coverage</li>
-                                <li>Third-party liability</li>
-                                <li>Acts of nature protection</li>
-                                <li>Personal accident benefits</li>
-                                <li>24/7 Roadside assistance</li>
-                                <li>Theft and fire protection</li>
-                            </ul>
+                        <p>Comprehensive car insurance solutions from top providers. We offer various coverage...</p>
+                        <div class="service-more">
+                            View Details <i class="fas fa-arrow-right"></i>
                         </div>
                     </div>
                 </div>
@@ -1609,18 +1596,9 @@
                         <span class="service-tag">Insurance</span>
                     </div>
                     <div class="service-body">
-                        <p>Protect your home investment with comprehensive housing insurance. We provide coverage for fire, natural disasters, theft, and liability...</p>
-                        
-                        <div class="service-features">
-                            <h4><i class="fas fa-check-circle"></i> Coverage Options:</h4>
-                            <ul>
-                                <li>Fire and lightning protection</li>
-                                <li>Natural disaster coverage</li>
-                                <li>Theft and burglary protection</li>
-                                <li>Liability coverage</li>
-                                <li>Additional living expenses</li>
-                                <li>Personal property coverage</li>
-                            </ul>
+                        <p>Protect your home investment with comprehensive housing insurance...</p>
+                        <div class="service-more">
+                            View Details <i class="fas fa-arrow-right"></i>
                         </div>
                     </div>
                 </div>
@@ -1635,18 +1613,9 @@
                         <span class="service-tag">Insurance</span>
                     </div>
                     <div class="service-body">
-                        <p>Secure your family's future with our life insurance solutions. We offer term life, whole life, and investment-linked insurance policies...</p>
-                        
-                        <div class="service-features">
-                            <h4><i class="fas fa-check-circle"></i> Policy Types:</h4>
-                            <ul>
-                                <li>Term life insurance</li>
-                                <li>Whole life insurance</li>
-                                <li>Investment-linked policies</li>
-                                <li>Critical illness coverage</li>
-                                <li>Accidental death benefits</li>
-                                <li>Retirement planning</li>
-                            </ul>
+                        <p>Secure your family's future with our life insurance solutions...</p>
+                        <div class="service-more">
+                            View Details <i class="fas fa-arrow-right"></i>
                         </div>
                     </div>
                 </div>
@@ -1661,18 +1630,9 @@
                         <span class="service-tag">Used Vehicles</span>
                     </div>
                     <div class="service-body">
-                        <p>Specialized assistance for pre-owned vehicle financing. We help you find the best loan options for used cars, with competitive rates...</p>
-                        
-                        <div class="service-features">
-                            <h4><i class="fas fa-check-circle"></i> What We Offer:</h4>
-                            <ul>
-                                <li>Used car loan processing</li>
-                                <li>Vehicle inspection coordination</li>
-                                <li>Bank financing for pre-owned cars</li>
-                                <li>Document verification assistance</li>
-                                <li>Transfer of ownership support</li>
-                                <li>Vehicle history check</li>
-                            </ul>
+                        <p>Specialized assistance for pre-owned vehicle financing...</p>
+                        <div class="service-more">
+                            View Details <i class="fas fa-arrow-right"></i>
                         </div>
                     </div>
                 </div>
@@ -1687,18 +1647,9 @@
                         <span class="service-tag">Documentation</span>
                     </div>
                     <div class="service-body">
-                        <p>Assistance with title and registration document collateralization. We help facilitate legitimate and secure transactions...</p>
-                        
-                        <div class="service-features">
-                            <h4><i class="fas fa-check-circle"></i> Services Include:</h4>
-                            <ul>
-                                <li>Document verification</li>
-                                <li>Legal documentation assistance</li>
-                                <li>Collateral agreement processing</li>
-                                <li>Registration renewal reminders</li>
-                                <li>Secure storage options</li>
-                                <li>Loan amount assessment</li>
-                            </ul>
+                        <p>Assistance with title and registration document collateralization...</p>
+                        <div class="service-more">
+                            View Details <i class="fas fa-arrow-right"></i>
                         </div>
                     </div>
                 </div>
@@ -1713,18 +1664,9 @@
                         <span class="service-tag">Vehicle Exchange</span>
                     </div>
                     <div class="service-body">
-                        <p>Upgrade your vehicle through our trade-in program. We offer fair market valuation, seamless transaction processing...</p>
-                        
-                        <div class="service-features">
-                            <h4><i class="fas fa-check-circle"></i> Trade-In Process:</h4>
-                            <ul>
-                                <li>Vehicle appraisal and valuation</li>
-                                <li>Paperwork processing</li>
-                                <li>Balance financing assistance</li>
-                                <li>New vehicle selection support</li>
-                                <li>Seamless ownership transfer</li>
-                                <li>Free vehicle inspection</li>
-                            </ul>
+                        <p>Upgrade your vehicle through our trade-in program...</p>
+                        <div class="service-more">
+                            View Details <i class="fas fa-arrow-right"></i>
                         </div>
                     </div>
                 </div>
@@ -2090,7 +2032,7 @@
 
     <?php include 'footer.php'; ?>
 
-    <!-- Service Modals (Rest of the modals remain the same but are now mobile-optimized) -->
+    <!-- Service Modals (The same modals as before, but now appear when clicking small containers) -->
     <!-- Auto Acquisition Modal -->
     <div id="auto-acquisition-modal" class="modal">
         <div class="modal-content">
@@ -2225,9 +2167,75 @@
         </div>
     </div>
 
-    <!-- Note: Other modals remain similar but with mobile-optimized structure -->
-    <!-- Car Insurance, Housing Insurance, Life Insurance, Second Hand Car Loans, Sangla Title & OR/CR, and Trade In modals -->
-    <!-- (Content remains the same but will use the mobile-optimized CSS) -->
+    <!-- Car Insurance Modal -->
+    <div id="car-insurance-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+                <div class="modal-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Car Insurance</h3>
+                <span class="modal-tag">Insurance</span>
+            </div>
+            <div class="modal-body">
+                <p class="modal-description">
+                    Comprehensive car insurance solutions from top providers. We offer various coverage options including comprehensive, third-party liability, and personal accident benefits tailored to your needs and budget. Protect your vehicle investment with our expert guidance.
+                </p>
+                
+                <div class="modal-features">
+                    <h4><i class="fas fa-check-circle"></i> Coverage Options</h4>
+                    <div class="modal-features-grid">
+                        <div class="feature-column">
+                            <h5><i class="fas fa-car-crash"></i> Comprehensive Coverage</h5>
+                            <ul>
+                                <li>Accident damage protection</li>
+                                <li>Theft and fire protection</li>
+                                <li>Acts of nature coverage</li>
+                                <li>Vandalism protection</li>
+                                <li>Total loss coverage</li>
+                            </ul>
+                        </div>
+                        <div class="feature-column">
+                            <h5><i class="fas fa-user-shield"></i> Liability Protection</h5>
+                            <ul>
+                                <li>Third-party liability</li>
+                                <li>Bodily injury coverage</li>
+                                <li>Property damage coverage</li>
+                                <li>Legal defense coverage</li>
+                                <li>Medical expenses coverage</li>
+                            </ul>
+                        </div>
+                        <div class="feature-column">
+                            <h5><i class="fas fa-plus-circle"></i> Additional Benefits</h5>
+                            <ul>
+                                <li>24/7 Roadside assistance</li>
+                                <li>Personal accident benefits</li>
+                                <li>Excess waiver options</li>
+                                <li>Rental car coverage</li>
+                                <li>Emergency towing</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal-cta">
+                    <h4>Get Protected Now</h4>
+                    <div class="modal-buttons">
+                        <button class="modal-btn" onclick="scrollToContact()">
+                            <i class="fas fa-file-signature"></i> Get Free Quote
+                        </button>
+                        <button class="modal-btn secondary" onclick="window.location.href='contact.php'">
+                            <i class="fas fa-question-circle"></i> Ask About Coverage
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Note: Other modals (Housing Insurance, Life Insurance, Second Hand Car Loans, Sangla Title & OR/CR, and Trade In) remain the same -->
+    <!-- They have the same structure but with their specific content -->
 
     <script>
         // Enhanced mobile touch functionality
@@ -2368,7 +2376,7 @@
         if (!('ontouchstart' in window)) {
             document.querySelectorAll('.service-card').forEach(card => {
                 card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-8px)';
+                    this.style.transform = 'translateY(-5px)';
                 });
                 
                 card.addEventListener('mouseleave', function() {
@@ -2449,4 +2457,4 @@
         }
     </script>
 </body>
-</html>
+</html>     
