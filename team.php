@@ -888,9 +888,9 @@
                     <span class="experience">blank</span>
                     <p class="bio">John manages daily operations and ensures smooth workflow across all departments at Hope Account Specialist.</p>
                     <div class="team-member-contact">
-                        <a href="#" class="contact-icon"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon"><i class="fas fa-phone"></i></a>
-                        <a href="#" class="contact-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="contact-icon tooltip" data-tooltip="israel.bonite@hopeaccount.com"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="contact-icon tooltip" data-tooltip="+63 912 345 6789"><i class="fas fa-phone"></i></a>
+                        <a href="#" class="contact-icon tooltip" data-tooltip="Atty. Israel Bonite"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
                 
@@ -903,9 +903,9 @@
                     <span class="experience">blank</span>
                     <p class="bio">Sarah oversees all financial operations and ensures compliance with accounting standards and regulations.</p>
                     <div class="team-member-contact">
-                        <a href="#" class="contact-icon"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon"><i class="fas fa-phone"></i></a>
-                        <a href="https://www.facebook.com/richcar.ochoco.fernandez" class="contact-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="contact-icon tooltip" data-tooltip="richcar.fernandez@hopeaccount.com"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="contact-icon tooltip" data-tooltip="+63 987 654 3210"><i class="fas fa-phone"></i></a>
+                        <a href="https://www.facebook.com/richcar.ochoco.fernandez" class="contact-icon tooltip" data-tooltip="richcar.ochoco.fernandez"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
                 
@@ -918,9 +918,9 @@
                     <span class="experience">blank</span>
                     <p class="bio">Robert manages daily operations and ensures smooth workflow across all departments.</p>
                     <div class="team-member-contact">
-                        <a href="#" class="contact-icon"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon"><i class="fas fa-phone"></i></a>
-                        <a href="#" class="contact-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="contact-icon tooltip" data-tooltip="nelson.fernandez@hopeaccount.com"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="contact-icon tooltip" data-tooltip="+63 987 654 3211"><i class="fas fa-phone"></i></a>
+                        <a href="#" class="contact-icon tooltip" data-tooltip="Nelson Fernandez"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
             </div>
@@ -935,9 +935,9 @@
                     <span class="experience">blank</span>
                     <p class="bio">Jane ensures operational excellence and drives process improvements across all teams.</p>
                     <div class="team-member-contact">
-                        <a href="#" class="contact-icon"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon"><i class="fas fa-phone"></i></a>
-                        <a href="https://www.facebook.com/dyna.layco" class="contact-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="contact-icon tooltip" data-tooltip="dyna.layco@hopeaccount.com"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="contact-icon tooltip" data-tooltip="+63 987 654 3212"><i class="fas fa-phone"></i></a>
+                        <a href="https://www.facebook.com/dyna.layco" class="contact-icon tooltip" data-tooltip="dyna.layco"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
                 
@@ -950,9 +950,9 @@
                     <span class="experience">blank</span>
                     <p class="bio">Alex leads strategic initiatives and partnerships to expand our service offerings.</p>
                     <div class="team-member-contact">
-                        <a href="#" class="contact-icon"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon"><i class="fas fa-phone"></i></a>
-                        <a href="#" class="contact-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="contact-icon tooltip" data-tooltip="donnabel.cruz@hopeaccount.com"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="contact-icon tooltip" data-tooltip="+63 987 654 3213"><i class="fas fa-phone"></i></a>
+                        <a href="#" class="contact-icon tooltip" data-tooltip="Donnabel Cruz"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
                 
@@ -965,9 +965,9 @@
                     <span class="experience">blank</span>
                     <p class="bio">Maria oversees talent acquisition and employee development programs.</p>
                     <div class="team-member-contact">
-                        <a href="#" class="contact-icon"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon"><i class="fas fa-phone"></i></a>
-                        <a href="#" class="contact-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="contact-icon tooltip" data-tooltip="mariel.deguzman@hopeaccount.com"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="contact-icon tooltip" data-tooltip="+63 987 654 3214"><i class="fas fa-phone"></i></a>
+                        <a href="#" class="contact-icon tooltip" data-tooltip="Mariel De Guzman"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
             </div>
@@ -1003,9 +1003,15 @@
                     <h3>Clarissa Celis </h3>
                     <span class="position">Account Specialist</span>
                     <div class="team-member-contact-smaller">
-                        <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fab fa-facebook-f"></i></a>
+                        <a href="mailto:clarissa.celis@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="clarissa.celis@hopeaccount.com">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="tel:+639876543210" class="contact-icon-smaller tooltip" data-tooltip="+63 987 654 3210">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                        <a href="https://facebook.com/clarissa.celis" class="contact-icon-smaller tooltip" data-tooltip="clarissa.celis">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
                     </div>
                 </div>
                 
@@ -1016,9 +1022,15 @@
                     <h3>Dmple Manabat</h3>
                     <span class="position">Account Specialist</span>
                     <div class="team-member-contact-smaller">
-                        <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fab fa-facebook-f"></i></a>
+                        <a href="mailto:dmple.manabat@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="dmple.manabat@hopeaccount.com">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="tel:+639876543211" class="contact-icon-smaller tooltip" data-tooltip="+63 987 654 3211">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                        <a href="https://facebook.com/dmple.manabat" class="contact-icon-smaller tooltip" data-tooltip="dmple.manabat">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
                     </div>
                 </div>
                 
@@ -1029,9 +1041,15 @@
                     <h3>Joebelle Macapagal</h3>
                     <span class="position">Account Specialist</span>
                     <div class="team-member-contact-smaller">
-                        <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fab fa-facebook-f"></i></a>
+                        <a href="mailto:joebelle.macapagal@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="joebelle.macapagal@hopeaccount.com">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="tel:+639876543212" class="contact-icon-smaller tooltip" data-tooltip="+63 987 654 3212">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                        <a href="https://facebook.com/joebelle.macapagal" class="contact-icon-smaller tooltip" data-tooltip="joebelle.macapagal">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
                     </div>
                 </div>
 
@@ -1043,9 +1061,15 @@
                     <h3>Member 5</h3>
                     <span class="position">Account Specialist</span>
                     <div class="team-member-contact-smaller">
-                        <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fab fa-facebook-f"></i></a>
+                        <a href="mailto:member5@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="member5@hopeaccount.com">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="tel:+639876543213" class="contact-icon-smaller tooltip" data-tooltip="+63 987 654 3213">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                        <a href="https://facebook.com/member5" class="contact-icon-smaller tooltip" data-tooltip="member5">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
                     </div>
                 </div>
                 
@@ -1056,9 +1080,15 @@
                     <h3>Member 6</h3>
                     <span class="position">Account Specialist</span>
                     <div class="team-member-contact-smaller">
-                        <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fab fa-facebook-f"></i></a>
+                        <a href="mailto:member6@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="member6@hopeaccount.com">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="tel:+639876543214" class="contact-icon-smaller tooltip" data-tooltip="+63 987 654 3214">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                        <a href="https://facebook.com/member6" class="contact-icon-smaller tooltip" data-tooltip="member6">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
                     </div>
                 </div>
                 
@@ -1069,9 +1099,15 @@
                     <h3>Member 7</h3>
                     <span class="position">Account Specialist</span>
                     <div class="team-member-contact-smaller">
-                        <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fab fa-facebook-f"></i></a>
+                        <a href="mailto:member7@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="member7@hopeaccount.com">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="tel:+639876543215" class="contact-icon-smaller tooltip" data-tooltip="+63 987 654 3215">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                        <a href="https://facebook.com/member7" class="contact-icon-smaller tooltip" data-tooltip="member7">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
                     </div>
                 </div>
                 
@@ -1082,9 +1118,15 @@
                     <h3>Member 8</h3>
                     <span class="position">Account Specialist</span>
                     <div class="team-member-contact-smaller">
-                        <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fab fa-facebook-f"></i></a>
+                        <a href="mailto:member8@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="member8@hopeaccount.com">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="tel:+639876543216" class="contact-icon-smaller tooltip" data-tooltip="+63 987 654 3216">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                        <a href="https://facebook.com/member8" class="contact-icon-smaller tooltip" data-tooltip="member8">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
                     </div>
                 </div>
 
@@ -1096,9 +1138,15 @@
                     <h3>Member 9</h3>
                     <span class="position">Account Specialist</span>
                     <div class="team-member-contact-smaller">
-                        <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fab fa-facebook-f"></i></a>
+                        <a href="mailto:member9@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="member9@hopeaccount.com">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="tel:+639876543217" class="contact-icon-smaller tooltip" data-tooltip="+63 987 654 3217">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                        <a href="https://facebook.com/member9" class="contact-icon-smaller tooltip" data-tooltip="member9">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
                     </div>
                 </div>
                 
@@ -1109,9 +1157,15 @@
                     <h3>Member 10</h3>
                     <span class="position">Account Specialist</span>
                     <div class="team-member-contact-smaller">
-                        <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fab fa-facebook-f"></i></a>
+                        <a href="mailto:member10@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="member10@hopeaccount.com">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="tel:+639876543218" class="contact-icon-smaller tooltip" data-tooltip="+63 987 654 3218">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                        <a href="https://facebook.com/member10" class="contact-icon-smaller tooltip" data-tooltip="member10">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
                     </div>
                 </div>
                 
@@ -1122,9 +1176,15 @@
                     <h3>Member 11</h3>
                     <span class="position">Account Specialist</span>
                     <div class="team-member-contact-smaller">
-                        <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fab fa-facebook-f"></i></a>
+                        <a href="mailto:member11@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="member11@hopeaccount.com">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="tel:+639876543219" class="contact-icon-smaller tooltip" data-tooltip="+63 987 654 3219">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                        <a href="https://facebook.com/member11" class="contact-icon-smaller tooltip" data-tooltip="member11">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
                     </div>
                 </div>
                 
@@ -1135,9 +1195,15 @@
                     <h3>Member 12</h3>
                     <span class="position">Account Specialist</span>
                     <div class="team-member-contact-smaller">
-                        <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fab fa-facebook-f"></i></a>
+                        <a href="mailto:member12@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="member12@hopeaccount.com">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="tel:+639876543220" class="contact-icon-smaller tooltip" data-tooltip="+63 987 654 3220">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                        <a href="https://facebook.com/member12" class="contact-icon-smaller tooltip" data-tooltip="member12">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
                     </div>
                 </div>
 
@@ -1149,9 +1215,15 @@
                     <h3>Member 13</h3>
                     <span class="position">Account Specialist</span>
                     <div class="team-member-contact-smaller">
-                        <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fab fa-facebook-f"></i></a>
+                        <a href="mailto:member13@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="member13@hopeaccount.com">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="tel:+639876543221" class="contact-icon-smaller tooltip" data-tooltip="+63 987 654 3221">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                        <a href="https://facebook.com/member13" class="contact-icon-smaller tooltip" data-tooltip="member13">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
                     </div>
                 </div>
                 
@@ -1162,9 +1234,15 @@
                     <h3>Member 14</h3>
                     <span class="position">Account Specialist</span>
                     <div class="team-member-contact-smaller">
-                        <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fab fa-facebook-f"></i></a>
+                        <a href="mailto:member14@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="member14@hopeaccount.com">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="tel:+639876543222" class="contact-icon-smaller tooltip" data-tooltip="+63 987 654 3222">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                        <a href="https://facebook.com/member14" class="contact-icon-smaller tooltip" data-tooltip="member14">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
                     </div>
                 </div>
                 
@@ -1175,9 +1253,15 @@
                     <h3>Member 15</h3>
                     <span class="position">Account Specialist</span>
                     <div class="team-member-contact-smaller">
-                        <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fab fa-facebook-f"></i></a>
+                        <a href="mailto:member15@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="member15@hopeaccount.com">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="tel:+639876543223" class="contact-icon-smaller tooltip" data-tooltip="+63 987 654 3223">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                        <a href="https://facebook.com/member15" class="contact-icon-smaller tooltip" data-tooltip="member15">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
                     </div>
                 </div>
                 
@@ -1188,9 +1272,15 @@
                     <h3>Member 16</h3>
                     <span class="position">Account Specialist</span>
                     <div class="team-member-contact-smaller">
-                        <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fab fa-facebook-f"></i></a>
+                        <a href="mailto:member16@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="member16@hopeaccount.com">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="tel:+639876543224" class="contact-icon-smaller tooltip" data-tooltip="+63 987 654 3224">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                        <a href="https://facebook.com/member16" class="contact-icon-smaller tooltip" data-tooltip="member16">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
                     </div>
                 </div>
 
@@ -1202,9 +1292,15 @@
                     <h3>Member 17</h3>
                     <span class="position">Account Specialist</span>
                     <div class="team-member-contact-smaller">
-                        <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fab fa-facebook-f"></i></a>
+                        <a href="mailto:member17@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="member17@hopeaccount.com">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="tel:+639876543225" class="contact-icon-smaller tooltip" data-tooltip="+63 987 654 3225">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                        <a href="https://facebook.com/member17" class="contact-icon-smaller tooltip" data-tooltip="member17">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
                     </div>
                 </div>
                 
@@ -1215,9 +1311,15 @@
                     <h3>Member 18</h3>
                     <span class="position">Account Specialist</span>
                     <div class="team-member-contact-smaller">
-                        <a href="#" class="contact-icon-smaller"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fas fa-phone"></i></a>
-                        <a href="#" class="contact-icon-smaller"><i class="fab fa-facebook-f"></i></a>
+                        <a href="mailto:member18@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="member18@hopeaccount.com">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="tel:+639876543226" class="contact-icon-smaller tooltip" data-tooltip="+63 987 654 3226">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                        <a href="https://facebook.com/member18" class="contact-icon-smaller tooltip" data-tooltip="member18">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
                     </div>
                 </div>
             </div>
