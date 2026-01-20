@@ -121,7 +121,7 @@
             transform: translateX(0);
         }
 
-        /* Hero Carousel Navigation */
+        /* Hero Carousel Navigation - LINE STYLE DOTS */
         .hero-carousel-nav {
             position: absolute;
             bottom: 30px;
@@ -130,77 +130,113 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 30px;
             z-index: 100;
         }
 
-        .hero-carousel-btn {
-            background: #2c2b29;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            color: #eeb82e;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
-
-        .hero-carousel-btn:hover {
-            background: #eeb82e;
-            color: #2c2b29;
-            transform: scale(1.1);
-        }
-
+        /* Line style dots container */
         .hero-carousel-dots {
             display: flex;
-            gap: 15px;
+            gap: 12px;
+            padding: 10px 20px;
+            background: rgba(44, 43, 41, 0.85);
+            border-radius: 25px;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
+        /* Line style dots (pahabang rectangles) */
         .hero-carousel-dot {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: #ddd;
+            width: 40px;
+            height: 6px;
+            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.4);
             border: none;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             position: relative;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
         }
 
+        /* Hover effect para sa lines */
+        .hero-carousel-dot:hover {
+            background: rgba(238, 184, 46, 0.7);
+            transform: scaleX(1.2);
+        }
+
+        /* Active line - mas maliwanag at mas mahaba */
         .hero-carousel-dot.active {
             background: #eeb82e;
-            transform: scale(1.2);
+            transform: scaleX(1.3);
+            box-shadow: 0 0 10px rgba(238, 184, 46, 0.6);
         }
 
+        /* Optional: Add a subtle animation to the active line */
         .hero-carousel-dot.active::after {
             content: '';
             position: absolute;
-            top: -4px;
-            left: -4px;
-            right: -4px;
-            bottom: -4px;
-            border: 2px solid #eeb82e;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(255, 255, 255, 0.3) 50%, 
+                transparent 100%);
+            animation: shine 2s infinite;
+            border-radius: 3px;
         }
 
-        @keyframes pulse {
+        @keyframes shine {
             0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            50% {
-                transform: scale(1.1);
-                opacity: 0.7;
+                transform: translateX(-100%);
             }
             100% {
-                transform: scale(1);
-                opacity: 1;
+                transform: translateX(100%);
+            }
+        }
+
+        /* Mobile adjustments */
+        @media screen and (max-width: 768px) {
+            .hero-carousel-nav {
+                bottom: 20px;
+            }
+            
+            .hero-carousel-dots {
+                padding: 8px 15px;
+                gap: 10px;
+            }
+            
+            .hero-carousel-dot {
+                width: 30px;
+                height: 5px;
+                border-radius: 2.5px;
+            }
+            
+            .hero-carousel-dot:hover {
+                transform: scaleX(1.1);
+            }
+            
+            .hero-carousel-dot.active {
+                transform: scaleX(1.2);
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .hero-carousel-nav {
+                bottom: 15px;
+            }
+            
+            .hero-carousel-dots {
+                padding: 6px 12px;
+                gap: 8px;
+            }
+            
+            .hero-carousel-dot {
+                width: 25px;
+                height: 4px;
+                border-radius: 2px;
             }
         }
 
@@ -480,7 +516,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.15;
+            opacity: 1.15;
             filter: brightness(0.8);
         }
 
@@ -1195,13 +1231,25 @@
 
             .hero-carousel-nav {
                 bottom: 20px;
-                gap: 20px;
             }
 
-            .hero-carousel-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
+            .hero-carousel-dots {
+                padding: 8px 15px;
+                gap: 10px;
+            }
+
+            .hero-carousel-dot {
+                width: 30px;
+                height: 5px;
+                border-radius: 2.5px;
+            }
+
+            .hero-carousel-dot:hover {
+                transform: scaleX(1.1);
+            }
+
+            .hero-carousel-dot.active {
+                transform: scaleX(1.2);
             }
 
             .about-us-title,
@@ -1417,12 +1465,17 @@
 
             .hero-carousel-nav {
                 bottom: 15px;
-                gap: 15px;
             }
 
-            .hero-carousel-btn {
-                width: 35px;
-                height: 35px;
+            .hero-carousel-dots {
+                padding: 6px 12px;
+                gap: 8px;
+            }
+
+            .hero-carousel-dot {
+                width: 25px;
+                height: 4px;
+                border-radius: 2px;
             }
 
             /* Carousel adjustments for very small screens */
@@ -1652,10 +1705,9 @@
                 </div>
             </div>
 
+            <!-- Navigation Dots Only - LINE STYLE -->
             <div class="hero-carousel-nav">
-                <button class="hero-carousel-btn" id="heroPrevBtn">&#10094;</button>
                 <div class="hero-carousel-dots" id="heroCarouselDots"></div>
-                <button class="hero-carousel-btn" id="heroNextBtn">&#10095;</button>
             </div>
         </div>
 
@@ -1664,8 +1716,8 @@
             <h2 class="about-us-title">ABOUT US</h2>
             <div class="about-us-container">
                 <div class="about-us-text">
-                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."</p>
+                    <p>Hope Specialist is a trusted financial services company established in 2022, dedicated to helping individuals and families turn their goals into reality. We specialize in assisting clients with car acquisition and financing, while also offering a wide range of services related to housing, real estate, and insurance solutions.</p>
+                    <p>Located at Brgy. Concepcion, Maharlika Hi-way, Cabanatuan City, Nueva Ecija, Hope Specialist has built a strong reputation by delivering reliable, transparent, and client-focused services. Through our growing network of partnerships with banks, car dealers, real estate developers, and housing providers, we make the process of owning a car, home, or property more accessible and stress-free.</p>
                 </div>
                 <div class="about-us-map">
                     <img src="img/indexpics.jpg" alt="Location Map">
@@ -1821,24 +1873,18 @@
                     <div class="award-header">
                         <div class="award-image-container">
                             <!-- Background Image -->
-                            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Accounting Background" class="award-image-bg">
-                            <!-- Main Award Image -->
-                            <img src="" alt="Trophy Award" class="award-main-image">
+                            <img src="img/recognition/TEAM_LEADER.png" alt="Team-Leader Background" class="award-image-bg">
                             <div class="award-header-content">
-                                <h3>Excellence in Accounting</h3>
-                                <span class="award-year">2023</span>
+                                <h3>TEAM LEADER OF THE YEAR</h3>
+                                <span class="award-year">2024</span>
                             </div>
                         </div>
                     </div>
                     <div class="award-body">
-                        <p>Recognized for outstanding accounting services and client satisfaction. Awarded for innovation in financial management solutions and exceptional client retention rates.</p>
-                        <div class="award-issuer">
-                            <div class="issuer-icon">
-                                <i class="fas fa-award"></i>
-                            </div>
-                            <div class="issuer-info">
-                                <h4>National Accounting Association</h4>
-                                <p>Professional Excellence Division</p>
+                        <p>For an outstanding sales performance of her and her team at LHOOPA INC. - BELLA VITA CABANATUAN EAST BANGAD, achieving a total of 33 units sold from March to December 2024.</p>
+                        <div class="award-issuer" style="justify-content: center;">
+                            <div class="issuer-info" style="text-align: center;">
+                                <h4>HOLY HILL REALTY</h4>
                             </div>
                         </div>
                     </div>
@@ -1848,23 +1894,18 @@
                 <div class="award-card">
                     <div class="award-header">
                         <div class="award-image-container">
-                            <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Business Support Background" class="award-image-bg">
-                            <img src="" alt="Medal Award" class="award-main-image">
+                            <img src="img/recognition/sales-agent.png" alt="sale-agent-background" class="award-image-bg">
                             <div class="award-header-content">
-                                <h3>Best Small Business Support</h3>
-                                <span class="award-year">2022</span>
+                                <h3>SALES AGENT OF THE MONTH</h3>
+                                <span class="award-year">2024</span>
                             </div>
                         </div>
                     </div>
                     <div class="award-body">
-                        <p>Awarded for exceptional support services to small and medium-sized businesses, helping them achieve financial stability and growth during challenging economic times.</p>
-                        <div class="award-issuer">
-                            <div class="issuer-icon">
-                                <i class="fas fa-building"></i>
-                            </div>
-                            <div class="issuer-info">
-                                <h4>Business Excellence Council</h4>
-                                <p>Small Business Division</p>
+                        <p>For an outstanding sales performance at LHOOPA INC. – BELLA VITA CABANATUAN EAST BANGAD, achieving a total of 10 units sold for the month of MARCH 2024.</p>
+                        <div class="award-issuer" style="justify-content: center;">
+                            <div class="issuer-info" style="text-align: center;">
+                                <h4>HOLY HILL REALTY</h4>
                             </div>
                         </div>
                     </div>
@@ -1884,11 +1925,8 @@
                     </div>
                     <div class="award-body">
                         <p>Recognized for exceptional client service with a 98% satisfaction rating. Commended for personalized approach and timely response to client needs and inquiries.</p>
-                        <div class="award-issuer">
-                            <div class="issuer-icon">
-                                <i class="fas fa-users"></i>
-                            </div>
-                            <div class="issuer-info">
+                        <div class="award-issuer" style="justify-content: center;">
+                            <div class="issuer-info" style="text-align: center;">
                                 <h4>Customer Service Institute</h4>
                                 <p>Professional Services Category</p>
                             </div>
@@ -1910,11 +1948,8 @@
                     </div>
                     <div class="award-body">
                         <p>Awarded for innovative implementation of financial technology solutions, streamlining accounting processes and providing clients with cutting-edge digital tools.</p>
-                        <div class="award-issuer">
-                            <div class="issuer-icon">
-                                <i class="fas fa-laptop-code"></i>
-                            </div>
-                            <div class="issuer-info">
+                        <div class="award-issuer" style="justify-content: center;">
+                            <div class="issuer-info" style="text-align: center;">
                                 <h4>Tech Innovation Awards</h4>
                                 <p>FinTech Solutions Category</p>
                             </div>
@@ -1936,11 +1971,8 @@
                     </div>
                     <div class="award-body">
                         <p>Recognized for maintaining the highest ethical standards and compliance with financial regulations. Zero compliance violations over 5 consecutive years.</p>
-                        <div class="award-issuer">
-                            <div class="issuer-icon">
-                                <i class="fas fa-balance-scale"></i>
-                            </div>
-                            <div class="issuer-info">
+                        <div class="award-issuer" style="justify-content: center;">
+                            <div class="issuer-info" style="text-align: center;">
                                 <h4>Financial Ethics Board</h4>
                                 <p>Compliance Excellence</p>
                             </div>
@@ -1962,11 +1994,8 @@
                     </div>
                     <div class="award-body">
                         <p>Awarded for outstanding contributions to the community, including pro bono services for non-profits and financial literacy programs for underserved communities.</p>
-                        <div class="award-issuer">
-                            <div class="issuer-icon">
-                                <i class="fas fa-hands-helping"></i>
-                            </div>
-                            <div class="issuer-info">
+                        <div class="award-issuer" style="justify-content: center;">
+                            <div class="issuer-info" style="text-align: center;">
                                 <h4>Community Excellence Foundation</h4>
                                 <p>Corporate Citizenship</p>
                             </div>
@@ -2093,12 +2122,10 @@
     <?php include 'footer.php'; ?>
 
     <script>
-        // Hero Carousel Functionality
+        // Hero Carousel Functionality - LINE STYLE DOTS
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize Hero Carousel
             const heroTrack = document.getElementById('heroCarouselTrack');
-            const heroPrevBtn = document.getElementById('heroPrevBtn');
-            const heroNextBtn = document.getElementById('heroNextBtn');
             const heroDotsContainer = document.getElementById('heroCarouselDots');
             
             if (!heroTrack) return;
@@ -2106,17 +2133,20 @@
             const heroSlides = Array.from(heroTrack.children);
             let heroCurrentIndex = 0;
             let heroAutoPlayInterval;
+            const autoPlayIntervalTime = 5000; // 5 seconds
             
-            // Create dots for hero carousel
+            // Create line dots for hero carousel
             function createHeroDots() {
                 heroDotsContainer.innerHTML = '';
                 
                 for (let i = 0; i < heroSlides.length; i++) {
-                    const dot = document.createElement('button');
-                    dot.classList.add('hero-carousel-dot');
-                    if (i === 0) dot.classList.add('active');
-                    dot.addEventListener('click', () => goToHeroSlide(i));
-                    heroDotsContainer.appendChild(dot);
+                    const line = document.createElement('button');
+                    line.classList.add('hero-carousel-dot');
+                    if (i === 0) line.classList.add('active');
+                    line.setAttribute('data-index', i);
+                    line.setAttribute('aria-label', `Go to slide ${i + 1}`);
+                    line.addEventListener('click', () => goToHeroSlide(i));
+                    heroDotsContainer.appendChild(line);
                 }
             }
             
@@ -2135,7 +2165,7 @@
                 const offset = -heroCurrentIndex * slideWidth;
                 heroTrack.style.transform = `translateX(${offset}px)`;
                 
-                // Update dots
+                // Update line dots
                 const heroDots = Array.from(heroDotsContainer.children);
                 heroDots.forEach((dot, index) => {
                     dot.classList.toggle('active', index === heroCurrentIndex);
@@ -2145,7 +2175,7 @@
             function goToHeroSlide(index) {
                 heroCurrentIndex = index;
                 updateHeroCarousel();
-                resetHeroAutoPlay();
+                resetHeroAutoPlay(); // Reset timer when user clicks a line
             }
             
             function nextHeroSlide() {
@@ -2153,34 +2183,69 @@
                 updateHeroCarousel();
             }
             
-            function prevHeroSlide() {
-                heroCurrentIndex = (heroCurrentIndex - 1 + heroSlides.length) % heroSlides.length;
-                updateHeroCarousel();
+            function startHeroAutoPlay() {
+                heroAutoPlayInterval = setInterval(nextHeroSlide, autoPlayIntervalTime);
             }
             
-            function startHeroAutoPlay() {
-                heroAutoPlayInterval = setInterval(nextHeroSlide, 5000);
+            function stopHeroAutoPlay() {
+                clearInterval(heroAutoPlayInterval);
             }
             
             function resetHeroAutoPlay() {
-                clearInterval(heroAutoPlayInterval);
+                stopHeroAutoPlay();
                 startHeroAutoPlay();
             }
             
-            // Event listeners for hero carousel
-            heroNextBtn.addEventListener('click', () => {
-                nextHeroSlide();
-                resetHeroAutoPlay();
+            // Keyboard navigation (optional)
+            document.addEventListener('keydown', (e) => {
+                if(e.key === 'ArrowLeft') {
+                    heroCurrentIndex = (heroCurrentIndex - 1 + heroSlides.length) % heroSlides.length;
+                    updateHeroCarousel();
+                    resetHeroAutoPlay();
+                } else if(e.key === 'ArrowRight') {
+                    heroCurrentIndex = (heroCurrentIndex + 1) % heroSlides.length;
+                    updateHeroCarousel();
+                    resetHeroAutoPlay();
+                }
             });
             
-            heroPrevBtn.addEventListener('click', () => {
-                prevHeroSlide();
-                resetHeroAutoPlay();
+            // Touch/swipe support for mobile
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            heroTrack.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+                stopHeroAutoPlay();
             });
+            
+            heroTrack.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+                startHeroAutoPlay();
+            });
+            
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                
+                if(touchStartX - touchEndX > swipeThreshold) {
+                    // Swipe left - next slide
+                    heroCurrentIndex = (heroCurrentIndex + 1) % heroSlides.length;
+                    updateHeroCarousel();
+                } else if(touchEndX - touchStartX > swipeThreshold) {
+                    // Swipe right - previous slide
+                    heroCurrentIndex = (heroCurrentIndex - 1 + heroSlides.length) % heroSlides.length;
+                    updateHeroCarousel();
+                }
+            }
             
             // Pause auto-play on hover
-            heroTrack.addEventListener('mouseenter', () => clearInterval(heroAutoPlayInterval));
-            heroTrack.addEventListener('mouseleave', startHeroAutoPlay);
+            const heroSection = document.querySelector('.hero-carousel-section');
+            heroSection.addEventListener('mouseenter', stopHeroAutoPlay);
+            heroSection.addEventListener('mouseleave', startHeroAutoPlay);
+            
+            // Pause auto-play when user interacts with line dots
+            heroDotsContainer.addEventListener('mouseenter', stopHeroAutoPlay);
+            heroDotsContainer.addEventListener('mouseleave', startHeroAutoPlay);
             
             // Handle window resize
             window.addEventListener('resize', updateHeroCarousel);
