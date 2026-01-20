@@ -1393,7 +1393,7 @@
 
                 <!-- RIGHT: IMAGE -->
                 <div class="faq-image">
-                    <img src="img/faq.png" alt="FAQ Illustration">
+                    <img src="img/faqs.jpg" alt="FAQ Illustration">
                 </div>
             </div>
         </div>

@@ -23,6 +23,7 @@ $active_tab = isset($_GET['tab']) ? $_GET['tab'] : 'past_sales';
 if (isset($_GET['delete'])) {
     $id = intval($_GET['delete']);
     
+    // Sa admin_dashboard.php, i-update ang delete switch statement:
     switch($active_tab) {
         case 'past_sales':
             $sql = "DELETE FROM past_sales WHERE id = $id";
@@ -43,6 +44,11 @@ if (isset($_GET['delete'])) {
             $sql = "DELETE FROM affiliated_cars WHERE id = $id";
             $success_msg = "Car company deleted successfully!";
             $error_msg = "Error deleting car company";
+            break;
+        case 'team_members': // NEW
+            $sql = "DELETE FROM team_members WHERE id = $id";
+            $success_msg = "Team member deleted successfully!";
+            $error_msg = "Error deleting team member";
             break;
         default:
             $sql = "";
@@ -539,6 +545,10 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                 <a href="?tab=affiliated_cars" class="tab-link <?php echo $active_tab == 'affiliated_cars' ? 'active' : ''; ?>">
                     <i class="fas fa-car"></i>
                     <span>Car Companies</span>
+                </a>
+                <a href="?tab=team_members" class="tab-link <?php echo $active_tab == 'team_members' ? 'active' : ''; ?>">
+                    <i class="fas fa-users"></i>
+                    <span>Team Members</span>
                 </a>
             </div>
             
@@ -1054,6 +1064,197 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                     </table>
                 </div>
             </div>
+
+            <!-- NEW: Team Members Tab Content -->
+            <div id="team_members" class="tab-content <?php echo $active_tab == 'team_members' ? 'active' : ''; ?>">
+                <div class="sales-table">
+                    <div class="table-header">
+                        <h2><i class="fas fa-users"></i> Team Members Management</h2>
+                        <button onclick="toggleAddForm('team_members')" class="admin-btn">
+                            <i class="fas fa-plus"></i> Add New Team Member
+                        </button>
+                    </div>
+                    
+                    <div id="team_members_form" class="add-form-container">
+                        <h3><i class="fas fa-plus-circle"></i> Add New Team Member</h3>
+                        <form method="POST" action="admin_save_team.php" enctype="multipart/form-data">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="team_name">Name *</label>
+                                    <input type="text" id="team_name" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="team_position">Position *</label>
+                                    <input type="text" id="team_position" name="position" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="team_category">Category *</label>
+                                    <select id="team_category" name="category" required>
+                                        <option value="ceo">CEO/Founder</option>
+                                        <option value="leadership">Leadership Team</option>
+                                        <option value="specialists">Account Specialists</option>
+                                        <option value="support">Support Staff</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="team_order">Display Order</label>
+                                    <input type="number" id="team_order" name="display_order" value="0">
+                                    <small style="color: #666;">Lower numbers appear first</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="team_status">Status</label>
+                                    <select id="team_status" name="is_active">
+                                        <option value="1">Active</option>
+                                        <option value="0">Inactive</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="team_description">Description/Bio</label>
+                                <textarea id="team_description" name="description" rows="3" placeholder="Short bio or description about the team member"></textarea>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="team_phone">Phone Number</label>
+                                    <input type="text" id="team_phone" name="phone" placeholder="e.g., +63 912 345 6789">
+                                </div>
+                                <div class="form-group">
+                                    <label for="team_email">Email Address</label>
+                                    <input type="email" id="team_email" name="email" placeholder="e.g., name@example.com">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="team_facebook">Facebook Link</label>
+                                <input type="url" id="team_facebook" name="facebook_link" placeholder="https://facebook.com/username">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="team_image">Profile Image *</label>
+                                <input type="file" id="team_image" name="image" accept="image/*" required>
+                                <small style="color: #666;">Recommended: Square image, 400x400px. Max size: 5MB</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <button type="submit" class="admin-btn" style="width: auto;">
+                                    <i class="fas fa-save"></i> Save Team Member
+                                </button>
+                                <button type="button" onclick="toggleAddForm('team_members')" class="admin-btn" style="background: #6c757d; width: auto;">
+                                    <i class="fas fa-times"></i> Cancel
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Position</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Category</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php 
+                            // Fetch team members data
+                            $team_members_result = mysqli_query($conn, "SELECT * FROM team_members ORDER BY category ASC, display_order ASC, name ASC");
+                            
+                            if (mysqli_num_rows($team_members_result) > 0): ?>
+                                <?php while ($member = mysqli_fetch_assoc($team_members_result)): ?>
+                                <tr>
+                                    <td><?php echo $member['id']; ?></td>
+                                    <td>
+                                        <img src="<?php echo $member['image_path']; ?>" alt="<?php echo htmlspecialchars($member['name']); ?>" 
+                                            class="thumbnail small"
+                                            onerror="this.src='https://via.placeholder.com/60x60?text=No+Image'">
+                                    </td>
+                                    <td><strong><?php echo htmlspecialchars($member['name']); ?></strong></td>
+                                    <td><?php echo htmlspecialchars($member['position']); ?></td>
+                                    <td>
+                                        <?php if (!empty($member['phone'])): ?>
+                                            <a href="tel:<?php echo htmlspecialchars($member['phone']); ?>" 
+                                            style="color: #007bff; text-decoration: none; font-size: 0.9rem;">
+                                                <i class="fas fa-phone"></i> <?php echo htmlspecialchars($member['phone']); ?>
+                                            </a>
+                                        <?php else: ?>
+                                            <span style="color: #999; font-size: 0.9rem;">N/A</span>
+                                        <?php endif; ?>
+                                    </td>
+                                    <td>
+                                        <?php if (!empty($member['email'])): ?>
+                                            <a href="mailto:<?php echo htmlspecialchars($member['email']); ?>" 
+                                            style="color: #007bff; text-decoration: none; font-size: 0.9rem;">
+                                                <i class="fas fa-envelope"></i> View Email
+                                            </a>
+                                        <?php else: ?>
+                                            <span style="color: #999; font-size: 0.9rem;">N/A</span>
+                                        <?php endif; ?>
+                                    </td>
+                                    <td>
+                                        <?php 
+                                        $category_labels = [
+                                            'ceo' => 'CEO',
+                                            'leadership' => 'Leadership',
+                                            'specialists' => 'Specialist',
+                                            'support' => 'Support'
+                                        ];
+                                        echo $category_labels[$member['category']] ?? $member['category'];
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php if ($member['is_active']): ?>
+                                            <span style="color: #28a745; font-weight: 600; font-size: 0.9rem;">
+                                                <i class="fas fa-check-circle"></i> Active
+                                            </span>
+                                        <?php else: ?>
+                                            <span style="color: #dc3545; font-weight: 600; font-size: 0.9rem;">
+                                                <i class="fas fa-times-circle"></i> Inactive
+                                            </span>
+                                        <?php endif; ?>
+                                    </td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <a href="admin_edit_team.php?id=<?php echo $member['id']; ?>&tab=team_members" class="btn-edit">
+                                                <i class="fas fa-edit"></i> Edit
+                                            </a>
+                                            <a href="?tab=team_members&delete=<?php echo $member['id']; ?>" 
+                                            class="btn-delete" 
+                                            onclick="return confirm('Are you sure you want to delete this team member?')">
+                                                <i class="fas fa-trash"></i> Delete
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <?php endwhile; ?>
+                            <?php else: ?>
+                                <tr>
+                                    <td colspan="9">
+                                        <div class="empty-state">
+                                            <i class="fas fa-users"></i>
+                                            <p>No team members found</p>
+                                            <p>Add your first team member using the "Add New Team Member" button</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endif; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
         
         <!-- Quick Instructions -->
@@ -1093,6 +1294,14 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                         </h4>
                         <p style="color: #666; line-height: 1.6;">
                             Manage car brand partners. Add car company logos and set their display priority.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 style="color: #2c2b29; margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-users" style="color: #eeb82e;"></i> Team Members
+                        </h4>
+                        <p style="color: #666; line-height: 1.6;">
+                            Manage team members. Add team member and set their display priority.
                         </p>
                     </div>
                 </div>

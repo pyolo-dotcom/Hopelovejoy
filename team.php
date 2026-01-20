@@ -1,3 +1,9 @@
+<?php
+// team.php - DYNAMIC VERSION
+session_start();
+require_once 'config.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -113,7 +119,6 @@
             transition: transform 0.5s ease;
         }
 
-
         .ceo-details {
             flex: 1;
             color: white;
@@ -178,12 +183,17 @@
             text-decoration: none;
             transition: all 0.3s ease;
             font-size: 1rem;
+            cursor: pointer;
         }
 
         .ceo-contact-icon:hover {
             background: #eeb82e;
             color: #2c2b29;
             transform: translateY(-3px);
+        }
+
+        .ceo-contact-icon.link {
+            cursor: pointer;
         }
 
         /* Team Categories */
@@ -224,13 +234,16 @@
 
         /* SMALLER TEAM MEMBER CARD - FOR ACCOUNT SPECIALISTS */
         .team-member-smaller {
-            width: 250px; /* Reduced from 280px */
+            width: 280px; /* Increased from 250px */
             text-align: center;
             background: white;
             border-radius: 15px;
-            padding: 20px; /* Reduced from 25px */
+            padding: 25px; /* Increased from 20px */
             box-shadow: 0 5px 20px rgba(0,0,0,0.08);
             transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .team-member-smaller:hover {
@@ -239,11 +252,11 @@
         }
 
         .team-member-img-smaller {
-            width: 180px; /* Reduced from 200px */
-            height: 180px; /* Reduced from 200px */
+            width: 200px; /* Increased from 180px */
+            height: 200px; /* Increased from 180px */
             border-radius: 0; /* Changed to box shape */
             overflow: hidden;
-            margin: 0 auto 15px; /* Reduced from 20px */
+            margin: 0 auto 20px; /* Increased from 15px */
             border: 4px solid #eeb82e;
             position: relative;
         }
@@ -261,45 +274,46 @@
 
         .team-member-smaller h3 {
             font-family: 'Roboto Serif', serif;
-            font-size: 1.2rem; /* Reduced from 1.4rem */
+            font-size: 1.4rem; /* Increased from 1.2rem */
             color: #2c2b29;
-            margin-bottom: 5px; /* Reduced from 8px */
+            margin-bottom: 8px; /* Increased from 5px */
         }
 
         .team-member-smaller .position {
             color: #eeb82e;
             font-weight: 600;
-            font-size: 0.9rem; /* Reduced from 1rem */
-            margin-bottom: 10px; /* Reduced from 15px */
+            font-size: 1rem; /* Increased from 0.9rem */
+            margin-bottom: 15px; /* Increased from 10px */
             display: block;
         }
 
         .team-member-smaller .experience {
             color: #666;
-            font-size: 0.8rem; /* Reduced from 0.9rem */
-            margin-bottom: 10px; /* Reduced from 15px */
+            font-size: 0.9rem; /* Increased from 0.8rem */
+            margin-bottom: 15px; /* Increased from 10px */
             display: block;
         }
 
         .team-member-smaller .bio {
             color: #555;
-            font-size: 0.85rem; /* Reduced from 0.95rem */
-            line-height: 1.5; /* Reduced from 1.6 */
-            margin-bottom: 15px; /* Reduced from 20px */
-            height: 60px; /* Fixed height for uniform cards */
-            overflow: hidden;
+            font-size: 0.95rem; /* Increased from 0.85rem */
+            line-height: 1.6; /* Increased from 1.5 */
+            margin-bottom: 20px; /* Increased from 15px */
+            height: auto; /* Changed from fixed height */
+            overflow: visible;
+            flex-grow: 1;
         }
 
         .team-member-contact-smaller {
             display: flex;
             justify-content: center;
-            gap: 10px; /* Reduced from 15px */
-            margin-top: 15px; /* Reduced from 20px */
+            gap: 15px; /* Increased from 10px */
+            margin-top: 20px; /* Increased from 15px */
         }
 
         .contact-icon-smaller {
-            width: 35px; /* Reduced from 40px */
-            height: 35px; /* Reduced from 40px */
+            width: 40px; /* Increased from 35px */
+            height: 40px; /* Increased from 35px */
             background: #f8f8f8;
             border-radius: 50%;
             display: flex;
@@ -308,7 +322,8 @@
             color: #2c2b29;
             text-decoration: none;
             transition: all 0.3s ease;
-            font-size: 0.9rem; /* Reduced font size */
+            font-size: 1rem; /* Increased from 0.9rem */
+            cursor: pointer;
         }
 
         .contact-icon-smaller:hover {
@@ -319,13 +334,16 @@
 
         /* Original team member style for other sections */
         .team-member {
-            width: 280px;
+            width: 300px; /* Increased from 280px */
             text-align: center;
             background: white;
             border-radius: 15px;
-            padding: 25px;
+            padding: 30px; /* Increased from 25px */
             box-shadow: 0 5px 20px rgba(0,0,0,0.08);
             transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .team-member:hover {
@@ -334,8 +352,8 @@
         }
 
         .team-member-img {
-            width: 200px;
-            height: 200px;
+            width: 220px; /* Increased from 200px */
+            height: 220px; /* Increased from 200px */
             border-radius: 0;
             overflow: hidden;
             margin: 0 auto 20px;
@@ -356,31 +374,34 @@
 
         .team-member h3 {
             font-family: 'Roboto Serif', serif;
-            font-size: 1.4rem;
+            font-size: 1.5rem; /* Increased from 1.4rem */
             color: #2c2b29;
-            margin-bottom: 8px;
+            margin-bottom: 10px; /* Increased from 8px */
         }
 
         .team-member .position {
             color: #eeb82e;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 1.1rem; /* Increased from 1rem */
             margin-bottom: 15px;
             display: block;
         }
 
         .team-member .experience {
             color: #666;
-            font-size: 0.9rem;
+            font-size: 1rem; /* Increased from 0.9rem */
             margin-bottom: 15px;
             display: block;
         }
 
         .team-member .bio {
             color: #555;
-            font-size: 0.95rem;
-            line-height: 1.6;
+            font-size: 1rem; /* Increased from 0.95rem */
+            line-height: 1.7; /* Increased from 1.6 */
             margin-bottom: 20px;
+            height: auto;
+            overflow: visible;
+            flex-grow: 1;
         }
 
         .team-member-contact {
@@ -391,8 +412,8 @@
         }
 
         .contact-icon {
-            width: 40px;
-            height: 40px;
+            width: 45px; /* Increased from 40px */
+            height: 45px; /* Increased from 40px */
             background: #f8f8f8;
             border-radius: 50%;
             display: flex;
@@ -401,12 +422,30 @@
             color: #2c2b29;
             text-decoration: none;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .contact-icon:hover {
             background: #eeb82e;
             color: white;
             transform: scale(1.1);
+        }
+
+        /* Read More/Less button */
+        .read-more-btn {
+            background: none;
+            border: none;
+            color: #eeb82e;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 5px 0;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .read-more-btn:hover {
+            color: #2c2b29;
+            text-decoration: underline;
         }
 
         /* Mobile Responsive Styles */
@@ -539,26 +578,25 @@
             .team-member-smaller,
             .team-member {
                 width: 100%;
-                max-width: 320px;
+                max-width: 350px; /* Increased from 320px */
             }
 
             /* Mobile adjustments for smaller team member cards */
             .team-member-smaller {
-                padding: 15px;
+                padding: 20px;
             }
 
             .team-member-img-smaller {
-                width: 150px;
-                height: 150px;
+                width: 180px;
+                height: 180px;
             }
 
             .team-member-smaller h3 {
-                font-size: 1.1rem;
+                font-size: 1.3rem;
             }
 
             .team-member-smaller .bio {
-                height: auto;
-                margin-bottom: 10px;
+                margin-bottom: 15px;
             }
         }
 
@@ -613,8 +651,8 @@
             }
 
             .team-member-img-smaller {
-                width: 140px;
-                height: 140px;
+                width: 160px;
+                height: 160px;
             }
         }
 
@@ -670,136 +708,177 @@
             margin-left: 5px;
         }
 
+        /* Tooltip styles for all contact icons */
+        .contact-icon,
+        .contact-icon-smaller,
+        .ceo-contact-icon {
+            position: relative;
+        }
+
+        .contact-icon.tooltip::before,
+        .contact-icon-smaller.tooltip::before,
+        .ceo-contact-icon.tooltip::before {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-bottom: 8px;
+            background-color: #333;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 100;
+        }
+
+        .contact-icon.tooltip::after,
+        .contact-icon-smaller.tooltip::after,
+        .ceo-contact-icon.tooltip::after {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-bottom: 2px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #333 transparent transparent transparent;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 100;
+        }
+
+        .contact-icon.tooltip:hover::before,
+        .contact-icon.tooltip:hover::after,
+        .contact-icon-smaller.tooltip:hover::before,
+        .contact-icon-smaller.tooltip:hover::after,
+        .ceo-contact-icon.tooltip:hover::before,
+        .ceo-contact-icon.tooltip:hover::after {
+            opacity: 1;
+            visibility: visible;
+        }
+
         /* Modal Styles */
         .modal {
-                            display: none;
-                            position: fixed;
-                            z-index: 2000;
-                            left: 0;
-                            top: 0;
-                            width: 100%;
-                            height: 100%;
-                            background-color: rgba(0,0,0,0.5);
-                        }
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
 
-                        .modal-content {
-                            background-color: #fefefe;
-                            margin: 15% auto;
-                            padding: 30px;
-                            border: 1px solid #888;
-                            width: 90%;
-                            max-width: 400px;
-                            border-radius: 10px;
-                            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-                            text-align: center;
-                        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 30px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            text-align: center;
+        }
 
-                        .modal-content h3 {
-                            font-family: 'Roboto Serif', serif;
-                            color: #2c2b29;
-                            margin-bottom: 20px;
-                            font-size: 1.5rem;
-                        }
+        .modal-content h3 {
+            font-family: 'Roboto Serif', serif;
+            color: #2c2b29;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
 
-                        .modal-content p {
-                            margin: 10px 0;
-                            font-size: 1.1rem;
-                            color: #555;
-                        }
+        .modal-content p {
+            margin: 10px 0;
+            font-size: 1.1rem;
+            color: #555;
+        }
 
-                        .modal-content strong {
-                            color: #eeb82e;
-                        }
+        .modal-content strong {
+            color: #eeb82e;
+        }
 
-                        .close {
-                            color: #aaa;
-                            float: right;
-                            font-size: 28px;
-                            font-weight: bold;
-                            cursor: pointer;
-                            margin-top: -20px;
-                            margin-right: -10px;
-                        }
+        .contact-info-container {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            text-align: left;
+        }
 
-                        .close:hover,
-                        .close:focus {
-                            color: #eeb82e;
-                        }
+        .contact-info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
 
-                        @media screen and (max-width: 768px) {
-                            .modal-content {
-                                margin: 30% auto;
-                                padding: 20px;
-                            }
-                        }
+        .contact-info-row:last-child {
+            border-bottom: none;
+        }
 
-                        .team-member-contact-smaller {
-    position: relative;
-}
+        .contact-info-label {
+            font-weight: bold;
+            color: #2c2b29;
+            min-width: 80px;
+        }
 
-.contact-icon-smaller {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
+        .contact-info-value {
+            flex: 1;
+            color: #555;
+            margin-left: 10px;
+            word-break: break-all;
+        }
 
-/* Tooltip styling - nasa TAAS na ngayon */
-.contact-icon-smaller.tooltip::before {
-    content: attr(data-tooltip);
-    position: absolute;
-    bottom: 100%; /* Ilalagay sa taas ng icon */
-    left: 50%;
-    transform: translateX(-50%);
-    margin-bottom: 8px; /* Espasyo sa pagitan ng tooltip at icon */
-    
-    /* Tooltip design */
-    background-color: #333;
-    color: white;
-    padding: 6px 12px;
-    border-radius: 4px;
-    font-size: 12px;
-    white-space: nowrap;
-    
-    /* Hidden by default */
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-    
-    /* Pointer/arrow */
-    z-index: 100;
-}
+        .copy-btn {
+            background-color: #eeb82e;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease;
+            margin-left: 10px;
+        }
 
-/* Tooltip arrow */
-.contact-icon-smaller.tooltip::after {
-    content: '';
-    position: absolute;
-    bottom: 100%; /* Sa taas ng icon */
-    left: 50%;
-    transform: translateX(-50%);
-    margin-bottom: 2px; /* Mas malapit sa tooltip */
-    
-    /* Arrow shape */
-    border-width: 5px;
-    border-style: solid;
-    border-color: #333 transparent transparent transparent;
-    
-    /* Hidden by default */
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-    
-    z-index: 100;
-}
+        .copy-btn:hover {
+            background-color: #d4a324;
+        }
 
-/* Show tooltip and arrow on hover */
-.contact-icon-smaller.tooltip:hover::before,
-.contact-icon-smaller.tooltip:hover::after {
-    opacity: 1;
-    visibility: visible;
-}
+        .copy-btn.copied {
+            background-color: #4CAF50;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: -20px;
+            margin-right: -10px;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #eeb82e;
+        }
 
         @media screen and (max-width: 768px) {
+            .modal-content {
+                margin: 30% auto;
+                padding: 20px;
+            }
+            
             .dropdown-content {
                 position: static;
                 box-shadow: none;
@@ -815,6 +894,23 @@
             .dropbtn .fa-caret-down {
                 display: none;
             }
+            
+            .contact-info-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .contact-info-value {
+                margin-left: 0;
+                margin-top: 5px;
+                width: 100%;
+            }
+            
+            .copy-btn {
+                margin-left: 0;
+                margin-top: 10px;
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -828,556 +924,446 @@
             <p class="team-page-subtitle">We're a team of professional people who love what we do. We care about the word quality, discipline and team work. Get to know the experts behind Hope Account Specialist.</p>
         </div>
 
-        <!-- CEO Section - SMALLER VERSION -->
+        <?php
+        // Fetch CEO/Founder
+        $ceo_sql = "SELECT * FROM team_members WHERE category = 'ceo' AND is_active = 1 LIMIT 1";
+        $ceo_result = mysqli_query($conn, $ceo_sql);
+        $ceo = mysqli_fetch_assoc($ceo_result);
+        
+        if ($ceo): ?>
+        <!-- CEO Section -->
         <div class="ceo-section" id="ceo">
             <div class="ceo-container">
                 <div class="ceo-image-container">
                     <div class="ceo-image">
-                        <img src="img/TEAM/TESS.jpg" alt="CEO - Maritess S. Bauto">
+                        <img src="<?php echo $ceo['image_path']; ?>" alt="<?php echo htmlspecialchars($ceo['name']); ?>"
+                             onerror="this.src='https://cdn-icons-png.flaticon.com/512/6522/6522516.png'">
                     </div>
                 </div>
                 
                 <div class="ceo-details">
-                    <h2 class="ceo-name">Maritess S. Bauto</h2>
-                    <div class="ceo-position">Founder & CEO</div>
-                    <div class="ceo-experience">20+ Years in Financial Services</div>
-                    <p class="ceo-message">With over two decades of experience in financial management and business development, Mark founded Hope Account Specialist with a vision to revolutionize financial services in the Philippines.</p>
+                    <h2 class="ceo-name"><?php echo htmlspecialchars($ceo['name']); ?></h2>
+                    <div class="ceo-position"><?php echo htmlspecialchars($ceo['position']); ?></div>
+                    <?php if (!empty($ceo['experience'])): ?>
+                    <div class="ceo-experience"><?php echo htmlspecialchars($ceo['experience']); ?></div>
+                    <?php endif; ?>
+                    <?php if (!empty($ceo['description'])): ?>
+                    <p class="ceo-message"><?php echo htmlspecialchars($ceo['description']); ?></p>
+                    <?php endif; ?>
                     
-                    <div class="ceo-quote">
-                        "Our mission is to provide hope through financial solutions that empower individuals and businesses."
-                    </div>
-                    
+                    <!-- CEO Contact Icons -->
                     <div class="ceo-contact">
-                        <a href="#" class="ceo-contact-icon" onclick="openContactModal(); return false;">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="#" class="ceo-contact-icon" onclick="openContactModal(); return false;">
-                            <i class="fas fa-phone"></i>
-                        </a>
-
-                        <!-- Contact Modal -->
-                        <div id="ceoContactModal" class="modal">
-                            <div class="modal-content">
-                                <span class="close">&times;</span>
-                                <h3>Contact CEO</h3>
-                                <p><strong>Email:</strong> ceo@hopeaccountspecialist.com</p>
-                                <p><strong>Phone:</strong> +63 912 345 6789</p>
+                        <?php if (!empty($ceo['email'])): ?>
+                            <div class="ceo-contact-icon tooltip" data-tooltip="Email"
+                                 onclick="showContactModal('<?php echo htmlspecialchars($ceo['name']); ?>', '<?php echo htmlspecialchars($ceo['email']); ?>', '<?php echo htmlspecialchars($ceo['phone']); ?>', 'email')">
+                                <i class="fas fa-envelope"></i>
                             </div>
-                        </div>
-                        <a href="https://www.facebook.com/maritess.santos.50" class="ceo-contact-icon">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
+                        <?php endif; ?>
+                        
+                        <?php if (!empty($ceo['phone'])): ?>
+                            <div class="ceo-contact-icon tooltip" data-tooltip="Call"
+                                 onclick="showContactModal('<?php echo htmlspecialchars($ceo['name']); ?>', '<?php echo htmlspecialchars($ceo['email']); ?>', '<?php echo htmlspecialchars($ceo['phone']); ?>', 'phone')">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                        <?php endif; ?>
+                        
+                        <?php if (!empty($ceo['facebook_link'])): ?>
+                            <a href="<?php echo htmlspecialchars($ceo['facebook_link']); ?>" 
+                               target="_blank" 
+                               class="ceo-contact-icon tooltip" data-tooltip="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
         </div>
+        <?php endif; ?>
 
-
-        <!-- Leadership Section -->
+        <!-- Leadership Team Section -->
         <div class="team-category" id="leadership">
             <h2 class="category-title">LEADERSHIP TEAM</h2>
             <p class="team-category-description">Our leadership team brings decades of experience in financial management, strategic planning, and business development.</p>
             
             <div class="team-container">
-                <div class="team-member">
-                    <div class="team-member-img">
-                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="John Smith">
-                    </div>
-                    <h3>Atty. Israel Bonite</h3>
-                    <span class="position">Legal Consultant</span>
-                    <span class="experience">blank</span>
-                    <p class="bio">John manages daily operations and ensures smooth workflow across all departments at Hope Account Specialist.</p>
-                    <div class="team-member-contact">
-                        <a href="#" class="contact-icon tooltip" data-tooltip="israel.bonite@hopeaccount.com"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon tooltip" data-tooltip="+63 912 345 6789"><i class="fas fa-phone"></i></a>
-                        <a href="#" class="contact-icon tooltip" data-tooltip="Atty. Israel Bonite"><i class="fab fa-facebook-f"></i></a>
-                    </div>
-                </div>
+                <?php
+                // Fetch Leadership Team
+                $leadership_sql = "SELECT * FROM team_members WHERE category = 'leadership' AND is_active = 1 ORDER BY display_order ASC, name ASC";
+                $leadership_result = mysqli_query($conn, $leadership_sql);
                 
+                if (mysqli_num_rows($leadership_result) > 0):
+                    while ($leader = mysqli_fetch_assoc($leadership_result)):
+                ?>
                 <div class="team-member">
                     <div class="team-member-img">
-                        <img src="img/TEAM/RICH.jpg" alt="richcar fernandez">
+                        <img src="<?php echo $leader['image_path']; ?>" alt="<?php echo htmlspecialchars($leader['name']); ?>"
+                             onerror="this.src='https://cdn-icons-png.flaticon.com/512/6522/6522516.png'">
                     </div>
-                    <h3>Richcar Fernandez</h3>
-                    <span class="position">Executive Officer</span>
-                    <span class="experience">blank</span>
-                    <p class="bio">Building Financial Futures with Confidence.</p>
+                    <h3><?php echo htmlspecialchars($leader['name']); ?></h3>
+                    <span class="position"><?php echo htmlspecialchars($leader['position']); ?></span>
+                    <?php if (!empty($leader['experience'])): ?>
+                    <span class="experience"><?php echo htmlspecialchars($leader['experience']); ?></span>
+                    <?php endif; ?>
+                    <?php if (!empty($leader['description'])): ?>
+                    <p class="bio"><?php echo htmlspecialchars($leader['description']); ?></p>
+                    <?php endif; ?>
                     <div class="team-member-contact">
-                        <a href="#" class="contact-icon tooltip" data-tooltip="richcar.fernandez@hopeaccount.com"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon tooltip" data-tooltip="+63 987 654 3210"><i class="fas fa-phone"></i></a>
-                        <a href="https://www.facebook.com/richcar.ochoco.fernandez" class="contact-icon tooltip" data-tooltip="richcar.ochoco.fernandez"><i class="fab fa-facebook-f"></i></a>
+                        <?php if (!empty($leader['email'])): ?>
+                            <div class="contact-icon tooltip" data-tooltip="Email"
+                                 onclick="showContactModal('<?php echo htmlspecialchars($leader['name']); ?>', '<?php echo htmlspecialchars($leader['email']); ?>', '<?php echo htmlspecialchars($leader['phone']); ?>', 'email')">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                        <?php endif; ?>
+                        
+                        <?php if (!empty($leader['phone'])): ?>
+                            <div class="contact-icon tooltip" data-tooltip="Call"
+                                 onclick="showContactModal('<?php echo htmlspecialchars($leader['name']); ?>', '<?php echo htmlspecialchars($leader['email']); ?>', '<?php echo htmlspecialchars($leader['phone']); ?>', 'phone')">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                        <?php endif; ?>
+                        
+                        <?php if (!empty($leader['facebook_link'])): ?>
+                            <a href="<?php echo htmlspecialchars($leader['facebook_link']); ?>" 
+                               target="_blank" 
+                               class="contact-icon tooltip" data-tooltip="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        <?php endif; ?>
                     </div>
                 </div>
-                
-                <div class="team-member">
-                    <div class="team-member-img">
-                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Robert Williams">
-                    </div>
-                    <h3>Nelson Fernandez</h3>
-                    <span class="position">Engineering Dept.</span>
-                    <span class="experience">blank</span>
-                    <p class="bio">Your Partner in Financial Success.</p>
-                    <div class="team-member-contact">
-                        <a href="#" class="contact-icon tooltip" data-tooltip="nelson.fernandez@hopeaccount.com"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon tooltip" data-tooltip="+63 987 654 3211"><i class="fas fa-phone"></i></a>
-                        <a href="#" class="contact-icon tooltip" data-tooltip="Nelson Fernandez"><i class="fab fa-facebook-f"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="team-container" style="margin-top: 30px;">
-                <div class="team-member">
-                    <div class="team-member-img">
-                        <img src="img/TEAM/dyna.jpg" alt="Jane Doe">
-                    </div>
-                    <h3>Dyna Layco</h3>
-                    <span class="position">Team Head</span>
-                    <span class="experience">blank</span>
-                    <p class="bio">Turning Vision into Financial Victory.</p>
-                    <div class="team-member-contact">
-                        <a href="#" class="contact-icon tooltip" data-tooltip="dyna.layco@hopeaccount.com"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon tooltip" data-tooltip="+63 987 654 3212"><i class="fas fa-phone"></i></a>
-                        <a href="https://www.facebook.com/dyna.layco" class="contact-icon tooltip" data-tooltip="dyna.layco"><i class="fab fa-facebook-f"></i></a>
-                    </div>
-                </div>
-                
-                <div class="team-member">
-                    <div class="team-member-img">
-                        <img src="img/TEAM/DONNA.jpg" alt="Alex Smith">
-                    </div>
-                    <h3>Donnabel Cruz</h3>
-                    <span class="position">Team Head</span>
-                    <span class="experience">blank</span>
-                    <p class="bio">Trusted Financial Growth</p>
-                    <div class="team-member-contact">
-                        <a href="#" class="contact-icon tooltip" data-tooltip="donnabel.cruz@hopeaccount.com"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon tooltip" data-tooltip="+63 987 654 3213"><i class="fas fa-phone"></i></a>
-                        <a href="#" class="contact-icon tooltip" data-tooltip="Donnabel Cruz"><i class="fab fa-facebook-f"></i></a>
-                    </div>
-                </div>
-                
-                <div class="team-member">
-                    <div class="team-member-img">
-                        <img src="img/TEAM/Mariel.jpg" alt="Maria Johnson">
-                    </div>
-                    <h3>Mariel De Guzman</h3>
-                    <span class="position">Team Head</span>
-                    <span class="experience">blank</span>
-                    <p class="bio">Smart Finance. Strong Future.</p>
-                    <div class="team-member-contact">
-                        <a href="#" class="contact-icon tooltip" data-tooltip="mariel.deguzman@hopeaccount.com"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="contact-icon tooltip" data-tooltip="+63 987 654 3214"><i class="fas fa-phone"></i></a>
-                        <a href="#" class="contact-icon tooltip" data-tooltip="Mariel De Guzman"><i class="fab fa-facebook-f"></i></a>
-                    </div>
-                </div>
+                <?php 
+                    endwhile;
+                else:
+                    echo '<p style="grid-column: 1 / -1; text-align: center; color: #666;">No leadership team members found.</p>';
+                endif;
+                ?>
             </div>
         </div>
+
         <!-- Account Specialists Section -->
         <div class="team-category" id="specialists">
             <h2 class="category-title">ACCOUNT SPECIALISTS</h2>
+            <p class="team-category-description">Our team of account specialists are experts in managing your financial accounts with precision and care.</p>
+            
             <div class="team-container">
+                <?php
+                // Fetch Account Specialists
+                $specialists_sql = "SELECT * FROM team_members WHERE category = 'specialists' AND is_active = 1 ORDER BY display_order ASC, name ASC";
+                $specialists_result = mysqli_query($conn, $specialists_sql);
+                
+                if (mysqli_num_rows($specialists_result) > 0):
+                    while ($specialist = mysqli_fetch_assoc($specialists_result)):
+                ?>
                 <div class="team-member-smaller">
                     <div class="team-member-img-smaller">
-                        <img src="img/TEAM/JACQ.jpg" alt="Jacqueline Manabat">
+                        <img src="<?php echo $specialist['image_path']; ?>" alt="<?php echo htmlspecialchars($specialist['name']); ?>"
+                             onerror="this.src='https://cdn-icons-png.flaticon.com/512/6522/6522516.png'">
                     </div>
-                    <h3>Jacqueline Manabat</h3>
-                    <span class="position">Account Specialist</span>
+                    <h3><?php echo htmlspecialchars($specialist['name']); ?></h3>
+                    <span class="position"><?php echo htmlspecialchars($specialist['position']); ?></span>
+                    <?php if (!empty($specialist['experience'])): ?>
+                    <span class="experience"><?php echo htmlspecialchars($specialist['experience']); ?></span>
+                    <?php endif; ?>
+                    <?php if (!empty($specialist['description'])): ?>
+                    <p class="bio"><?php echo htmlspecialchars($specialist['description']); ?></p>
+                    <?php endif; ?>
                     <div class="team-member-contact-smaller">
-                        <a href="mailto:michael.chen@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="michael.chen@hopeaccount.com">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="tel:+639123456789" class="contact-icon-smaller tooltip" data-tooltip="+63 912 345 6789">
-                            <i class="fas fa-phone"></i>
-                        </a>
-                        <a href="https://www.facebook.com/michaelchen.hopeaccount" target="_blank" class="contact-icon-smaller">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
+                        <?php if (!empty($specialist['email'])): ?>
+                            <div class="contact-icon-smaller tooltip" data-tooltip="Email"
+                                 onclick="showContactModal('<?php echo htmlspecialchars($specialist['name']); ?>', '<?php echo htmlspecialchars($specialist['email']); ?>', '<?php echo htmlspecialchars($specialist['phone']); ?>', 'email')">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                        <?php endif; ?>
+                        
+                        <?php if (!empty($specialist['phone'])): ?>
+                            <div class="contact-icon-smaller tooltip" data-tooltip="Call"
+                                 onclick="showContactModal('<?php echo htmlspecialchars($specialist['name']); ?>', '<?php echo htmlspecialchars($specialist['email']); ?>', '<?php echo htmlspecialchars($specialist['phone']); ?>', 'phone')">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                        <?php endif; ?>
+                        
+                        <?php if (!empty($specialist['facebook_link'])): ?>
+                            <a href="<?php echo htmlspecialchars($specialist['facebook_link']); ?>" 
+                               target="_blank" 
+                               class="contact-icon-smaller tooltip" data-tooltip="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        <?php endif; ?>
                     </div>
                 </div>
+                <?php 
+                    endwhile;
+                else:
+                    echo '<p style="grid-column: 1 / -1; text-align: center; color: #666;">No account specialists found.</p>';
+                endif;
+                ?>
+            </div>
+        </div>
+        
+        <!-- Support Staff Section (Optional) -->
+        <?php
+        $support_sql = "SELECT * FROM team_members WHERE category = 'support' AND is_active = 1 ORDER BY display_order ASC, name ASC";
+        $support_result = mysqli_query($conn, $support_sql);
+        
+        if (mysqli_num_rows($support_result) > 0): ?>
+        <div class="team-category" id="support">
+            <h2 class="category-title">SUPPORT STAFF</h2>
+            <p class="team-category-description">Our dedicated support team ensures smooth operations and excellent customer service.</p>
+            
+            <div class="team-container">
+                <?php while ($support = mysqli_fetch_assoc($support_result)): ?>
+                <div class="team-member-smaller">
+                    <div class="team-member-img-smaller">
+                        <img src="<?php echo $support['image_path']; ?>" alt="<?php echo htmlspecialchars($support['name']); ?>"
+                             onerror="this.src='https://cdn-icons-png.flaticon.com/512/6522/6522516.png'">
+                    </div>
+                    <h3><?php echo htmlspecialchars($support['name']); ?></h3>
+                    <span class="position"><?php echo htmlspecialchars($support['position']); ?></span>
+                    <?php if (!empty($support['experience'])): ?>
+                    <span class="experience"><?php echo htmlspecialchars($support['experience']); ?></span>
+                    <?php endif; ?>
+                    <?php if (!empty($support['description'])): ?>
+                    <p class="bio"><?php echo htmlspecialchars($support['description']); ?></p>
+                    <?php endif; ?>
+                    <?php if (!empty($support['email']) || !empty($support['phone']) || !empty($support['facebook_link'])): ?>
+                    <div class="team-member-contact-smaller">
+                        <?php if (!empty($support['email'])): ?>
+                            <div class="contact-icon-smaller tooltip" data-tooltip="Email"
+                                 onclick="showContactModal('<?php echo htmlspecialchars($support['name']); ?>', '<?php echo htmlspecialchars($support['email']); ?>', '<?php echo htmlspecialchars($support['phone']); ?>', 'email')">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                        <?php endif; ?>
+                        
+                        <?php if (!empty($support['phone'])): ?>
+                            <div class="contact-icon-smaller tooltip" data-tooltip="Call"
+                                 onclick="showContactModal('<?php echo htmlspecialchars($support['name']); ?>', '<?php echo htmlspecialchars($support['email']); ?>', '<?php echo htmlspecialchars($support['phone']); ?>', 'phone')">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                        <?php endif; ?>
+                        
+                        <?php if (!empty($support['facebook_link'])): ?>
+                            <a href="<?php echo htmlspecialchars($support['facebook_link']); ?>" 
+                               target="_blank" 
+                               class="contact-icon-smaller tooltip" data-tooltip="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        <?php endif; ?>
+                    </div>
+                    <?php endif; ?>
+                </div>
+                <?php endwhile; ?>
+            </div>
+        </div>
+        <?php endif; ?>
+    </div>
 
-                
-                <div class="team-member-smaller">
-                    <div class="team-member-img-smaller">
-                        <img src="img/TEAM/CLARISSA.jpg" alt="Clarissa Celis ">
-                    </div>
-                    <h3>Clarissa Celis </h3>
-                    <span class="position">Account Specialist</span>
-                    <div class="team-member-contact-smaller">
-                        <a href="mailto:clarissa.celis@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="clarissa.celis@hopeaccount.com">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="tel:+639876543210" class="contact-icon-smaller tooltip" data-tooltip="+63 987 654 3210">
-                            <i class="fas fa-phone"></i>
-                        </a>
-                        <a href="https://facebook.com/clarissa.celis" class="contact-icon-smaller tooltip" data-tooltip="clarissa.celis">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeContactModal()">&times;</span>
+            <h3>Contact Information</h3>
+            <p>Contact details for <strong id="contactPersonName"></strong></p>
+            
+            <div class="contact-info-container">
+                <div id="emailInfo" style="display: none;">
+                    <div class="contact-info-row">
+                        <span class="contact-info-label">Email:</span>
+                        <span class="contact-info-value" id="emailValue"></span>
+                        <button class="copy-btn" onclick="copyToClipboard('emailValue')">Copy</button>
                     </div>
                 </div>
                 
-                <div class="team-member-smaller">
-                    <div class="team-member-img-smaller">
-                        <img src="img/TEAM/dmple.jpg" alt="Dmple Manabat">
-                    </div>
-                    <h3>Dmple Manabat</h3>
-                    <span class="position">Account Specialist</span>
-                    <div class="team-member-contact-smaller">
-                        <a href="mailto:dmple.manabat@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="dmple.manabat@hopeaccount.com">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="tel:+639876543211" class="contact-icon-smaller tooltip" data-tooltip="+63 987 654 3211">
-                            <i class="fas fa-phone"></i>
-                        </a>
-                        <a href="https://facebook.com/dmple.manabat" class="contact-icon-smaller tooltip" data-tooltip="dmple.manabat">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="team-member-smaller">
-                    <div class="team-member-img-smaller">
-                        <img src="img/TEAM/joeb.jpg" alt="Joebelle Macapagal">
-                    </div>
-                    <h3>Joebelle Macapagal</h3>
-                    <span class="position">Account Specialist</span>
-                    <div class="team-member-contact-smaller">
-                        <a href="mailto:joebelle.macapagal@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="joebelle.macapagal@hopeaccount.com">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="tel:+639876543212" class="contact-icon-smaller tooltip" data-tooltip="+63 987 654 3212">
-                            <i class="fas fa-phone"></i>
-                        </a>
-                        <a href="https://facebook.com/joebelle.macapagal" class="contact-icon-smaller tooltip" data-tooltip="joebelle.macapagal">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Second Row - 4 members -->
-                <div class="team-member-smaller">
-                    <div class="team-member-img-smaller">
-                        <img src="img/TEAM/anjanete.jpg" alt="anjanete Reyes">
-                    </div>
-                    <h3>Anjanete Reyes</h3>
-                    <span class="position">Account Specialist</span>
-                    <div class="team-member-contact-smaller">
-                        <a href="mailto:member5@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="member5@hopeaccount.com">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="tel:+639876543213" class="contact-icon-smaller tooltip" data-tooltip="+63 987 654 3213">
-                            <i class="fas fa-phone"></i>
-                        </a>
-                        <a href="https://facebook.com/member5" class="contact-icon-smaller tooltip" data-tooltip="member5">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="team-member-smaller">
-                    <div class="team-member-img-smaller">
-                        <img src="img/TEAM/sarah.jpg" alt="Sarah Calara">
-                    </div>
-                    <h3>Sarah Calara</h3>
-                    <span class="position">Account Specialist</span>
-                    <div class="team-member-contact-smaller">
-                        <a href="mailto:member6@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="member6@hopeaccount.com">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="tel:+639876543214" class="contact-icon-smaller tooltip" data-tooltip="+63 987 654 3214">
-                            <i class="fas fa-phone"></i>
-                        </a>
-                        <a href="https://facebook.com/member6" class="contact-icon-smaller tooltip" data-tooltip="member6">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="team-member-smaller">
-                    <div class="team-member-img-smaller">
-                        <img src="img/TEAM/nathania.jpg" alt="Nathania Fajardo">
-                    </div>
-                    <h3>Nathania Fajardo</h3>
-                    <span class="position">Account Specialist</span>
-                    <div class="team-member-contact-smaller">
-                        <a href="mailto:member7@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="member7@hopeaccount.com">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="tel:+639876543215" class="contact-icon-smaller tooltip" data-tooltip="+63 987 654 3215">
-                            <i class="fas fa-phone"></i>
-                        </a>
-                        <a href="https://facebook.com/member7" class="contact-icon-smaller tooltip" data-tooltip="member7">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="team-member-smaller">
-                    <div class="team-member-img-smaller">
-                        <img src="img/TEAM/marichu.jpg" alt="Marichu Besa">
-                    </div>
-                    <h3>Marichu Besa</h3>
-                    <span class="position">Account Specialist</span>
-                    <div class="team-member-contact-smaller">
-                        <a href="mailto:member8@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="member8@hopeaccount.com">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="tel:+639876543216" class="contact-icon-smaller tooltip" data-tooltip="+63 987 654 3216">
-                            <i class="fas fa-phone"></i>
-                        </a>
-                        <a href="https://facebook.com/member8" class="contact-icon-smaller tooltip" data-tooltip="member8">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Third Row - 4 members -->
-                <div class="team-member-smaller">
-                    <div class="team-member-img-smaller">
-                        <img src="img/TEAM/joe.jpg" alt="Joe Lacaden">
-                    </div>
-                    <h3>Joe Lacaden</h3>
-                    <span class="position">Account Specialist</span>
-                    <div class="team-member-contact-smaller">
-                        <a href="mailto:member9@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="member9@hopeaccount.com">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="tel:+639876543217" class="contact-icon-smaller tooltip" data-tooltip="+63 987 654 3217">
-                            <i class="fas fa-phone"></i>
-                        </a>
-                        <a href="https://facebook.com/member9" class="contact-icon-smaller tooltip" data-tooltip="member9">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="team-member-smaller">
-                    <div class="team-member-img-smaller">
-                        <img src="img/TEAM/ivy.jpg" alt="Ivy Alarilla">
-                    </div>
-                    <h3>Ivy Alarilla</h3>
-                    <span class="position">Account Specialist</span>
-                    <div class="team-member-contact-smaller">
-                        <a href="mailto:member10@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="member10@hopeaccount.com">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="tel:+639876543218" class="contact-icon-smaller tooltip" data-tooltip="+63 987 654 3218">
-                            <i class="fas fa-phone"></i>
-                        </a>
-                        <a href="https://facebook.com/member10" class="contact-icon-smaller tooltip" data-tooltip="member10">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="team-member-smaller">
-                    <div class="team-member-img-smaller">
-                        <img src="img/TEAM/Arviey.jpg" alt="Arviey Matias">
-                    </div>
-                    <h3>Arviey Matias</h3>
-                    <span class="position">Account Specialist</span>
-                    <div class="team-member-contact-smaller">
-                        <a href="mailto:member11@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="member11@hopeaccount.com">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="tel:+639876543219" class="contact-icon-smaller tooltip" data-tooltip="+63 987 654 3219">
-                            <i class="fas fa-phone"></i>
-                        </a>
-                        <a href="https://facebook.com/member11" class="contact-icon-smaller tooltip" data-tooltip="member11">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="team-member-smaller">
-                    <div class="team-member-img-smaller">
-                        <img src="img/TEAM/papa dave.jpg" alt="Dave Cruz">
-                    </div>
-                    <h3>Dave Cruz</h3>
-                    <span class="position">Account Specialist</span>
-                    <div class="team-member-contact-smaller">
-                        <a href="mailto:member12@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="member12@hopeaccount.com">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="tel:+639876543220" class="contact-icon-smaller tooltip" data-tooltip="+63 987 654 3220">
-                            <i class="fas fa-phone"></i>
-                        </a>
-                        <a href="https://facebook.com/member12" class="contact-icon-smaller tooltip" data-tooltip="member12">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Fourth Row - 4 members -->
-                <div class="team-member-smaller">
-                    <div class="team-member-img-smaller">
-                        <img src="img/TEAM/Ally.jpg" alt="Ally Viloria">
-                    </div>
-                    <h3>Ally Viloria</h3>
-                    <span class="position">Account Specialist</span>
-                    <div class="team-member-contact-smaller">
-                        <a href="mailto:member13@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="member13@hopeaccount.com">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="tel:+639876543221" class="contact-icon-smaller tooltip" data-tooltip="+63 987 654 3221">
-                            <i class="fas fa-phone"></i>
-                        </a>
-                        <a href="https://facebook.com/member13" class="contact-icon-smaller tooltip" data-tooltip="member13">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="team-member-smaller">
-                    <div class="team-member-img-smaller">
-                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Member 14">
-                    </div>
-                    <h3>Member 14</h3>
-                    <span class="position">Account Specialist</span>
-                    <div class="team-member-contact-smaller">
-                        <a href="mailto:member14@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="member14@hopeaccount.com">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="tel:+639876543222" class="contact-icon-smaller tooltip" data-tooltip="+63 987 654 3222">
-                            <i class="fas fa-phone"></i>
-                        </a>
-                        <a href="https://facebook.com/member14" class="contact-icon-smaller tooltip" data-tooltip="member14">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="team-member-smaller">
-                    <div class="team-member-img-smaller">
-                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Member 15">
-                    </div>
-                    <h3>Member 15</h3>
-                    <span class="position">Account Specialist</span>
-                    <div class="team-member-contact-smaller">
-                        <a href="mailto:member15@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="member15@hopeaccount.com">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="tel:+639876543223" class="contact-icon-smaller tooltip" data-tooltip="+63 987 654 3223">
-                            <i class="fas fa-phone"></i>
-                        </a>
-                        <a href="https://facebook.com/member15" class="contact-icon-smaller tooltip" data-tooltip="member15">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="team-member-smaller">
-                    <div class="team-member-img-smaller">
-                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Member 16">
-                    </div>
-                    <h3>Member 16</h3>
-                    <span class="position">Account Specialist</span>
-                    <div class="team-member-contact-smaller">
-                        <a href="mailto:member16@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="member16@hopeaccount.com">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="tel:+639876543224" class="contact-icon-smaller tooltip" data-tooltip="+63 987 654 3224">
-                            <i class="fas fa-phone"></i>
-                        </a>
-                        <a href="https://facebook.com/member16" class="contact-icon-smaller tooltip" data-tooltip="member16">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Fifth Row - 2 members -->
-                <div class="team-member-smaller">
-                    <div class="team-member-img-smaller">
-                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Member 17">
-                    </div>
-                    <h3>Member 17</h3>
-                    <span class="position">Account Specialist</span>
-                    <div class="team-member-contact-smaller">
-                        <a href="mailto:member17@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="member17@hopeaccount.com">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="tel:+639876543225" class="contact-icon-smaller tooltip" data-tooltip="+63 987 654 3225">
-                            <i class="fas fa-phone"></i>
-                        </a>
-                        <a href="https://facebook.com/member17" class="contact-icon-smaller tooltip" data-tooltip="member17">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="team-member-smaller">
-                    <div class="team-member-img-smaller">
-                        <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Member 18">
-                    </div>
-                    <h3>Member 18</h3>
-                    <span class="position">Account Specialist</span>
-                    <div class="team-member-contact-smaller">
-                        <a href="mailto:member18@hopeaccount.com" class="contact-icon-smaller tooltip" data-tooltip="member18@hopeaccount.com">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="tel:+639876543226" class="contact-icon-smaller tooltip" data-tooltip="+63 987 654 3226">
-                            <i class="fas fa-phone"></i>
-                        </a>
-                        <a href="https://facebook.com/member18" class="contact-icon-smaller tooltip" data-tooltip="member18">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
+                <div id="phoneInfo" style="display: none;">
+                    <div class="contact-info-row">
+                        <span class="contact-info-label">Phone:</span>
+                        <span class="contact-info-value" id="phoneValue"></span>
+                        <button class="copy-btn" onclick="copyToClipboard('phoneValue')">Copy</button>
                     </div>
                 </div>
             </div>
-        </div>
+            
+            <div style="margin-top: 20px; font-size: 0.9rem; color: #777;">
+                <p>Click "Copy" to copy the information to your clipboard</p>
+            </div>
         </div>
     </div>
 
     <?php include 'footer.php'; ?>
 
-                        <script>
-                            // Smooth scrolling for anchor links
-                            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                                anchor.addEventListener('click', function (e) {
-                                    e.preventDefault();
-                                    
-                                    const targetId = this.getAttribute('href');
-                                    if (targetId === '#') return;
-                                    
-                                    const targetElement = document.querySelector(targetId);
-                                    if (targetElement) {
-                                        window.scrollTo({
-                                            top: targetElement.offsetTop - 100,
-                                            behavior: 'smooth'
-                                        });
-                                    }
-                                });
-                            });
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
 
-                            // Add CEO to dropdown menu
-                            document.addEventListener('DOMContentLoaded', function() {
-                                // Find the dropdown content for Meet Our Team
-                                const meetOurTeamDropdown = document.querySelector('a[href="team.php"]').closest('.dropdown').querySelector('.dropdown-content');
-                                
-                                // Add it as the first item in the dropdown
-                                if (meetOurTeamDropdown && meetOurTeamDropdown.firstChild) {
-                                    meetOurTeamDropdown.insertBefore(ceoLink, meetOurTeamDropdown.firstChild);
-                                }
-                            });
-                        </script>
-                        <script>
-                        function openContactModal() {
-                            document.getElementById('ceoContactModal').style.display = 'block';
+        // Mobile dropdown menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const burger = document.querySelector('.burger');
+            const navLinks = document.querySelector('.nav-links');
+            const dropdowns = document.querySelectorAll('.dropdown');
+            
+            if (burger) {
+                burger.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+            }
+            
+            // Handle mobile dropdowns
+            dropdowns.forEach(dropdown => {
+                const dropbtn = dropdown.querySelector('.dropbtn');
+                if (dropbtn) {
+                    dropbtn.addEventListener('click', function(e) {
+                        if (window.innerWidth <= 768) {
+                            e.preventDefault();
+                            dropdown.classList.toggle('active');
                         }
+                    });
+                }
+            });
+            
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 768) {
+                    dropdowns.forEach(dropdown => {
+                        if (!dropdown.contains(event.target)) {
+                            dropdown.classList.remove('active');
+                        }
+                    });
+                }
+            });
 
-                        // Close modal when clicking the X or outside the modal
-                        document.addEventListener('click', function(event) {
-                            const modal = document.getElementById('ceoContactModal');
-                            if (event.target.classList.contains('close') || event.target === modal) {
-                                modal.style.display = 'none';
-                            }
-                        });
+            // Read More/Less functionality for descriptions
+            const bios = document.querySelectorAll('.bio');
+            bios.forEach(bio => {
+                const text = bio.textContent;
+                if (text.length > 150) {
+                    const shortText = text.substring(0, 150) + '...';
+                    const fullText = text;
+                    
+                    bio.innerHTML = shortText + 
+                        '<button class="read-more-btn" onclick="toggleReadMore(this)">Read More</button>' +
+                        '<span style="display:none;">' + fullText.substring(150) + 
+                        '<button class="read-more-btn" onclick="toggleReadMore(this)">Read Less</button></span>';
+                }
+            });
+        });
 
-                        // Close modal with Escape key
-                        document.addEventListener('keydown', function(event) {
-                            if (event.key === 'Escape') {
-                                document.getElementById('ceoContactModal').style.display = 'none';
-                            }
-                        });
-                        </script>
+        function toggleReadMore(button) {
+            const bio = button.parentElement;
+            const shortText = bio.firstChild;
+            const hiddenSpan = bio.querySelector('span');
+            
+            if (hiddenSpan.style.display === 'none') {
+                hiddenSpan.style.display = 'inline';
+                button.style.display = 'none';
+                shortText.textContent = shortText.textContent.replace('...', '');
+            } else {
+                hiddenSpan.style.display = 'none';
+                const readMoreBtn = bio.querySelector('.read-more-btn');
+                readMoreBtn.style.display = 'inline';
+                shortText.textContent = shortText.textContent + '...';
+            }
+        }
+
+        // Contact Modal Functions
+        function showContactModal(name, email, phone, contactType) {
+            const modal = document.getElementById('contactModal');
+            const personName = document.getElementById('contactPersonName');
+            const emailInfo = document.getElementById('emailInfo');
+            const phoneInfo = document.getElementById('phoneInfo');
+            
+            // Set person name
+            personName.textContent = name;
+            
+            // Hide all contact info first
+            emailInfo.style.display = 'none';
+            phoneInfo.style.display = 'none';
+            
+            // Show only the relevant contact info based on the contactType
+            if (contactType === 'email' && email) {
+                emailInfo.style.display = 'block';
+                document.getElementById('emailValue').textContent = email;
+            } else if (contactType === 'phone' && phone) {
+                phoneInfo.style.display = 'block';
+                document.getElementById('phoneValue').textContent = phone;
+            } else {
+                // If no specific type or info, show all available info
+                if (email) {
+                    emailInfo.style.display = 'block';
+                    document.getElementById('emailValue').textContent = email;
+                }
+                if (phone) {
+                    phoneInfo.style.display = 'block';
+                    document.getElementById('phoneValue').textContent = phone;
+                }
+            }
+            
+            // Show modal
+            modal.style.display = 'block';
+        }
+
+        function closeContactModal() {
+            const modal = document.getElementById('contactModal');
+            modal.style.display = 'none';
+        }
+
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.textContent;
+            
+            // Create a temporary textarea element
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            
+            // Select and copy the text
+            textarea.select();
+            textarea.setSelectionRange(0, 99999); // For mobile devices
+            
+            try {
+                const successful = document.execCommand('copy');
+                const copyBtn = event.target;
+                
+                if (successful) {
+                    // Change button text and color temporarily
+                    const originalText = copyBtn.textContent;
+                    copyBtn.textContent = 'Copied!';
+                    copyBtn.classList.add('copied');
+                    
+                    // Reset button after 2 seconds
+                    setTimeout(() => {
+                        copyBtn.textContent = originalText;
+                        copyBtn.classList.remove('copied');
+                    }, 2000);
+                }
+            } catch (err) {
+                console.error('Failed to copy: ', err);
+            }
+            
+            // Remove the temporary element
+            document.body.removeChild(textarea);
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('contactModal');
+            if (event.target == modal) {
+                closeContactModal();
+            }
+        }
+    </script>
 </body>
 </html>
