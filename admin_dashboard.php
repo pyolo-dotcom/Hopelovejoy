@@ -50,6 +50,11 @@ if (isset($_GET['delete'])) {
             $success_msg = "Team member deleted successfully!";
             $error_msg = "Error deleting team member";
             break;
+        case 'awards':
+            $sql = "DELETE FROM awards WHERE id = $id";
+            $success_msg = "Award deleted successfully!";
+            $error_msg = "Error deleting award";
+            break;
         default:
             $sql = "";
             break;
@@ -549,6 +554,10 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                 <a href="?tab=team_members" class="tab-link <?php echo $active_tab == 'team_members' ? 'active' : ''; ?>">
                     <i class="fas fa-users"></i>
                     <span>Team Members</span>
+                </a>
+                <a href="?tab=awards" class="tab-link <?php echo $active_tab == 'awards' ? 'active' : ''; ?>">
+                    <i class="fas fa-award"></i>
+                    <span>Awards</span>
                 </a>
             </div>
             
@@ -1256,6 +1265,177 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                 </div>
             </div>
         </div>
+
+        <!-- Awards Tab -->
+        <div id="awards" class="tab-content <?php echo $active_tab == 'awards' ? 'active' : ''; ?>">
+            <div class="sales-table">
+                <div class="table-header">
+                    <h2><i class="fas fa-award"></i> Awards & Recognition Management</h2>
+                    <button onclick="toggleAddForm('awards')" class="admin-btn">
+                        <i class="fas fa-plus"></i> Add New Award
+                    </button>
+                </div>
+                
+                <div id="awards_form" class="add-form-container">
+                    <h3><i class="fas fa-plus-circle"></i> Add New Award</h3>
+                    <form method="POST" action="admin_save_award.php" enctype="multipart/form-data">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="award_title">Title *</label>
+                                <input type="text" id="award_title" name="title" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="award_year">Year *</label>
+                                <input type="text" id="award_year" name="award_year" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="award_issuer">Issuer *</label>
+                                <input type="text" id="award_issuer" name="issuer" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="award_issuer_category">Issuer Category</label>
+                                <input type="text" id="award_issuer_category" name="issuer_category" placeholder="e.g., Real Estate, Professional Services">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="award_description">Description *</label>
+                            <textarea id="award_description" name="description" rows="3" required></textarea>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="award_image">Award Image/Icon</label>
+                                <input type="file" id="award_image" name="image" accept="image/*">
+                                <small style="color: #666;">Main award icon (optional)</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="award_bg_image">Background Image *</label>
+                                <input type="file" id="award_bg_image" name="background_image" accept="image/*" required>
+                                <small style="color: #666;">Background image for the award card</small>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="award_order">Display Order</label>
+                                <input type="number" id="award_order" name="display_order" value="0">
+                                <small style="color: #666;">Lower numbers appear first</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="award_status">Status</label>
+                                <select id="award_status" name="is_active">
+                                    <option value="1">Active</option>
+                                    <option value="0">Inactive</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <button type="submit" class="admin-btn" style="width: auto;">
+                                <i class="fas fa-save"></i> Save Award
+                            </button>
+                            <button type="button" onclick="toggleAddForm('awards')" class="admin-btn" style="background: #6c757d; width: auto;">
+                                <i class="fas fa-times"></i> Cancel
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <?php
+                // Fetch awards data
+                $awards_sql = "SELECT * FROM awards ORDER BY display_order ASC, award_year DESC";
+                $awards_result = mysqli_query($conn, $awards_sql);
+                ?>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Background Image</th>
+                            <th>Title</th>
+                            <th>Year</th>
+                            <th>Issuer</th>
+                            <th>Description</th>
+                            <th>Order</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php if (mysqli_num_rows($awards_result) > 0): ?>
+                            <?php while ($award = mysqli_fetch_assoc($awards_result)): ?>
+                            <tr>
+                                <td><?php echo $award['id']; ?></td>
+                                <td>
+                                    <img src="<?php echo $award['background_image_path']; ?>" 
+                                        alt="<?php echo htmlspecialchars($award['title']); ?>" 
+                                        class="thumbnail"
+                                        onerror="this.src='https://via.placeholder.com/80x60?text=No+Image'"
+                                        style="width: 80px; height: 60px; object-fit: cover;">
+                                </td>
+                                <td><strong><?php echo htmlspecialchars($award['title']); ?></strong></td>
+                                <td>
+                                    <span style="
+                                        background: #eeb82e;
+                                        color: #2c2b29;
+                                        padding: 5px 10px;
+                                        border-radius: 20px;
+                                        font-size: 0.85rem;
+                                        font-weight: 600;
+                                    ">
+                                        <?php echo htmlspecialchars($award['award_year']); ?>
+                                    </span>
+                                </td>
+                                <td><?php echo htmlspecialchars($award['issuer']); ?></td>
+                                <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis;">
+                                    <?php echo htmlspecialchars(substr($award['description'], 0, 100)); ?>
+                                    <?php if (strlen($award['description']) > 100): ?>...<?php endif; ?>
+                                </td>
+                                <td><?php echo $award['display_order']; ?></td>
+                                <td>
+                                    <?php if ($award['is_active']): ?>
+                                        <span style="color: #28a745; font-weight: 600;">
+                                            <i class="fas fa-check-circle"></i> Active
+                                        </span>
+                                    <?php else: ?>
+                                        <span style="color: #dc3545; font-weight: 600;">
+                                            <i class="fas fa-times-circle"></i> Inactive
+                                        </span>
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <a href="admin_edit_award.php?id=<?php echo $award['id']; ?>&tab=awards" class="btn-edit">
+                                            <i class="fas fa-edit"></i> Edit
+                                        </a>
+                                        <a href="?tab=awards&delete=<?php echo $award['id']; ?>" 
+                                        class="btn-delete" 
+                                        onclick="return confirm('Are you sure you want to delete this award?')">
+                                            <i class="fas fa-trash"></i> Delete
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <?php endwhile; ?>
+                        <?php else: ?>
+                            <tr>
+                                <td colspan="9">
+                                    <div class="empty-state">
+                                        <i class="fas fa-award"></i>
+                                        <p>No awards found</p>
+                                        <p>Add your first award using the "Add New Award" button</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php endif; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
         
         <!-- Quick Instructions -->
         <div class="sales-table" style="margin-top: 20px;">
@@ -1302,6 +1482,14 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                         </h4>
                         <p style="color: #666; line-height: 1.6;">
                             Manage team members. Add team member and set their display priority.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 style="color: #2c2b29; margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-award" style="color: #eeb82e;"></i> Awards & Recognition
+                        </h4>
+                        <p style="color: #666; line-height: 1.6;">
+                            Manage awards, certificates, and recognition received by your company. Upload award images and backgrounds.
                         </p>
                     </div>
                 </div>
