@@ -1140,6 +1140,133 @@
             font-style: italic;
         }
 
+        /* MODAL STYLES */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow: hidden;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: auto;
+            height: auto;
+            max-width: 90%;
+            max-height: 90%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from { transform: translate(-50%, -50%) scale(0.9); opacity: 0; }
+            to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 5px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            z-index: 10000;
+            background: rgba(44, 43, 41, 0.8);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .close-modal:hover {
+            color: #eeb82e;
+            background: rgba(44, 43, 41, 0.95);
+        }
+
+        .modal-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: white;
+            padding: 10px 20px;
+            background: rgba(0, 0, 0, 0.7);
+            margin: 0 auto;
+            width: fit-content;
+            max-width: 80%;
+            border-radius: 5px;
+            font-family: 'Roboto Serif', serif;
+        }
+
+        .modal-caption h3 {
+            margin-bottom: 5px;
+            color: #eeb82e;
+        }
+
+        .modal-caption p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* Award Image Container - ADD CLICK CURSOR */
+        .award-image-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            cursor: pointer; /* Add this line */
+        }
+
+        .award-image-container:hover .award-image-bg {
+            transform: scale(1.05);
+        }
+
+        .award-image-container:hover::after {
+            content: 'Click to view full image';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(44, 43, 41, 0.85);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            z-index: 10;
+            border: 2px solid #eeb82e;
+        }
+
         /* Mobile Responsive Styles */
         @media screen and (max-width: 768px) {
             .navbar {
@@ -1421,6 +1548,30 @@
                 height: 100px;
                 padding: 15px;
             }
+
+            .modal-content {
+                max-width: 95%;
+                max-height: 95%;
+            }
+            
+            .close-modal {
+                top: 10px;
+                right: 15px;
+                font-size: 30px;
+                width: 40px;
+                height: 40px;
+            }
+            
+            .modal-caption {
+                bottom: 10px;
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .award-image-container:hover::after {
+                font-size: 0.7rem;
+                padding: 6px 12px;
+            }
         }
 
         @media screen and (max-width: 480px) {
@@ -1585,6 +1736,24 @@
             .bank-logo {
                 height: 80px;
                 padding: 10px;
+            }
+
+            .close-modal {
+                top: 5px;
+                right: 10px;
+                font-size: 25px;
+                width: 35px;
+                height: 35px;
+            }
+            
+            .modal-caption {
+                bottom: 5px;
+                padding: 5px 10px;
+                font-size: 0.8rem;
+            }
+            
+            .modal-caption h3 {
+                font-size: 0.9rem;
             }
         }
 
@@ -1887,7 +2056,8 @@
                         echo '
                         <div class="award-card">
                             <div class="award-header">
-                                <div class="award-image-container">
+                                <div class="award-image-container" 
+                                    onclick="openModal(\'' . $bg_image . '\', \'' . addslashes($title) . '\', \'' . $year . '\')">
                                     <!-- Background Image -->
                                     <img src="' . $bg_image . '" alt="' . $title . ' Background" class="award-image-bg">
                                     ' . (!empty($award_image) ? '<img src="' . $award_image . '" alt="' . $title . '" class="award-main-image">' : '') . '
@@ -2290,6 +2460,77 @@
                 });
             });
         });
+
+        // MODAL FUNCTIONALITY
+        function openModal(imageSrc, title, year) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalYear = document.getElementById('modalYear');
+            
+            modal.style.display = "block";
+            modalImg.src = imageSrc;
+            modalTitle.textContent = title;
+            modalYear.textContent = year + ' Award';
+            
+            // Prevent body scroll when modal is open
+            document.body.style.overflow = 'hidden';
+            
+            // Add keyboard support
+            document.addEventListener('keydown', handleKeyPress);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.style.display = "none";
+            
+            // Restore body scroll
+            document.body.style.overflow = 'auto';
+            
+            // Remove keyboard event listener
+            document.removeEventListener('keydown', handleKeyPress);
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        }
+
+        // Add click events for modal
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('imageModal');
+            const closeBtn = document.querySelector('.close-modal');
+            
+            // Close modal when clicking X
+            closeBtn.addEventListener('click', closeModal);
+            
+            // Close modal when clicking outside the image
+            modal.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    closeModal();
+                }
+            });
+            
+            // Add touch support for mobile
+            modal.addEventListener('touchstart', function(event) {
+                if (event.target === modal) {
+                    closeModal();
+                }
+            });
+        });
     </script>
+
+    <!-- Modal for Fullscreen Image -->
+    <div id="imageModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <div class="modal-content">
+            <img class="modal-image" id="modalImage" src="" alt="Fullscreen View">
+            <div class="modal-caption">
+                <h3 id="modalTitle"></h3>
+                <p id="modalYear"></p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
