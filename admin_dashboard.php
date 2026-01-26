@@ -55,6 +55,11 @@ if (isset($_GET['delete'])) {
             $success_msg = "Award deleted successfully!";
             $error_msg = "Error deleting award";
             break;
+        case 'contact_messages':
+            $sql = "DELETE FROM contact_messages WHERE id = $id";
+            $success_msg = "Message deleted successfully!";
+            $error_msg = "Error deleting message";
+            break;
         default:
             $sql = "";
             break;
@@ -68,6 +73,20 @@ if (isset($_GET['delete'])) {
     
     // Redirect back to same tab
     header("Location: admin_dashboard.php?tab=$active_tab");
+    exit();
+}
+
+if (isset($_GET['mark_as_read'])) {
+    $id = intval($_GET['mark_as_read']);
+    $sql = "UPDATE contact_messages SET status = 'read' WHERE id = $id";
+    
+    if (mysqli_query($conn, $sql)) {
+        $_SESSION['success'] = "Message marked as read!";
+    } else {
+        $_SESSION['error'] = "Error: " . mysqli_error($conn);
+    }
+    
+    header("Location: admin_dashboard.php?tab=contact_messages");
     exit();
 }
 
@@ -558,6 +577,10 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                 <a href="?tab=awards" class="tab-link <?php echo $active_tab == 'awards' ? 'active' : ''; ?>">
                     <i class="fas fa-award"></i>
                     <span>Awards</span>
+                </a>
+                <a href="?tab=contact_messages" class="tab-link <?php echo $active_tab == 'contact_messages' ? 'active' : ''; ?>">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact Messages</span>
                 </a>
             </div>
             
@@ -1428,6 +1451,109 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                                         <i class="fas fa-award"></i>
                                         <p>No awards found</p>
                                         <p>Add your first award using the "Add New Award" button</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php endif; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Contact Messages Tab -->
+        <div id="contact_messages" class="tab-content <?php echo $active_tab == 'contact_messages' ? 'active' : ''; ?>">
+            <div class="sales-table">
+                <div class="table-header">
+                    <h2><i class="fas fa-envelope"></i> Contact Messages Management</h2>
+                </div>
+                
+                <?php
+                $messages_result = mysqli_query($conn, "SELECT * FROM contact_messages ORDER BY created_at DESC");
+                ?>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Service</th>
+                            <th>Message</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php if (mysqli_num_rows($messages_result) > 0): ?>
+                            <?php while ($message = mysqli_fetch_assoc($messages_result)): ?>
+                            <tr>
+                                <td><?php echo $message['id']; ?></td>
+                                <td><strong><?php echo htmlspecialchars($message['name']); ?></strong></td>
+                                <td>
+                                    <a href="mailto:<?php echo htmlspecialchars($message['email']); ?>">
+                                        <?php echo htmlspecialchars($message['email']); ?>
+                                    </a>
+                                </td>
+                                <td>
+                                    <?php if ($message['phone']): ?>
+                                        <a href="tel:<?php echo htmlspecialchars($message['phone']); ?>">
+                                            <?php echo htmlspecialchars($message['phone']); ?>
+                                        </a>
+                                    <?php else: ?>
+                                        <span style="color: #999;">N/A</span>
+                                    <?php endif; ?>
+                                </td>
+                                <td><?php echo htmlspecialchars($message['service'] ?: 'Not specified'); ?></td>
+                                <td style="max-width: 200px;">
+                                    <div style="max-height: 100px; overflow-y: auto;">
+                                        <?php echo htmlspecialchars($message['message']); ?>
+                                    </div>
+                                </td>
+                                <td>
+                                    <?php echo date('M d, Y h:i A', strtotime($message['created_at'])); ?>
+                                </td>
+                                <td>
+                                    <span style="
+                                        background: <?php echo $message['status'] == 'new' ? '#e3f2fd' : ($message['status'] == 'read' ? '#e8f5e9' : '#fff3e0'); ?>;
+                                        color: <?php echo $message['status'] == 'new' ? '#1565c0' : ($message['status'] == 'read' ? '#2e7d32' : '#ef6c00'); ?>;
+                                        padding: 5px 10px;
+                                        border-radius: 20px;
+                                        font-size: 0.85rem;
+                                        font-weight: 600;
+                                        text-transform: uppercase;
+                                    ">
+                                        <?php echo $message['status']; ?>
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <?php if ($message['status'] == 'new'): ?>
+                                            <a href="?tab=contact_messages&mark_as_read=<?php echo $message['id']; ?>" 
+                                            class="btn-edit" style="background: #17a2b8;">
+                                                <i class="fas fa-eye"></i> Mark Read
+                                            </a>
+                                        <?php endif; ?>
+                                        <a href="mailto:<?php echo htmlspecialchars($message['email']); ?>" 
+                                        class="btn-edit" target="_blank">
+                                            <i class="fas fa-reply"></i> Reply
+                                        </a>
+                                        <a href="?tab=contact_messages&delete=<?php echo $message['id']; ?>" 
+                                        class="btn-delete" 
+                                        onclick="return confirm('Are you sure you want to delete this message?')">
+                                            <i class="fas fa-trash"></i> Delete
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <?php endwhile; ?>
+                        <?php else: ?>
+                            <tr>
+                                <td colspan="9">
+                                    <div class="empty-state">
+                                        <i class="fas fa-envelope"></i>
+                                        <p>No contact messages found</p>
                                     </div>
                                 </td>
                             </tr>
