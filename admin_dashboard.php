@@ -462,7 +462,387 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
             font-size: 1.1rem;
             margin-bottom: 10px;
         }
+
+        /* Modal Styles - FIXED SCROLLING ISSUE */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            animation: fadeIn 0.3s ease;
+            overflow: hidden;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 700px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+            animation: slideDown 0.3s ease-out;
+            position: relative;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eeb82e;
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 2;
+        }
+
+        .modal-header h2 {
+            color: #2c2b29;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .close-modal {
+            font-size: 28px;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s ease;
+            background: none;
+            border: none;
+            padding: 5px;
+        }
+
+        .close-modal:hover {
+            color: #2c2b29;
+        }
+
+        .message-details {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #eeb82e;
+            margin-bottom: 20px;
+        }
+
+        .message-details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .message-detail-item {
+            padding: 5px 0;
+        }
+
+        .message-detail-item strong {
+            color: #2c2b29;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+
+        .message-detail-item a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .message-detail-item a:hover {
+            text-decoration: underline;
+        }
+
+        .message-content {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            font-size: 1.05rem;
+            margin: 20px 0;
+        }
+
+        .message-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .message-actions .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .message-actions .btn-view {
+            background: #17a2b8;
+            color: white;
+        }
+
+        .message-actions .btn-view:hover {
+            background: #138496;
+        }
+
+        .message-actions .btn-reply {
+            background: #28a745;
+            color: white;
+        }
+
+        .message-actions .btn-reply:hover {
+            background: #218838;
+        }
+
+        .message-actions .btn-delete {
+            background: #dc3545;
+            color: white;
+        }
+
+        .message-actions .btn-delete:hover {
+            background: #c82333;
+        }
         
+        /* Contact Messages Specific Styles */
+        .contact-messages-table {
+            font-size: 0.95rem;
+        }
+
+        .contact-messages-table th {
+            padding: 18px 15px;
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+
+        .contact-messages-table td {
+            padding: 16px 15px;
+            vertical-align: top;
+        }
+
+        .contact-messages-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        /* Better status badges */
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            min-width: 80px;
+            justify-content: center;
+        }
+
+        .status-new {
+            background: #e3f2fd;
+            color: #1565c0;
+            border: 1px solid #bbdefb;
+        }
+
+        .status-read {
+            background: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #c8e6c9;
+        }
+
+        .status-archived {
+            background: #fff3e0;
+            color: #ef6c00;
+            border: 1px solid #ffcc80;
+        }
+
+        /* Message preview with better styling */
+        .message-preview {
+            max-width: 300px;
+            line-height: 1.5;
+            color: #555;
+            position: relative;
+        }
+
+        .message-preview-content {
+            max-height: 60px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+        }
+
+        .message-preview:hover .message-preview-content {
+            max-height: none;
+            background: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: absolute;
+            z-index: 100;
+            width: 350px;
+            max-height: 200px;
+            overflow-y: auto;
+            left: 0;
+            top: 0;
+        }
+
+        /* Contact info styling */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .contact-name {
+            font-weight: 600;
+            color: #2c2b29;
+        }
+
+        .contact-email, .contact-phone {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .contact-email a, .contact-phone a {
+            color: #0066cc;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .contact-email a:hover, .contact-phone a:hover {
+            text-decoration: underline;
+        }
+
+        /* Enhanced action buttons */
+        .contact-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            min-width: 180px;
+        }
+
+        .contact-action-btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            justify-content: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            width: 100%;
+        }
+
+        .contact-action-btn.view {
+            background: #17a2b8;
+            color: white;
+        }
+
+        .contact-action-btn.view:hover {
+            background: #138496;
+            transform: translateY(-2px);
+        }
+
+        .contact-action-btn.reply {
+            background: #28a745;
+            color: white;
+        }
+
+        .contact-action-btn.reply:hover {
+            background: #218838;
+            transform: translateY(-2px);
+        }
+
+        .contact-action-btn.delete {
+            background: #dc3545;
+            color: white;
+        }
+
+        .contact-action-btn.delete:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+        }
+
+        /* Date styling */
+        .message-date {
+            color: #666;
+            font-size: 0.9rem;
+            min-width: 150px;
+        }
+
+        .message-date .date {
+            font-weight: 600;
+            color: #2c2b29;
+        }
+
+        .message-date .time {
+            color: #888;
+            font-size: 0.85rem;
+        }
+
+        /* Service tag */
+        .service-tag {
+            background: #f0f0f0;
+            color: #555;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            display: inline-block;
+            max-width: 150px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* Scrollable table container */
+        .table-scroll-container {
+            overflow-x: auto;
+            border-radius: 0 0 10px 10px;
+        }
+
+        /* Message count badge */
+        .message-count {
+            background: #eeb82e;
+            color: #2c2b29;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        /* Body no-scroll class */
+        .no-scroll {
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+        }
+
         @media (max-width: 768px) {
             .admin-header-content {
                 flex-direction: column;
@@ -505,6 +885,12 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                 width: 100%;
                 justify-content: center;
             }
+            
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+                padding: 20px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -519,6 +905,12 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
             .tab-link {
                 min-width: 70px;
                 padding: 12px 5px;
+            }
+            
+            .modal-content {
+                width: 98%;
+                margin: 5% auto;
+                padding: 15px;
             }
         }
     </style>
@@ -1464,102 +1856,147 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
         <div id="contact_messages" class="tab-content <?php echo $active_tab == 'contact_messages' ? 'active' : ''; ?>">
             <div class="sales-table">
                 <div class="table-header">
-                    <h2><i class="fas fa-envelope"></i> Contact Messages Management</h2>
+                    <h2><i class="fas fa-envelope"></i> Contact Messages Management 
+                        <span class="message-count">
+                            <?php 
+                            $count_query = mysqli_query($conn, "SELECT COUNT(*) as total FROM contact_messages");
+                            $count = mysqli_fetch_assoc($count_query)['total'];
+                            echo $count;
+                            ?>
+                        </span>
+                    </h2>
+                    <div style="display: flex; gap: 10px;">
+                        <span style="color: #666; font-size: 0.95rem;">
+                            <i class="fas fa-circle" style="color: #1565c0;"></i> New: 
+                            <?php 
+                            $new_count = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as count FROM contact_messages WHERE status = 'new'"))['count'];
+                            echo $new_count;
+                            ?>
+                        </span>
+                        <span style="color: #666; font-size: 0.95rem;">
+                            <i class="fas fa-circle" style="color: #2e7d32;"></i> Read: 
+                            <?php 
+                            $read_count = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as count FROM contact_messages WHERE status = 'read'"))['count'];
+                            echo $read_count;
+                            ?>
+                        </span>
+                    </div>
                 </div>
                 
-                <?php
-                $messages_result = mysqli_query($conn, "SELECT * FROM contact_messages ORDER BY created_at DESC");
-                ?>
-                
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Service</th>
-                            <th>Message</th>
-                            <th>Date</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php if (mysqli_num_rows($messages_result) > 0): ?>
-                            <?php while ($message = mysqli_fetch_assoc($messages_result)): ?>
+                <div class="table-scroll-container">
+                    <?php
+                    $messages_result = mysqli_query($conn, "SELECT * FROM contact_messages ORDER BY 
+                        CASE WHEN status = 'new' THEN 0 ELSE 1 END,
+                        created_at DESC");
+                    ?>
+                    
+                    <table class="contact-messages-table">
+                        <thead>
                             <tr>
-                                <td><?php echo $message['id']; ?></td>
-                                <td><strong><?php echo htmlspecialchars($message['name']); ?></strong></td>
-                                <td>
-                                    <a href="mailto:<?php echo htmlspecialchars($message['email']); ?>">
-                                        <?php echo htmlspecialchars($message['email']); ?>
-                                    </a>
-                                </td>
-                                <td>
-                                    <?php if ($message['phone']): ?>
-                                        <a href="tel:<?php echo htmlspecialchars($message['phone']); ?>">
-                                            <?php echo htmlspecialchars($message['phone']); ?>
-                                        </a>
-                                    <?php else: ?>
-                                        <span style="color: #999;">N/A</span>
-                                    <?php endif; ?>
-                                </td>
-                                <td><?php echo htmlspecialchars($message['service'] ?: 'Not specified'); ?></td>
-                                <td style="max-width: 200px;">
-                                    <div style="max-height: 100px; overflow-y: auto;">
-                                        <?php echo htmlspecialchars($message['message']); ?>
-                                    </div>
-                                </td>
-                                <td>
-                                    <?php echo date('M d, Y h:i A', strtotime($message['created_at'])); ?>
-                                </td>
-                                <td>
-                                    <span style="
-                                        background: <?php echo $message['status'] == 'new' ? '#e3f2fd' : ($message['status'] == 'read' ? '#e8f5e9' : '#fff3e0'); ?>;
-                                        color: <?php echo $message['status'] == 'new' ? '#1565c0' : ($message['status'] == 'read' ? '#2e7d32' : '#ef6c00'); ?>;
-                                        padding: 5px 10px;
-                                        border-radius: 20px;
-                                        font-size: 0.85rem;
-                                        font-weight: 600;
-                                        text-transform: uppercase;
-                                    ">
-                                        <?php echo $message['status']; ?>
-                                    </span>
-                                </td>
-                                <td>
-                                    <div class="action-buttons">
-                                        <?php if ($message['status'] == 'new'): ?>
-                                            <a href="?tab=contact_messages&mark_as_read=<?php echo $message['id']; ?>" 
-                                            class="btn-edit" style="background: #17a2b8;">
-                                                <i class="fas fa-eye"></i> Mark Read
+                                <th width="60">ID</th>
+                                <th width="200">Contact Information</th>
+                                <th width="120">Service</th>
+                                <th width="300">Message Preview</th>
+                                <th width="160">Date & Time</th>
+                                <th width="120">Status</th>
+                                <th width="200">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php if (mysqli_num_rows($messages_result) > 0): ?>
+                                <?php while ($message = mysqli_fetch_assoc($messages_result)): ?>
+                                <tr data-message-id="<?php echo $message['id']; ?>">
+                                    <td>
+                                        <strong style="color: #2c2b29;">#<?php echo str_pad($message['id'], 4, '0', STR_PAD_LEFT); ?></strong>
+                                    </td>
+                                    <td>
+                                        <div class="contact-info">
+                                            <div class="contact-name"><?php echo htmlspecialchars($message['name']); ?></div>
+                                            <div class="contact-email">
+                                                <a href="mailto:<?php echo htmlspecialchars($message['email']); ?>" title="Send email">
+                                                    <i class="fas fa-envelope"></i> <?php echo htmlspecialchars($message['email']); ?>
+                                                </a>
+                                            </div>
+                                            <?php if (!empty($message['phone'])): ?>
+                                            <div class="contact-phone">
+                                                <a href="tel:<?php echo htmlspecialchars($message['phone']); ?>" title="Call">
+                                                    <i class="fas fa-phone"></i> <?php echo htmlspecialchars($message['phone']); ?>
+                                                </a>
+                                            </div>
+                                            <?php endif; ?>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="service-tag" title="<?php echo htmlspecialchars($message['service'] ?: 'Not specified'); ?>">
+                                            <?php echo htmlspecialchars($message['service'] ?: 'Not specified'); ?>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="message-preview" title="Click View to read full message">
+                                            <div class="message-preview-content">
+                                                <?php echo htmlspecialchars($message['message']); ?>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="message-date">
+                                        <div class="date"><?php echo date('M d, Y', strtotime($message['created_at'])); ?></div>
+                                        <div class="time"><?php echo date('h:i A', strtotime($message['created_at'])); ?></div>
+                                    </td>
+                                    <td>
+                                        <span class="status-badge status-<?php echo $message['status']; ?>">
+                                            <i class="fas fa-<?php echo $message['status'] == 'new' ? 'clock' : 'check-circle'; ?>"></i>
+                                            <?php echo ucfirst($message['status']); ?>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="contact-actions">
+                                            <button onclick="viewMessage(<?php echo $message['id']; ?>)" 
+                                                    class="contact-action-btn view" title="View full message">
+                                                <i class="fas fa-eye"></i> View Message
+                                            </button>
+                                            <a href="mailto:<?php echo htmlspecialchars($message['email']); ?>" 
+                                            class="contact-action-btn reply" target="_blank" title="Reply via email">
+                                                <i class="fas fa-reply"></i> Reply via Email
                                             </a>
-                                        <?php endif; ?>
-                                        <a href="mailto:<?php echo htmlspecialchars($message['email']); ?>" 
-                                        class="btn-edit" target="_blank">
-                                            <i class="fas fa-reply"></i> Reply
-                                        </a>
-                                        <a href="?tab=contact_messages&delete=<?php echo $message['id']; ?>" 
-                                        class="btn-delete" 
-                                        onclick="return confirm('Are you sure you want to delete this message?')">
-                                            <i class="fas fa-trash"></i> Delete
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <?php endwhile; ?>
-                        <?php else: ?>
-                            <tr>
-                                <td colspan="9">
-                                    <div class="empty-state">
-                                        <i class="fas fa-envelope"></i>
-                                        <p>No contact messages found</p>
-                                    </div>
-                                </td>
-                            </tr>
-                        <?php endif; ?>
-                    </tbody>
-                </table>
+                                            <a href="?tab=contact_messages&delete=<?php echo $message['id']; ?>" 
+                                            class="contact-action-btn delete" 
+                                            onclick="return confirm('Are you sure you want to delete this message?')"
+                                            title="Delete message">
+                                                <i class="fas fa-trash"></i> Delete Message
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <?php endwhile; ?>
+                            <?php else: ?>
+                                <tr>
+                                    <td colspan="7">
+                                        <div class="empty-state" style="padding: 40px;">
+                                            <i class="fas fa-inbox" style="font-size: 3.5rem; color: #eeb82e; margin-bottom: 15px;"></i>
+                                            <h3 style="color: #2c2b29; margin-bottom: 10px;">No Messages Yet</h3>
+                                            <p style="color: #666; max-width: 500px; margin: 0 auto;">
+                                                All contact form submissions will appear here. Check back later for new messages.
+                                            </p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endif; ?>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <?php if (mysqli_num_rows($messages_result) > 0): ?>
+                <div style="padding: 15px 20px; background: #f8f9fa; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;">
+                    <div style="color: #666; font-size: 0.9rem;">
+                        Showing <?php echo mysqli_num_rows($messages_result); ?> message(s)
+                    </div>
+                    <div>
+                        <button onclick="markAllAsRead()" class="admin-btn" style="background: #6c757d; font-size: 0.9rem;">
+                            <i class="fas fa-check-double"></i> Mark All as Read
+                        </button>
+                    </div>
+                </div>
+                <?php endif; ?>
             </div>
         </div>
         
@@ -1618,7 +2055,35 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                             Manage awards, certificates, and recognition received by your company. Upload award images and backgrounds.
                         </p>
                     </div>
+                    <div>
+                        <h4 style="color: #2c2b29; margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-envelope" style="color: #eeb82e;"></i> Contact Messages
+                        </h4>
+                        <p style="color: #666; line-height: 1.6;">
+                            Manage all incoming contact form submissions. View, reply to, or delete messages. Use the "View Message" button to see full details and automatically mark messages as read.
+                        </p>
+                        <ul style="color: #666; font-size: 0.9rem; margin-top: 8px; padding-left: 20px;">
+                            <li><span style="color: #1565c0;">●</span> Blue dot: New/unread messages</li>
+                            <li><span style="color: #2e7d32;">●</span> Green dot: Read messages</li>
+                            <li>Hover over message preview to see more content</li>
+                            <li>Click "Reply via Email" to respond quickly</li>
+                        </ul>
+                    </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Message View Modal -->
+    <div id="messageModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-envelope"></i> Message Details</h2>
+                <button type="button" class="close-modal" onclick="closeModal()">&times;</button>
+            </div>
+            
+            <div id="modalMessageContent">
+                <!-- Content will be loaded via AJAX -->
             </div>
         </div>
     </div>
@@ -1639,6 +2104,270 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                 setTimeout(() => alert.remove(), 500);
             });
         }, 5000);
+
+        // I-update ang viewMessage function para mas maganda ang modal:
+        function viewMessage(messageId) {
+            // Show loading state
+            document.getElementById('modalMessageContent').innerHTML = `
+                <div style="text-align: center; padding: 60px 40px;">
+                    <i class="fas fa-spinner fa-spin" style="font-size: 2.5rem; color: #eeb82e;"></i>
+                    <p style="margin-top: 20px; color: #666; font-size: 1.1rem;">Loading message details...</p>
+                </div>
+            `;
+            
+            // Show modal and disable body scroll
+            document.getElementById('messageModal').style.display = 'block';
+            document.body.classList.add('no-scroll');
+            
+            // Fetch message details via AJAX
+            fetch(`get_message.php?id=${messageId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const message = data.message;
+                        
+                        // Format the date
+                        const date = new Date(message.created_at);
+                        const formattedDate = date.toLocaleDateString('en-US', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit'
+                        });
+                        
+                        // Create beautiful modal content
+                        document.getElementById('modalMessageContent').innerHTML = `
+                            <div style="background: linear-gradient(135deg, #2c2b29 0%, #3a3937 100%); 
+                                        color: white; padding: 25px; border-radius: 10px; margin-bottom: 25px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                                    <h3 style="margin: 0; color: white; font-size: 1.4rem;">
+                                        <i class="fas fa-user-circle"></i> ${escapeHtml(message.name)}
+                                    </h3>
+                                    <span style="
+                                        background: ${message.status == 'new' ? '#17a2b8' : '#28a745'};
+                                        color: white;
+                                        padding: 6px 15px;
+                                        border-radius: 20px;
+                                        font-size: 0.9rem;
+                                        font-weight: 600;
+                                    ">
+                                        <i class="fas fa-${message.status == 'new' ? 'clock' : 'check-circle'}"></i>
+                                        ${message.status.toUpperCase()}
+                                    </span>
+                                </div>
+                                
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                                    <div>
+                                        <div style="font-size: 0.9rem; color: rgba(255,255,255,0.8); margin-bottom: 5px;">
+                                            <i class="fas fa-envelope"></i> Email
+                                        </div>
+                                        <div style="font-size: 1.1rem;">
+                                            <a href="mailto:${escapeHtml(message.email)}" 
+                                            style="color: #ffd95e; text-decoration: none;">
+                                                ${escapeHtml(message.email)}
+                                            </a>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <div style="font-size: 0.9rem; color: rgba(255,255,255,0.8); margin-bottom: 5px;">
+                                            <i class="fas fa-phone"></i> Phone
+                                        </div>
+                                        <div style="font-size: 1.1rem;">
+                                            ${message.phone ? 
+                                                `<a href="tel:${escapeHtml(message.phone)}" 
+                                                style="color: #ffd95e; text-decoration: none;">
+                                                    <i class="fas fa-phone-alt"></i> ${escapeHtml(message.phone)}
+                                                </a>` : 
+                                                '<span style="color: rgba(255,255,255,0.6);">Not provided</span>'}
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div style="margin-top: 15px;">
+                                    <div style="font-size: 0.9rem; color: rgba(255,255,255,0.8); margin-bottom: 5px;">
+                                        <i class="fas fa-calendar"></i> Date Received
+                                    </div>
+                                    <div style="font-size: 1.1rem;">
+                                        <i class="far fa-clock"></i> ${formattedDate}
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div style="background: #fff8e1; padding: 20px; border-radius: 10px; border-left: 4px solid #eeb82e; margin-bottom: 20px;">
+                                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                                    <i class="fas fa-briefcase" style="color: #eeb82e; font-size: 1.2rem;"></i>
+                                    <div>
+                                        <div style="font-size: 0.9rem; color: #666; margin-bottom: 5px;">Service Interested In</div>
+                                        <div style="font-size: 1.1rem; font-weight: 600; color: #2c2b29;">
+                                            ${escapeHtml(message.service || 'General Inquiry')}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div style="margin-bottom: 30px;">
+                                <h4 style="color: #2c2b29; margin-bottom: 15px; padding-bottom: 10px; 
+                                        border-bottom: 2px solid #eeb82e; display: flex; align-items: center; gap: 10px;">
+                                    <i class="fas fa-comment-dots" style="color: #eeb82e;"></i>
+                                    Message Content
+                                </h4>
+                                <div style="
+                                    background: #f8f9fa;
+                                    padding: 25px;
+                                    border-radius: 10px;
+                                    line-height: 1.8;
+                                    white-space: pre-wrap;
+                                    font-size: 1.1rem;
+                                    color: #444;
+                                    max-height: 300px;
+                                    overflow-y: auto;
+                                    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+                                ">
+                                    ${escapeHtml(message.message).replace(/\n/g, '<br>')}
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; gap: 15px; justify-content: flex-end; border-top: 1px solid #eee; padding-top: 20px;">
+                                <a href="mailto:${escapeHtml(message.email)}?subject=Re: Your inquiry about ${escapeHtml(message.service || 'our services')}&body=Dear ${escapeHtml(message.name)},%0D%0A%0D%0AThank you for contacting us.%0D%0A%0D%0ARegarding your message:%0D%0A${encodeURIComponent(message.message.substring(0, 200))}...%0D%0A%0D%0ABest regards,%0D%0A[Your Name]%0D%0AHope Account Specialist" 
+                                class="admin-btn" target="_blank" style="background: #28a745;">
+                                    <i class="fas fa-reply"></i> Reply with Template
+                                </a>
+                                
+                                <a href="mailto:${escapeHtml(message.email)}" 
+                                class="admin-btn" target="_blank">
+                                    <i class="fas fa-envelope"></i> Compose New Email
+                                </a>
+                                
+                                <button onclick="deleteMessage(${message.id})" class="admin-btn" style="background: #dc3545;">
+                                    <i class="fas fa-trash"></i> Delete
+                                </button>
+                            </div>
+                        `;
+                        
+                        // Mark as read automatically when viewed
+                        if (message.status === 'new') {
+                            markMessageAsRead(message.id);
+                        }
+                    } else {
+                        document.getElementById('modalMessageContent').innerHTML = `
+                            <div style="text-align: center; padding: 60px 40px; color: #dc3545;">
+                                <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 20px;"></i>
+                                <h3 style="margin-bottom: 15px;">Error Loading Message</h3>
+                                <p style="margin-bottom: 25px; color: #666;">${data.error || 'Unable to load message details'}</p>
+                                <button onclick="closeModal()" class="admin-btn" style="width: auto;">
+                                    <i class="fas fa-times"></i> Close
+                                </button>
+                            </div>
+                        `;
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('modalMessageContent').innerHTML = `
+                        <div style="text-align: center; padding: 60px 40px; color: #dc3545;">
+                            <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 20px;"></i>
+                            <h3 style="margin-bottom: 15px;">Network Error</h3>
+                            <p style="margin-bottom: 25px; color: #666;">Please check your internet connection and try again.</p>
+                            <button onclick="closeModal()" class="admin-btn" style="width: auto;">
+                                <i class="fas fa-times"></i> Close
+                            </button>
+                        </div>
+                    `;
+                });
+        }
+
+        // Helper function to escape HTML
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Function to mark message as read
+        function markMessageAsRead(messageId) {
+            fetch(`mark_as_read.php?id=${messageId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Update status in the table
+                        const statusSpan = document.querySelector(`tr[data-message-id="${messageId}"] .status-badge`);
+                        if (statusSpan) {
+                            statusSpan.className = 'status-badge status-read';
+                            statusSpan.innerHTML = '<i class="fas fa-check-circle"></i> Read';
+                        }
+                        
+                        // Update new count
+                        const newCountElement = document.querySelector('span[style*="color: #1565c0"]');
+                        if (newCountElement) {
+                            const newCount = parseInt(newCountElement.nextSibling.textContent.trim());
+                            if (newCount > 0) {
+                                newCountElement.nextSibling.textContent = newCount - 1;
+                            }
+                        }
+                    }
+                });
+        }
+
+        // Function to delete message
+        function deleteMessage(messageId) {
+            if (confirm('Are you sure you want to delete this message?')) {
+                window.location.href = `?tab=contact_messages&delete=${messageId}`;
+            }
+        }
+
+        // Function to close modal
+        function closeModal() {
+            document.getElementById('messageModal').style.display = 'none';
+            document.body.classList.remove('no-scroll');
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('messageModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Function to mark all messages as read
+        function markAllAsRead() {
+            if (confirm('Mark all unread messages as read?')) {
+                fetch('mark_all_read.php')
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            // Update all status badges
+                            document.querySelectorAll('.status-new').forEach(badge => {
+                                badge.className = 'status-badge status-read';
+                                badge.innerHTML = '<i class="fas fa-check-circle"></i> Read';
+                            });
+                            
+                            // Update new count
+                            const newCountElement = document.querySelector('span[style*="color: #1565c0"]');
+                            if (newCountElement) {
+                                newCountElement.nextSibling.textContent = '0';
+                            }
+                            
+                            alert('All messages marked as read!');
+                        } else {
+                            alert('Error: ' + data.error);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Error marking messages as read');
+                    });
+            }
+        }
     </script>
 </body>
 </html>
