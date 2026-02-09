@@ -34,7 +34,7 @@
                     <i class="fas fa-map-marker-alt"></i>
                     <span>Contact Info</span>
                 </h4>
-                <div class="contact-info">
+                <div class="contact-info-footer">
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
@@ -303,7 +303,7 @@
     }
 
     /* Contact Info */
-    .contact-info {
+    .contact-info-footer {
         display: flex;
         flex-direction: column;
         gap: 20px;

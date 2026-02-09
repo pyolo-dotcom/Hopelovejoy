@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +15,81 @@
     <link rel="icon" type="image/png" href="img/logo.png">
     
     <style>
+        /* ADD THESE STYLES AT THE TOP OF YOUR STYLE SECTION */
+        .alert-message {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 5px;
+            z-index: 9999;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: slideIn 0.3s ease-out;
+            max-width: 400px;
+        }
+        
+        .alert-success {
+            background: #28a745;
+            color: white;
+            border-left: 4px solid #1e7e34;
+        }
+        
+        .alert-error {
+            background: #dc3545;
+            color: white;
+            border-left: 4px solid #c82333;
+        }
+        
+        .alert-warning {
+            background: #ffc107;
+            color: #212529;
+            border-left: 4px solid #e0a800;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .alert-message.fade-out {
+            animation: slideOut 0.5s ease-out forwards;
+        }
+        
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+        
+        .alert-close {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            margin-left: 10px;
+            font-size: 18px;
+            opacity: 0.8;
+        }
+        
+        .alert-close:hover {
+            opacity: 1;
+        }
+
+        /* REST OF YOUR EXISTING STYLES... */
         * {
             margin: 0;
             padding: 0;
@@ -448,6 +527,14 @@
             .map-container {
                 height: 300px;
             }
+            
+            /* Alert message mobile adjustment */
+            .alert-message {
+                top: 80px;
+                left: 20px;
+                right: 20px;
+                max-width: none;
+            }
         }
 
         @media screen and (max-width: 480px) {
@@ -563,7 +650,32 @@
     </style>
 </head>
 <body>
-    <?php include 'navbar.php'; ?>
+    <?php 
+    include 'navbar.php'; 
+    
+    // Check for messages from contact_process.php
+    $alert_type = '';
+    $alert_message = '';
+    
+    if (isset($_SESSION['contact_success'])) {
+        $alert_type = 'success';
+        $alert_message = $_SESSION['contact_success'];
+        unset($_SESSION['contact_success']);
+    } elseif (isset($_SESSION['contact_error'])) {
+        $alert_type = 'error';
+        $alert_message = $_SESSION['contact_error'];
+        unset($_SESSION['contact_error']);
+    }
+    ?>
+
+    <!-- Alert Message Container -->
+    <?php if ($alert_message): ?>
+    <div id="alert-message" class="alert-message alert-<?php echo $alert_type; ?>">
+        <i class="fas <?php echo $alert_type == 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'; ?>"></i>
+        <span><?php echo htmlspecialchars($alert_message); ?></span>
+        <button class="alert-close" onclick="closeAlert()">&times;</button>
+    </div>
+    <?php endif; ?>
 
     <div class="main-content">
         <!-- Contact Page Header -->
@@ -577,43 +689,48 @@
             <!-- Contact Form -->
             <div class="contact-form-section">
                 <h2>Send Us a Message</h2>
-                <form class="contact-form" id="contactForm">
+                <form class="contact-form" method="POST" action="contact_process.php">
                     <div class="form-group">
                         <label for="name">Full Name *</label>
-                        <input type="text" id="name" name="name" required>
+                        <input type="text" id="name" name="name" required 
+                               value="<?php echo isset($_SESSION['form_data']['name']) ? htmlspecialchars($_SESSION['form_data']['name']) : ''; ?>">
                     </div>
                     
                     <div class="form-group">
                         <label for="email">Email Address *</label>
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" id="email" name="email" required
+                               value="<?php echo isset($_SESSION['form_data']['email']) ? htmlspecialchars($_SESSION['form_data']['email']) : ''; ?>">
                     </div>
                     
                     <div class="form-group">
                         <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone">
+                        <input type="tel" id="phone" name="phone"
+                               value="<?php echo isset($_SESSION['form_data']['phone']) ? htmlspecialchars($_SESSION['form_data']['phone']) : ''; ?>">
                     </div>
                     
                     <div class="form-group">
                         <label for="service">Service Interested In</label>
                         <select id="service" name="service">
                             <option value="">Select a service</option>
-                            <option value="loanassistance">Auto acquisition and loan assistance</option>
-                            <option value="houseandlotloan">House and lot acquisition and loan assistance</option>
-                            <option value="carinsurance">Car Insurance</option>
-                            <option value="houseinsurance">Housing Insurance</option>
-                            <option value="lifeinsurance">Life Insurance</option>
-                            <option value="secondhandcarloan">Second hand car loan assistance</option>
-                            <option value="sanglaorcr">Sangla title and OR/CR</option>
-                            <option value="tradein">Trade In</option>
+                            <option value="Auto acquisition and loan assistance" <?php echo (isset($_SESSION['form_data']['service']) && $_SESSION['form_data']['service'] == 'Auto acquisition and loan assistance') ? 'selected' : ''; ?>>Auto acquisition and loan assistance</option>
+                            <option value="House and lot acquisition and loan assistance" <?php echo (isset($_SESSION['form_data']['service']) && $_SESSION['form_data']['service'] == 'House and lot acquisition and loan assistance') ? 'selected' : ''; ?>>House and lot acquisition and loan assistance</option>
+                            <option value="Car Insurance" <?php echo (isset($_SESSION['form_data']['service']) && $_SESSION['form_data']['service'] == 'Car Insurance') ? 'selected' : ''; ?>>Car Insurance</option>
+                            <option value="Housing Insurance" <?php echo (isset($_SESSION['form_data']['service']) && $_SESSION['form_data']['service'] == 'Housing Insurance') ? 'selected' : ''; ?>>Housing Insurance</option>
+                            <option value="Life Insurance" <?php echo (isset($_SESSION['form_data']['service']) && $_SESSION['form_data']['service'] == 'Life Insurance') ? 'selected' : ''; ?>>Life Insurance</option>
+                            <option value="Second hand car loan assistance" <?php echo (isset($_SESSION['form_data']['service']) && $_SESSION['form_data']['service'] == 'Second hand car loan assistance') ? 'selected' : ''; ?>>Second hand car loan assistance</option>
+                            <option value="Sangla title and OR/CR" <?php echo (isset($_SESSION['form_data']['service']) && $_SESSION['form_data']['service'] == 'Sangla title and OR/CR') ? 'selected' : ''; ?>>Sangla title and OR/CR</option>
+                            <option value="Trade In" <?php echo (isset($_SESSION['form_data']['service']) && $_SESSION['form_data']['service'] == 'Trade In') ? 'selected' : ''; ?>>Trade In</option>
                         </select>
                     </div>
                     
                     <div class="form-group">
                         <label for="message">Message *</label>
-                        <textarea id="message" name="message" required></textarea>
+                        <textarea id="message" name="message" required><?php echo isset($_SESSION['form_data']['message']) ? htmlspecialchars($_SESSION['form_data']['message']) : ''; ?></textarea>
                     </div>
                     
-                    <button type="submit" class="submit-btn">Send Message</button>
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
                 </form>
             </div>
 
@@ -687,7 +804,6 @@
         <div class="map-section">
             <h2>Our Location</h2>
             <div class="map-container">
-                <!-- You can replace this with an actual Google Maps embed code -->
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3695.2115238100278!2d120.94901047494177!3d15.461642785133227!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397292538bd747f%3A0x1467ee17429693ed!2sAutoloan%20Pro%20by%20Hope%20Account%20Specialist!5e1!3m2!1sen!2sph!4v1766729310091!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
@@ -753,28 +869,40 @@
             </div>
         </div>
     </div>
-
+    
+    <?php 
+    // Clear form data from session
+    if (isset($_SESSION['form_data'])) {
+        unset($_SESSION['form_data']);
+    }
+    ?>
+    
     <?php include 'footer.php'; ?>
 
     <script>
-        // Contact Form Submission
-        const contactForm = document.getElementById('contactForm');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Get form values
-                const name = document.getElementById('name').value;
-                const email = document.getElementById('email').value;
-                const service = document.getElementById('service').value;
-                
-                // Show success message
-                alert(`Thank you ${name}! Your message has been sent successfully. We will contact you at ${email} regarding your interest in ${service || 'our services'} within 24 hours.`);
-                
-                // Reset form
-                contactForm.reset();
-            });
+        // Alert message functions
+        function closeAlert() {
+            const alert = document.getElementById('alert-message');
+            if (alert) {
+                alert.classList.add('fade-out');
+                setTimeout(() => {
+                    alert.remove();
+                }, 500);
+            }
         }
+        
+        // Auto-hide alert after 5 seconds
+        setTimeout(() => {
+            closeAlert();
+        }, 5000);
+        
+        // Close alert when clicking outside
+        document.addEventListener('click', function(e) {
+            const alert = document.getElementById('alert-message');
+            if (alert && !alert.contains(e.target)) {
+                closeAlert();
+            }
+        });
 
         // FAQ Accordion Functionality
         document.querySelectorAll('.faq-question').forEach(question => {
