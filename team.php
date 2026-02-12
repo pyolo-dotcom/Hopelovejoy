@@ -448,69 +448,8 @@ require_once 'config.php';
             text-decoration: underline;
         }
 
-        /* Mobile Responsive Styles */
+        /* Mobile Responsive Styles for TEAM CONTENT ONLY */
         @media screen and (max-width: 768px) {
-            .navbar {
-                padding: 0 20px;
-            }
-
-            /* Show burger menu on mobile */
-            .burger {
-                display: flex;
-            }
-
-            /* Hide regular nav links on mobile */
-            .nav-links {
-                position: fixed;
-                top: 60px;
-                right: 0;
-                height: 0;
-                width: 100%;
-                background-color: #2c2b29;
-                flex-direction: column;
-                align-items: center;
-                justify-content: flex-start;
-                padding-top: 0;
-                overflow: hidden;
-                transition: height 0.5s ease, padding-top 0.5s ease;
-                box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-                z-index: 100;
-            }
-
-            /* When menu is active */
-            .nav-links.active {
-                height: calc(100vh - 60px);
-                padding-top: 40px;
-            }
-
-            .nav-links a {
-                margin: 15px 0;
-                font-size: 1.2rem;
-                opacity: 0;
-                transform: translateY(-20px);
-                transition: opacity 0.5s ease, transform 0.5s ease;
-            }
-
-            .nav-links.active a {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            /* Adjust logo size on mobile */
-            .logo-circle {
-                width: 120px;
-                height: 120px;
-            }
-
-            .logo-circle img {
-                width: 90px;
-            }
-
-            /* Adjust brand name font size on smaller screens */
-            .brand-name {
-                font-size: 1rem;
-            }
-
             /* Team Page mobile adjustments */
             .team-page-title {
                 font-size: 2.8rem;
@@ -601,22 +540,6 @@ require_once 'config.php';
         }
 
         @media screen and (max-width: 480px) {
-            .logo-circle {
-                width: 100px;
-                height: 100px;
-                margin-top: -10px;
-            }
-
-            .logo-circle img {
-                width: 70px;
-            }
-
-            .brand-name {
-                font-size: 0.8rem;
-                max-width: 120px;
-                line-height: 1.1;
-            }
-
             /* Team Page very small screens */
             .team-page-title {
                 font-size: 2.2rem;
@@ -656,7 +579,8 @@ require_once 'config.php';
             }
         }
 
-        /* Dropdown Styles */
+        /* Dropdown Styles - REMOVE THESE AS THEY'RE IN NAVBAR.PHP */
+        /* 
         .dropdown {
             position: relative;
             display: inline-block;
@@ -707,6 +631,7 @@ require_once 'config.php';
             font-size: 0.8em;
             margin-left: 5px;
         }
+        */
 
         /* Tooltip styles for all contact icons */
         .contact-icon,
@@ -873,6 +798,8 @@ require_once 'config.php';
             color: #eeb82e;
         }
 
+        /* Remove mobile navbar adjustments as they're handled by navbar.php */
+        /*
         @media screen and (max-width: 768px) {
             .modal-content {
                 margin: 30% auto;
@@ -912,6 +839,7 @@ require_once 'config.php';
                 width: 100%;
             }
         }
+        */
     </style>
 </head>
 <body>
@@ -1209,43 +1137,8 @@ require_once 'config.php';
             });
         });
 
-        // Mobile dropdown menu functionality
+        // Read More/Less functionality for descriptions
         document.addEventListener('DOMContentLoaded', function() {
-            const burger = document.querySelector('.burger');
-            const navLinks = document.querySelector('.nav-links');
-            const dropdowns = document.querySelectorAll('.dropdown');
-            
-            if (burger) {
-                burger.addEventListener('click', function() {
-                    navLinks.classList.toggle('active');
-                });
-            }
-            
-            // Handle mobile dropdowns
-            dropdowns.forEach(dropdown => {
-                const dropbtn = dropdown.querySelector('.dropbtn');
-                if (dropbtn) {
-                    dropbtn.addEventListener('click', function(e) {
-                        if (window.innerWidth <= 768) {
-                            e.preventDefault();
-                            dropdown.classList.toggle('active');
-                        }
-                    });
-                }
-            });
-            
-            // Close dropdowns when clicking outside
-            document.addEventListener('click', function(event) {
-                if (window.innerWidth <= 768) {
-                    dropdowns.forEach(dropdown => {
-                        if (!dropdown.contains(event.target)) {
-                            dropdown.classList.remove('active');
-                        }
-                    });
-                }
-            });
-
-            // Read More/Less functionality for descriptions
             const bios = document.querySelectorAll('.bio');
             bios.forEach(bio => {
                 const text = bio.textContent;
