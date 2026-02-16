@@ -115,20 +115,39 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
     <link rel="icon" type="image/png" href="img/logo.png">
     <style>
         :root {
-            --primary-color: #3b82f6;
-            --primary-dark: #2563eb;
-            --primary-light: #60a5fa;
-            --secondary-color: #8b5cf6;
-            --success-color: #10b981;
-            --warning-color: #f59e0b;
-            --danger-color: #ef4444;
-            --dark-color: #1f2937;
-            --light-color: #f8fafc;
-            --gray-color: #6b7280;
-            --border-color: #e5e7eb;
-            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            /* Gold & Black Theme */
+            --gold-primary: #FFD700;
+            --gold-dark: #B8860B;
+            --gold-light: #FFF3B0;
+            --gold-gradient: linear-gradient(135deg, #FFD700 0%, #B8860B 100%);
+            --gold-gradient-light: linear-gradient(135deg, #FFF3B0 0%, #FFD700 100%);
+            
+            --black-primary: #0A0A0A;
+            --black-dark: #000000;
+            --black-light: #1A1A1A;
+            --black-soft: #2A2A2A;
+            --black-gradient: linear-gradient(135deg, #1A1A1A 0%, #0A0A0A 100%);
+            --black-gradient-light: linear-gradient(135deg, #2A2A2A 0%, #1A1A1A 100%);
+            
+            --accent-amber: #FFB347;
+            --accent-bronze: #CD7F32;
+            
+            --success-color: #00C851;
+            --warning-color: #FFBB33;
+            --danger-color: #FF4444;
+            
+            --text-light: #FFFFFF;
+            --text-muted: #CCCCCC;
+            --text-dark: #E0E0E0;
+            
+            --border-gold: 1px solid rgba(255, 215, 0, 0.3);
+            --border-black: 1px solid rgba(255, 255, 255, 0.1);
+            
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+            --shadow-gold: 0 0 15px rgba(255, 215, 0, 0.2);
+            
             --radius: 12px;
             --radius-sm: 8px;
             --radius-lg: 16px;
@@ -142,20 +161,23 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
         }
         
         body {
-            background-color: #f5f7fa;
+            background-color: var(--black-primary);
             min-height: 100vh;
-            color: #374151;
+            color: var(--text-light);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 215, 0, 0.03) 0%, transparent 20%),
+                radial-gradient(circle at 90% 70%, rgba(255, 215, 0, 0.03) 0%, transparent 20%);
         }
         
         .admin-header {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-            color: white;
+            background: var(--black-gradient);
+            color: var(--gold-primary);
             padding: 20px 30px;
             box-shadow: var(--shadow-lg);
             position: sticky;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--gold-dark);
         }
         
         .admin-header-content {
@@ -173,6 +195,12 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
             align-items: center;
             gap: 12px;
             letter-spacing: -0.025em;
+            color: var(--gold-primary);
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+        
+        .admin-header h1 i {
+            color: var(--gold-primary);
         }
         
         .admin-actions {
@@ -182,8 +210,8 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
         }
         
         .admin-btn {
-            background: linear-gradient(135deg, var(--success-color) 0%, #0da36d 100%);
-            color: white;
+            background: var(--gold-gradient);
+            color: var(--black-dark);
             border: none;
             padding: 12px 24px;
             border-radius: var(--radius-sm);
@@ -196,15 +224,23 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             font-size: 0.95rem;
             box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 215, 0, 0.5);
         }
         
         .admin-btn:hover {
             transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow-gold);
+            background: linear-gradient(135deg, #FFE55C 0%, #DAA520 100%);
         }
         
         .admin-btn.logout {
-            background: linear-gradient(135deg, var(--danger-color) 0%, #dc2626 100%);
+            background: linear-gradient(135deg, #FF4444 0%, #CC0000 100%);
+            color: white;
+            border: 1px solid rgba(255, 68, 68, 0.5);
+        }
+        
+        .admin-btn.logout:hover {
+            background: linear-gradient(135deg, #FF5E5E 0%, #E60000 100%);
         }
         
         .admin-container {
@@ -213,16 +249,15 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
             padding: 0 24px;
         }
         
-        /* Wider & Centered Tab Navigation */
+        /* Tab Navigation - Gold & Black */
         .tab-navigation-modern {
-            background: white;
+            background: var(--black-light);
             border-radius: var(--radius-lg);
             overflow: hidden;
             box-shadow: var(--shadow-lg);
             margin-bottom: 30px;
-            border: 1px solid var(--border-color);
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-            max-width: 100%;
+            border: var(--border-gold);
+            background: var(--black-gradient);
         }
         
         .tab-container {
@@ -270,23 +305,23 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             border-radius: var(--radius);
-            color: var(--gray-color);
+            color: var(--text-muted);
             gap: 10px;
             user-select: none;
             text-align: center;
         }
         
         .tab-item:hover {
-            background: rgba(59, 130, 246, 0.05);
-            color: var(--primary-color);
+            background: rgba(255, 215, 0, 0.1);
+            color: var(--gold-primary);
             transform: translateY(-3px);
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-gold);
         }
         
         .tab-item.active {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-            color: white;
-            box-shadow: var(--shadow);
+            background: var(--gold-gradient);
+            color: var(--black-dark);
+            box-shadow: var(--shadow-gold);
             transform: translateY(-3px);
         }
         
@@ -302,13 +337,8 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
             margin: 0 auto;
         }
         
-        .tab-item:hover .tab-icon {
-            background: rgba(59, 130, 246, 0.1);
-        }
-        
         .tab-item.active .tab-icon {
-            background: rgba(255, 255, 255, 0.2);
-            transform: scale(1.15);
+            color: var(--black-dark);
         }
         
         .tab-label {
@@ -321,6 +351,11 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
             text-align: center;
         }
         
+        .tab-item.active .tab-label {
+            color: var(--black-dark);
+            font-weight: 700;
+        }
+        
         .tab-indicator {
             position: absolute;
             bottom: 8px;
@@ -328,17 +363,17 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
             transform: translateX(-50%) scaleX(0);
             width: 30px;
             height: 4px;
-            background: var(--primary-color);
+            background: var(--gold-primary);
             border-radius: 2px;
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .tab-item.active .tab-indicator {
-            background: white;
+            background: var(--black-dark);
             transform: translateX(-50%) scaleX(1);
         }
         
-        /* Dashboard Cards */
+        /* Dashboard Cards - Gold & Black Theme */
         .dashboard-stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -347,7 +382,7 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
         }
 
         .stat-card {
-            background: white;
+            background: var(--black-gradient);
             border-radius: var(--radius);
             padding: 24px;
             display: flex;
@@ -355,12 +390,13 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
             gap: 16px;
             box-shadow: var(--shadow);
             transition: transform 0.3s ease;
-            border: 1px solid var(--border-color);
+            border: var(--border-gold);
         }
 
         .stat-card:hover {
             transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow-gold);
+            border-color: var(--gold-primary);
         }
 
         .stat-icon {
@@ -371,55 +407,60 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
-            color: white;
+            color: var(--black-dark);
         }
 
-        .stat-icon.sales { background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); }
-        .stat-icon.houses { background: linear-gradient(135deg, #10b981 0%, #047857 100%); }
-        .stat-icon.banks { background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%); }
-        .stat-icon.cars { background: linear-gradient(135deg, #f97316 0%, #c2410c 100%); }
-        .stat-icon.team { background: linear-gradient(135deg, #f59e0b 0%, #b45309 100%); }
-        .stat-icon.awards { background: linear-gradient(135deg, #ec4899 0%, #be185d 100%); }
-        .stat-icon.messages { background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); }
+        .stat-icon.sales { background: var(--gold-gradient); }
+        .stat-icon.houses { background: var(--gold-gradient); }
+        .stat-icon.banks { background: var(--gold-gradient); }
+        .stat-icon.cars { background: var(--gold-gradient); }
+        .stat-icon.team { background: var(--gold-gradient); }
+        .stat-icon.awards { background: var(--gold-gradient); }
+        .stat-icon.messages { background: var(--gold-gradient); }
 
         .stat-content h3 {
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--dark-color);
+            color: var(--gold-primary);
             margin-bottom: 4px;
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
         }
 
         .stat-content p {
-            color: var(--gray-color);
+            color: var(--text-muted);
             font-size: 0.9rem;
             font-weight: 500;
         }
         
-        /* Modern Table Styles */
+        /* Modern Table Styles - Gold & Black */
         .modern-table {
-            background: white;
+            background: var(--black-gradient);
             border-radius: var(--radius);
             overflow: hidden;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-lg);
+            border: var(--border-gold);
         }
         
         .table-header-modern {
             padding: 24px;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: var(--border-gold);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            background: var(--black-gradient-light);
         }
         
         .table-header-modern h2 {
-            color: var(--dark-color);
+            color: var(--gold-primary);
             font-size: 1.4rem;
             font-weight: 700;
             display: flex;
             align-items: center;
             gap: 12px;
+        }
+        
+        .table-header-modern h2 i {
+            color: var(--gold-primary);
         }
         
         .table-container {
@@ -433,15 +474,15 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
         }
         
         thead {
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            background: var(--black-soft);
         }
         
         th {
             padding: 16px 20px;
             text-align: left;
             font-weight: 600;
-            color: var(--dark-color);
-            border-bottom: 2px solid var(--border-color);
+            color: var(--gold-primary);
+            border-bottom: 2px solid var(--gold-dark);
             font-size: 0.875rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
@@ -450,9 +491,9 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
         
         td {
             padding: 16px 20px;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: var(--border-black);
             vertical-align: middle;
-            color: #4b5563;
+            color: var(--text-dark);
         }
         
         tbody tr {
@@ -460,7 +501,7 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
         }
         
         tbody tr:hover {
-            background-color: #f9fafb;
+            background: rgba(255, 215, 0, 0.05);
         }
         
         /* Modern Thumbnails */
@@ -469,12 +510,14 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
             height: 60px;
             object-fit: cover;
             border-radius: var(--radius-sm);
-            border: 2px solid var(--border-color);
-            transition: transform 0.3s ease;
+            border: 2px solid var(--gold-dark);
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
         
         .thumbnail-modern:hover {
             transform: scale(1.05);
+            border-color: var(--gold-primary);
+            box-shadow: var(--shadow-gold);
         }
         
         .thumbnail-modern.small {
@@ -489,10 +532,10 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
             object-fit: contain;
             background: white;
             padding: 8px;
-            border: 1px solid var(--border-color);
+            border: 1px solid var(--gold-dark);
         }
         
-        /* Modern Action Buttons */
+        /* Modern Action Buttons - Gold & Black */
         .action-buttons-modern {
             display: flex;
             gap: 8px;
@@ -513,29 +556,31 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
         }
         
         .btn-edit-modern {
-            background: linear-gradient(135deg, var(--success-color) 0%, #0da36d 100%);
-            color: white;
+            background: var(--gold-gradient);
+            color: var(--black-dark);
+            border: 1px solid var(--gold-primary);
         }
         
         .btn-delete-modern {
-            background: linear-gradient(135deg, var(--danger-color) 0%, #dc2626 100%);
+            background: linear-gradient(135deg, #FF4444 0%, #CC0000 100%);
             color: white;
+            border: 1px solid rgba(255, 68, 68, 0.5);
         }
         
         .btn-modern:hover {
             transform: translateY(-2px);
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-gold);
         }
         
-        /* Modern Form Styles */
+        /* Modern Form Styles - Gold & Black */
         .add-form-modern {
-            background: white;
+            background: var(--black-gradient);
             padding: 32px;
             border-radius: var(--radius);
             box-shadow: var(--shadow-lg);
             margin-bottom: 30px;
             display: none;
-            border: 1px solid var(--border-color);
+            border: var(--border-gold);
         }
         
         .add-form-modern.active {
@@ -546,11 +591,11 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
         .form-header {
             margin-bottom: 24px;
             padding-bottom: 16px;
-            border-bottom: 2px solid var(--border-color);
+            border-bottom: 2px solid var(--gold-dark);
         }
         
         .form-header h3 {
-            color: var(--dark-color);
+            color: var(--gold-primary);
             font-size: 1.3rem;
             display: flex;
             align-items: center;
@@ -571,24 +616,35 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
         }
         
         .form-group-modern label {
-            color: var(--dark-color);
+            color: var(--gold-light);
             font-weight: 600;
             font-size: 0.9rem;
         }
         
         .form-control {
             padding: 12px 16px;
-            border: 1px solid var(--border-color);
+            border: 1px solid var(--gold-dark);
             border-radius: var(--radius-sm);
             font-size: 1rem;
             transition: all 0.3s ease;
-            background: white;
+            background: var(--black-soft);
+            color: var(--text-light);
         }
         
         .form-control:focus {
             outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+            background: var(--black-light);
+        }
+        
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        select.form-control option {
+            background: var(--black-light);
+            color: var(--text-light);
         }
         
         .form-actions {
@@ -596,7 +652,7 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
             gap: 12px;
             justify-content: flex-end;
             padding-top: 20px;
-            border-top: 1px solid var(--border-color);
+            border-top: var(--border-gold);
         }
         
         /* Status Badges */
@@ -613,45 +669,45 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
         }
         
         .status-active {
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--success-color);
-            border: 1px solid rgba(16, 185, 129, 0.2);
+            background: rgba(0, 200, 81, 0.2);
+            color: #00E676;
+            border: 1px solid rgba(0, 200, 81, 0.3);
         }
         
         .status-inactive {
-            background: rgba(239, 68, 68, 0.1);
-            color: var(--danger-color);
-            border: 1px solid rgba(239, 68, 68, 0.2);
+            background: rgba(255, 68, 68, 0.2);
+            color: #FF6B6B;
+            border: 1px solid rgba(255, 68, 68, 0.3);
         }
         
         .status-new {
-            background: rgba(37, 99, 235, 0.1);
-            color: var(--primary-dark);
-            border: 1px solid rgba(37, 99, 235, 0.2);
+            background: rgba(255, 215, 0, 0.2);
+            color: var(--gold-primary);
+            border: 1px solid rgba(255, 215, 0, 0.3);
         }
         
         .status-read {
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--success-color);
-            border: 1px solid rgba(16, 185, 129, 0.2);
+            background: rgba(0, 200, 81, 0.2);
+            color: #00E676;
+            border: 1px solid rgba(0, 200, 81, 0.3);
         }
         
         /* Empty State */
         .empty-state-modern {
             text-align: center;
             padding: 60px 20px;
-            color: var(--gray-color);
+            color: var(--text-muted);
         }
         
         .empty-icon {
             font-size: 3.5rem;
-            color: var(--primary-light);
+            color: var(--gold-dark);
             margin-bottom: 16px;
             opacity: 0.6;
         }
         
         .empty-state-modern h3 {
-            color: var(--dark-color);
+            color: var(--gold-primary);
             margin-bottom: 8px;
             font-size: 1.3rem;
         }
@@ -660,6 +716,7 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
             max-width: 400px;
             margin: 0 auto;
             line-height: 1.6;
+            color: var(--text-muted);
         }
         
         /* Modern Alert */
@@ -674,18 +731,18 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
         }
         
         .alert-success {
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--success-color);
-            border: 1px solid rgba(16, 185, 129, 0.2);
+            background: rgba(0, 200, 81, 0.1);
+            color: #00E676;
+            border: 1px solid rgba(0, 200, 81, 0.2);
         }
         
         .alert-error {
-            background: rgba(239, 68, 68, 0.1);
-            color: var(--danger-color);
-            border: 1px solid rgba(239, 68, 68, 0.2);
+            background: rgba(255, 68, 68, 0.1);
+            color: #FF6B6B;
+            border: 1px solid rgba(255, 68, 68, 0.2);
         }
         
-        /* Modern Modal */
+        /* Modern Modal - Gold & Black */
         .modal-modern {
             display: none;
             position: fixed;
@@ -694,13 +751,13 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(4px);
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(8px);
             animation: fadeIn 0.3s ease;
         }
         
         .modal-content-modern {
-            background: white;
+            background: var(--black-gradient);
             margin: 5% auto;
             padding: 0;
             border-radius: var(--radius-lg);
@@ -708,30 +765,44 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
             max-width: 800px;
             max-height: 85vh;
             overflow: hidden;
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow-lg), var(--shadow-gold);
             animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: var(--border-gold);
         }
         
         .modal-header-modern {
             padding: 24px;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: var(--border-gold);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            background: var(--black-gradient-light);
+        }
+        
+        .modal-header-modern h2 {
+            color: var(--gold-primary);
+        }
+        
+        .modal-header-modern button {
+            color: var(--text-muted) !important;
+        }
+        
+        .modal-header-modern button:hover {
+            color: var(--gold-primary) !important;
         }
         
         .modal-body {
             padding: 24px;
             overflow-y: auto;
             max-height: calc(85vh - 140px);
+            color: var(--text-dark);
         }
         
         /* Message Preview */
         .message-preview-modern {
             max-width: 300px;
             line-height: 1.5;
-            color: #4b5563;
+            color: var(--text-muted);
             position: relative;
         }
         
@@ -753,12 +824,68 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
         
         .contact-name {
             font-weight: 600;
-            color: var(--dark-color);
+            color: var(--gold-primary);
         }
         
         .contact-email, .contact-phone {
             font-size: 0.875rem;
-            color: var(--gray-color);
+            color: var(--text-muted);
+        }
+        
+        .contact-email a, .contact-phone a {
+            color: var(--text-light);
+            text-decoration: none;
+        }
+        
+        .contact-email a:hover, .contact-phone a:hover {
+            color: var(--gold-primary);
+        }
+        
+        /* Quick Guide Section */
+        .quick-guide {
+            background: var(--black-gradient);
+            border: var(--border-gold);
+        }
+        
+        .quick-guide h4 {
+            color: var(--gold-primary) !important;
+        }
+        
+        .quick-guide p {
+            color: var(--text-muted) !important;
+        }
+        
+        /* Links */
+        a {
+            color: var(--gold-primary);
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: var(--gold-light);
+        }
+        
+        /* Category Tags */
+        .category-tag {
+            background: rgba(255, 215, 0, 0.1);
+            color: var(--gold-primary);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            border: 1px solid var(--gold-dark);
+        }
+        
+        /* Year Badge */
+        .year-badge {
+            background: var(--gold-gradient);
+            color: var(--black-dark);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: inline-block;
         }
         
         /* Animations */
@@ -804,7 +931,38 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
             }
         }
         
-        /* Responsive adjustments for wider tabs */
+        @keyframes goldPulse {
+            0% {
+                box-shadow: 0 0 5px rgba(255, 215, 0, 0.2);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+            }
+            100% {
+                box-shadow: 0 0 5px rgba(255, 215, 0, 0.2);
+            }
+        }
+        
+        /* Scrollbar Styling - Gold & Black */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--black-soft);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold-dark);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--gold-primary);
+        }
+        
+        /* Responsive adjustments */
         @media (max-width: 1200px) {
             .tab-nav {
                 justify-content: flex-start;
@@ -815,12 +973,6 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
             .tab-item {
                 min-width: 110px;
                 padding: 18px 12px;
-            }
-            
-            .tab-icon {
-                width: 36px;
-                height: 36px;
-                font-size: 1.4rem;
             }
         }
         
@@ -847,23 +999,9 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                 grid-template-columns: 1fr;
             }
             
-            .tab-nav {
-                gap: 4px;
-            }
-            
             .tab-item {
                 min-width: 90px;
                 padding: 16px 8px;
-            }
-            
-            .tab-icon {
-                width: 32px;
-                height: 32px;
-                font-size: 1.3rem;
-            }
-            
-            .tab-label {
-                font-size: 0.85rem;
             }
             
             .modal-content-modern {
@@ -896,23 +1034,9 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                 flex-direction: column;
             }
             
-            .tab-nav {
-                gap: 2px;
-            }
-            
             .tab-item {
                 min-width: 80px;
                 padding: 14px 6px;
-            }
-            
-            .tab-icon {
-                width: 28px;
-                height: 28px;
-                font-size: 1.2rem;
-            }
-            
-            .tab-label {
-                font-size: 0.8rem;
             }
         }
         
@@ -935,10 +1059,13 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
     </style>
 </head>
 <body>
-    <!-- Modern Header -->
+    <!-- Modern Header - Gold & Black -->
     <header class="admin-header">
         <div class="admin-header-content">
-            <h1><i class="fas fa-chart-line"></i> Admin Dashboard</h1>
+            <h1>
+                <img src="img/logo.png" alt="Hope Account Specialist" style="height: 40px; width: auto; margin-right: 10px;">
+                Admin Dashboard
+            </h1>
             <div class="admin-actions">
                 <a href="index.php" class="admin-btn" target="_blank">
                     <i class="fas fa-external-link-alt"></i> View Site
@@ -965,7 +1092,7 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
             </div>
         <?php endif; ?>
         
-        <!-- Dashboard Stats -->
+        <!-- Dashboard Stats - Gold & Black -->
         <div class="dashboard-stats">
             <?php
             // Get counts for ALL stats
@@ -999,7 +1126,7 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
             </div>
             
             <div class="stat-card">
-                <div class="stat-icon banks" style="background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);">
+                <div class="stat-icon banks">
                     <i class="fas fa-university"></i>
                 </div>
                 <div class="stat-content">
@@ -1009,7 +1136,7 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
             </div>
             
             <div class="stat-card">
-                <div class="stat-icon cars" style="background: linear-gradient(135deg, #f97316 0%, #c2410c 100%);">
+                <div class="stat-icon cars">
                     <i class="fas fa-car"></i>
                 </div>
                 <div class="stat-content">
@@ -1019,7 +1146,7 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
             </div>
             
             <div class="stat-card">
-                <div class="stat-icon team" style="background: linear-gradient(135deg, #f59e0b 0%, #b45309 100%);">
+                <div class="stat-icon team">
                     <i class="fas fa-users"></i>
                 </div>
                 <div class="stat-content">
@@ -1029,7 +1156,7 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
             </div>
             
             <div class="stat-card">
-                <div class="stat-icon awards" style="background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);">
+                <div class="stat-icon awards">
                     <i class="fas fa-award"></i>
                 </div>
                 <div class="stat-content">
@@ -1049,7 +1176,7 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
             </div>
         </div>
         
-        <!-- Modern Tab Navigation - Wider & Centered -->
+        <!-- Modern Tab Navigation - Gold & Black -->
         <div class="tab-navigation-modern">
             <div class="tab-container">
                 <div class="tab-scroll-wrapper">
@@ -1159,14 +1286,14 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                             <div class="form-group-modern">
                                 <label for="image">Image *</label>
                                 <input type="file" id="image" name="image" accept="image/*" class="form-control" required>
-                                <small style="color: var(--gray-color); display: block; margin-top: 4px;">Max size: 5MB. Supported: JPG, PNG, GIF</small>
+                                <small style="color: var(--text-muted); display: block; margin-top: 4px;">Max size: 5MB. Supported: JPG, PNG, GIF</small>
                             </div>
                             
                             <div class="form-actions">
                                 <button type="submit" class="admin-btn">
                                     <i class="fas fa-save"></i> Save Sale
                                 </button>
-                                <button type="button" onclick="toggleAddForm('past_sales')" class="admin-btn" style="background: var(--gray-color);">
+                                <button type="button" onclick="toggleAddForm('past_sales')" class="admin-btn" style="background: var(--black-soft); color: var(--text-light); border: 1px solid var(--gold-dark);">
                                     <i class="fas fa-times"></i> Cancel
                                 </button>
                             </div>
@@ -1191,31 +1318,23 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                                 <?php if (mysqli_num_rows($past_sales_result) > 0): ?>
                                     <?php while ($row = mysqli_fetch_assoc($past_sales_result)): ?>
                                     <tr>
-                                        <td><strong><?php echo $row['id']; ?></strong></td>
+                                        <td><strong>#<?php echo str_pad($row['id'], 3, '0', STR_PAD_LEFT); ?></strong></td>
                                         <td>
                                             <img src="<?php echo $row['image_path']; ?>" alt="<?php echo $row['title']; ?>" class="thumbnail-modern" 
-                                                 onerror="this.src='https://via.placeholder.com/80x60?text=No+Image'">
+                                                 onerror="this.src='https://via.placeholder.com/80x60/1A1A1A/FFD700?text=No+Image'">
                                         </td>
-                                        <td><strong><?php echo htmlspecialchars($row['title']); ?></strong></td>
+                                        <td><strong style="color: var(--gold-primary);"><?php echo htmlspecialchars($row['title']); ?></strong></td>
                                         <td>
-                                            <span style="
-                                                background: <?php echo $row['category'] == 'vehicle' ? '#dbeafe' : ($row['category'] == 'land' ? '#d1fae5' : '#fef3c7'); ?>;
-                                                color: <?php echo $row['category'] == 'vehicle' ? '#1e40af' : ($row['category'] == 'land' ? '#065f46' : '#92400e'); ?>;
-                                                padding: 6px 12px;
-                                                border-radius: 20px;
-                                                font-size: 0.75rem;
-                                                font-weight: 600;
-                                                text-transform: uppercase;
-                                            ">
+                                            <span class="category-tag">
                                                 <?php echo $row['category']; ?>
                                             </span>
                                         </td>
                                         <td><?php echo date('M d, Y', strtotime($row['sale_date'])); ?></td>
                                         <td>
                                             <?php if ($row['price']): ?>
-                                                <strong>₱<?php echo number_format($row['price'], 2); ?></strong>
+                                                <strong style="color: var(--gold-primary);">₱<?php echo number_format($row['price'], 2); ?></strong>
                                             <?php else: ?>
-                                                <span style="color: var(--gray-color);">N/A</span>
+                                                <span style="color: var(--text-muted);">N/A</span>
                                             <?php endif; ?>
                                         </td>
                                         <td>
@@ -1304,7 +1423,7 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                             <div class="form-group-modern">
                                 <label for="affiliated_image">Logo/Image *</label>
                                 <input type="file" id="affiliated_image" name="image" accept="image/*" class="form-control" required>
-                                <small style="color: var(--gray-color); display: block; margin-top: 4px;">Max size: 5MB. Supported: JPG, PNG, GIF</small>
+                                <small style="color: var(--text-muted); display: block; margin-top: 4px;">Max size: 5MB. Supported: JPG, PNG, GIF</small>
                             </div>
                             
                             <div class="form-group-modern">
@@ -1319,7 +1438,7 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                                 <button type="submit" class="admin-btn">
                                     <i class="fas fa-save"></i> Save House
                                 </button>
-                                <button type="button" onclick="toggleAddForm('affiliated_houses')" class="admin-btn" style="background: var(--gray-color);">
+                                <button type="button" onclick="toggleAddForm('affiliated_houses')" class="admin-btn" style="background: var(--black-soft); color: var(--text-light); border: 1px solid var(--gold-dark);">
                                     <i class="fas fa-times"></i> Cancel
                                 </button>
                             </div>
@@ -1345,20 +1464,20 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                                 <?php if (mysqli_num_rows($affiliated_houses_result) > 0): ?>
                                     <?php while ($affiliated = mysqli_fetch_assoc($affiliated_houses_result)): ?>
                                     <tr>
-                                        <td><strong><?php echo $affiliated['id']; ?></strong></td>
+                                        <td><strong>#<?php echo str_pad($affiliated['id'], 3, '0', STR_PAD_LEFT); ?></strong></td>
                                         <td>
                                             <img src="<?php echo $affiliated['image_path']; ?>" alt="<?php echo htmlspecialchars($affiliated['name']); ?>" 
                                                 class="thumbnail-modern small"
-                                                onerror="this.src='https://via.placeholder.com/60x60?text=No+Logo'">
+                                                onerror="this.src='https://via.placeholder.com/60x60/1A1A1A/FFD700?text=No+Logo'">
                                         </td>
-                                        <td><strong><?php echo htmlspecialchars($affiliated['name']); ?></strong></td>
-                                        <td><?php echo htmlspecialchars($affiliated['category']); ?></td>
-                                        <td><?php echo htmlspecialchars($affiliated['years_affiliated']); ?></td>
-                                        <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis;">
+                                        <td><strong style="color: var(--gold-primary);"><?php echo htmlspecialchars($affiliated['name']); ?></strong></td>
+                                        <td><span class="category-tag"><?php echo htmlspecialchars($affiliated['category']); ?></span></td>
+                                        <td style="color: var(--text-light);"><?php echo htmlspecialchars($affiliated['years_affiliated']); ?></td>
+                                        <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; color: var(--text-muted);">
                                             <?php echo htmlspecialchars(substr($affiliated['description'], 0, 100)); ?>
                                             <?php if (strlen($affiliated['description']) > 100): ?>...<?php endif; ?>
                                         </td>
-                                        <td><?php echo $affiliated['display_order']; ?></td>
+                                        <td style="color: var(--gold-primary);"><?php echo $affiliated['display_order']; ?></td>
                                         <td>
                                             <?php if ($affiliated['is_active']): ?>
                                                 <span class="status-badge status-active">
@@ -1432,7 +1551,7 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                             <div class="form-group-modern">
                                 <label for="bank_logo">Bank Logo *</label>
                                 <input type="file" id="bank_logo" name="logo" accept="image/*" class="form-control" required>
-                                <small style="color: var(--gray-color); display: block; margin-top: 4px;">Max size: 5MB. Supported: JPG, PNG, GIF, SVG</small>
+                                <small style="color: var(--text-muted); display: block; margin-top: 4px;">Max size: 5MB. Supported: JPG, PNG, GIF, SVG</small>
                             </div>
                             
                             <div class="form-group-modern">
@@ -1447,7 +1566,7 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                                 <button type="submit" class="admin-btn">
                                     <i class="fas fa-save"></i> Save Bank
                                 </button>
-                                <button type="button" onclick="toggleAddForm('affiliated_banks')" class="admin-btn" style="background: var(--gray-color);">
+                                <button type="button" onclick="toggleAddForm('affiliated_banks')" class="admin-btn" style="background: var(--black-soft); color: var(--text-light); border: 1px solid var(--gold-dark);">
                                     <i class="fas fa-times"></i> Cancel
                                 </button>
                             </div>
@@ -1470,14 +1589,14 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                                 <?php if (mysqli_num_rows($affiliated_banks_result) > 0): ?>
                                     <?php while ($bank = mysqli_fetch_assoc($affiliated_banks_result)): ?>
                                     <tr>
-                                        <td><strong><?php echo $bank['id']; ?></strong></td>
+                                        <td><strong>#<?php echo str_pad($bank['id'], 3, '0', STR_PAD_LEFT); ?></strong></td>
                                         <td>
                                             <img src="<?php echo $bank['logo_path']; ?>" alt="<?php echo htmlspecialchars($bank['name']); ?>" 
                                                 class="thumbnail-modern logo"
-                                                onerror="this.src='https://via.placeholder.com/80x60?text=No+Logo'">
+                                                onerror="this.src='https://via.placeholder.com/80x60/1A1A1A/FFD700?text=No+Logo'">
                                         </td>
-                                        <td><strong><?php echo htmlspecialchars($bank['name']); ?></strong></td>
-                                        <td><?php echo $bank['display_order']; ?></td>
+                                        <td><strong style="color: var(--gold-primary);"><?php echo htmlspecialchars($bank['name']); ?></strong></td>
+                                        <td style="color: var(--gold-primary);"><?php echo $bank['display_order']; ?></td>
                                         <td>
                                             <?php if ($bank['is_active']): ?>
                                                 <span class="status-badge status-active">
@@ -1551,7 +1670,7 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                             <div class="form-group-modern">
                                 <label for="car_logo">Company Logo *</label>
                                 <input type="file" id="car_logo" name="logo" accept="image/*" class="form-control" required>
-                                <small style="color: var(--gray-color); display: block; margin-top: 4px;">Max size: 5MB. Supported: JPG, PNG, GIF, SVG</small>
+                                <small style="color: var(--text-muted); display: block; margin-top: 4px;">Max size: 5MB. Supported: JPG, PNG, GIF, SVG</small>
                             </div>
                             
                             <div class="form-group-modern">
@@ -1566,7 +1685,7 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                                 <button type="submit" class="admin-btn">
                                     <i class="fas fa-save"></i> Save Car Company
                                 </button>
-                                <button type="button" onclick="toggleAddForm('affiliated_cars')" class="admin-btn" style="background: var(--gray-color);">
+                                <button type="button" onclick="toggleAddForm('affiliated_cars')" class="admin-btn" style="background: var(--black-soft); color: var(--text-light); border: 1px solid var(--gold-dark);">
                                     <i class="fas fa-times"></i> Cancel
                                 </button>
                             </div>
@@ -1589,14 +1708,14 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                                 <?php if (mysqli_num_rows($affiliated_cars_result) > 0): ?>
                                     <?php while ($car = mysqli_fetch_assoc($affiliated_cars_result)): ?>
                                     <tr>
-                                        <td><strong><?php echo $car['id']; ?></strong></td>
+                                        <td><strong>#<?php echo str_pad($car['id'], 3, '0', STR_PAD_LEFT); ?></strong></td>
                                         <td>
                                             <img src="<?php echo $car['logo_path']; ?>" alt="<?php echo htmlspecialchars($car['name']); ?>" 
                                                 class="thumbnail-modern logo"
-                                                onerror="this.src='https://via.placeholder.com/80x60?text=No+Logo'">
+                                                onerror="this.src='https://via.placeholder.com/80x60/1A1A1A/FFD700?text=No+Logo'">
                                         </td>
-                                        <td><strong><?php echo htmlspecialchars($car['name']); ?></strong></td>
-                                        <td><?php echo $car['display_order']; ?></td>
+                                        <td><strong style="color: var(--gold-primary);"><?php echo htmlspecialchars($car['name']); ?></strong></td>
+                                        <td style="color: var(--gold-primary);"><?php echo $car['display_order']; ?></td>
                                         <td>
                                             <?php if ($car['is_active']): ?>
                                                 <span class="status-badge status-active">
@@ -1704,7 +1823,7 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                             <div class="form-group-modern">
                                 <label for="team_image">Profile Image *</label>
                                 <input type="file" id="team_image" name="image" accept="image/*" class="form-control" required>
-                                <small style="color: var(--gray-color); display: block; margin-top: 4px;">Recommended: Square image, 400x400px. Max size: 5MB</small>
+                                <small style="color: var(--text-muted); display: block; margin-top: 4px;">Recommended: Square image, 400x400px. Max size: 5MB</small>
                             </div>
                             
                             <div class="form-group-modern">
@@ -1719,7 +1838,7 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                                 <button type="submit" class="admin-btn">
                                     <i class="fas fa-save"></i> Save Team Member
                                 </button>
-                                <button type="button" onclick="toggleAddForm('team_members')" class="admin-btn" style="background: var(--gray-color);">
+                                <button type="button" onclick="toggleAddForm('team_members')" class="admin-btn" style="background: var(--black-soft); color: var(--text-light); border: 1px solid var(--gold-dark);">
                                     <i class="fas fa-times"></i> Cancel
                                 </button>
                             </div>
@@ -1748,44 +1867,46 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                                 if (mysqli_num_rows($team_members_result) > 0): ?>
                                     <?php while ($member = mysqli_fetch_assoc($team_members_result)): ?>
                                     <tr>
-                                        <td><strong><?php echo $member['id']; ?></strong></td>
+                                        <td><strong>#<?php echo str_pad($member['id'], 3, '0', STR_PAD_LEFT); ?></strong></td>
                                         <td>
                                             <img src="<?php echo $member['image_path']; ?>" alt="<?php echo htmlspecialchars($member['name']); ?>" 
                                                 class="thumbnail-modern small"
-                                                onerror="this.src='https://via.placeholder.com/60x60?text=No+Image'">
+                                                onerror="this.src='https://via.placeholder.com/60x60/1A1A1A/FFD700?text=No+Image'">
                                         </td>
-                                        <td><strong><?php echo htmlspecialchars($member['name']); ?></strong></td>
-                                        <td><?php echo htmlspecialchars($member['position']); ?></td>
+                                        <td><strong style="color: var(--gold-primary);"><?php echo htmlspecialchars($member['name']); ?></strong></td>
+                                        <td style="color: var(--text-light);"><?php echo htmlspecialchars($member['position']); ?></td>
                                         <td>
                                             <?php if (!empty($member['phone'])): ?>
                                                 <a href="tel:<?php echo htmlspecialchars($member['phone']); ?>" 
-                                                style="color: var(--primary-color); text-decoration: none; font-size: 0.875rem;">
+                                                style="color: var(--gold-primary); text-decoration: none; font-size: 0.875rem;">
                                                     <i class="fas fa-phone"></i> <?php echo htmlspecialchars($member['phone']); ?>
                                                 </a>
                                             <?php else: ?>
-                                                <span style="color: var(--gray-color); font-size: 0.875rem;">N/A</span>
+                                                <span style="color: var(--text-muted); font-size: 0.875rem;">N/A</span>
                                             <?php endif; ?>
                                         </td>
                                         <td>
                                             <?php if (!empty($member['email'])): ?>
                                                 <a href="mailto:<?php echo htmlspecialchars($member['email']); ?>" 
-                                                style="color: var(--primary-color); text-decoration: none; font-size: 0.875rem;">
+                                                style="color: var(--gold-primary); text-decoration: none; font-size: 0.875rem;">
                                                     <i class="fas fa-envelope"></i> View Email
                                                 </a>
                                             <?php else: ?>
-                                                <span style="color: var(--gray-color); font-size: 0.875rem;">N/A</span>
+                                                <span style="color: var(--text-muted); font-size: 0.875rem;">N/A</span>
                                             <?php endif; ?>
                                         </td>
                                         <td>
-                                            <?php 
-                                            $category_labels = [
-                                                'ceo' => 'CEO',
-                                                'leadership' => 'Leadership',
-                                                'specialists' => 'Specialist',
-                                                'support' => 'Support'
-                                            ];
-                                            echo $category_labels[$member['category']] ?? $member['category'];
-                                            ?>
+                                            <span class="category-tag">
+                                                <?php 
+                                                $category_labels = [
+                                                    'ceo' => 'CEO',
+                                                    'leadership' => 'Leadership',
+                                                    'specialists' => 'Specialist',
+                                                    'support' => 'Support'
+                                                ];
+                                                echo $category_labels[$member['category']] ?? $member['category'];
+                                                ?>
+                                            </span>
                                         </td>
                                         <td>
                                             <?php if ($member['is_active']): ?>
@@ -1904,7 +2025,7 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                                 <button type="submit" class="admin-btn">
                                     <i class="fas fa-save"></i> Save Award
                                 </button>
-                                <button type="button" onclick="toggleAddForm('awards')" class="admin-btn" style="background: var(--gray-color);">
+                                <button type="button" onclick="toggleAddForm('awards')" class="admin-btn" style="background: var(--black-soft); color: var(--text-light); border: 1px solid var(--gold-dark);">
                                     <i class="fas fa-times"></i> Cancel
                                 </button>
                             </div>
@@ -1930,32 +2051,25 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                                 <?php if (mysqli_num_rows($awards_result) > 0): ?>
                                     <?php while ($award = mysqli_fetch_assoc($awards_result)): ?>
                                     <tr>
-                                        <td><strong><?php echo $award['id']; ?></strong></td>
+                                        <td><strong>#<?php echo str_pad($award['id'], 3, '0', STR_PAD_LEFT); ?></strong></td>
                                         <td>
                                             <img src="<?php echo $award['background_image_path']; ?>" 
                                                 alt="<?php echo htmlspecialchars($award['title']); ?>" 
                                                 class="thumbnail-modern"
-                                                onerror="this.src='https://via.placeholder.com/80x60?text=No+Image'">
+                                                onerror="this.src='https://via.placeholder.com/80x60/1A1A1A/FFD700?text=No+Image'">
                                         </td>
-                                        <td><strong><?php echo htmlspecialchars($award['title']); ?></strong></td>
+                                        <td><strong style="color: var(--gold-primary);"><?php echo htmlspecialchars($award['title']); ?></strong></td>
                                         <td>
-                                            <span style="
-                                                background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-                                                color: white;
-                                                padding: 6px 12px;
-                                                border-radius: 20px;
-                                                font-size: 0.75rem;
-                                                font-weight: 700;
-                                            ">
+                                            <span class="year-badge">
                                                 <?php echo htmlspecialchars($award['award_year']); ?>
                                             </span>
                                         </td>
-                                        <td><?php echo htmlspecialchars($award['issuer']); ?></td>
-                                        <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis;">
+                                        <td style="color: var(--text-light);"><?php echo htmlspecialchars($award['issuer']); ?></td>
+                                        <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; color: var(--text-muted);">
                                             <?php echo htmlspecialchars(substr($award['description'], 0, 100)); ?>
                                             <?php if (strlen($award['description']) > 100): ?>...<?php endif; ?>
                                         </td>
-                                        <td><?php echo $award['display_order']; ?></td>
+                                        <td style="color: var(--gold-primary);"><?php echo $award['display_order']; ?></td>
                                         <td>
                                             <?php if ($award['is_active']): ?>
                                                 <span class="status-badge status-active">
@@ -2006,14 +2120,14 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                     <div class="table-header-modern">
                         <h2><i class="fas fa-envelope"></i> Contact Messages</h2>
                         <div style="display: flex; gap: 20px; align-items: center;">
-                            <span style="color: var(--gray-color); font-size: 0.95rem;">
-                                <i class="fas fa-circle" style="color: var(--primary-color);"></i> New: 
+                            <span style="color: var(--text-muted); font-size: 0.95rem;">
+                                <i class="fas fa-circle" style="color: var(--gold-primary);"></i> New: 
                                 <?php 
                                 $new_count = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as count FROM contact_messages WHERE status = 'new'"))['count'];
                                 echo $new_count;
                                 ?>
                             </span>
-                            <span style="color: var(--gray-color); font-size: 0.95rem;">
+                            <span style="color: var(--text-muted); font-size: 0.95rem;">
                                 <i class="fas fa-circle" style="color: var(--success-color);"></i> Read: 
                                 <?php 
                                 $read_count = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as count FROM contact_messages WHERE status = 'read'"))['count'];
@@ -2065,19 +2179,8 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                                             </div>
                                         </td>
                                         <td>
-                                            <span style="
-                                                background: #f3f4f6;
-                                                color: var(--gray-color);
-                                                padding: 4px 10px;
-                                                border-radius: 12px;
-                                                font-size: 0.75rem;
-                                                display: inline-block;
-                                                max-width: 150px;
-                                                overflow: hidden;
-                                                text-overflow: ellipsis;
-                                                white-space: nowrap;
-                                            ">
-                                                <?php echo htmlspecialchars($message['service'] ?: 'Not specified'); ?>
+                                            <span class="category-tag">
+                                                <?php echo htmlspecialchars($message['service'] ?: 'General Inquiry'); ?>
                                             </span>
                                         </td>
                                         <td>
@@ -2088,10 +2191,10 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                                             </div>
                                         </td>
                                         <td>
-                                            <div style="font-size: 0.875rem; color: var(--dark-color);">
+                                            <div style="font-size: 0.875rem; color: var(--gold-primary);">
                                                 <?php echo date('M d, Y', strtotime($message['created_at'])); ?>
                                             </div>
-                                            <div style="font-size: 0.75rem; color: var(--gray-color);">
+                                            <div style="font-size: 0.75rem; color: var(--text-muted);">
                                                 <?php echo date('h:i A', strtotime($message['created_at'])); ?>
                                             </div>
                                         </td>
@@ -2109,7 +2212,7 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                                         <td>
                                             <div class="action-buttons-modern">
                                                 <button onclick="viewMessage(<?php echo $message['id']; ?>)" 
-                                                        class="btn-modern" style="background: var(--primary-color);">
+                                                        class="btn-modern" style="background: var(--gold-gradient); color: var(--black-dark); border: 1px solid var(--gold-primary);">
                                                     <i class="fas fa-eye"></i> View
                                                 </button>
                                                 <a href="mailto:<?php echo htmlspecialchars($message['email']); ?>" 
@@ -2138,12 +2241,12 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                     </div>
                     
                     <?php if (mysqli_num_rows($messages_result) > 0): ?>
-                    <div style="padding: 16px 24px; background: #f8fafc; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center;">
-                        <div style="color: var(--gray-color); font-size: 0.875rem;">
+                    <div style="padding: 16px 24px; background: var(--black-soft); border-top: var(--border-gold); display: flex; justify-content: space-between; align-items: center;">
+                        <div style="color: var(--text-muted); font-size: 0.875rem;">
                             Showing <?php echo mysqli_num_rows($messages_result); ?> message(s)
                         </div>
                         <div>
-                            <button onclick="markAllAsRead()" class="admin-btn" style="background: var(--gray-color);">
+                            <button onclick="markAllAsRead()" class="admin-btn" style="background: var(--black-soft); color: var(--text-light); border: 1px solid var(--gold-dark);">
                                 <i class="fas fa-check-double"></i> Mark All as Read
                             </button>
                         </div>
@@ -2153,8 +2256,8 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
             </div>
         </div>
 
-        <!-- Quick Guide -->
-        <div class="modern-table" style="margin-top: 30px;">
+        <!-- Quick Guide - Gold & Black Theme -->
+        <div class="modern-table quick-guide" style="margin-top: 30px;">
             <div class="table-header-modern">
                 <h2><i class="fas fa-info-circle"></i> Quick Guide</h2>
             </div>
@@ -2162,111 +2265,111 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
                     <!-- Past Sales -->
                     <div>
-                        <h4 style="color: var(--dark-color); margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-history" style="color: #3b82f6;"></i> Past Sales
+                        <h4 style="color: var(--gold-primary); margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-history"></i> Past Sales
                         </h4>
-                        <p style="color: var(--gray-color); line-height: 1.6; font-size: 0.95rem;">
+                        <p style="color: var(--text-muted); line-height: 1.6; font-size: 0.95rem;">
                             Manage your past sales records with images, categories, and prices. Add, edit, or delete sales transactions.
                         </p>
                     </div>
                     
                     <!-- Affiliated Houses -->
                     <div>
-                        <h4 style="color: var(--dark-color); margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-building" style="color: #10b981;"></i> Affiliated Houses
+                        <h4 style="color: var(--gold-primary); margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-building"></i> Affiliated Houses
                         </h4>
-                        <p style="color: var(--gray-color); line-height: 1.6; font-size: 0.95rem;">
+                        <p style="color: var(--text-muted); line-height: 1.6; font-size: 0.95rem;">
                             Manage property developer partners with logos, descriptions, and display order. Control visibility status.
                         </p>
                     </div>
                     
                     <!-- Affiliated Banks -->
                     <div>
-                        <h4 style="color: var(--dark-color); margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-university" style="color: #8b5cf6;"></i> Affiliated Banks
+                        <h4 style="color: var(--gold-primary); margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-university"></i> Affiliated Banks
                         </h4>
-                        <p style="color: var(--gray-color); line-height: 1.6; font-size: 0.95rem;">
+                        <p style="color: var(--text-muted); line-height: 1.6; font-size: 0.95rem;">
                             Manage bank partners and their display order. Upload bank logos and set active/inactive status.
                         </p>
                     </div>
                     
                     <!-- Car Companies -->
                     <div>
-                        <h4 style="color: var(--dark-color); margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-car" style="color: #f97316;"></i> Car Companies
+                        <h4 style="color: var(--gold-primary); margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-car"></i> Car Companies
                         </h4>
-                        <p style="color: var(--gray-color); line-height: 1.6; font-size: 0.95rem;">
+                        <p style="color: var(--text-muted); line-height: 1.6; font-size: 0.95rem;">
                             Manage car brand partners with company logos. Control display priority and visibility.
                         </p>
                     </div>
                     
                     <!-- Team Members -->
                     <div>
-                        <h4 style="color: var(--dark-color); margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-users" style="color: #f59e0b;"></i> Team Members
+                        <h4 style="color: var(--gold-primary); margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-users"></i> Team Members
                         </h4>
-                        <p style="color: var(--gray-color); line-height: 1.6; font-size: 0.95rem;">
+                        <p style="color: var(--text-muted); line-height: 1.6; font-size: 0.95rem;">
                             Manage your team members' profiles, positions, photos, and contact information. Organize by categories.
                         </p>
                     </div>
                     
                     <!-- Awards -->
                     <div>
-                        <h4 style="color: var(--dark-color); margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-award" style="color: #ec4899;"></i> Awards
+                        <h4 style="color: var(--gold-primary); margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-award"></i> Awards
                         </h4>
-                        <p style="color: var(--gray-color); line-height: 1.6; font-size: 0.95rem;">
+                        <p style="color: var(--text-muted); line-height: 1.6; font-size: 0.95rem;">
                             Showcase company achievements with titles, years, issuers, and background images.
                         </p>
                     </div>
                     
                     <!-- Contact Messages -->
                     <div>
-                        <h4 style="color: var(--dark-color); margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-envelope" style="color: #8b5cf6;"></i> Contact Messages
+                        <h4 style="color: var(--gold-primary); margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-envelope"></i> Contact Messages
                         </h4>
-                        <p style="color: var(--gray-color); line-height: 1.6; font-size: 0.95rem;">
+                        <p style="color: var(--text-muted); line-height: 1.6; font-size: 0.95rem;">
                             View and manage customer inquiries. Read full messages, reply via email, and track new/unread status.
                         </p>
                     </div>
                     
-                    <!-- General Tips -->
+                    <!-- Pro Tips -->
                     <div>
-                        <h4 style="color: var(--dark-color); margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-lightbulb" style="color: #f59e0b;"></i> Pro Tips
+                        <h4 style="color: var(--gold-primary); margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-lightbulb"></i> Pro Tips
                         </h4>
-                        <p style="color: var(--gray-color); line-height: 1.6; font-size: 0.95rem;">
+                        <p style="color: var(--text-muted); line-height: 1.6; font-size: 0.95rem;">
                             Use Display Order (0 = highest priority). Set to Inactive instead of delete. Compress images for faster loading.
                         </p>
                     </div>
                 </div>
                 
                 <!-- Quick Stats Summary -->
-                <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border-color); display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; align-items: center;">
+                <div style="margin-top: 24px; padding-top: 20px; border-top: var(--border-gold); display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; align-items: center;">
                     <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-                        <span style="color: var(--gray-color); font-size: 0.9rem;">
-                            <i class="fas fa-check-circle" style="color: #10b981;"></i> 7 Active Sections
+                        <span style="color: var(--text-muted); font-size: 0.9rem;">
+                            <i class="fas fa-check-circle" style="color: var(--gold-primary);"></i> 7 Active Sections
                         </span>
-                        <span style="color: var(--gray-color); font-size: 0.9rem;">
+                        <span style="color: var(--text-muted); font-size: 0.9rem;">
                             <i class="fas fa-database"></i> Auto-saves to database
                         </span>
-                        <span style="color: var(--gray-color); font-size: 0.9rem;">
+                        <span style="color: var(--text-muted); font-size: 0.9rem;">
                             <i class="fas fa-image"></i> Max 5MB per image
                         </span>
                     </div>
-                    <div style="color: var(--gray-color); font-size: 0.85rem;">
+                    <div style="color: var(--text-muted); font-size: 0.85rem;">
                         <i class="fas fa-clock"></i> Last updated: <?php echo date('M d, Y'); ?>
                     </div>
                 </div>
             </div>
         </div>
 
-    <!-- Modern Modal -->
+    <!-- Modern Modal - Gold & Black -->
     <div id="messageModal" class="modal-modern">
         <div class="modal-content-modern">
             <div class="modal-header-modern">
-                <h2><i class="fas fa-envelope"></i> Message Details</h2>
-                <button type="button" class="close-modal" onclick="closeModal()" style="background: none; border: none; font-size: 28px; color: var(--gray-color); cursor: pointer;">&times;</button>
+                <h2><i class="fas fa-envelope" style="color: var(--gold-primary);"></i> Message Details</h2>
+                <button type="button" class="close-modal" onclick="closeModal()" style="background: none; border: none; font-size: 28px; color: var(--text-muted); cursor: pointer;">&times;</button>
             </div>
             
             <div class="modal-body" id="modalMessageContent">
@@ -2322,8 +2425,8 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
             // Show loading state
             document.getElementById('modalMessageContent').innerHTML = `
                 <div style="text-align: center; padding: 60px 40px;">
-                    <i class="fas fa-spinner fa-spin" style="font-size: 2.5rem; color: var(--primary-color);"></i>
-                    <p style="margin-top: 20px; color: var(--gray-color); font-size: 1.1rem;">Loading message details...</p>
+                    <i class="fas fa-spinner fa-spin" style="font-size: 2.5rem; color: var(--gold-primary);"></i>
+                    <p style="margin-top: 20px; color: var(--text-muted); font-size: 1.1rem;">Loading message details...</p>
                 </div>
             `;
             
@@ -2347,21 +2450,22 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                             minute: '2-digit'
                         });
                         
-                        // Create modal content
+                        // Create modal content - Gold & Black Theme
                         document.getElementById('modalMessageContent').innerHTML = `
-                            <div style="background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%); 
-                                        color: white; padding: 20px; border-radius: var(--radius); margin-bottom: 20px;">
+                            <div style="background: var(--gold-gradient); 
+                                        color: var(--black-dark); padding: 20px; border-radius: var(--radius); margin-bottom: 20px;">
                                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                                    <h3 style="margin: 0; color: white; font-size: 1.3rem;">
+                                    <h3 style="margin: 0; color: var(--black-dark); font-size: 1.3rem;">
                                         <i class="fas fa-user-circle"></i> ${escapeHtml(message.name)}
                                     </h3>
                                     <span style="
-                                        background: ${message.status == 'new' ? 'var(--primary-color)' : 'var(--success-color)'};
-                                        color: white;
+                                        background: ${message.status == 'new' ? 'var(--gold-primary)' : 'var(--black-dark)'};
+                                        color: ${message.status == 'new' ? 'var(--black-dark)' : 'var(--gold-primary)'};
                                         padding: 6px 15px;
                                         border-radius: 20px;
                                         font-size: 0.85rem;
                                         font-weight: 600;
+                                        border: 1px solid var(--black-dark);
                                     ">
                                         <i class="fas fa-${message.status == 'new' ? 'clock' : 'check-circle'}"></i>
                                         ${message.status.toUpperCase()}
@@ -2370,48 +2474,48 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                                 
                                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
                                     <div>
-                                        <div style="font-size: 0.875rem; color: rgba(255,255,255,0.8); margin-bottom: 5px;">
+                                        <div style="font-size: 0.875rem; color: rgba(0,0,0,0.6); margin-bottom: 5px;">
                                             <i class="fas fa-envelope"></i> Email
                                         </div>
                                         <div style="font-size: 1rem;">
                                             <a href="mailto:${escapeHtml(message.email)}" 
-                                            style="color: #ffd95e; text-decoration: none;">
+                                            style="color: var(--black-dark); text-decoration: none; font-weight: 600;">
                                                 ${escapeHtml(message.email)}
                                             </a>
                                         </div>
                                     </div>
                                     
                                     <div>
-                                        <div style="font-size: 0.875rem; color: rgba(255,255,255,0.8); margin-bottom: 5px;">
+                                        <div style="font-size: 0.875rem; color: rgba(0,0,0,0.6); margin-bottom: 5px;">
                                             <i class="fas fa-phone"></i> Phone
                                         </div>
                                         <div style="font-size: 1rem;">
                                             ${message.phone ? 
                                                 `<a href="tel:${escapeHtml(message.phone)}" 
-                                                style="color: #ffd95e; text-decoration: none;">
+                                                style="color: var(--black-dark); text-decoration: none; font-weight: 600;">
                                                     <i class="fas fa-phone-alt"></i> ${escapeHtml(message.phone)}
                                                 </a>` : 
-                                                '<span style="color: rgba(255,255,255,0.6);">Not provided</span>'}
+                                                '<span style="color: rgba(0,0,0,0.6);">Not provided</span>'}
                                         </div>
                                     </div>
                                 </div>
                                 
                                 <div style="margin-top: 15px;">
-                                    <div style="font-size: 0.875rem; color: rgba(255,255,255,0.8); margin-bottom: 5px;">
+                                    <div style="font-size: 0.875rem; color: rgba(0,0,0,0.6); margin-bottom: 5px;">
                                         <i class="fas fa-calendar"></i> Date Received
                                     </div>
-                                    <div style="font-size: 1rem;">
+                                    <div style="font-size: 1rem; font-weight: 600;">
                                         <i class="far fa-clock"></i> ${formattedDate}
                                     </div>
                                 </div>
                             </div>
                             
-                            <div style="background: #fff8e1; padding: 16px; border-radius: var(--radius); border-left: 4px solid #f59e0b; margin-bottom: 20px;">
+                            <div style="background: rgba(255, 215, 0, 0.1); padding: 16px; border-radius: var(--radius); border-left: 4px solid var(--gold-primary); margin-bottom: 20px;">
                                 <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
-                                    <i class="fas fa-briefcase" style="color: #f59e0b; font-size: 1.2rem;"></i>
+                                    <i class="fas fa-briefcase" style="color: var(--gold-primary); font-size: 1.2rem;"></i>
                                     <div>
-                                        <div style="font-size: 0.875rem; color: #666; margin-bottom: 5px;">Service Interested In</div>
-                                        <div style="font-size: 1.1rem; font-weight: 600; color: var(--dark-color);">
+                                        <div style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 5px;">Service Interested In</div>
+                                        <div style="font-size: 1.1rem; font-weight: 600; color: var(--gold-primary);">
                                             ${escapeHtml(message.service || 'General Inquiry')}
                                         </div>
                                     </div>
@@ -2419,37 +2523,42 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                             </div>
                             
                             <div style="margin-bottom: 30px;">
-                                <h4 style="color: var(--dark-color); margin-bottom: 15px; padding-bottom: 10px; 
-                                        border-bottom: 2px solid var(--primary-color); display: flex; align-items: center; gap: 10px;">
-                                    <i class="fas fa-comment-dots" style="color: var(--primary-color);"></i>
+                                <h4 style="color: var(--gold-primary); margin-bottom: 15px; padding-bottom: 10px; 
+                                        border-bottom: 2px solid var(--gold-dark); display: flex; align-items: center; gap: 10px;">
+                                    <i class="fas fa-comment-dots"></i>
                                     Message Content
                                 </h4>
                                 <div style="
-                                    background: #f8f9fa;
+                                    background: var(--black-soft);
                                     padding: 20px;
                                     border-radius: var(--radius);
                                     line-height: 1.6;
                                     white-space: pre-wrap;
                                     font-size: 1rem;
-                                    color: #4b5563;
+                                    color: var(--text-light);
                                     max-height: 300px;
                                     overflow-y: auto;
+                                    border: 1px solid var(--gold-dark);
                                 ">
                                     ${escapeHtml(message.message).replace(/\n/g, '<br>')}
                                 </div>
                             </div>
                             
-                            <div style="display: flex; gap: 12px; justify-content: flex-end; border-top: 1px solid var(--border-color); padding-top: 20px;">
+                            <div style="display: flex; gap: 12px; justify-content: flex-end; border-top: var(--border-gold); padding-top: 20px;">
                                 <a href="mailto:${escapeHtml(message.email)}?subject=Re: Your inquiry about ${escapeHtml(message.service || 'our services')}" 
                                 class="admin-btn" target="_blank">
                                     <i class="fas fa-reply"></i> Reply
                                 </a>
                                 
                                 <a href="?tab=contact_messages&delete=${message.id}" 
-                                class="admin-btn" style="background: var(--danger-color);"
+                                class="admin-btn" style="background: linear-gradient(135deg, #FF4444 0%, #CC0000 100%); color: white;"
                                 onclick="return confirm('Are you sure you want to delete this message?')">
                                     <i class="fas fa-trash"></i> Delete
                                 </a>
+                                
+                                <button onclick="closeModal()" class="admin-btn" style="background: var(--black-soft); color: var(--text-light); border: 1px solid var(--gold-dark);">
+                                    <i class="fas fa-times"></i> Close
+                                </button>
                             </div>
                         `;
                         
@@ -2460,9 +2569,9 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                     } else {
                         document.getElementById('modalMessageContent').innerHTML = `
                             <div style="text-align: center; padding: 60px 40px; color: var(--danger-color);">
-                                <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 20px;"></i>
-                                <h3 style="margin-bottom: 15px;">Error Loading Message</h3>
-                                <p style="margin-bottom: 25px; color: var(--gray-color);">${data.error || 'Unable to load message details'}</p>
+                                <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 20px; color: var(--gold-primary);"></i>
+                                <h3 style="margin-bottom: 15px; color: var(--gold-primary);">Error Loading Message</h3>
+                                <p style="margin-bottom: 25px; color: var(--text-muted);">${data.error || 'Unable to load message details'}</p>
                                 <button onclick="closeModal()" class="admin-btn" style="width: auto;">
                                     <i class="fas fa-times"></i> Close
                                 </button>
@@ -2474,9 +2583,9 @@ $affiliated_cars_result = mysqli_query($conn, "SELECT * FROM affiliated_cars ORD
                     console.error('Error:', error);
                     document.getElementById('modalMessageContent').innerHTML = `
                         <div style="text-align: center; padding: 60px 40px; color: var(--danger-color);">
-                            <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 20px;"></i>
-                            <h3 style="margin-bottom: 15px;">Network Error</h3>
-                            <p style="margin-bottom: 25px; color: var(--gray-color);">Please check your internet connection and try again.</p>
+                            <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 20px; color: var(--gold-primary);"></i>
+                            <h3 style="margin-bottom: 15px; color: var(--gold-primary);">Network Error</h3>
+                            <p style="margin-bottom: 25px; color: var(--text-muted);">Please check your internet connection and try again.</p>
                             <button onclick="closeModal()" class="admin-btn" style="width: auto;">
                                 <i class="fas fa-times"></i> Close
                             </button>
