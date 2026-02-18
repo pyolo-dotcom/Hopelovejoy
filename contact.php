@@ -89,6 +89,162 @@ session_start();
             opacity: 1;
         }
 
+        /* SCROLL ANIMATION CLASSES */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .zoom-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .zoom-in.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .rotate-in {
+            opacity: 0;
+            transform: rotate(-5deg) scale(0.9);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .rotate-in.active {
+            opacity: 1;
+            transform: rotate(0) scale(1);
+        }
+
+        .slide-up {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .slide-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger animations for children */
+        .stagger-children {
+            opacity: 1 !important;
+            transform: none !important;
+        }
+
+        .stagger-children > * {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .stagger-children.active > *:nth-child(1) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.1s;
+        }
+
+        .stagger-children.active > *:nth-child(2) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.2s;
+        }
+
+        .stagger-children.active > *:nth-child(3) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.3s;
+        }
+
+        .stagger-children.active > *:nth-child(4) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.4s;
+        }
+
+        .stagger-children.active > *:nth-child(5) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.5s;
+        }
+
+        .stagger-children.active > *:nth-child(6) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.6s;
+        }
+
+        .stagger-children.active > *:nth-child(7) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.7s;
+        }
+
+        .stagger-children.active > *:nth-child(8) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.8s;
+        }
+
+        .stagger-children.active > *:nth-child(9) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.9s;
+        }
+
+        .stagger-children.active > *:nth-child(10) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 1s;
+        }
+
+        /* Pulse animation */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
         /* REST OF YOUR EXISTING STYLES... */
         * {
             margin: 0;
@@ -679,17 +835,17 @@ session_start();
 
     <div class="main-content">
         <!-- Contact Page Header -->
-        <div class="contact-page-header">
-            <h1 class="contact-page-title">CONTACT US</h1>
-            <p class="contact-page-subtitle">We're here to help you with all your accounting and financial needs. Get in touch with us today for a consultation.</p>
+        <div class="contact-page-header fade-in">
+            <h1 class="contact-page-title slide-up">CONTACT US</h1>
+            <p class="contact-page-subtitle fade-in">We're here to help you with all your accounting and financial needs. Get in touch with us today for a consultation.</p>
         </div>
 
         <!-- Contact Container -->
         <div class="contact-container">
             <!-- Contact Form -->
-            <div class="contact-form-section">
-                <h2>Send Us a Message</h2>
-                <form class="contact-form" method="POST" action="contact_process.php">
+            <div class="contact-form-section fade-in-left">
+                <h2 class="slide-up">Send Us a Message</h2>
+                <form class="contact-form zoom-in" method="POST" action="contact_process.php">
                     <div class="form-group">
                         <label for="name">Full Name *</label>
                         <input type="text" id="name" name="name" required 
@@ -735,10 +891,10 @@ session_start();
             </div>
 
             <!-- Contact Information -->
-            <div class="contact-info-section">
-                <h2>Get In Touch</h2>
+            <div class="contact-info-section fade-in-right">
+                <h2 class="slide-up">Get In Touch</h2>
                 <div class="contact-info">
-                    <div class="info-item">
+                    <div class="info-item zoom-in">
                         <div class="info-icon">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
@@ -748,7 +904,7 @@ session_start();
                         </div>
                     </div>
                     
-                    <div class="info-item">
+                    <div class="info-item zoom-in">
                         <div class="info-icon">
                             <i class="fas fa-phone"></i>
                         </div>
@@ -761,7 +917,7 @@ session_start();
                         </div>
                     </div>
                     
-                    <div class="info-item">
+                    <div class="info-item zoom-in">
                         <div class="info-icon">
                             <i class="fas fa-envelope"></i>
                         </div>
@@ -773,7 +929,7 @@ session_start();
                         </div>
                     </div>
                     
-                    <div class="info-item">
+                    <div class="info-item zoom-in">
                         <div class="info-icon">
                             <i class="fas fa-clock"></i>
                         </div>
@@ -788,12 +944,12 @@ session_start();
                     </div>
                     
                     <div class="social-media">
-                        <h3>Follow Us</h3>
-                        <div class="social-icons">
-                            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <h3 class="slide-up">Follow Us</h3>
+                        <div class="social-icons stagger-children">
+                            <a href="#" class="social-icon zoom-in"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-icon zoom-in"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-icon zoom-in"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-icon zoom-in"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
@@ -801,19 +957,19 @@ session_start();
         </div>
 
         <!-- Map Section -->
-        <div class="map-section">
-            <h2>Our Location</h2>
-            <div class="map-container">
+        <div class="map-section fade-in">
+            <h2 class="slide-up">Our Location</h2>
+            <div class="map-container zoom-in">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3695.2115238100278!2d120.94901047494177!3d15.461642785133227!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397292538bd747f%3A0x1467ee17429693ed!2sAutoloan%20Pro%20by%20Hope%20Account%20Specialist!5e1!3m2!1sen!2sph!4v1766729310091!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
 
         <!-- FAQ Section -->
-        <div class="faq-section">
-            <h2>Frequently Asked Questions</h2>
-            <div class="faq-container">
+        <div class="faq-section fade-in">
+            <h2 class="slide-up">Frequently Asked Questions</h2>
+            <div class="faq-container stagger-children">
                 <!-- FAQ Item 1 -->
-                <div class="faq-item">
+                <div class="faq-item zoom-in">
                     <div class="faq-question">
                         <span>How quickly can you respond to my inquiry?</span>
                         <i class="fas fa-chevron-down"></i>
@@ -824,7 +980,7 @@ session_start();
                 </div>
                 
                 <!-- FAQ Item 2 -->
-                <div class="faq-item">
+                <div class="faq-item zoom-in">
                     <div class="faq-question">
                         <span>Do you offer free initial consultations?</span>
                         <i class="fas fa-chevron-down"></i>
@@ -835,7 +991,7 @@ session_start();
                 </div>
                 
                 <!-- FAQ Item 3 -->
-                <div class="faq-item">
+                <div class="faq-item zoom-in">
                     <div class="faq-question">
                         <span>What are your service fees?</span>
                         <i class="fas fa-chevron-down"></i>
@@ -846,7 +1002,7 @@ session_start();
                 </div>
                 
                 <!-- FAQ Item 4 -->
-                <div class="faq-item">
+                <div class="faq-item zoom-in">
                     <div class="faq-question">
                         <span>Do you work with businesses outside of your local area?</span>
                         <i class="fas fa-chevron-down"></i>
@@ -857,7 +1013,7 @@ session_start();
                 </div>
                 
                 <!-- FAQ Item 5 -->
-                <div class="faq-item">
+                <div class="faq-item zoom-in">
                     <div class="faq-question">
                         <span>What documents should I prepare for our first meeting?</span>
                         <i class="fas fa-chevron-down"></i>
@@ -940,6 +1096,30 @@ session_start();
                     });
                 }
             });
+        });
+
+        // SCROLL ANIMATION FUNCTIONALITY
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .zoom-in, .rotate-in, .slide-up, .stagger-children');
+            
+            function checkScroll() {
+                const windowHeight = window.innerHeight;
+                const triggerPoint = windowHeight * 0.8; // 80% ng window height
+                
+                animatedElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    
+                    if (elementTop < triggerPoint) {
+                        element.classList.add('active');
+                    }
+                });
+            }
+            
+            // Initial check
+            checkScroll();
+            
+            // Check on scroll
+            window.addEventListener('scroll', checkScroll);
         });
     </script>
 </body>

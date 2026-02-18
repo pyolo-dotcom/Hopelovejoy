@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Hope Account Specialist</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -240,6 +240,133 @@
             }
         }
 
+        /* SCROLL ANIMATION CLASSES */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .zoom-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .zoom-in.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .rotate-in {
+            opacity: 0;
+            transform: rotate(-5deg) scale(0.9);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .rotate-in.active {
+            opacity: 1;
+            transform: rotate(0) scale(1);
+        }
+
+        .slide-up {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .slide-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger animations for children */
+        .stagger-children > * {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .stagger-children.active > *:nth-child(1) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.1s;
+        }
+
+        .stagger-children.active > *:nth-child(2) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.2s;
+        }
+
+        .stagger-children.active > *:nth-child(3) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.3s;
+        }
+
+        .stagger-children.active > *:nth-child(4) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.4s;
+        }
+
+        .stagger-children.active > *:nth-child(5) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.5s;
+        }
+
+        .stagger-children.active > *:nth-child(6) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.6s;
+        }
+
+        /* Pulse animation */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
         /* About Us Section - Simple white design */
         .about-us-section {
             padding: 80px 20px;
@@ -301,6 +428,11 @@
             width: 100%;
             height: auto;
             display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .about-us-map:hover img {
+            transform: scale(1.05);
         }
 
         /* SALES Section - CAROUSEL */
@@ -507,6 +639,7 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            cursor: pointer; /* Add this line */
         }
 
         .award-image-bg {
@@ -518,6 +651,11 @@
             object-fit: cover;
             opacity: 1.15;
             filter: brightness(0.8);
+            transition: transform 0.5s ease;
+        }
+
+        .award-image-container:hover .award-image-bg {
+            transform: scale(1.1);
         }
 
         .award-main-image {
@@ -1140,7 +1278,7 @@
             font-style: italic;
         }
 
-        /* MODAL STYLES */
+        /* MODAL STYLES - UPDATED FOR 6.3 INCH SCREEN */
         .modal {
             display: none;
             position: fixed;
@@ -1149,7 +1287,7 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(0, 0, 0, 0.98);
             overflow: hidden;
             animation: fadeIn 0.3s ease;
         }
@@ -1160,79 +1298,202 @@
         }
 
         .modal-content {
-            margin: auto;
-            display: block;
-            width: auto;
-            height: auto;
-            max-width: 90%;
-            max-height: 90%;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            background: transparent;
+            border: none;
+            padding: 0;
             animation: zoomIn 0.3s ease;
         }
 
         @keyframes zoomIn {
-            from { transform: translate(-50%, -50%) scale(0.9); opacity: 0; }
-            to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-image-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
         }
 
         .modal-image {
-            width: 100%;
-            height: 100%;
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 85vh;
             object-fit: contain;
-            border-radius: 5px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            margin: 0 auto;
         }
 
         .close-modal {
-            position: absolute;
+            position: fixed;
             top: 20px;
-            right: 30px;
+            right: 20px;
             color: white;
-            font-size: 40px;
+            font-size: 45px;
             font-weight: bold;
             cursor: pointer;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
             z-index: 10000;
-            background: rgba(44, 43, 41, 0.8);
-            width: 50px;
-            height: 50px;
+            background: rgba(44, 43, 41, 0.95);
+            width: 60px;
+            height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
+            border: 3px solid #eeb82e;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
         }
 
         .close-modal:hover {
             color: #eeb82e;
-            background: rgba(44, 43, 41, 0.95);
+            transform: scale(1.1) rotate(90deg);
+            background: rgba(44, 43, 41, 1);
         }
 
         .modal-caption {
-            position: absolute;
-            bottom: 20px;
-            left: 0;
-            right: 0;
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
             text-align: center;
             color: white;
-            padding: 10px 20px;
-            background: rgba(0, 0, 0, 0.7);
-            margin: 0 auto;
+            padding: 18px 30px;
+            background: rgba(44, 43, 41, 0.95);
             width: fit-content;
-            max-width: 80%;
-            border-radius: 5px;
+            max-width: 90%;
+            border-radius: 60px;
             font-family: 'Roboto Serif', serif;
+            border: 3px solid #eeb82e;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            backdrop-filter: blur(5px);
+            z-index: 10001;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from { transform: translate(-50%, 20px); opacity: 0; }
+            to { transform: translate(-50%, 0); opacity: 1; }
         }
 
         .modal-caption h3 {
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             color: #eeb82e;
+            font-size: 1.4rem;
+            font-weight: 600;
         }
 
         .modal-caption p {
             margin: 0;
-            font-size: 0.9rem;
+            font-size: 1.2rem;
+            color: #fff;
+            opacity: 0.9;
+        }
+
+        /* Mobile Responsive Modal Styles - 6.3 inch screen specific */
+        @media screen and (max-width: 768px) {
+            .modal-image {
+                max-width: 98%;
+                max-height: 80vh;
+            }
+
+            .close-modal {
+                top: 15px;
+                right: 15px;
+                font-size: 40px;
+                width: 55px;
+                height: 55px;
+                border-width: 3px;
+            }
+
+            .modal-caption {
+                bottom: 25px;
+                padding: 15px 25px;
+                border-radius: 50px;
+                border-width: 2px;
+            }
+
+            .modal-caption h3 {
+                font-size: 1.3rem;
+                margin-bottom: 5px;
+            }
+
+            .modal-caption p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .modal-image {
+                max-width: 100%;
+                max-height: 75vh;
+                border-radius: 12px;
+            }
+
+            .close-modal {
+                top: 12px;
+                right: 12px;
+                font-size: 35px;
+                width: 50px;
+                height: 50px;
+                border-width: 2px;
+            }
+
+            .modal-caption {
+                bottom: 20px;
+                padding: 12px 20px;
+                border-radius: 40px;
+                border-width: 2px;
+            }
+
+            .modal-caption h3 {
+                font-size: 1.2rem;
+                margin-bottom: 4px;
+            }
+
+            .modal-caption p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Landscape Mode Support */
+        @media screen and (max-height: 500px) and (orientation: landscape) {
+            .modal-image {
+                max-height: 70vh;
+            }
+
+            .modal-caption {
+                bottom: 15px;
+                padding: 10px 20px;
+            }
+
+            .modal-caption h3 {
+                font-size: 1rem;
+            }
+
+            .modal-caption p {
+                font-size: 0.9rem;
+            }
+
+            .close-modal {
+                top: 10px;
+                right: 10px;
+                width: 45px;
+                height: 45px;
+                font-size: 30px;
+            }
         }
 
         /* Award Image Container - ADD CLICK CURSOR */
@@ -1833,7 +2094,7 @@
 
     <div class="main-content">
         <!-- Hero Carousel Section -->
-        <div class="hero-carousel-section">
+        <div class="hero-carousel-section fade-in">
             <div class="hero-carousel-container">
                 <div class="hero-carousel-track" id="heroCarouselTrack">
                     <!-- Slide 1 -->
@@ -1881,26 +2142,26 @@
         </div>
 
         <!-- About Us Section - Simple white design -->
-        <div class="about-us-section">
-            <h2 class="about-us-title">ABOUT US</h2>
+        <div class="about-us-section fade-in">
+            <h2 class="about-us-title slide-up">ABOUT US</h2>
             <div class="about-us-container">
-                <div class="about-us-text">
+                <div class="about-us-text fade-in-left">
                     <p>Hope Specialist is a trusted financial services company established in 2022, dedicated to helping individuals and families turn their goals into reality. We specialize in assisting clients with car acquisition and financing, while also offering a wide range of services related to housing, real estate, and insurance solutions.</p>
                     <p>Located at Brgy. Concepcion, Maharlika Hi-way, Cabanatuan City, Nueva Ecija, Hope Specialist has built a strong reputation by delivering reliable, transparent, and client-focused services. Through our growing network of partnerships with banks, car dealers, real estate developers, and housing providers, we make the process of owning a car, home, or property more accessible and stress-free.</p>
                 </div>
-                <div class="about-us-map">
+                <div class="about-us-map fade-in-right">
                     <img src="img/indexpics.jpg" alt="Location Map">
                 </div>
             </div>
         </div>
 
         <!-- Mission & Vision Section -->
-        <div class="mission-vision-section">
-            <h2 class="mission-vision-title">MISSION & VISION</h2>
+        <div class="mission-vision-section fade-in">
+            <h2 class="mission-vision-title slide-up">MISSION & VISION</h2>
             
-            <div class="mission-vision-container">
+            <div class="mission-vision-container stagger-children">
                 <!-- Mission Card -->
-                <div class="mission-card">
+                <div class="mission-card zoom-in">
                     <div class="card-header">
                         <div class="card-icon">
                             <i class="fas fa-bullseye"></i>
@@ -1930,7 +2191,7 @@
                 </div>
                 
                 <!-- Vision Card -->
-                <div class="vision-card">
+                <div class="vision-card zoom-in">
                     <div class="card-header">
                         <div class="card-icon">
                             <i class="fas fa-eye"></i>
@@ -1962,8 +2223,8 @@
         </div>
 
         <!-- SALES Section - PAST SALES HISTORY -->
-        <div class="sales-section">
-            <h2 class="sales-title">PAST SALES HISTORY</h2>
+        <div class="sales-section fade-in">
+            <h2 class="sales-title slide-up">PAST SALES HISTORY</h2>
             
             <div class="carousel-container">
                 <div class="carousel-track" id="carouselTrack">
@@ -2033,10 +2294,10 @@
         </div>
 
         <!-- Awards & Recognition Section - UPDATED WITH DYNAMIC DATA -->
-        <div class="awards-section" id="awards">
-            <h2 class="awards-title">AWARDS & RECOGNITION</h2>
+        <div class="awards-section fade-in" id="awards">
+            <h2 class="awards-title slide-up">AWARDS & RECOGNITION</h2>
             
-            <div class="awards-container">
+            <div class="awards-container stagger-children">
                 <?php
                 // Fetch active awards from database
                 require_once 'config.php';
@@ -2054,7 +2315,7 @@
                         $award_image = !empty($award['image_path']) ? $award['image_path'] : '';
                         
                         echo '
-                        <div class="award-card">
+                        <div class="award-card zoom-in">
                             <div class="award-header">
                                 <div class="award-image-container" 
                                     onclick="openModal(\'' . $bg_image . '\', \'' . addslashes($title) . '\', \'' . $year . '\')">
@@ -2084,8 +2345,8 @@
         </div>
 
         <!-- AFFILIATED BANKS Section -->
-        <div class="bank-partners-section">
-            <h2 class="bank-partners-title">AFFILIATED BANKS</h2>
+        <div class="bank-partners-section fade-in">
+            <h2 class="bank-partners-title slide-up">AFFILIATED BANKS</h2>
 
             <?php
             // Include database connection
@@ -2096,10 +2357,10 @@
             $banks_result = mysqli_query($conn, $banks_sql);
             ?>
             
-            <div class="bank-partners-container">
+            <div class="bank-partners-container stagger-children">
                 <?php if (mysqli_num_rows($banks_result) > 0): ?>
                     <?php while ($bank = mysqli_fetch_assoc($banks_result)): ?>
-                        <div class="bank-logo">
+                        <div class="bank-logo zoom-in">
                             <img src="<?php echo $bank['logo_path']; ?>" 
                                 alt="<?php echo htmlspecialchars($bank['name']); ?>"
                                 onerror="this.src='https://via.placeholder.com/150x100?text=Bank+Logo'">
@@ -2111,8 +2372,8 @@
         </div>
 
         <!-- AFFILIATED CAR COMPANIES Section -->
-        <div class="bank-partners-section">
-            <h2 class="bank-partners-title">AFFILIATED CAR COMPANIES</h2>
+        <div class="bank-partners-section fade-in">
+            <h2 class="bank-partners-title slide-up">AFFILIATED CAR COMPANIES</h2>
 
             <?php
             // Query to fetch active car companies
@@ -2120,10 +2381,10 @@
             $cars_result = mysqli_query($conn, $cars_sql);
             ?>
             
-            <div class="bank-partners-container">
+            <div class="bank-partners-container stagger-children">
                 <?php if (mysqli_num_rows($cars_result) > 0): ?>
                     <?php while ($car = mysqli_fetch_assoc($cars_result)): ?>
-                        <div class="bank-logo">
+                        <div class="bank-logo zoom-in">
                             <img src="<?php echo $car['logo_path']; ?>" 
                                 alt="<?php echo htmlspecialchars($car['name']); ?>"
                                 onerror="this.src='https://via.placeholder.com/150x100?text=Car+Logo'">
@@ -2135,10 +2396,10 @@
         </div>
 
         <!-- Affiliated Houses Section -->
-        <div class="affiliated-section" id="affiliated">
-            <h2 class="affiliated-title">AFFILIATED HOUSES</h2>
+        <div class="affiliated-section fade-in" id="affiliated">
+            <h2 class="affiliated-title slide-up">AFFILIATED HOUSES</h2>
             
-            <div class="affiliated-container">
+            <div class="affiliated-container stagger-children">
                 <?php
                 // Include database connection
                 require_once 'config.php';
@@ -2156,7 +2417,7 @@
                         $years = htmlspecialchars($affiliated['years_affiliated']);
                         
                         echo '
-                        <div class="affiliated-card">
+                        <div class="affiliated-card zoom-in">
                             <div class="affiliated-logo">
                                 <img src="' . $image_path . '" alt="' . $name . ' Logo" class="affiliated-logo-img"
                                     onerror="this.src=\'https://via.placeholder.com/100x100?text=' . urlencode($name) . '\'">
@@ -2459,9 +2720,31 @@
                     logo.style.transform = 'scale(1)';
                 });
             });
+
+            // SCROLL ANIMATION FUNCTIONALITY
+            const animatedElements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .zoom-in, .rotate-in, .slide-up, .stagger-children');
+            
+            function checkScroll() {
+                const windowHeight = window.innerHeight;
+                const triggerPoint = windowHeight * 0.8; // 80% ng window height
+                
+                animatedElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    
+                    if (elementTop < triggerPoint) {
+                        element.classList.add('active');
+                    }
+                });
+            }
+            
+            // Initial check
+            checkScroll();
+            
+            // Check on scroll
+            window.addEventListener('scroll', checkScroll);
         });
 
-        // MODAL FUNCTIONALITY
+        // MODAL FUNCTIONALITY - UPDATED FOR 6.3 INCH SCREEN
         function openModal(imageSrc, title, year) {
             const modal = document.getElementById('imageModal');
             const modalImg = document.getElementById('modalImage');
@@ -2478,6 +2761,12 @@
             
             // Add keyboard support
             document.addEventListener('keydown', handleKeyPress);
+            
+            // Force image to use full screen
+            setTimeout(() => {
+                modalImg.style.maxHeight = window.innerHeight * 0.85 + 'px';
+                modalImg.style.maxWidth = '100%';
+            }, 100);
         }
 
         function closeModal() {
@@ -2518,14 +2807,31 @@
                     closeModal();
                 }
             });
+            
+            // Prevent zooming issues on mobile
+            modal.addEventListener('touchmove', function(event) {
+                if (event.target === modal || event.target.classList.contains('modal-image')) {
+                    event.preventDefault();
+                }
+            }, { passive: false });
+            
+            // Handle orientation change
+            window.addEventListener('resize', function() {
+                if (modal.style.display === 'block') {
+                    const modalImg = document.getElementById('modalImage');
+                    modalImg.style.maxHeight = window.innerHeight * 0.85 + 'px';
+                }
+            });
         });
     </script>
 
-    <!-- Modal for Fullscreen Image -->
+    <!-- Modal for Fullscreen Image - UPDATED STRUCTURE FOR 6.3 INCH SCREEN -->
     <div id="imageModal" class="modal">
         <span class="close-modal">&times;</span>
         <div class="modal-content">
-            <img class="modal-image" id="modalImage" src="" alt="Fullscreen View">
+            <div class="modal-image-container">
+                <img class="modal-image" id="modalImage" src="" alt="Fullscreen View">
+            </div>
             <div class="modal-caption">
                 <h3 id="modalTitle"></h3>
                 <p id="modalYear"></p>

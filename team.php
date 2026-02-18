@@ -1,5 +1,5 @@
 <?php
-// team.php - DYNAMIC VERSION
+// team.php - DYNAMIC VERSION WITH SCROLL ANIMATIONS
 session_start();
 require_once 'config.php';
 ?>
@@ -38,6 +38,162 @@ require_once 'config.php';
             margin: 0 auto;
             flex: 1;
             width: 100%;
+        }
+
+        /* SCROLL ANIMATION CLASSES */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .zoom-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .zoom-in.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .rotate-in {
+            opacity: 0;
+            transform: rotate(-5deg) scale(0.9);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .rotate-in.active {
+            opacity: 1;
+            transform: rotate(0) scale(1);
+        }
+
+        .slide-up {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .slide-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger animations for children */
+        .stagger-children {
+            opacity: 1 !important;
+            transform: none !important;
+        }
+
+        .stagger-children > * {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .stagger-children.active > *:nth-child(1) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.1s;
+        }
+
+        .stagger-children.active > *:nth-child(2) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.2s;
+        }
+
+        .stagger-children.active > *:nth-child(3) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.3s;
+        }
+
+        .stagger-children.active > *:nth-child(4) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.4s;
+        }
+
+        .stagger-children.active > *:nth-child(5) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.5s;
+        }
+
+        .stagger-children.active > *:nth-child(6) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.6s;
+        }
+
+        .stagger-children.active > *:nth-child(7) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.7s;
+        }
+
+        .stagger-children.active > *:nth-child(8) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.8s;
+        }
+
+        .stagger-children.active > *:nth-child(9) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.9s;
+        }
+
+        .stagger-children.active > *:nth-child(10) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 1s;
+        }
+
+        /* Pulse animation */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
         }
 
         /* Team Page Header */
@@ -797,49 +953,6 @@ require_once 'config.php';
         .close:focus {
             color: #eeb82e;
         }
-
-        /* Remove mobile navbar adjustments as they're handled by navbar.php */
-        /*
-        @media screen and (max-width: 768px) {
-            .modal-content {
-                margin: 30% auto;
-                padding: 20px;
-            }
-            
-            .dropdown-content {
-                position: static;
-                box-shadow: none;
-                background-color: transparent;
-                border: none;
-                display: none;
-            }
-            
-            .dropdown.active .dropdown-content {
-                display: block;
-            }
-            
-            .dropbtn .fa-caret-down {
-                display: none;
-            }
-            
-            .contact-info-row {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .contact-info-value {
-                margin-left: 0;
-                margin-top: 5px;
-                width: 100%;
-            }
-            
-            .copy-btn {
-                margin-left: 0;
-                margin-top: 10px;
-                width: 100%;
-            }
-        }
-        */
     </style>
 </head>
 <body>
@@ -847,9 +960,9 @@ require_once 'config.php';
 
     <div class="main-content">
         <!-- Team Page Header -->
-        <div class="team-page-header">
-            <h1 class="team-page-title">MEET OUR TEAM</h1>
-            <p class="team-page-subtitle">We're a team of professional people who love what we do. We care about the word quality, discipline and team work. Get to know the experts behind Hope Account Specialist.</p>
+        <div class="team-page-header fade-in">
+            <h1 class="team-page-title slide-up">MEET OUR TEAM</h1>
+            <p class="team-page-subtitle fade-in">We're a team of professional people who love what we do. We care about the word quality, discipline and team work. Get to know the experts behind Hope Account Specialist.</p>
         </div>
 
         <?php
@@ -860,16 +973,16 @@ require_once 'config.php';
         
         if ($ceo): ?>
         <!-- CEO Section -->
-        <div class="ceo-section" id="ceo">
+        <div class="ceo-section fade-in" id="ceo">
             <div class="ceo-container">
-                <div class="ceo-image-container">
+                <div class="ceo-image-container fade-in-left">
                     <div class="ceo-image">
                         <img src="<?php echo $ceo['image_path']; ?>" alt="<?php echo htmlspecialchars($ceo['name']); ?>"
                              onerror="this.src='https://cdn-icons-png.flaticon.com/512/6522/6522516.png'">
                     </div>
                 </div>
                 
-                <div class="ceo-details">
+                <div class="ceo-details fade-in-right">
                     <h2 class="ceo-name"><?php echo htmlspecialchars($ceo['name']); ?></h2>
                     <div class="ceo-position"><?php echo htmlspecialchars($ceo['position']); ?></div>
                     <?php if (!empty($ceo['experience'])): ?>
@@ -880,16 +993,16 @@ require_once 'config.php';
                     <?php endif; ?>
                     
                     <!-- CEO Contact Icons -->
-                    <div class="ceo-contact">
+                    <div class="ceo-contact stagger-children">
                         <?php if (!empty($ceo['email'])): ?>
-                            <div class="ceo-contact-icon tooltip" data-tooltip="Email"
+                            <div class="ceo-contact-icon tooltip fade-in" data-tooltip="Email"
                                  onclick="showContactModal('<?php echo htmlspecialchars($ceo['name']); ?>', '<?php echo htmlspecialchars($ceo['email']); ?>', '<?php echo htmlspecialchars($ceo['phone']); ?>', 'email')">
                                 <i class="fas fa-envelope"></i>
                             </div>
                         <?php endif; ?>
                         
                         <?php if (!empty($ceo['phone'])): ?>
-                            <div class="ceo-contact-icon tooltip" data-tooltip="Call"
+                            <div class="ceo-contact-icon tooltip fade-in" data-tooltip="Call"
                                  onclick="showContactModal('<?php echo htmlspecialchars($ceo['name']); ?>', '<?php echo htmlspecialchars($ceo['email']); ?>', '<?php echo htmlspecialchars($ceo['phone']); ?>', 'phone')">
                                 <i class="fas fa-phone"></i>
                             </div>
@@ -898,7 +1011,7 @@ require_once 'config.php';
                         <?php if (!empty($ceo['facebook_link'])): ?>
                             <a href="<?php echo htmlspecialchars($ceo['facebook_link']); ?>" 
                                target="_blank" 
-                               class="ceo-contact-icon tooltip" data-tooltip="Facebook">
+                               class="ceo-contact-icon tooltip fade-in" data-tooltip="Facebook">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
                         <?php endif; ?>
@@ -909,11 +1022,11 @@ require_once 'config.php';
         <?php endif; ?>
 
         <!-- Leadership Team Section -->
-        <div class="team-category" id="leadership">
-            <h2 class="category-title">LEADERSHIP TEAM</h2>
-            <p class="team-category-description">Our leadership team brings decades of experience in financial management, strategic planning, and business development.</p>
+        <div class="team-category fade-in" id="leadership">
+            <h2 class="category-title slide-up">LEADERSHIP TEAM</h2>
+            <p class="team-category-description fade-in">Our leadership team brings decades of experience in financial management, strategic planning, and business development.</p>
             
-            <div class="team-container">
+            <div class="team-container stagger-children">
                 <?php
                 // Fetch Leadership Team
                 $leadership_sql = "SELECT * FROM team_members WHERE category = 'leadership' AND is_active = 1 ORDER BY display_order ASC, name ASC";
@@ -922,7 +1035,7 @@ require_once 'config.php';
                 if (mysqli_num_rows($leadership_result) > 0):
                     while ($leader = mysqli_fetch_assoc($leadership_result)):
                 ?>
-                <div class="team-member">
+                <div class="team-member zoom-in">
                     <div class="team-member-img">
                         <img src="<?php echo $leader['image_path']; ?>" alt="<?php echo htmlspecialchars($leader['name']); ?>"
                              onerror="this.src='https://cdn-icons-png.flaticon.com/512/6522/6522516.png'">
@@ -969,11 +1082,11 @@ require_once 'config.php';
         </div>
 
         <!-- Account Specialists Section -->
-        <div class="team-category" id="specialists">
-            <h2 class="category-title">ACCOUNT SPECIALISTS</h2>
-            <p class="team-category-description">Our team of account specialists are experts in managing your financial accounts with precision and care.</p>
+        <div class="team-category fade-in" id="specialists">
+            <h2 class="category-title slide-up">ACCOUNT SPECIALISTS</h2>
+            <p class="team-category-description fade-in">Our team of account specialists are experts in managing your financial accounts with precision and care.</p>
             
-            <div class="team-container">
+            <div class="team-container stagger-children">
                 <?php
                 // Fetch Account Specialists
                 $specialists_sql = "SELECT * FROM team_members WHERE category = 'specialists' AND is_active = 1 ORDER BY display_order ASC, name ASC";
@@ -982,7 +1095,7 @@ require_once 'config.php';
                 if (mysqli_num_rows($specialists_result) > 0):
                     while ($specialist = mysqli_fetch_assoc($specialists_result)):
                 ?>
-                <div class="team-member-smaller">
+                <div class="team-member-smaller zoom-in">
                     <div class="team-member-img-smaller">
                         <img src="<?php echo $specialist['image_path']; ?>" alt="<?php echo htmlspecialchars($specialist['name']); ?>"
                              onerror="this.src='https://cdn-icons-png.flaticon.com/512/6522/6522516.png'">
@@ -1034,13 +1147,13 @@ require_once 'config.php';
         $support_result = mysqli_query($conn, $support_sql);
         
         if (mysqli_num_rows($support_result) > 0): ?>
-        <div class="team-category" id="support">
-            <h2 class="category-title">SUPPORT STAFF</h2>
-            <p class="team-category-description">Our dedicated support team ensures smooth operations and excellent customer service.</p>
+        <div class="team-category fade-in" id="support">
+            <h2 class="category-title slide-up">SUPPORT STAFF</h2>
+            <p class="team-category-description fade-in">Our dedicated support team ensures smooth operations and excellent customer service.</p>
             
-            <div class="team-container">
+            <div class="team-container stagger-children">
                 <?php while ($support = mysqli_fetch_assoc($support_result)): ?>
-                <div class="team-member-smaller">
+                <div class="team-member-smaller zoom-in">
                     <div class="team-member-img-smaller">
                         <img src="<?php echo $support['image_path']; ?>" alt="<?php echo htmlspecialchars($support['name']); ?>"
                              onerror="this.src='https://cdn-icons-png.flaticon.com/512/6522/6522516.png'">
@@ -1257,6 +1370,30 @@ require_once 'config.php';
                 closeContactModal();
             }
         }
+
+        // SCROLL ANIMATION FUNCTIONALITY
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .zoom-in, .rotate-in, .slide-up, .stagger-children');
+            
+            function checkScroll() {
+                const windowHeight = window.innerHeight;
+                const triggerPoint = windowHeight * 0.8; // 80% ng window height
+                
+                animatedElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    
+                    if (elementTop < triggerPoint) {
+                        element.classList.add('active');
+                    }
+                });
+            }
+            
+            // Initial check
+            checkScroll();
+            
+            // Check on scroll
+            window.addEventListener('scroll', checkScroll);
+        });
     </script>
 </body>
 </html>

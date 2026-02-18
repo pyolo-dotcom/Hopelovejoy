@@ -34,6 +34,162 @@
             width: 100%;
         }
 
+        /* SCROLL ANIMATION CLASSES */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .zoom-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .zoom-in.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .rotate-in {
+            opacity: 0;
+            transform: rotate(-5deg) scale(0.9);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .rotate-in.active {
+            opacity: 1;
+            transform: rotate(0) scale(1);
+        }
+
+        .slide-up {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .slide-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger animations for children */
+        .stagger-children {
+            opacity: 1 !important;
+            transform: none !important;
+        }
+
+        .stagger-children > * {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .stagger-children.active > *:nth-child(1) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.1s;
+        }
+
+        .stagger-children.active > *:nth-child(2) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.2s;
+        }
+
+        .stagger-children.active > *:nth-child(3) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.3s;
+        }
+
+        .stagger-children.active > *:nth-child(4) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.4s;
+        }
+
+        .stagger-children.active > *:nth-child(5) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.5s;
+        }
+
+        .stagger-children.active > *:nth-child(6) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.6s;
+        }
+
+        .stagger-children.active > *:nth-child(7) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.7s;
+        }
+
+        .stagger-children.active > *:nth-child(8) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.8s;
+        }
+
+        .stagger-children.active > *:nth-child(9) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.9s;
+        }
+
+        .stagger-children.active > *:nth-child(10) {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 1s;
+        }
+
+        /* Pulse animation */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
         /* Services Hero Section */
         .services-hero-section {
             padding: 80px 20px;
@@ -885,10 +1041,10 @@
 
     <div class="main-content">
         <!-- Services Hero Section -->
-        <div class="services-hero-section">
-            <h1 class="services-hero-title">Our Services</h1>
-            <p class="services-hero-subtitle">Making your dreams turn into reality</p>
-            <p class="services-hero-description">
+        <div class="services-hero-section fade-in">
+            <h1 class="services-hero-title slide-up">Our Services</h1>
+            <p class="services-hero-subtitle slide-up">Making your dreams turn into reality</p>
+            <p class="services-hero-description fade-in">
                 At Hope Account Specialist, we provide comprehensive financial solutions tailored to your needs. 
                 From auto and housing acquisitions to insurance and loan assistance, we're here to guide you 
                 through every step of your financial journey.
@@ -896,12 +1052,12 @@
         </div>
 
         <!-- Services Grid Section -->
-        <div class="services-section">
-            <h2 class="services-title">OUR SERVICES</h2>
+        <div class="services-section fade-in">
+            <h2 class="services-title slide-up">OUR SERVICES</h2>
             
-            <div class="services-container">
+            <div class="services-container stagger-children">
                 <!-- Service 1: Auto Acquisition -->
-                <div class="service-card" id="auto-acquisition">
+                <div class="service-card zoom-in" id="auto-acquisition">
                     <div class="service-header">
                         <div class="service-icon">
                             <i class="fas fa-car"></i>
@@ -935,7 +1091,7 @@
                 </div>
 
                 <!-- Service 2: Housing Acquisition -->
-                <div class="service-card" id="housing">
+                <div class="service-card zoom-in" id="housing">
                     <div class="service-header">
                         <div class="service-icon">
                             <i class="fas fa-home"></i>
@@ -969,7 +1125,7 @@
                 </div>
 
                 <!-- Service 3: Car Insurance -->
-                <div class="service-card" id="car-insurance">
+                <div class="service-card zoom-in" id="car-insurance">
                     <div class="service-header">
                         <div class="service-icon">
                             <i class="fas fa-shield-alt"></i>
@@ -1003,7 +1159,7 @@
                 </div>
 
                 <!-- Service 4: Housing Insurance -->
-                <div class="service-card" id="housing-insurance">
+                <div class="service-card zoom-in" id="housing-insurance">
                     <div class="service-header">
                         <div class="service-icon">
                             <i class="fas fa-building"></i>
@@ -1037,7 +1193,7 @@
                 </div>
 
                 <!-- Service 5: Life Insurance -->
-                <div class="service-card" id="life-insurance">
+                <div class="service-card zoom-in" id="life-insurance">
                     <div class="service-header">
                         <div class="service-icon">
                             <i class="fas fa-heart"></i>
@@ -1071,7 +1227,7 @@
                 </div>
 
                 <!-- Service 6: Second Hand Car Loans -->
-                <div class="service-card" id="second-hand">
+                <div class="service-card zoom-in" id="second-hand">
                     <div class="service-header">
                         <div class="service-icon">
                             <i class="fas fa-car-side"></i>
@@ -1105,7 +1261,7 @@
                 </div>
 
                 <!-- Service 7: Sangla Title & OR/CR -->
-                <div class="service-card" id="sangla">
+                <div class="service-card zoom-in" id="sangla">
                     <div class="service-header">
                         <div class="service-icon">
                             <i class="fas fa-file-contract"></i>
@@ -1139,7 +1295,7 @@
                 </div>
 
                 <!-- Service 8: Trade In -->
-                <div class="service-card" id="trade-in">
+                <div class="service-card zoom-in" id="trade-in">
                     <div class="service-header">
                         <div class="service-icon">
                             <i class="fas fa-exchange-alt"></i>
@@ -1175,11 +1331,11 @@
         </div>
 
         <!-- Process Section -->
-        <div class="process-section">
-            <h2 class="process-title">HOW IT WORKS</h2>
+        <div class="process-section fade-in">
+            <h2 class="process-title slide-up">HOW IT WORKS</h2>
             
-            <div class="process-container">
-                <div class="process-step">
+            <div class="process-container stagger-children">
+                <div class="process-step zoom-in">
                     <div class="step-number">1</div>
                     <div class="step-content">
                         <h3>Consultation</h3>
@@ -1187,7 +1343,7 @@
                     </div>
                 </div>
                 
-                <div class="process-step">
+                <div class="process-step zoom-in">
                     <div class="step-number">2</div>
                     <div class="step-content">
                         <h3>Documentation</h3>
@@ -1195,7 +1351,7 @@
                     </div>
                 </div>
                 
-                <div class="process-step">
+                <div class="process-step zoom-in">
                     <div class="step-number">3</div>
                     <div class="step-content">
                         <h3>Processing</h3>
@@ -1203,7 +1359,7 @@
                     </div>
                 </div>
                 
-                <div class="process-step">
+                <div class="process-step zoom-in">
                     <div class="step-number">4</div>
                     <div class="step-content">
                         <h3>Approval</h3>
@@ -1214,11 +1370,11 @@
         </div>
 
         <!-- Benefits Section -->
-        <div class="benefits-section">
-            <h2 class="benefits-title">WHY CHOOSE US</h2>
+        <div class="benefits-section fade-in">
+            <h2 class="benefits-title slide-up">WHY CHOOSE US</h2>
             
-            <div class="benefits-container">
-                <div class="benefit-card">
+            <div class="benefits-container stagger-children">
+                <div class="benefit-card zoom-in">
                     <div class="benefit-icon">
                         <i class="fas fa-check-circle"></i>
                     </div>
@@ -1226,7 +1382,7 @@
                     <p>Our experienced specialists provide personalized advice to help you make informed decisions.</p>
                 </div>
                 
-                <div class="benefit-card">
+                <div class="benefit-card zoom-in">
                     <div class="benefit-icon">
                         <i class="fas fa-handshake"></i>
                     </div>
@@ -1234,7 +1390,7 @@
                     <p>Strong relationships with major banks, insurance companies, and dealerships nationwide.</p>
                 </div>
                 
-                <div class="benefit-card">
+                <div class="benefit-card zoom-in">
                     <div class="benefit-icon">
                         <i class="fas fa-clock"></i>
                     </div>
@@ -1242,7 +1398,7 @@
                     <p>Streamlined processes ensure quick approval and completion of your transactions.</p>
                 </div>
                 
-                <div class="benefit-card">
+                <div class="benefit-card zoom-in">
                     <div class="benefit-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
@@ -1250,7 +1406,7 @@
                     <p>Your data and transactions are protected with the highest security standards.</p>
                 </div>
                 
-                <div class="benefit-card">
+                <div class="benefit-card zoom-in">
                     <div class="benefit-icon">
                         <i class="fas fa-star"></i>
                     </div>
@@ -1258,7 +1414,7 @@
                     <p>Dedicated support from consultation to completion of your financial needs.</p>
                 </div>
                 
-                <div class="benefit-card">
+                <div class="benefit-card zoom-in">
                     <div class="benefit-icon">
                         <i class="fas fa-percentage"></i>
                     </div>
@@ -1269,11 +1425,11 @@
         </div>
 
         <!-- Requirements Section -->
-        <div class="requirements-section">
-            <h2 class="requirements-title">GENERAL REQUIREMENTS</h2>
+        <div class="requirements-section fade-in">
+            <h2 class="requirements-title slide-up">GENERAL REQUIREMENTS</h2>
             
-            <div class="requirements-container">
-                <div class="requirement-card">
+            <div class="requirements-container stagger-children">
+                <div class="requirement-card zoom-in">
                     <h3><i class="fas fa-id-card"></i> Basic Requirements</h3>
                     <ul class="requirement-list">
                         <li>2 Valid IDs (Government Issued)</li>
@@ -1285,7 +1441,7 @@
                     </ul>
                 </div>
                 
-                <div class="requirement-card">
+                <div class="requirement-card zoom-in">
                     <h3><i class="fas fa-car"></i> For Vehicle Loans</h3>
                     <ul class="requirement-list">
                         <li>Valid Driver's License</li>
@@ -1297,7 +1453,7 @@
                     </ul>
                 </div>
                 
-                <div class="requirement-card">
+                <div class="requirement-card zoom-in">
                     <h3><i class="fas fa-home"></i> For Housing Loans</h3>
                     <ul class="requirement-list">
                         <li>Property Documents</li>
@@ -1312,13 +1468,13 @@
         </div>
 
         <!-- FAQ Section -->
-        <div class="faq-section">
-            <h2 class="faq-title">FREQUENTLY ASKED QUESTIONS</h2>
+        <div class="faq-section fade-in">
+            <h2 class="faq-title slide-up">FREQUENTLY ASKED QUESTIONS</h2>
 
             <div class="faq-layout">
                 <!-- LEFT: FAQ -->
-                <div class="faq-container">
-                    <div class="faq-item">
+                <div class="faq-container stagger-children">
+                    <div class="faq-item zoom-in">
                         <div class="faq-question" onclick="toggleFAQ(this)">
                             <h3>How long does the loan approval process take?</h3>
                             <div class="faq-icon">
@@ -1330,7 +1486,7 @@
                         </div>
                     </div>
 
-                    <div class="faq-item">
+                    <div class="faq-item zoom-in">
                         <div class="faq-question" onclick="toggleFAQ(this)">
                             <h3>What documents are needed for auto loan applications?</h3>
                             <div class="faq-icon">
@@ -1342,7 +1498,7 @@
                         </div>
                     </div>
 
-                    <div class="faq-item">
+                    <div class="faq-item zoom-in">
                         <div class="faq-question" onclick="toggleFAQ(this)">
                             <h3>Can I get insurance without purchasing a vehicle or property?</h3>
                             <div class="faq-icon">
@@ -1354,7 +1510,7 @@
                         </div>
                     </div>
 
-                    <div class="faq-item">
+                    <div class="faq-item zoom-in">
                         <div class="faq-question" onclick="toggleFAQ(this)">
                             <h3>Do you offer services for business/commercial vehicles?</h3>
                             <div class="faq-icon">
@@ -1366,7 +1522,7 @@
                         </div>
                     </div>
 
-                    <div class="faq-item">
+                    <div class="faq-item zoom-in">
                         <div class="faq-question" onclick="toggleFAQ(this)">
                             <h3>What makes your services different from going directly to banks?</h3>
                             <div class="faq-icon">
@@ -1378,7 +1534,7 @@
                         </div>
                     </div>
 
-                    <div class="faq-item">
+                    <div class="faq-item zoom-in">
                         <div class="faq-question" onclick="toggleFAQ(this)">
                             <h3>What if I have a low credit score?</h3>
                             <div class="faq-icon">
@@ -1392,24 +1548,24 @@
                 </div>
 
                 <!-- RIGHT: IMAGE -->
-                <div class="faq-image">
+                <div class="faq-image fade-in-right">
                     <img src="img/faqs.jpg" alt="FAQ Illustration">
                 </div>
             </div>
         </div>
 
         <!-- CTA Section -->
-        <div class="cta-section">
-            <h2 class="cta-title">Ready to Get Started?</h2>
-            <p class="cta-description">
+        <div class="cta-section fade-in">
+            <h2 class="cta-title slide-up">Ready to Get Started?</h2>
+            <p class="cta-description fade-in">
                 Let us help you make your dreams a reality. Contact us today for a free consultation 
                 and discover how we can assist you with your financial needs.
             </p>
-            <div class="cta-buttons">
-                <button class="cta-btn" onclick="scrollToContact()">
+            <div class="cta-buttons stagger-children">
+                <button class="cta-btn zoom-in" onclick="scrollToContact()">
                     <i class="fas fa-phone-alt"></i> Contact Us Now
                 </button>
-                <button class="cta-btn secondary" onclick="window.location.href='index.php#contact'">
+                <button class="cta-btn secondary zoom-in" onclick="window.location.href='index.php#contact'">
                     <i class="fas fa-envelope"></i> Send Message
                 </button>
             </div>
@@ -1483,6 +1639,30 @@
                     item.classList.remove('active');
                 });
             }
+        });
+
+        // SCROLL ANIMATION FUNCTIONALITY
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .zoom-in, .rotate-in, .slide-up, .stagger-children');
+            
+            function checkScroll() {
+                const windowHeight = window.innerHeight;
+                const triggerPoint = windowHeight * 0.8; // 80% ng window height
+                
+                animatedElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    
+                    if (elementTop < triggerPoint) {
+                        element.classList.add('active');
+                    }
+                });
+            }
+            
+            // Initial check
+            checkScroll();
+            
+            // Check on scroll
+            window.addEventListener('scroll', checkScroll);
         });
     </script>
 </body>
