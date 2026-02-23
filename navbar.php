@@ -15,7 +15,7 @@
         </a>
         
         <div class="dropdown">
-            <a href="team.php" class="dropbtn">
+            <a href="javascript:void(0);" class="dropbtn">
                 <i class="fas fa-users"></i>
                 <span>Meet Our Team</span>
                 <i class="fas fa-chevron-down dropdown-icon"></i>
@@ -37,7 +37,7 @@
         </div>
         
         <div class="dropdown">
-            <a href="services.php" class="dropbtn">
+            <a href="javascript:void(0);" class="dropbtn">
                 <i class="fas fa-handshake"></i>
                 <span>Services</span>
                 <i class="fas fa-chevron-down dropdown-icon"></i>
@@ -101,7 +101,7 @@
     /* Import Font Awesome */
     @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
     
-    /* Root Variables - SAME COLORS */
+    /* Root Variables */
     :root {
         --primary-color: #eeb82e;
         --secondary-color: #2c2b29;
@@ -113,7 +113,7 @@
         --nav-height: 70px;
     }
 
-    /* Enhanced Navbar - MOBILE FIRST APPROACH */
+    /* Navbar Base Styles */
     .navbar {
         background-color: var(--secondary-color);
         height: var(--nav-height);
@@ -168,23 +168,20 @@
         text-decoration: none;
         transition: var(--transition);
         line-height: 1.2;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        max-width: 150px;
+        white-space: nowrap;
     }
 
     .brand-name:hover {
         color: var(--text-light);
     }
 
-    /* Navigation Links - Hidden on Mobile by Default */
+    /* Navigation Links - Mobile First */
     .nav-links {
         position: fixed;
         top: var(--nav-height);
         left: -100%;
         width: 85%;
+        max-width: 400px;
         height: calc(100vh - var(--nav-height));
         background: var(--secondary-color);
         flex-direction: column;
@@ -215,6 +212,9 @@
         border-radius: var(--border-radius);
         margin: 5px 0;
         border-left: 3px solid transparent;
+        cursor: pointer;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .nav-links > a i,
@@ -226,8 +226,7 @@
 
     .nav-links > a:hover,
     .nav-links > a.active,
-    .dropbtn:hover,
-    .dropdown.active .dropbtn {
+    .dropbtn:hover {
         color: var(--text-light);
         background: var(--hover-bg);
         border-left-color: var(--primary-color);
@@ -235,15 +234,21 @@
 
     .dropdown-icon {
         margin-left: auto;
-        transition: var(--transition);
+        transition: transform 0.3s ease;
+    }
+
+    .dropdown.active .dropdown-icon {
+        transform: rotate(180deg);
     }
 
     /* Dropdown Styles for Mobile */
     .dropdown-content {
         display: none;
         width: 100%;
-        margin-top: 10px;
+        margin-top: 5px;
+        margin-bottom: 5px;
         padding-left: 30px;
+        animation: slideDown 0.3s ease;
     }
 
     .dropdown.active .dropdown-content {
@@ -267,6 +272,7 @@
         background: var(--hover-bg);
         color: var(--text-light) !important;
         border-left-color: var(--primary-color);
+        padding-left: 25px;
     }
 
     .dropdown-content a i {
@@ -275,7 +281,7 @@
         text-align: center;
     }
 
-    /* Services Dropdown Grid for Mobile */
+    /* Services Dropdown Grid */
     .services-dropdown {
         padding-left: 20px;
     }
@@ -342,7 +348,7 @@
         z-index: 1000;
         opacity: 0;
         visibility: hidden;
-        transition: opacity 0.3s ease;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
     }
 
     .mobile-overlay.active {
@@ -351,7 +357,7 @@
     }
 
     /* ==================== */
-    /* TABLET STYLES (768px - 1024px) */
+    /* DESKTOP STYLES (768px and up) */
     /* ==================== */
     @media screen and (min-width: 768px) {
         .navbar {
@@ -370,13 +376,14 @@
         }
         
         .brand-name {
-            font-size: 1.1rem;
-            max-width: 180px;
+            font-size: 1.2rem;
+            white-space: nowrap;
         }
         
         .nav-links {
             position: static;
             width: auto;
+            max-width: none;
             height: auto;
             flex-direction: row;
             background: transparent;
@@ -384,6 +391,7 @@
             box-shadow: none;
             overflow: visible;
             display: flex;
+            align-items: center;
         }
         
         .nav-links > a,
@@ -392,8 +400,9 @@
             padding: 10px 15px;
             gap: 8px;
             border-left: none;
-            margin: 0;
+            margin: 0 2px;
             position: relative;
+            white-space: nowrap;
         }
         
         .nav-links > a i,
@@ -414,6 +423,7 @@
             border-radius: 2px;
         }
         
+        /* Dropdown Styles for Desktop */
         .dropdown {
             position: relative;
         }
@@ -422,19 +432,45 @@
             position: absolute;
             top: 100%;
             left: 0;
-            width: 250px;
+            min-width: 250px;
             background: var(--secondary-color);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             border-radius: var(--border-radius);
             padding: 10px 0;
-            margin-top: 10px;
-            display: none;
+            display: block;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
             z-index: 1000;
-            animation: fadeIn 0.3s ease;
+            pointer-events: none;
+            margin-top: 10px;
         }
         
+        /* Add a transparent bridge between dropdown button and content */
+        .dropdown::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: transparent;
+        }
+        
+        /* Show dropdown on hover with bridge */
+        .dropdown:hover .dropdown-content,
+        .dropdown-content:hover {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        
+        /* Services dropdown specific */
         .services-dropdown {
-            width: 500px !important;
+            width: 600px !important;
+            left: -250px;
             padding: 20px;
         }
         
@@ -447,20 +483,23 @@
             padding: 12px 15px !important;
             font-size: 0.9rem;
             border-left: none;
+            transition: all 0.3s ease;
         }
         
-        .dropdown:hover .dropdown-content {
-            display: block;
+        .dropdown-item:hover {
+            transform: translateX(5px);
         }
         
         .dropdown-content a {
             padding: 10px 20px;
             font-size: 0.9rem;
             border-left: none;
+            transition: all 0.3s ease;
         }
         
         .dropdown-content a:hover {
             padding-left: 25px;
+            background: var(--hover-bg);
         }
         
         .burger {
@@ -473,7 +512,7 @@
     }
 
     /* ==================== */
-    /* DESKTOP STYLES (1024px and up) */
+    /* LARGE DESKTOP STYLES (1024px and up) */
     /* ==================== */
     @media screen and (min-width: 1024px) {
         .navbar {
@@ -491,8 +530,7 @@
         }
         
         .brand-name {
-            font-size: 1.3rem;
-            max-width: none;
+            font-size: 1.4rem;
         }
         
         .nav-links {
@@ -506,7 +544,8 @@
         }
         
         .services-dropdown {
-            width: 600px !important;
+            width: 650px !important;
+            left: -300px;
         }
         
         .dropdown-grid {
@@ -514,7 +553,18 @@
         }
     }
 
-    /* Animation for mobile menu items */
+    /* Animations */
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
     @keyframes slideInLeft {
         from {
             opacity: 0;
@@ -536,36 +586,30 @@
     .nav-links.active > *:nth-child(3) { animation-delay: 0.2s; }
     .nav-links.active > *:nth-child(4) { animation-delay: 0.25s; }
 
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(-10px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    /* Improve touch targets for mobile */
+    /* Touch-friendly targets for mobile */
     @media (max-width: 767px) {
         .nav-links > a,
         .dropbtn,
         .dropdown-content a {
             min-height: 56px;
-            padding: 18px 20px !important;
+            padding: 16px 20px !important;
         }
         
         .dropdown-content a {
-            padding: 16px 25px !important;
+            padding: 14px 25px !important;
         }
         
-        /* Increase touch area for burger menu */
         .burger {
             width: 44px;
             height: 44px;
             padding: 11px;
         }
+    }
+
+    /* Prevent body scroll when mobile menu is open */
+    body.menu-open {
+        overflow: hidden;
+        height: 100vh;
     }
 </style>
 
@@ -576,9 +620,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileOverlay = document.getElementById('mobileOverlay');
     const navbar = document.querySelector('.navbar');
     const logoLink = document.getElementById('secretLogo');
+    let isMenuOpen = false;
     
     // Scroll effect
-    window.addEventListener('scroll', () => {
+    window.addEventListener('scroll', function() {
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
         } else {
@@ -586,14 +631,35 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Mobile menu toggle
-    // Mobile menu toggle
+    // Mobile menu functions
+    function openMobileMenu() {
+        navLinks.classList.add('active');
+        mobileOverlay.classList.add('active');
+        burgerMenu.classList.add('active');
+        document.body.classList.add('menu-open');
+        isMenuOpen = true;
+    }
+    
+    function closeMobileMenu() {
+        navLinks.classList.remove('active');
+        mobileOverlay.classList.remove('active');
+        burgerMenu.classList.remove('active');
+        document.body.classList.remove('menu-open');
+        isMenuOpen = false;
+        
+        // Close all dropdowns when closing mobile menu
+        document.querySelectorAll('.dropdown').forEach(dropdown => {
+            dropdown.classList.remove('active');
+        });
+    }
+    
+    // Burger menu click
     if (burgerMenu) {
-        burgerMenu.addEventListener('click', (e) => {
+        burgerMenu.addEventListener('click', function(e) {
+            e.preventDefault();
             e.stopPropagation();
-            const isActive = navLinks.classList.contains('active');
             
-            if (isActive) {
+            if (isMenuOpen) {
                 closeMobileMenu();
             } else {
                 openMobileMenu();
@@ -601,41 +667,38 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         // Close menu when clicking overlay
-        mobileOverlay.addEventListener('click', () => {
+        mobileOverlay.addEventListener('click', function() {
             closeMobileMenu();
         });
         
-        // Close menu when clicking logo on mobile
-        logoLink.addEventListener('click', (e) => {
-            if (window.innerWidth <= 767 && !e.altKey && !e.ctrlKey && !e.metaKey) {
-                closeMobileMenu();
-            }
-        });
-        
-        // Mobile dropdown toggle
-        document.querySelectorAll('.dropbtn').forEach(dropdown => {
+        // Mobile dropdown toggle - FIXED VERSION
+        document.querySelectorAll('.dropbtn').forEach(function(dropdown) {
             dropdown.addEventListener('click', function(e) {
                 if (window.innerWidth <= 767) {
                     e.preventDefault();
                     e.stopPropagation();
+                    
                     const dropdownParent = this.closest('.dropdown');
                     const isActive = dropdownParent.classList.contains('active');
                     
-                    // Close all other dropdowns
-                    document.querySelectorAll('.dropdown').forEach(d => {
-                        if (d !== dropdownParent) d.classList.remove('active');
-                    });
-                    
                     // Toggle current dropdown
-                    dropdownParent.classList.toggle('active');
-                    
-                    // Smooth scroll to dropdown if needed
-                    if (!isActive && dropdownParent.classList.contains('active')) {
-                        setTimeout(() => {
+                    if (isActive) {
+                        // If it's active, close it
+                        dropdownParent.classList.remove('active');
+                    } else {
+                        // Close all other dropdowns first
+                        document.querySelectorAll('.dropdown').forEach(function(d) {
+                            d.classList.remove('active');
+                        });
+                        
+                        // Open this dropdown
+                        dropdownParent.classList.add('active');
+                        
+                        // Smooth scroll to dropdown if needed
+                        setTimeout(function() {
                             dropdownParent.scrollIntoView({ 
                                 behavior: 'smooth', 
-                                block: 'nearest',
-                                inline: 'start'
+                                block: 'nearest'
                             });
                         }, 100);
                     }
@@ -643,76 +706,56 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
-        // Close menu when clicking links (except dropdowns)
-        document.querySelectorAll('.nav-links a').forEach(item => {
-            if (!item.classList.contains('dropbtn')) {
-                item.addEventListener('click', () => {
-                    if (window.innerWidth <= 767) {
-                        closeMobileMenu();
-                    }
-                });
+        // Close dropdowns when clicking anywhere else in mobile view
+        document.addEventListener('click', function(e) {
+            if (window.innerWidth <= 767) {
+                // Check if click is outside any dropdown
+                if (!e.target.closest('.dropdown')) {
+                    document.querySelectorAll('.dropdown').forEach(function(dropdown) {
+                        dropdown.classList.remove('active');
+                    });
+                }
             }
         });
         
+        // Close menu when clicking regular links (not dropdown toggles)
+        document.querySelectorAll('.nav-links a:not(.dropbtn)').forEach(function(item) {
+            item.addEventListener('click', function(e) {
+                if (window.innerWidth <= 767) {
+                    // Don't close if it's an anchor link within the same page
+                    const href = this.getAttribute('href');
+                    if (!href.startsWith('#')) {
+                        closeMobileMenu();
+                    } else {
+                        // For anchor links, close the dropdowns but keep menu open
+                        document.querySelectorAll('.dropdown').forEach(function(d) {
+                            d.classList.remove('active');
+                        });
+                    }
+                }
+            });
+        });
+        
         // Close menu on escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && isMenuOpen) {
                 closeMobileMenu();
             }
         });
         
-        // Prevent body scroll when menu is open
-        function preventBodyScroll(prevent) {
-            if (prevent) {
-                document.body.style.overflow = 'hidden';
-                document.body.style.height = '100vh';
-            } else {
-                document.body.style.overflow = '';
-                document.body.style.height = '';
-            }
-        }
-        
-        function openMobileMenu() {
-            navLinks.classList.add('active');
-            mobileOverlay.classList.add('active');
-            burgerMenu.classList.add('active');
-            preventBodyScroll(true);
-        }
-        
-        function closeMobileMenu() {
-            navLinks.classList.remove('active');
-            mobileOverlay.classList.remove('active');
-            burgerMenu.classList.remove('active');
-            preventBodyScroll(false);
-            
-            // Close all dropdowns
-            document.querySelectorAll('.dropdown').forEach(dropdown => {
-                dropdown.classList.remove('active');
-            });
-        }
-        
         // Close menu when window is resized to desktop
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 767) {
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 767 && isMenuOpen) {
                 closeMobileMenu();
             }
         });
     }
     
-    // Scroll effect for navbar
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
-    
     // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
-            if (href.startsWith('#') && href !== '#') {
+            if (href !== '#' && href.length > 1) {
                 e.preventDefault();
                 const target = document.querySelector(href);
                 if (target) {
@@ -720,17 +763,21 @@ document.addEventListener('DOMContentLoaded', function() {
                         behavior: 'smooth',
                         block: 'start'
                     });
+                    
+                    // Close mobile menu if open
+                    if (window.innerWidth <= 767 && isMenuOpen) {
+                        closeMobileMenu();
+                    }
                 }
             }
         });
     });
-
     
     // ============================================
     // SECRET ADMIN ACCESS FEATURES - SAME AS YOURS
     // ============================================
     
-    // Logo click handler with updated methods
+    // Logo click handler
     logoLink.addEventListener('click', function(e) {
         // Prevent default for special key combinations
         if (e.ctrlKey || e.altKey || e.metaKey) {
@@ -751,8 +798,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        // Regular click (no special keys) - normal navigation
-        // Let the default link behavior happen (go to index.php)
+        // Regular click - normal navigation (allow default)
     });
     
     // Prevent right-click context menu on logo
@@ -818,7 +864,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     color: 'white',
                     bgColor: '#6c757d',
                     action: function() {
-                        // Just close modal
                         const modal = document.querySelector('.secret-admin-modal');
                         if (modal) {
                             document.body.removeChild(modal);
@@ -853,7 +898,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     color: 'white',
                     bgColor: '#6c757d',
                     action: function() {
-                        // Just close modal
                         const modal = document.querySelector('.secret-admin-modal');
                         if (modal) {
                             document.body.removeChild(modal);
@@ -888,7 +932,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     color: 'white',
                     bgColor: '#6c757d',
                     action: function() {
-                        // Just close modal
                         const modal = document.querySelector('.secret-admin-modal');
                         if (modal) {
                             document.body.removeChild(modal);
