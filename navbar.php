@@ -15,21 +15,21 @@
         </a>
         
         <div class="dropdown">
-            <a href="javascript:void(0);" class="dropbtn">
+            <a href="team.php" class="dropbtn main-link" onclick="handleMainLinkClick(event, this, 'team')">
                 <i class="fas fa-users"></i>
                 <span>Meet Our Team</span>
                 <i class="fas fa-chevron-down dropdown-icon"></i>
             </a>
             <div class="dropdown-content">
-                <a href="team.php#ceo">
+                <a href="team.php#ceo" onclick="closeMobileMenuOnLinkClick()">
                     <i class="fas fa-crown"></i>
                     <span>CEO</span>
                 </a>
-                <a href="team.php#leadership">
+                <a href="team.php#leadership" onclick="closeMobileMenuOnLinkClick()">
                     <i class="fas fa-user-tie"></i>
                     <span>Leadership</span>
                 </a>
-                <a href="team.php#specialists">
+                <a href="team.php#specialists" onclick="closeMobileMenuOnLinkClick()">
                     <i class="fas fa-user-check"></i>
                     <span>Account Specialists</span>
                 </a>
@@ -37,42 +37,42 @@
         </div>
         
         <div class="dropdown">
-            <a href="javascript:void(0);" class="dropbtn">
+            <a href="services.php" class="dropbtn main-link" onclick="handleMainLinkClick(event, this, 'services')">
                 <i class="fas fa-handshake"></i>
                 <span>Services</span>
                 <i class="fas fa-chevron-down dropdown-icon"></i>
             </a>
             <div class="dropdown-content services-dropdown">
                 <div class="dropdown-grid">
-                    <a href="services.php#auto-acquisition" class="dropdown-item">
+                    <a href="services.php#auto-acquisition" class="dropdown-item" onclick="closeMobileMenuOnLinkClick()">
                         <i class="fas fa-car"></i>
                         <span>Auto Acquisition</span>
                     </a>
-                    <a href="services.php#housing" class="dropdown-item">
+                    <a href="services.php#housing" class="dropdown-item" onclick="closeMobileMenuOnLinkClick()">
                         <i class="fas fa-home"></i>
                         <span>House & Lot</span>
                     </a>
-                    <a href="services.php#car-insurance" class="dropdown-item">
+                    <a href="services.php#car-insurance" class="dropdown-item" onclick="closeMobileMenuOnLinkClick()">
                         <i class="fas fa-car-crash"></i>
                         <span>Car Insurance</span>
                     </a>
-                    <a href="services.php#housing-insurance" class="dropdown-item">
+                    <a href="services.php#housing-insurance" class="dropdown-item" onclick="closeMobileMenuOnLinkClick()">
                         <i class="fas fa-house-damage"></i>
                         <span>Housing Insurance</span>
                     </a>
-                    <a href="services.php#life-insurance" class="dropdown-item">
+                    <a href="services.php#life-insurance" class="dropdown-item" onclick="closeMobileMenuOnLinkClick()">
                         <i class="fas fa-heartbeat"></i>
                         <span>Life Insurance</span>
                     </a>
-                    <a href="services.php#second-hand" class="dropdown-item">
+                    <a href="services.php#second-hand" class="dropdown-item" onclick="closeMobileMenuOnLinkClick()">
                         <i class="fas fa-car-side"></i>
                         <span>Second Hand Car</span>
                     </a>
-                    <a href="services.php#sangla" class="dropdown-item">
+                    <a href="services.php#sangla" class="dropdown-item" onclick="closeMobileMenuOnLinkClick()">
                         <i class="fas fa-file-contract"></i>
                         <span>Sangla Title/ORCR</span>
                     </a>
-                    <a href="services.php#trade-in" class="dropdown-item">
+                    <a href="services.php#trade-in" class="dropdown-item" onclick="closeMobileMenuOnLinkClick()">
                         <i class="fas fa-exchange-alt"></i>
                         <span>Trade In</span>
                     </a>
@@ -80,21 +80,21 @@
             </div>
         </div>
         
-        <a href="contact.php" <?php echo (basename($_SERVER['PHP_SELF']) == 'contact.php') ? 'class="active"' : ''; ?>>
+        <a href="contact.php" <?php echo (basename($_SERVER['PHP_SELF']) == 'contact.php') ? 'class="active"' : ''; ?> onclick="closeMobileMenuOnLinkClick()">
             <i class="fas fa-phone-alt"></i>
             <span>Contact</span>
         </a>
     </div>
 
     <!-- Burger Menu -->
-    <div class="burger" id="burgerMenu">
+    <div class="burger" id="burgerMenu" onclick="toggleMobileMenu(event)">
         <span class="burger-line"></span>
         <span class="burger-line"></span>
         <span class="burger-line"></span>
     </div>
     
     <!-- Mobile Menu Overlay -->
-    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
 </nav>
 
 <style>
@@ -614,13 +614,104 @@
 </style>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const burgerMenu = document.getElementById('burgerMenu');
+// Global variables
+let isMenuOpen = false;
+
+// Toggle mobile menu
+function toggleMobileMenu(event) {
+    if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
+    
     const navLinks = document.getElementById('navLinks');
     const mobileOverlay = document.getElementById('mobileOverlay');
+    const burgerMenu = document.getElementById('burgerMenu');
+    
+    if (isMenuOpen) {
+        closeMobileMenu();
+    } else {
+        openMobileMenu();
+    }
+}
+
+// Open mobile menu
+function openMobileMenu() {
+    const navLinks = document.getElementById('navLinks');
+    const mobileOverlay = document.getElementById('mobileOverlay');
+    const burgerMenu = document.getElementById('burgerMenu');
+    
+    navLinks.classList.add('active');
+    mobileOverlay.classList.add('active');
+    burgerMenu.classList.add('active');
+    document.body.classList.add('menu-open');
+    isMenuOpen = true;
+}
+
+// Close mobile menu
+function closeMobileMenu() {
+    const navLinks = document.getElementById('navLinks');
+    const mobileOverlay = document.getElementById('mobileOverlay');
+    const burgerMenu = document.getElementById('burgerMenu');
+    
+    navLinks.classList.remove('active');
+    mobileOverlay.classList.remove('active');
+    burgerMenu.classList.remove('active');
+    document.body.classList.remove('menu-open');
+    isMenuOpen = false;
+    
+    // Close all dropdowns when closing mobile menu
+    document.querySelectorAll('.dropdown').forEach(dropdown => {
+        dropdown.classList.remove('active');
+    });
+}
+
+// Close mobile menu when clicking on links
+function closeMobileMenuOnLinkClick() {
+    if (window.innerWidth <= 767) {
+        setTimeout(() => {
+            closeMobileMenu();
+        }, 100);
+    }
+}
+
+// Handle main link click (Meet Our Team or Services)
+function handleMainLinkClick(event, element, page) {
+    if (window.innerWidth <= 767) {
+        // Check if click is on the icon or text area (not specifically on the chevron)
+        const isChevron = event.target.classList.contains('fa-chevron-down') || 
+                         event.target.classList.contains('dropdown-icon');
+        
+        if (isChevron) {
+            // If chevron is clicked, toggle dropdown
+            event.preventDefault();
+            event.stopPropagation();
+            
+            const dropdownParent = element.closest('.dropdown');
+            const isActive = dropdownParent.classList.contains('active');
+            
+            if (isActive) {
+                dropdownParent.classList.remove('active');
+            } else {
+                document.querySelectorAll('.dropdown').forEach(function(d) {
+                    d.classList.remove('active');
+                });
+                dropdownParent.classList.add('active');
+            }
+        } else {
+            // If main text/icon is clicked, navigate to page
+            // Let the default href work, but close mobile menu
+            closeMobileMenu();
+        }
+    } else {
+        // On desktop, always navigate to page
+        // Let default href work
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
     const navbar = document.querySelector('.navbar');
     const logoLink = document.getElementById('secretLogo');
-    let isMenuOpen = false;
     
     // Scroll effect
     window.addEventListener('scroll', function() {
@@ -631,125 +722,38 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Mobile menu functions
-    function openMobileMenu() {
-        navLinks.classList.add('active');
-        mobileOverlay.classList.add('active');
-        burgerMenu.classList.add('active');
-        document.body.classList.add('menu-open');
-        isMenuOpen = true;
-    }
-    
-    function closeMobileMenu() {
-        navLinks.classList.remove('active');
-        mobileOverlay.classList.remove('active');
-        burgerMenu.classList.remove('active');
-        document.body.classList.remove('menu-open');
-        isMenuOpen = false;
-        
-        // Close all dropdowns when closing mobile menu
-        document.querySelectorAll('.dropdown').forEach(dropdown => {
-            dropdown.classList.remove('active');
-        });
-    }
-    
-    // Burger menu click
-    if (burgerMenu) {
-        burgerMenu.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            if (isMenuOpen) {
-                closeMobileMenu();
-            } else {
-                openMobileMenu();
+    // Close dropdowns when clicking anywhere else in mobile view
+    document.addEventListener('click', function(e) {
+        if (window.innerWidth <= 767) {
+            // Check if click is outside any dropdown
+            if (!e.target.closest('.dropdown')) {
+                document.querySelectorAll('.dropdown').forEach(function(dropdown) {
+                    dropdown.classList.remove('active');
+                });
             }
-        });
-        
-        // Close menu when clicking overlay
-        mobileOverlay.addEventListener('click', function() {
+        }
+    });
+    
+    // Close menu on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && isMenuOpen) {
             closeMobileMenu();
-        });
+        }
+    });
+    
+    // Close menu when window is resized to desktop
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 767 && isMenuOpen) {
+            closeMobileMenu();
+        }
         
-        // Mobile dropdown toggle - FIXED VERSION
-        document.querySelectorAll('.dropbtn').forEach(function(dropdown) {
-            dropdown.addEventListener('click', function(e) {
-                if (window.innerWidth <= 767) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    
-                    const dropdownParent = this.closest('.dropdown');
-                    const isActive = dropdownParent.classList.contains('active');
-                    
-                    // Toggle current dropdown
-                    if (isActive) {
-                        // If it's active, close it
-                        dropdownParent.classList.remove('active');
-                    } else {
-                        // Close all other dropdowns first
-                        document.querySelectorAll('.dropdown').forEach(function(d) {
-                            d.classList.remove('active');
-                        });
-                        
-                        // Open this dropdown
-                        dropdownParent.classList.add('active');
-                        
-                        // Smooth scroll to dropdown if needed
-                        setTimeout(function() {
-                            dropdownParent.scrollIntoView({ 
-                                behavior: 'smooth', 
-                                block: 'nearest'
-                            });
-                        }, 100);
-                    }
-                }
+        // Reset dropdowns when switching to desktop
+        if (window.innerWidth > 767) {
+            document.querySelectorAll('.dropdown').forEach(function(d) {
+                d.classList.remove('active');
             });
-        });
-        
-        // Close dropdowns when clicking anywhere else in mobile view
-        document.addEventListener('click', function(e) {
-            if (window.innerWidth <= 767) {
-                // Check if click is outside any dropdown
-                if (!e.target.closest('.dropdown')) {
-                    document.querySelectorAll('.dropdown').forEach(function(dropdown) {
-                        dropdown.classList.remove('active');
-                    });
-                }
-            }
-        });
-        
-        // Close menu when clicking regular links (not dropdown toggles)
-        document.querySelectorAll('.nav-links a:not(.dropbtn)').forEach(function(item) {
-            item.addEventListener('click', function(e) {
-                if (window.innerWidth <= 767) {
-                    // Don't close if it's an anchor link within the same page
-                    const href = this.getAttribute('href');
-                    if (!href.startsWith('#')) {
-                        closeMobileMenu();
-                    } else {
-                        // For anchor links, close the dropdowns but keep menu open
-                        document.querySelectorAll('.dropdown').forEach(function(d) {
-                            d.classList.remove('active');
-                        });
-                    }
-                }
-            });
-        });
-        
-        // Close menu on escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && isMenuOpen) {
-                closeMobileMenu();
-            }
-        });
-        
-        // Close menu when window is resized to desktop
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 767 && isMenuOpen) {
-                closeMobileMenu();
-            }
-        });
-    }
+        }
+    });
     
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
