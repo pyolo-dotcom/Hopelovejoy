@@ -18,11 +18,23 @@
             font-family: Arial, sans-serif;
         }
 
+        /* === FIXED: Para iisa lang ang scrollbar (default browser scroll lang) === */
+        html {
+            overflow-x: hidden;
+            overflow-y: auto; /* Default browser scroll */
+            width: 100%;
+            height: 100%;
+        }
+
         body {
             background-color: white;
-            min-height: 100vh;
+            min-height: 100%;
             display: flex;
             flex-direction: column;
+            overflow-x: hidden;
+            overflow-y: visible; /* Huwag gumawa ng sariling scroll */
+            width: 100%;
+            position: relative;
         }
 
         /* Main content styling */
@@ -32,6 +44,7 @@
             margin: 0 auto;
             flex: 1;
             width: 100%;
+            overflow: visible; /* IMPORTANT: Huwag magkaroon ng scroll */
         }
 
         /* Hero Carousel Section */
@@ -42,7 +55,8 @@
             min-height: 80vh;
             background-color: white;
             border-radius: 15px;
-            overflow: hidden;
+            overflow: hidden; /* Keep this for carousel */
+            width: 100%;
         }
 
         .hero-carousel-container {
@@ -56,6 +70,7 @@
             display: flex;
             height: 100%;
             transition: transform 0.8s ease-in-out;
+            width: 100%;
         }
 
         .hero-carousel-slide {
@@ -67,11 +82,13 @@
             padding: 0 50px;
             gap: 50px;
             flex-wrap: wrap;
+            width: 100%;
         }
 
         .hero-text-content {
             flex: 1;
             min-width: 300px;
+            max-width: 100%;
         }
 
         .hero-text-content h1 {
@@ -131,6 +148,8 @@
             justify-content: center;
             align-items: center;
             z-index: 100;
+            width: 100%;
+            pointer-events: none;
         }
 
         /* Line style dots container */
@@ -142,6 +161,10 @@
             border-radius: 25px;
             backdrop-filter: blur(8px);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            pointer-events: auto;
+            max-width: 90%;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         /* Line style dots (pahabang rectangles) */
@@ -157,6 +180,7 @@
             padding: 0;
             margin: 0;
             overflow: hidden;
+            flex-shrink: 0;
         }
 
         /* Hover effect para sa lines */
@@ -172,7 +196,6 @@
             box-shadow: 0 0 10px rgba(238, 184, 46, 0.6);
         }
 
-        /* Optional: Add a subtle animation to the active line */
         .hero-carousel-dot.active::after {
             content: '';
             position: absolute;
@@ -372,6 +395,8 @@
             padding: 80px 20px;
             background-color: white;
             text-align: center;
+            width: 100%;
+            overflow: visible; /* IMPORTANT: Huwag magkaroon ng scroll */
         }
 
         .about-us-title {
@@ -391,11 +416,13 @@
             align-items: center;
             gap: 50px;
             flex-wrap: wrap;
+            width: 100%;
         }
 
         .about-us-text {
             flex: 1;
             min-width: 300px;
+            max-width: 100%;
             text-align: left;
         }
 
@@ -410,6 +437,7 @@
         .about-us-map {
             flex: 1;
             min-width: 300px;
+            max-width: 100%;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
@@ -441,6 +469,8 @@
             background-color: white;
             text-align: center;
             position: relative;
+            width: 100%;
+            overflow: visible; /* IMPORTANT: Huwag magkaroon ng scroll */
         }
 
         .sales-title {
@@ -458,20 +488,23 @@
             position: relative;
             max-width: 1200px;
             margin: 0 auto;
-            overflow: hidden;
+            overflow: hidden; /* Keep this for carousel */
             padding: 0 60px;
+            width: 100%;
         }
 
         .carousel-track {
             display: flex;
             transition: transform 0.5s ease-in-out;
             gap: 30px;
+            width: 100%;
         }
 
         .carousel-slide {
             min-width: calc(33.333% - 20px);
             flex: 0 0 auto;
             transition: transform 0.3s ease;
+            max-width: 100%;
         }
 
         .carousel-slide:hover {
@@ -485,12 +518,13 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             height: 100%;
             position: relative;
+            width: 100%;
         }
 
         /* MALAKING IMAGE - PINALAKI KO DITO */
         .item-img {
             width: 100%;
-            height: 350px; /* Pinalaki mula 200px */
+            height: 350px;
             overflow: hidden;
         }
 
@@ -501,9 +535,53 @@
             transition: transform 0.5s ease;
         }
 
-        /* Hover effect para mas lalong lumaki ang image */
         .item-img:hover img {
             transform: scale(1.05);
+        }
+
+        .item-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .item-info h3 {
+            font-family: 'Roboto Serif', serif;
+            font-size: 1.2rem;
+            color: #2c2b29;
+            margin-bottom: 5px;
+        }
+
+        .item-category {
+            display: inline-block;
+            background: #eeb82e;
+            color: #2c2b29;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .item-description {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .item-price {
+            font-weight: 700;
+            color: #2c2b29;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .item-date {
+            color: #999;
+            font-size: 0.85rem;
+            font-style: italic;
         }
 
         /* Carousel Navigation Buttons */
@@ -546,6 +624,7 @@
             justify-content: center;
             gap: 10px;
             margin-top: 40px;
+            flex-wrap: wrap;
         }
 
         .carousel-dot {
@@ -568,6 +647,8 @@
             padding: 80px 20px;
             background-color: white;
             text-align: center;
+            width: 100%;
+            overflow: visible; /* IMPORTANT: Huwag magkaroon ng scroll */
         }
 
         .awards-title {
@@ -587,6 +668,7 @@
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 40px;
             padding: 20px;
+            width: 100%;
         }
 
         .award-card {
@@ -599,6 +681,7 @@
             flex-direction: column;
             height: 100%;
             border: 1px solid #f0f0f0;
+            width: 100%;
         }
 
         .award-card:hover {
@@ -629,7 +712,6 @@
             background: #eeb82e;
         }
 
-        /* NEW: Award Image Container */
         .award-image-container {
             position: relative;
             width: 100%;
@@ -639,7 +721,7 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            cursor: pointer; /* Add this line */
+            cursor: pointer;
         }
 
         .award-image-bg {
@@ -721,31 +803,8 @@
             gap: 15px;
             padding-top: 20px;
             border-top: 1px solid #eee;
-        }
-
-        .issuer-icon {
-            width: 50px;
-            height: 50px;
-            background: #f8f8f8;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
+            flex-wrap: wrap;
             justify-content: center;
-            font-size: 1.5rem;
-            color: #eeb82e;
-        }
-
-        .issuer-info h4 {
-            color: #2c2b29;
-            font-family: 'Roboto Serif', serif;
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
-
-        .issuer-info p {
-            color: #777;
-            font-size: 0.9rem;
-            margin: 0;
         }
 
         .issuer-icon {
@@ -816,6 +875,7 @@
             border-top: 1px solid #eee;
             color: #777;
             font-size: 0.9rem;
+            flex-wrap: wrap;
         }
 
         .partner-years i {
@@ -827,6 +887,8 @@
             padding: 80px 20px;
             background-color: transparent;
             text-align: center;
+            width: 100%;
+            overflow: visible; /* IMPORTANT: Huwag magkaroon ng scroll */
         }
 
         .mission-vision-title {
@@ -845,11 +907,13 @@
             display: flex;
             gap: 40px;
             flex-wrap: wrap;
+            width: 100%;
         }
 
         .mission-card, .vision-card {
             flex: 1;
             min-width: 300px;
+            max-width: 100%;
             background: white;
             border-radius: 15px;
             overflow: hidden;
@@ -987,6 +1051,8 @@
         .affiliated-section {
             padding: 80px 20px;
             text-align: center;
+            width: 100%;
+            overflow: visible; /* IMPORTANT: Huwag magkaroon ng scroll */
         }
 
         .affiliated-title {
@@ -1006,6 +1072,7 @@
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
             padding: 20px;
+            width: 100%;
         }
 
         .affiliated-card {
@@ -1019,6 +1086,7 @@
             height: 100%;
             border: 1px solid #f0f0f0;
             padding: 30px;
+            width: 100%;
         }
 
         .affiliated-card:hover {
@@ -1100,6 +1168,7 @@
             border-top: 1px solid #eee;
             color: #777;
             font-size: 0.9rem;
+            flex-wrap: wrap;
         }
 
         .affiliated-years i {
@@ -1117,7 +1186,6 @@
             transform: scale(1.05);
         }
 
-        /* Puwede mong i-update ang .affiliated-logo para mas maayos ang presentasyon */
         .affiliated-logo {
             width: 120px;
             height: 120px;
@@ -1143,6 +1211,8 @@
             padding: 80px 20px;
             background-color: white;
             text-align: center;
+            width: 100%;
+            overflow: visible; /* IMPORTANT: Huwag magkaroon ng scroll */
         }
 
         .bank-partners-title {
@@ -1162,6 +1232,7 @@
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 40px;
             padding: 20px;
+            width: 100%;
         }
 
         .bank-logo {
@@ -1178,6 +1249,7 @@
             position: relative;
             overflow: hidden;
             cursor: default;
+            width: 100%;
         }
 
         .bank-logo::before {
@@ -1233,52 +1305,7 @@
             filter: grayscale(0%);
         }
 
-        .item-info {
-            padding: 20px;
-            text-align: center;
-        }
-
-        .item-info h3 {
-            font-family: 'Roboto Serif', serif;
-            font-size: 1.2rem;
-            color: #2c2b29;
-            margin-bottom: 5px;
-        }
-
-        .item-category {
-            display: inline-block;
-            background: #eeb82e;
-            color: #2c2b29;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-
-        .item-description {
-            color: #666;
-            font-size: 0.9rem;
-            line-height: 1.5;
-            margin-bottom: 10px;
-            text-align: left;
-        }
-
-        .item-price {
-            font-weight: 700;
-            color: #2c2b29;
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
-
-        .item-date {
-            color: #999;
-            font-size: 0.85rem;
-            font-style: italic;
-        }
-
-        /* MODAL STYLES - UPDATED FOR 6.3 INCH SCREEN */
+        /* MODAL STYLES */
         .modal {
             display: none;
             position: fixed;
@@ -1402,7 +1429,7 @@
             opacity: 0.9;
         }
 
-        /* Mobile Responsive Modal Styles - 6.3 inch screen specific */
+        /* Mobile Responsive Modal Styles */
         @media screen and (max-width: 768px) {
             .modal-image {
                 max-width: 98%;
@@ -1496,7 +1523,6 @@
             }
         }
 
-        /* Award Image Container - ADD CLICK CURSOR */
         .award-image-container {
             position: relative;
             width: 100%;
@@ -1506,7 +1532,7 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            cursor: pointer; /* Add this line */
+            cursor: pointer;
         }
 
         .award-image-container:hover .award-image-bg {
@@ -1526,12 +1552,12 @@
             font-size: 0.8rem;
             z-index: 10;
             border: 2px solid #eeb82e;
+            white-space: nowrap;
         }
 
         /* Mobile Responsive Styles */
         @media screen and (max-width: 768px) {
 
-            /* Adjust logo size on mobile */
             .logo-circle {
                 width: 120px;
                 height: 120px;
@@ -1541,12 +1567,10 @@
                 width: 90px;
             }
 
-            /* Adjust brand name font size on smaller screens */
             .brand-name {
                 font-size: 1rem;
             }
 
-            /* Hero Carousel mobile adjustments */
             .hero-carousel-section {
                 min-height: 70vh;
             }
@@ -1603,7 +1627,6 @@
                 font-size: 2.2rem;
             }
 
-            /* Carousel adjustments for mobile */
             .carousel-slide {
                 min-width: calc(50% - 15px);
             }
@@ -1618,7 +1641,6 @@
                 font-size: 1rem;
             }
 
-            /* Awards section mobile adjustments */
             .awards-container {
                 grid-template-columns: 1fr;
                 gap: 30px;
@@ -1626,21 +1648,11 @@
             }
 
             .award-card {
-                margin: 0 10px;
+                margin: 0;
             }
 
             .awards-title {
                 font-size: 2.2rem;
-            }
-
-            .awards-container {
-                grid-template-columns: 1fr;
-                gap: 30px;
-                padding: 10px;
-            }
-
-            .award-card {
-                margin: 0 10px;
             }
 
             .award-header {
@@ -1734,9 +1746,8 @@
                 font-size: 1.3rem;
             }
 
-            /* Adjust image height for tablet */
             .item-img {
-                height: 300px; /* Bahagyang mas mababa para sa tablet */
+                height: 300px;
             }
             
             .carousel-slide {
@@ -1753,7 +1764,6 @@
                 font-size: 1rem;
             }
 
-            /* Bank partners mobile adjustments */
             .bank-partners-container {
                 grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
                 gap: 20px;
@@ -1787,6 +1797,8 @@
             .award-image-container:hover::after {
                 font-size: 0.7rem;
                 padding: 6px 12px;
+                white-space: normal;
+                width: 80%;
             }
         }
 
@@ -1807,7 +1819,6 @@
                 line-height: 1.1;
             }
 
-            /* Footer mobile adjustments for very small screens */
             .footer-col {
                 flex: 0 0 100%;
                 min-width: 100%;
@@ -1817,7 +1828,6 @@
                 padding: 30px 0;
             }
 
-            /* Hero Carousel very small screens */
             .hero-carousel-section {
                 min-height: 60vh;
             }
@@ -1845,13 +1855,12 @@
                 border-radius: 2px;
             }
 
-            /* Carousel adjustments for very small screens */
             .carousel-slide {
                 min-width: 100%;
             }
             
             .item-img {
-                height: 250px; /* Slightly smaller for mobile but still larger than original */
+                height: 250px;
             }
             
             .carousel-slide {
@@ -1862,7 +1871,6 @@
                 padding: 0 40px;
             }
 
-            /* Awards section very small screens */
             .award-header {
                 padding: 20px;
             }
@@ -1906,7 +1914,7 @@
             }
             
             .partner-card {
-                margin: 0 10px;
+                margin: 0;
             }
 
             .mission-vision-title {
@@ -1935,10 +1943,9 @@
             }
             
             .affiliated-card {
-                margin: 0 10px;
+                margin: 0;
             }
 
-            /* Bank partners very small screens */
             .bank-partners-title {
                 font-size: 1.8rem;
                 margin-bottom: 30px;
@@ -1973,7 +1980,6 @@
             }
         }
 
-        /* Dropdown Styles */
         .dropdown {
             position: relative;
             display: inline-block;
@@ -2171,6 +2177,12 @@
                             </div>';
                         }
                     } else {                        
+                        $default_images = [
+                            'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80',
+                            'https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80',
+                            'https://images.unsplash.com/photo-1556189250-72ba954cfc2b?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80'
+                        ];
+                        
                         foreach ($default_images as $image) {
                             echo '
                             <div class="carousel-slide">
@@ -2239,7 +2251,9 @@
                             </div>
                         </div>';
                     }
-                }   
+                } else {
+                    echo '<p>No awards to display.</p>';
+                }
                 ?>
             </div>
         </div>
@@ -2267,6 +2281,7 @@
                         </div>
                     <?php endwhile; ?>
                 <?php else: ?>
+                    <p>No affiliated banks to display.</p>
                 <?php endif; ?>
             </div>
         </div>
@@ -2291,6 +2306,7 @@
                         </div>
                     <?php endwhile; ?>
                 <?php else: ?>
+                    <p>No affiliated car companies to display.</p>
                 <?php endif; ?>
             </div>
         </div>
@@ -2334,6 +2350,30 @@
                         </div>';
                     }
                 } else {
+                    $default_houses = [
+                        [
+                            'name' => 'DMCI Homes',
+                            'category' => 'Real Estate Developer',
+                            'description' => 'Premium residential condominiums and house and lot developments.',
+                            'image' => 'https://via.placeholder.com/100x100?text=DMCI',
+                            'years' => 'Partner since 2022'
+                        ],
+                        [
+                            'name' => 'Ayala Land',
+                            'category' => 'Real Estate Developer',
+                            'description' => 'Masterplanned communities and residential developments.',
+                            'image' => 'https://via.placeholder.com/100x100?text=Ayala',
+                            'years' => 'Partner since 2022'
+                        ],
+                        [
+                            'name' => 'SMDC',
+                            'category' => 'Real Estate Developer',
+                            'description' => 'Condominium developments in prime locations.',
+                            'image' => 'https://via.placeholder.com/100x100?text=SMDC',
+                            'years' => 'Partner since 2023'
+                        ]
+                    ];
+                    
                     foreach ($default_houses as $house) {
                         echo '
                         <div class="affiliated-card">
@@ -2455,13 +2495,13 @@
             heroTrack.addEventListener('touchstart', (e) => {
                 touchStartX = e.changedTouches[0].screenX;
                 stopHeroAutoPlay();
-            });
+            }, { passive: true });
             
             heroTrack.addEventListener('touchend', (e) => {
                 touchEndX = e.changedTouches[0].screenX;
                 handleSwipe();
                 startHeroAutoPlay();
-            });
+            }, { passive: true });
             
             function handleSwipe() {
                 const swipeThreshold = 50;
@@ -2479,15 +2519,28 @@
             
             // Pause auto-play on hover
             const heroSection = document.querySelector('.hero-carousel-section');
-            heroSection.addEventListener('mouseenter', stopHeroAutoPlay);
-            heroSection.addEventListener('mouseleave', startHeroAutoPlay);
+            if (heroSection) {
+                heroSection.addEventListener('mouseenter', stopHeroAutoPlay);
+                heroSection.addEventListener('mouseleave', startHeroAutoPlay);
+            }
             
             // Pause auto-play when user interacts with line dots
-            heroDotsContainer.addEventListener('mouseenter', stopHeroAutoPlay);
-            heroDotsContainer.addEventListener('mouseleave', startHeroAutoPlay);
+            if (heroDotsContainer) {
+                heroDotsContainer.addEventListener('mouseenter', stopHeroAutoPlay);
+                heroDotsContainer.addEventListener('mouseleave', startHeroAutoPlay);
+            }
             
             // Handle window resize
-            window.addEventListener('resize', updateHeroCarousel);
+            let resizeTimer;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(function() {
+                    updateHeroCarousel();
+                    if (typeof updateCarousel === 'function') updateCarousel();
+                    if (typeof updateSlidesPerView === 'function') updateSlidesPerView();
+                    if (typeof createDots === 'function') createDots();
+                }, 250);
+            });
             
             // Initialize hero carousel
             createHeroDots();
@@ -2518,6 +2571,7 @@
             
             // Create dots
             function createDots() {
+                if (!dotsContainer) return;
                 dotsContainer.innerHTML = '';
                 const totalDots = Math.ceil(slides.length / slidesPerView);
                 
@@ -2532,16 +2586,20 @@
             
             // Update carousel position
             function updateCarousel() {
+                if (slides.length === 0) return;
+                
                 const slideWidth = slides[0].offsetWidth;
                 const offset = -currentIndex * (slideWidth + 30); // 30px is the gap
                 track.style.transform = `translateX(${offset}px)`;
                 
                 // Update dots
-                const dots = Array.from(dotsContainer.children);
-                const activeDotIndex = Math.floor(currentIndex / slidesPerView);
-                dots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === activeDotIndex);
-                });
+                if (dotsContainer) {
+                    const dots = Array.from(dotsContainer.children);
+                    const activeDotIndex = Math.floor(currentIndex / slidesPerView);
+                    dots.forEach((dot, index) => {
+                        dot.classList.toggle('active', index === activeDotIndex);
+                    });
+                }
             }
             
             function goToSlide(index) {
@@ -2584,42 +2642,24 @@
             }
             
             // Event listeners
-            nextBtn.addEventListener('click', nextSlide);
-            prevBtn.addEventListener('click', prevSlide);
+            if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+            if (prevBtn) prevBtn.addEventListener('click', prevSlide);
             
             // Auto-play functionality
             let autoPlayInterval = setInterval(nextSlide, 4000);
             
             // Pause auto-play on hover
-            track.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
-            track.addEventListener('mouseleave', () => {
-                autoPlayInterval = setInterval(nextSlide, 4000);
-            });
-            
-            // Handle window resize
-            window.addEventListener('resize', () => {
-                updateSlidesPerView();
-                createDots();
-                updateCarousel();
-                updateHeroCarousel();
-            });
+            if (track) {
+                track.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+                track.addEventListener('mouseleave', () => {
+                    autoPlayInterval = setInterval(nextSlide, 4000);
+                });
+            }
             
             // Initialize sales carousel
             updateSlidesPerView();
             createDots();
             updateCarousel();
-
-            document.querySelectorAll('.partner-card').forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    const logo = this.querySelector('.partner-logo');
-                    logo.style.transform = 'scale(1.05)';
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    const logo = this.querySelector('.partner-logo');
-                    logo.style.transform = 'scale(1)';
-                });
-            });
 
             // SCROLL ANIMATION FUNCTIONALITY
             const animatedElements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .zoom-in, .rotate-in, .slide-up, .stagger-children');
@@ -2640,8 +2680,17 @@
             // Initial check
             checkScroll();
             
-            // Check on scroll
-            window.addEventListener('scroll', checkScroll);
+            // Check on scroll with throttling for performance
+            let isScrolling = false;
+            window.addEventListener('scroll', function() {
+                if (!isScrolling) {
+                    window.requestAnimationFrame(function() {
+                        checkScroll();
+                        isScrolling = false;
+                    });
+                    isScrolling = true;
+                }
+            });
         });
 
         // MODAL FUNCTIONALITY - UPDATED FOR 6.3 INCH SCREEN
@@ -2691,37 +2740,39 @@
             const modal = document.getElementById('imageModal');
             const closeBtn = document.querySelector('.close-modal');
             
-            // Close modal when clicking X
-            closeBtn.addEventListener('click', closeModal);
-            
-            // Close modal when clicking outside the image
-            modal.addEventListener('click', function(event) {
-                if (event.target === modal) {
-                    closeModal();
-                }
-            });
-            
-            // Add touch support for mobile
-            modal.addEventListener('touchstart', function(event) {
-                if (event.target === modal) {
-                    closeModal();
-                }
-            });
-            
-            // Prevent zooming issues on mobile
-            modal.addEventListener('touchmove', function(event) {
-                if (event.target === modal || event.target.classList.contains('modal-image')) {
-                    event.preventDefault();
-                }
-            }, { passive: false });
-            
-            // Handle orientation change
-            window.addEventListener('resize', function() {
-                if (modal.style.display === 'block') {
-                    const modalImg = document.getElementById('modalImage');
-                    modalImg.style.maxHeight = window.innerHeight * 0.85 + 'px';
-                }
-            });
+            if (modal && closeBtn) {
+                // Close modal when clicking X
+                closeBtn.addEventListener('click', closeModal);
+                
+                // Close modal when clicking outside the image
+                modal.addEventListener('click', function(event) {
+                    if (event.target === modal) {
+                        closeModal();
+                    }
+                });
+                
+                // Add touch support for mobile
+                modal.addEventListener('touchstart', function(event) {
+                    if (event.target === modal) {
+                        closeModal();
+                    }
+                }, { passive: true });
+                
+                // Prevent zooming issues on mobile
+                modal.addEventListener('touchmove', function(event) {
+                    if (event.target === modal || event.target.classList.contains('modal-image')) {
+                        event.preventDefault();
+                    }
+                }, { passive: false });
+                
+                // Handle orientation change
+                window.addEventListener('resize', function() {
+                    if (modal.style.display === 'block') {
+                        const modalImg = document.getElementById('modalImage');
+                        modalImg.style.maxHeight = window.innerHeight * 0.85 + 'px';
+                    }
+                });
+            }
         });
     </script>
 

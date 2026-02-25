@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Services - Hope Account Specialist</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&family=WindSong:wght@400;500&display=swap" rel="stylesheet">
@@ -1083,7 +1085,7 @@
                         </div>
                         
                         <div class="service-cta">
-                            <button class="service-btn" onclick="scrollToContact()">
+                            <button class="service-btn" onclick="goToContact()">
                                 <i class="fas fa-phone-alt"></i> Inquire Now
                             </button>
                         </div>
@@ -1117,7 +1119,7 @@
                         </div>
                         
                         <div class="service-cta">
-                            <button class="service-btn" onclick="scrollToContact()">
+                            <button class="service-btn" onclick="goToContact()">
                                 <i class="fas fa-phone-alt"></i> Inquire Now
                             </button>
                         </div>
@@ -1151,8 +1153,8 @@
                         </div>
                         
                         <div class="service-cta">
-                            <button class="service-btn" onclick="scrollToContact()">
-                                <i class="fas fa-phone-alt"></i> Get Quote
+                            <button class="service-btn" onclick="goToContact()">
+                                <i class="fas fa-phone-alt"></i> Inquire Now
                             </button>
                         </div>
                     </div>
@@ -1185,8 +1187,8 @@
                         </div>
                         
                         <div class="service-cta">
-                            <button class="service-btn" onclick="scrollToContact()">
-                                <i class="fas fa-phone-alt"></i> Get Quote
+                            <button class="service-btn" onclick="goToContact()">
+                                <i class="fas fa-phone-alt"></i> Inquire Now
                             </button>
                         </div>
                     </div>
@@ -1219,8 +1221,8 @@
                         </div>
                         
                         <div class="service-cta">
-                            <button class="service-btn" onclick="scrollToContact()">
-                                <i class="fas fa-phone-alt"></i> Get Protected
+                            <button class="service-btn" onclick="goToContact()">
+                                <i class="fas fa-phone-alt"></i> Inquire Now
                             </button>
                         </div>
                     </div>
@@ -1253,8 +1255,8 @@
                         </div>
                         
                         <div class="service-cta">
-                            <button class="service-btn" onclick="scrollToContact()">
-                                <i class="fas fa-phone-alt"></i> Apply Now
+                            <button class="service-btn" onclick="goToContact()">
+                                <i class="fas fa-phone-alt"></i> Inquire Now
                             </button>
                         </div>
                     </div>
@@ -1287,8 +1289,8 @@
                         </div>
                         
                         <div class="service-cta">
-                            <button class="service-btn" onclick="scrollToContact()">
-                                <i class="fas fa-phone-alt"></i> Learn More
+                            <button class="service-btn" onclick="goToContact()">
+                                <i class="fas fa-phone-alt"></i> Inquire Now
                             </button>
                         </div>
                     </div>
@@ -1321,8 +1323,8 @@
                         </div>
                         
                         <div class="service-cta">
-                            <button class="service-btn" onclick="scrollToContact()">
-                                <i class="fas fa-phone-alt"></i> Trade Now
+                            <button class="service-btn" onclick="goToContact()">
+                                <i class="fas fa-phone-alt"></i> Inquire Now
                             </button>
                         </div>
                     </div>
@@ -1562,10 +1564,10 @@
                 and discover how we can assist you with your financial needs.
             </p>
             <div class="cta-buttons stagger-children">
-                <button class="cta-btn zoom-in" onclick="scrollToContact()">
+                <button class="cta-btn zoom-in" onclick="goToContact()">
                     <i class="fas fa-phone-alt"></i> Contact Us Now
                 </button>
-                <button class="cta-btn secondary zoom-in" onclick="window.location.href='index.php#contact'">
+                <button class="cta-btn secondary zoom-in" onclick="goToContact()">
                     <i class="fas fa-envelope"></i> Send Message
                 </button>
             </div>
@@ -1574,6 +1576,9 @@
 
     <?php include 'footer.php'; ?>
 
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     <script>
         // FAQ toggle functionality
         function toggleFAQ(element) {
@@ -1591,8 +1596,8 @@
             faqItem.classList.toggle('active');
         }
 
-        // Scroll to contact function
-        function scrollToContact() {
+        // Simple function to redirect to contact page
+        function goToContact() {
             window.location.href = 'contact.php';
         }
 
@@ -1604,14 +1609,6 @@
             
             card.addEventListener('mouseleave', function() {
                 this.style.transform = 'translateY(0)';
-            });
-        });
-
-        // Service button click handlers
-        document.querySelectorAll('.service-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const serviceTitle = this.closest('.service-card').querySelector('h3').textContent;
-                alert(`Thank you for your interest in our "${serviceTitle}" service! We will contact you shortly to discuss your requirements.`);
             });
         });
 

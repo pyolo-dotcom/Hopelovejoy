@@ -113,7 +113,7 @@
         --nav-height: 70px;
     }
 
-    /* Navbar Base Styles */
+    /* === FIXED: Navbar Base Styles - STICKY SA ITAAS === */
     .navbar {
         background-color: var(--secondary-color);
         height: var(--nav-height);
@@ -121,12 +121,13 @@
         justify-content: space-between;
         align-items: center;
         padding: 0 20px;
-        position: fixed;
+        position: fixed; /* ITO ANG SUSI - fixed sa viewport */
         top: 0;
         left: 0;
         right: 0;
         z-index: 1000;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
     }
 
     .navbar.scrolled {
@@ -363,7 +364,10 @@
         .navbar {
             padding: 0 30px;
             height: 80px;
-            position: sticky;
+            position: fixed; /* KEEP FIXED - hindi sticky */
+            top: 0;
+            left: 0;
+            right: 0;
         }
         
         .nav-brand {
@@ -610,6 +614,11 @@
     body.menu-open {
         overflow: hidden;
         height: 100vh;
+    }
+
+    /* === FIXED: Para hindi matabunan ng navbar ang content === */
+    body {
+        padding-top: var(--nav-height);
     }
 </style>
 
