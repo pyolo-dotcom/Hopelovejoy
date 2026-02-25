@@ -6,7 +6,7 @@ session_start();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Contact Us - Hope Account Specialist</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,6 +15,25 @@ session_start();
     <link rel="icon" type="image/png" href="img/logo.png">
     
     <style>
+        /* === FIXED: Para iisa lang ang scrollbar (default browser scroll lang) === */
+        html {
+            overflow-x: hidden;
+            overflow-y: auto; /* Default browser scroll */
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            background-color: white;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            overflow-y: visible; /* Huwag gumawa ng sariling scroll */
+            width: 100%;
+            position: relative;
+        }
+
         /* ADD THESE STYLES AT THE TOP OF YOUR STYLE SECTION */
         .alert-message {
             position: fixed;
@@ -253,13 +272,6 @@ session_start();
             font-family: Arial, sans-serif;
         }
 
-        body {
-            background-color: white;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
         /* Main content styling */
         .main-content {
             padding: 100px 20px 20px;
@@ -267,6 +279,12 @@ session_start();
             margin: 0 auto;
             flex: 1;
             width: 100%;
+            overflow: visible; /* IMPORTANT: Huwag magkaroon ng scroll */
+        }
+
+        /* === FIXED: Para hindi matabunan ng navbar ang content === */
+        body {
+            padding-top: var(--nav-height, 70px);
         }
 
         /* Contact Page Header */
@@ -274,6 +292,8 @@ session_start();
             text-align: center;
             padding: 40px 20px 60px;
             background-color: white;
+            width: 100%;
+            overflow: visible;
         }
 
         .contact-page-title {
@@ -301,12 +321,15 @@ session_start();
             flex-wrap: wrap;
             gap: 50px;
             margin-bottom: 80px;
+            width: 100%;
+            overflow: visible;
         }
 
         /* Contact Form */
         .contact-form-section {
             flex: 1;
             min-width: 300px;
+            overflow: visible;
         }
 
         .contact-form-section h2 {
@@ -323,6 +346,7 @@ session_start();
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            width: 100%;
         }
 
         .form-group {
@@ -383,6 +407,7 @@ session_start();
         .contact-info-section {
             flex: 1;
             min-width: 300px;
+            overflow: visible;
         }
 
         .contact-info-section h2 {
@@ -399,6 +424,7 @@ session_start();
             border-radius: 10px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.08);
             height: auto;
+            width: 100%;
         }
 
         .info-item {
@@ -467,6 +493,7 @@ session_start();
         .social-icons {
             display: flex;
             gap: 15px;
+            flex-wrap: wrap;
         }
 
         .social-icon {
@@ -492,6 +519,8 @@ session_start();
         /* Map Section */
         .map-section {
             margin-bottom: 80px;
+            width: 100%;
+            overflow: visible;
         }
 
         .map-section h2 {
@@ -509,6 +538,7 @@ session_start();
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             height: 400px;
+            width: 100%;
         }
 
         .map-container iframe {
@@ -520,6 +550,8 @@ session_start();
         /* FAQ Section */
         .faq-section {
             margin-bottom: 80px;
+            width: 100%;
+            overflow: visible;
         }
 
         .faq-section h2 {
@@ -535,6 +567,7 @@ session_start();
         .faq-container {
             max-width: 800px;
             margin: 0 auto;
+            width: 100%;
         }
 
         .faq-item {
@@ -595,6 +628,10 @@ session_start();
 
         /* Mobile Responsive Styles */
         @media screen and (max-width: 768px) {
+            .main-content {
+                padding: 80px 15px 15px;
+            }
+
             /* Adjust logo size on mobile */
             .logo-circle {
                 width: 120px;
@@ -685,6 +722,10 @@ session_start();
 
             .info-icon {
                 margin-bottom: 15px;
+            }
+
+            .social-icons {
+                justify-content: center;
             }
         }
 
@@ -1017,8 +1058,17 @@ session_start();
             // Initial check
             checkScroll();
             
-            // Check on scroll
-            window.addEventListener('scroll', checkScroll);
+            // Check on scroll with throttling for performance
+            let isScrolling = false;
+            window.addEventListener('scroll', function() {
+                if (!isScrolling) {
+                    window.requestAnimationFrame(function() {
+                        checkScroll();
+                        isScrolling = false;
+                    });
+                    isScrolling = true;
+                }
+            });
         });
     </script>
 </body>

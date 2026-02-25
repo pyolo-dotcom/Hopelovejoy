@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Our Services - Hope Account Specialist</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- SweetAlert2 CSS -->
@@ -20,11 +20,23 @@
             font-family: Arial, sans-serif;
         }
 
+        /* === FIXED: Para iisa lang ang scrollbar (default browser scroll lang) === */
+        html {
+            overflow-x: hidden;
+            overflow-y: auto; /* Default browser scroll */
+            width: 100%;
+            height: 100%;
+        }
+
         body {
             background-color: white;
-            min-height: 100vh;
+            min-height: 100%;
             display: flex;
             flex-direction: column;
+            overflow-x: hidden;
+            overflow-y: visible; /* Huwag gumawa ng sariling scroll */
+            width: 100%;
+            position: relative;
         }
 
         /* Main content styling */
@@ -34,6 +46,7 @@
             margin: 0 auto;
             flex: 1;
             width: 100%;
+            overflow: visible; /* IMPORTANT: Huwag magkaroon ng scroll */
         }
 
         /* SCROLL ANIMATION CLASSES */
@@ -202,6 +215,7 @@
             margin-bottom: 50px;
             position: relative;
             overflow: hidden;
+            width: 100%;
         }
 
         .services-hero-section::before {
@@ -248,6 +262,8 @@
             padding: 80px 20px;
             background-color: white;
             text-align: center;
+            width: 100%;
+            overflow: visible;
         }
 
         .services-title {
@@ -267,6 +283,7 @@
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 40px;
             padding: 20px;
+            width: 100%;
         }
 
         .service-card {
@@ -279,6 +296,7 @@
             flex-direction: column;
             height: 100%;
             border: 1px solid #f0f0f0;
+            width: 100%;
         }
 
         .service-card:hover {
@@ -421,6 +439,8 @@
             text-align: center;
             border-radius: 15px;
             margin: 50px 0;
+            width: 100%;
+            overflow: visible;
         }
 
         .process-title {
@@ -440,6 +460,7 @@
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 30px;
+            width: 100%;
         }
 
         .process-step {
@@ -491,6 +512,8 @@
             padding: 80px 20px;
             background-color: white;
             text-align: center;
+            width: 100%;
+            overflow: visible;
         }
 
         .faq-title {
@@ -509,6 +532,7 @@
             align-items: flex-start;
             max-width: 1200px;
             margin: 0 auto;
+            width: 100%;
         }
 
         .faq-container {
@@ -599,6 +623,8 @@
             color: white;
             border-radius: 15px;
             margin: 50px 0;
+            width: 100%;
+            overflow: visible;
         }
 
         .cta-title {
@@ -660,6 +686,8 @@
             text-align: center;
             border-radius: 15px;
             margin: 50px 0;
+            width: 100%;
+            overflow: visible;
         }
 
         .benefits-title {
@@ -679,6 +707,7 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
             padding: 20px;
+            width: 100%;
         }
 
         .benefit-card {
@@ -731,6 +760,8 @@
             color: white;
             border-radius: 15px;
             margin: 50px 0;
+            width: 100%;
+            overflow: visible;
         }
 
         .requirements-title {
@@ -747,6 +778,7 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             padding: 20px;
+            width: 100%;
         }
 
         .requirement-card {
@@ -866,7 +898,7 @@
             }
 
             .service-card {
-                margin: 0 5px;
+                margin: 0;
             }
 
             .service-header {
@@ -1035,6 +1067,11 @@
             .service-header h3 {
                 font-size: 1.2rem;
             }
+        }
+
+        /* === FIXED: Para hindi matabunan ng navbar ang content === */
+        body {
+            padding-top: var(--nav-height, 70px);
         }
     </style>
 </head>
@@ -1658,8 +1695,17 @@
             // Initial check
             checkScroll();
             
-            // Check on scroll
-            window.addEventListener('scroll', checkScroll);
+            // Check on scroll with throttling for performance
+            let isScrolling = false;
+            window.addEventListener('scroll', function() {
+                if (!isScrolling) {
+                    window.requestAnimationFrame(function() {
+                        checkScroll();
+                        isScrolling = false;
+                    });
+                    isScrolling = true;
+                }
+            });
         });
     </script>
 </body>
