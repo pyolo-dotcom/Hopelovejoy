@@ -297,6 +297,7 @@
             height: 100%;
             border: 1px solid #f0f0f0;
             width: 100%;
+            scroll-margin-top: 100px; /* Important for smooth scroll offset */
         }
 
         .service-card:hover {
@@ -843,6 +844,34 @@
             transform: scale(1.5);
         }
 
+        /* Highlight animation for service cards when navigated from dropdown */
+        .service-card.section-highlight {
+            animation: servicePulse 1.5s ease;
+        }
+
+        @keyframes servicePulse {
+            0% {
+                background-color: rgba(238, 184, 46, 0);
+                box-shadow: 0 0 0 0 rgba(238, 184, 46, 0);
+                transform: scale(1);
+            }
+            20% {
+                background-color: rgba(238, 184, 46, 0.2);
+                box-shadow: 0 0 0 10px rgba(238, 184, 46, 0.2);
+                transform: scale(1.02);
+            }
+            50% {
+                background-color: rgba(238, 184, 46, 0.1);
+                box-shadow: 0 0 0 5px rgba(238, 184, 46, 0.1);
+                transform: scale(1.01);
+            }
+            100% {
+                background-color: rgba(238, 184, 46, 0);
+                box-shadow: 0 0 0 0 rgba(238, 184, 46, 0);
+                transform: scale(1);
+            }
+        }
+
         /* Mobile Responsive Styles */
         @media screen and (max-width: 1200px) {
             .process-step:not(:last-child)::after {
@@ -928,16 +957,6 @@
             .requirements-container {
                 grid-template-columns: 1fr;
                 gap: 20px;
-            }
-
-            .bank-partners-container {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 20px;
-            }
-
-            .bank-logo {
-                height: 100px;
-                padding: 15px;
             }
 
             .faq-question {
@@ -1031,16 +1050,6 @@
                 padding: 20px;
             }
 
-            .bank-partners-container {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
-            }
-
-            .bank-logo {
-                height: 80px;
-                padding: 10px;
-            }
-
             .cta-title {
                 font-size: 2rem;
             }
@@ -1055,15 +1064,6 @@
         }
 
         @media screen and (max-width: 360px) {
-            .bank-partners-container {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
-            }
-            
-            .bank-logo {
-                height: 70px;
-            }
-            
             .service-header h3 {
                 font-size: 1.2rem;
             }
@@ -1588,7 +1588,7 @@
 
                 <!-- RIGHT: IMAGE -->
                 <div class="faq-image fade-in-right">
-                    <img src="img/faqs.jpg" alt="FAQ Illustration">
+                    <img src="img/faqs.jpg" alt="FAQ Illustration" onerror="this.src='https://via.placeholder.com/400x300?text=FAQ+Image'">
                 </div>
             </div>
         </div>
@@ -1638,17 +1638,6 @@
             window.location.href = 'contact.php';
         }
 
-        // Service card hover effect
-        document.querySelectorAll('.service-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
-            });
-        });
-
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1658,8 +1647,17 @@
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     e.preventDefault();
+                    
+                    // Get navbar height for offset
+                    const navbar = document.querySelector('.navbar');
+                    const navbarHeight = navbar ? navbar.offsetHeight : 80;
+                    
+                    // Calculate position with offset
+                    const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                    const offsetPosition = elementPosition - navbarHeight - 20;
+                    
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80,
+                        top: offsetPosition,
                         behavior: 'smooth'
                     });
                 }
@@ -1705,6 +1703,100 @@
                     });
                     isScrolling = true;
                 }
+            });
+        });
+
+        // Check for section parameter when page loads (from navbar dropdown)
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const sectionParam = urlParams.get('section');
+            
+            if (sectionParam) {
+                const sectionMap = {
+                    'auto-acquisition': 'auto-acquisition',
+                    'housing': 'housing',
+                    'car-insurance': 'car-insurance',
+                    'housing-insurance': 'housing-insurance',
+                    'life-insurance': 'life-insurance',
+                    'second-hand': 'second-hand',
+                    'sangla': 'sangla',
+                    'trade-in': 'trade-in'
+                };
+                
+                const elementId = sectionMap[sectionParam];
+                if (elementId) {
+                    // Small delay to ensure DOM is fully loaded
+                    setTimeout(() => {
+                        const targetElement = document.getElementById(elementId);
+                        if (targetElement) {
+                            // Get navbar height for offset
+                            const navbar = document.querySelector('.navbar');
+                            const navbarHeight = navbar ? navbar.offsetHeight : 80;
+                            
+                            // Calculate position with offset
+                            const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                            const offsetPosition = elementPosition - navbarHeight - 20;
+                            
+                            // Smooth scroll
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth'
+                            });
+                            
+                            // Add highlight effect
+                            targetElement.classList.add('section-highlight');
+                            
+                            setTimeout(() => {
+                                targetElement.classList.remove('section-highlight');
+                            }, 1500);
+                        }
+                    }, 300);
+                }
+            }
+            
+            // Handle hash links
+            if (window.location.hash) {
+                const hash = window.location.hash.substring(1);
+                const validSections = ['auto-acquisition', 'housing', 'car-insurance', 'housing-insurance', 
+                                      'life-insurance', 'second-hand', 'sangla', 'trade-in'];
+                
+                if (validSections.includes(hash)) {
+                    setTimeout(() => {
+                        const targetElement = document.getElementById(hash);
+                        if (targetElement) {
+                            const navbar = document.querySelector('.navbar');
+                            const navbarHeight = navbar ? navbar.offsetHeight : 80;
+                            
+                            const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                            const offsetPosition = elementPosition - navbarHeight - 20;
+                            
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth'
+                            });
+                            
+                            // Add highlight effect
+                            targetElement.classList.add('section-highlight');
+                            
+                            setTimeout(() => {
+                                targetElement.classList.remove('section-highlight');
+                            }, 1500);
+                        }
+                    }, 300);
+                }
+            }
+        });
+
+        // Enhanced service card hover effects
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+                this.style.boxShadow = '0 15px 40px rgba(238, 184, 46, 0.15)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '0 10px 30px rgba(0,0,0,0.08)';
             });
         });
     </script>

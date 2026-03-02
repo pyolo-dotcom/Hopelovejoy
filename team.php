@@ -231,6 +231,7 @@ require_once 'config.php';
             position: relative;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            scroll-margin-top: 100px; /* Important for smooth scroll offset */
         }
 
         .ceo-section::before {
@@ -356,6 +357,7 @@ require_once 'config.php';
         .team-category {
             margin-bottom: 80px;
             padding: 20px;
+            scroll-margin-top: 100px; /* Important for smooth scroll offset */
         }
 
         .category-title {
@@ -383,18 +385,18 @@ require_once 'config.php';
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 30px; /* Reduced from 40px */
+            gap: 30px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         /* SMALLER TEAM MEMBER CARD - FOR ACCOUNT SPECIALISTS */
         .team-member-smaller {
-            width: 280px; /* Increased from 250px */
+            width: 280px;
             text-align: center;
             background: white;
             border-radius: 15px;
-            padding: 25px; /* Increased from 20px */
+            padding: 25px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.08);
             transition: all 0.3s ease;
             display: flex;
@@ -408,11 +410,11 @@ require_once 'config.php';
         }
 
         .team-member-img-smaller {
-            width: 200px; /* Increased from 180px */
-            height: 200px; /* Increased from 180px */
-            border-radius: 0; /* Changed to box shape */
+            width: 200px;
+            height: 200px;
+            border-radius: 0;
             overflow: hidden;
-            margin: 0 auto 20px; /* Increased from 15px */
+            margin: 0 auto 20px;
             border: 4px solid #eeb82e;
             position: relative;
         }
@@ -430,32 +432,32 @@ require_once 'config.php';
 
         .team-member-smaller h3 {
             font-family: 'Roboto Serif', serif;
-            font-size: 1.4rem; /* Increased from 1.2rem */
+            font-size: 1.4rem;
             color: #2c2b29;
-            margin-bottom: 8px; /* Increased from 5px */
+            margin-bottom: 8px;
         }
 
         .team-member-smaller .position {
             color: #eeb82e;
             font-weight: 600;
-            font-size: 1rem; /* Increased from 0.9rem */
-            margin-bottom: 15px; /* Increased from 10px */
+            font-size: 1rem;
+            margin-bottom: 15px;
             display: block;
         }
 
         .team-member-smaller .experience {
             color: #666;
-            font-size: 0.9rem; /* Increased from 0.8rem */
-            margin-bottom: 15px; /* Increased from 10px */
+            font-size: 0.9rem;
+            margin-bottom: 15px;
             display: block;
         }
 
         .team-member-smaller .bio {
             color: #555;
-            font-size: 0.95rem; /* Increased from 0.85rem */
-            line-height: 1.6; /* Increased from 1.5 */
-            margin-bottom: 20px; /* Increased from 15px */
-            height: auto; /* Changed from fixed height */
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            height: auto;
             overflow: visible;
             flex-grow: 1;
         }
@@ -463,13 +465,13 @@ require_once 'config.php';
         .team-member-contact-smaller {
             display: flex;
             justify-content: center;
-            gap: 15px; /* Increased from 10px */
-            margin-top: 20px; /* Increased from 15px */
+            gap: 15px;
+            margin-top: 20px;
         }
 
         .contact-icon-smaller {
-            width: 40px; /* Increased from 35px */
-            height: 40px; /* Increased from 35px */
+            width: 40px;
+            height: 40px;
             background: #f8f8f8;
             border-radius: 50%;
             display: flex;
@@ -478,7 +480,7 @@ require_once 'config.php';
             color: #2c2b29;
             text-decoration: none;
             transition: all 0.3s ease;
-            font-size: 1rem; /* Increased from 0.9rem */
+            font-size: 1rem;
             cursor: pointer;
         }
 
@@ -490,11 +492,11 @@ require_once 'config.php';
 
         /* Original team member style for other sections */
         .team-member {
-            width: 300px; /* Increased from 280px */
+            width: 300px;
             text-align: center;
             background: white;
             border-radius: 15px;
-            padding: 30px; /* Increased from 25px */
+            padding: 30px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.08);
             transition: all 0.3s ease;
             display: flex;
@@ -508,8 +510,8 @@ require_once 'config.php';
         }
 
         .team-member-img {
-            width: 220px; /* Increased from 200px */
-            height: 220px; /* Increased from 200px */
+            width: 220px;
+            height: 220px;
             border-radius: 0;
             overflow: hidden;
             margin: 0 auto 20px;
@@ -530,30 +532,30 @@ require_once 'config.php';
 
         .team-member h3 {
             font-family: 'Roboto Serif', serif;
-            font-size: 1.5rem; /* Increased from 1.4rem */
+            font-size: 1.5rem;
             color: #2c2b29;
-            margin-bottom: 10px; /* Increased from 8px */
+            margin-bottom: 10px;
         }
 
         .team-member .position {
             color: #eeb82e;
             font-weight: 600;
-            font-size: 1.1rem; /* Increased from 1rem */
+            font-size: 1.1rem;
             margin-bottom: 15px;
             display: block;
         }
 
         .team-member .experience {
             color: #666;
-            font-size: 1rem; /* Increased from 0.9rem */
+            font-size: 1rem;
             margin-bottom: 15px;
             display: block;
         }
 
         .team-member .bio {
             color: #555;
-            font-size: 1rem; /* Increased from 0.95rem */
-            line-height: 1.7; /* Increased from 1.6 */
+            font-size: 1rem;
+            line-height: 1.7;
             margin-bottom: 20px;
             height: auto;
             overflow: visible;
@@ -568,8 +570,8 @@ require_once 'config.php';
         }
 
         .contact-icon {
-            width: 45px; /* Increased from 40px */
-            height: 45px; /* Increased from 40px */
+            width: 45px;
+            height: 45px;
             background: #f8f8f8;
             border-radius: 50%;
             display: flex;
@@ -673,7 +675,7 @@ require_once 'config.php';
             .team-member-smaller,
             .team-member {
                 width: 100%;
-                max-width: 350px; /* Increased from 320px */
+                max-width: 350px;
             }
 
             /* Mobile adjustments for smaller team member cards */
@@ -734,60 +736,6 @@ require_once 'config.php';
                 height: 160px;
             }
         }
-
-        /* Dropdown Styles - REMOVE THESE AS THEY'RE IN NAVBAR.PHP */
-        /* 
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 200px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1000;
-            border-top: 3px solid #eeb82e;
-            border-radius: 0 0 5px 5px;
-            overflow: hidden;
-        }
-
-        .dropdown-content a {
-            color: #2c2b29 !important;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            text-align: left;
-            font-size: 0.95rem;
-            border-bottom: 1px solid #eee;
-            transition: all 0.3s ease;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #eeb82e;
-            color: #2c2b29 !important;
-            padding-left: 20px;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .dropdown:hover .dropbtn {
-            color: #fff;
-        }
-
-        .dropbtn {
-            cursor: pointer;
-        }
-
-        .dropbtn .fa-caret-down {
-            font-size: 0.8em;
-            margin-left: 5px;
-        }
-        */
 
         /* Tooltip styles for all contact icons */
         .contact-icon,
@@ -952,6 +900,30 @@ require_once 'config.php';
         .close:hover,
         .close:focus {
             color: #eeb82e;
+        }
+        
+        /* Highlight animation for sections */
+        .section-highlight {
+            animation: sectionPulse 1.5s ease;
+        }
+        
+        @keyframes sectionPulse {
+            0% {
+                background-color: rgba(238, 184, 46, 0);
+                box-shadow: 0 0 0 0 rgba(238, 184, 46, 0);
+            }
+            20% {
+                background-color: rgba(238, 184, 46, 0.2);
+                box-shadow: 0 0 0 10px rgba(238, 184, 46, 0.2);
+            }
+            50% {
+                background-color: rgba(238, 184, 46, 0.1);
+                box-shadow: 0 0 0 5px rgba(238, 184, 46, 0.1);
+            }
+            100% {
+                background-color: rgba(238, 184, 46, 0);
+                box-shadow: 0 0 0 0 rgba(238, 184, 46, 0);
+            }
         }
     </style>
 </head>
@@ -1242,8 +1214,16 @@ require_once 'config.php';
                 
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
+                    // Get navbar height for offset
+                    const navbar = document.querySelector('.navbar');
+                    const navbarHeight = navbar ? navbar.offsetHeight : 80;
+                    
+                    // Calculate position with offset
+                    const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                    const offsetPosition = elementPosition - navbarHeight - 20;
+                    
                     window.scrollTo({
-                        top: targetElement.offsetTop - 100,
+                        top: offsetPosition,
                         behavior: 'smooth'
                     });
                 }
@@ -1393,6 +1373,72 @@ require_once 'config.php';
             
             // Check on scroll
             window.addEventListener('scroll', checkScroll);
+        });
+        
+        // Check for section parameter when page loads (from navbar dropdown)
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const sectionParam = urlParams.get('section');
+            
+            if (sectionParam) {
+                const sectionMap = {
+                    'ceo': 'ceo',
+                    'leadership': 'leadership',
+                    'specialists': 'specialists'
+                };
+                
+                const elementId = sectionMap[sectionParam];
+                if (elementId) {
+                    // Small delay to ensure DOM is fully loaded
+                    setTimeout(() => {
+                        const targetElement = document.getElementById(elementId);
+                        if (targetElement) {
+                            // Get navbar height for offset
+                            const navbar = document.querySelector('.navbar');
+                            const navbarHeight = navbar ? navbar.offsetHeight : 80;
+                            
+                            // Calculate position with offset
+                            const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                            const offsetPosition = elementPosition - navbarHeight - 20;
+                            
+                            // Smooth scroll
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth'
+                            });
+                            
+                            // Add highlight effect
+                            targetElement.classList.add('section-highlight');
+                            
+                            setTimeout(() => {
+                                targetElement.classList.remove('section-highlight');
+                            }, 1500);
+                        }
+                    }, 300);
+                }
+            }
+            
+            // Handle hash links
+            if (window.location.hash) {
+                const hash = window.location.hash.substring(1);
+                if (['ceo', 'leadership', 'specialists'].includes(hash)) {
+                    setTimeout(() => {
+                        const targetElement = document.getElementById(hash);
+                        if (targetElement) {
+                            const navbar = document.querySelector('.navbar');
+                            const navbarHeight = navbar ? navbar.offsetHeight : 80;
+                            
+                            const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                            const offsetPosition = elementPosition - navbarHeight - 20;
+                            
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }, 300);
+                }
+            }
         });
     </script>
 </body>

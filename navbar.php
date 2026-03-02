@@ -21,15 +21,15 @@
                 <i class="fas fa-chevron-down dropdown-icon"></i>
             </a>
             <div class="dropdown-content">
-                <a href="team.php#ceo" onclick="closeMobileMenuOnLinkClick()">
+                <a href="team.php#ceo" onclick="handleTeamDropdownClick(event, this, 'ceo'); return false;">
                     <i class="fas fa-crown"></i>
                     <span>CEO</span>
                 </a>
-                <a href="team.php#leadership" onclick="closeMobileMenuOnLinkClick()">
+                <a href="team.php#leadership" onclick="handleTeamDropdownClick(event, this, 'leadership'); return false;">
                     <i class="fas fa-user-tie"></i>
                     <span>Leadership</span>
                 </a>
-                <a href="team.php#specialists" onclick="closeMobileMenuOnLinkClick()">
+                <a href="team.php#specialists" onclick="handleTeamDropdownClick(event, this, 'specialists'); return false;">
                     <i class="fas fa-user-check"></i>
                     <span>Account Specialists</span>
                 </a>
@@ -44,35 +44,35 @@
             </a>
             <div class="dropdown-content services-dropdown">
                 <div class="dropdown-grid">
-                    <a href="services.php#auto-acquisition" class="dropdown-item" onclick="closeMobileMenuOnLinkClick()">
+                    <a href="services.php#auto-acquisition" class="dropdown-item" onclick="handleServicesDropdownClick(event, this, 'auto-acquisition'); return false;">
                         <i class="fas fa-car"></i>
                         <span>Auto Acquisition</span>
                     </a>
-                    <a href="services.php#housing" class="dropdown-item" onclick="closeMobileMenuOnLinkClick()">
+                    <a href="services.php#housing" class="dropdown-item" onclick="handleServicesDropdownClick(event, this, 'housing'); return false;">
                         <i class="fas fa-home"></i>
                         <span>House & Lot</span>
                     </a>
-                    <a href="services.php#car-insurance" class="dropdown-item" onclick="closeMobileMenuOnLinkClick()">
+                    <a href="services.php#car-insurance" class="dropdown-item" onclick="handleServicesDropdownClick(event, this, 'car-insurance'); return false;">
                         <i class="fas fa-car-crash"></i>
                         <span>Car Insurance</span>
                     </a>
-                    <a href="services.php#housing-insurance" class="dropdown-item" onclick="closeMobileMenuOnLinkClick()">
+                    <a href="services.php#housing-insurance" class="dropdown-item" onclick="handleServicesDropdownClick(event, this, 'housing-insurance'); return false;">
                         <i class="fas fa-house-damage"></i>
                         <span>Housing Insurance</span>
                     </a>
-                    <a href="services.php#life-insurance" class="dropdown-item" onclick="closeMobileMenuOnLinkClick()">
+                    <a href="services.php#life-insurance" class="dropdown-item" onclick="handleServicesDropdownClick(event, this, 'life-insurance'); return false;">
                         <i class="fas fa-heartbeat"></i>
                         <span>Life Insurance</span>
                     </a>
-                    <a href="services.php#second-hand" class="dropdown-item" onclick="closeMobileMenuOnLinkClick()">
+                    <a href="services.php#second-hand" class="dropdown-item" onclick="handleServicesDropdownClick(event, this, 'second-hand'); return false;">
                         <i class="fas fa-car-side"></i>
                         <span>Second Hand Car</span>
                     </a>
-                    <a href="services.php#sangla" class="dropdown-item" onclick="closeMobileMenuOnLinkClick()">
+                    <a href="services.php#sangla" class="dropdown-item" onclick="handleServicesDropdownClick(event, this, 'sangla'); return false;">
                         <i class="fas fa-file-contract"></i>
                         <span>Sangla Title/ORCR</span>
                     </a>
-                    <a href="services.php#trade-in" class="dropdown-item" onclick="closeMobileMenuOnLinkClick()">
+                    <a href="services.php#trade-in" class="dropdown-item" onclick="handleServicesDropdownClick(event, this, 'trade-in'); return false;">
                         <i class="fas fa-exchange-alt"></i>
                         <span>Trade In</span>
                     </a>
@@ -121,7 +121,7 @@
         justify-content: space-between;
         align-items: center;
         padding: 0 20px;
-        position: fixed; /* ITO ANG SUSI - fixed sa viewport */
+        position: fixed;
         top: 0;
         left: 0;
         right: 0;
@@ -364,7 +364,7 @@
         .navbar {
             padding: 0 30px;
             height: 80px;
-            position: fixed; /* KEEP FIXED - hindi sticky */
+            position: fixed;
             top: 0;
             left: 0;
             right: 0;
@@ -427,7 +427,7 @@
             border-radius: 2px;
         }
         
-        /* Dropdown Styles for Desktop */
+        /* Dropdown Styles for Desktop - ENHANCED ANIMATIONS */
         .dropdown {
             position: relative;
         }
@@ -444,11 +444,14 @@
             display: block;
             opacity: 0;
             visibility: hidden;
-            transform: translateY(-10px);
-            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+            transform: translateY(-10px) scale(0.95);
+            transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                        visibility 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                        transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 1000;
             pointer-events: none;
             margin-top: 10px;
+            transform-origin: top center;
         }
         
         /* Add a transparent bridge between dropdown button and content */
@@ -462,36 +465,81 @@
             background: transparent;
         }
         
-        /* Show dropdown on hover with bridge */
+        /* Show dropdown on hover with smooth animation */
         .dropdown:hover .dropdown-content,
         .dropdown-content:hover {
             opacity: 1;
             visibility: visible;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
             pointer-events: auto;
         }
         
-        /* Services dropdown specific */
+        /* Individual item animation */
+        .dropdown-content a {
+            transform: translateX(-10px);
+            opacity: 0;
+            animation: slideInItem 0.3s ease forwards;
+        }
+        
+        .dropdown-content a:nth-child(1) { animation-delay: 0.05s; }
+        .dropdown-content a:nth-child(2) { animation-delay: 0.1s; }
+        .dropdown-content a:nth-child(3) { animation-delay: 0.15s; }
+        
+        /* Services dropdown specific - Enhanced version */
         .services-dropdown {
             width: 600px !important;
             left: -250px;
             padding: 20px;
+            transform-origin: top center;
         }
         
-        .dropdown-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
+        .services-dropdown .dropdown-item {
+            transform: translateX(-10px);
+            opacity: 0;
+            animation: slideInItem 0.3s ease forwards;
+            position: relative;
+            overflow: hidden;
         }
         
-        .dropdown-item {
-            padding: 12px 15px !important;
-            font-size: 0.9rem;
-            border-left: none;
-            transition: all 0.3s ease;
+        /* Add hover effect with icon animation */
+        .services-dropdown .dropdown-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(238, 184, 46, 0.1), transparent);
+            transition: left 0.5s ease;
         }
         
-        .dropdown-item:hover {
-            transform: translateX(5px);
+        .services-dropdown .dropdown-item:hover::before {
+            left: 100%;
+        }
+        
+        .services-dropdown .dropdown-item i {
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        
+        .services-dropdown .dropdown-item:hover i {
+            transform: scale(1.2) rotate(5deg);
+            color: var(--primary-color);
+        }
+        
+        /* Stagger animations for services grid */
+        .services-dropdown .dropdown-item:nth-child(1) { animation-delay: 0.05s; }
+        .services-dropdown .dropdown-item:nth-child(2) { animation-delay: 0.1s; }
+        .services-dropdown .dropdown-item:nth-child(3) { animation-delay: 0.15s; }
+        .services-dropdown .dropdown-item:nth-child(4) { animation-delay: 0.2s; }
+        .services-dropdown .dropdown-item:nth-child(5) { animation-delay: 0.25s; }
+        .services-dropdown .dropdown-item:nth-child(6) { animation-delay: 0.3s; }
+        .services-dropdown .dropdown-item:nth-child(7) { animation-delay: 0.35s; }
+        .services-dropdown .dropdown-item:nth-child(8) { animation-delay: 0.4s; }
+        
+        /* Add subtle scale effect on hover for the whole dropdown */
+        .services-dropdown:hover {
+            transform: scale(1.02);
+            transition: transform 0.3s ease;
         }
         
         .dropdown-content a {
@@ -573,6 +621,18 @@
         from {
             opacity: 0;
             transform: translateX(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    
+    /* Slide in animation for dropdown items */
+    @keyframes slideInItem {
+        from {
+            opacity: 0;
+            transform: translateX(-10px);
         }
         to {
             opacity: 1;
@@ -718,6 +778,147 @@ function handleMainLinkClick(event, element, page) {
     }
 }
 
+// Handle Team Dropdown Clicks - Smooth Scroll to Sections
+function handleTeamDropdownClick(event, element, section) {
+    event.preventDefault();
+    event.stopPropagation();
+    
+    // Close mobile menu if open
+    if (window.innerWidth <= 767 && isMenuOpen) {
+        closeMobileMenu();
+    }
+    
+    // Close any open dropdowns
+    document.querySelectorAll('.dropdown').forEach(d => {
+        d.classList.remove('active');
+    });
+    
+    // Check if we're already on team.php
+    const currentPage = window.location.pathname.split('/').pop();
+    
+    if (currentPage === 'team.php') {
+        // If on team.php, smooth scroll to section
+        smoothScrollToSection(section);
+    } else {
+        // If not on team.php, navigate to team.php with section parameter
+        window.location.href = 'team.php?section=' + section;
+    }
+}
+
+// Smooth scroll function for team.php sections
+function smoothScrollToSection(section) {
+    // Map section names to element IDs
+    const sectionMap = {
+        'ceo': 'ceo',
+        'leadership': 'leadership',
+        'specialists': 'specialists'
+    };
+    
+    const elementId = sectionMap[section];
+    if (!elementId) return;
+    
+    const targetElement = document.getElementById(elementId);
+    if (targetElement) {
+        // Get navbar height for offset
+        const navbar = document.querySelector('.navbar');
+        const navbarHeight = navbar ? navbar.offsetHeight : 80;
+        
+        // Calculate position with offset
+        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - navbarHeight - 20; // Extra 20px padding
+        
+        // Smooth scroll
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+        });
+        
+        // Add highlight effect
+        targetElement.style.transition = 'background-color 0.5s ease, box-shadow 0.5s ease';
+        targetElement.style.backgroundColor = 'rgba(238, 184, 46, 0.1)';
+        targetElement.style.boxShadow = '0 0 0 4px rgba(238, 184, 46, 0.3)';
+        
+        setTimeout(() => {
+            targetElement.style.backgroundColor = '';
+            targetElement.style.boxShadow = '';
+        }, 1500);
+    }
+}
+
+// Handle Services Dropdown Clicks - Smooth Scroll to Sections
+function handleServicesDropdownClick(event, element, section) {
+    event.preventDefault();
+    event.stopPropagation();
+    
+    // Close mobile menu if open
+    if (window.innerWidth <= 767 && isMenuOpen) {
+        closeMobileMenu();
+    }
+    
+    // Close any open dropdowns
+    document.querySelectorAll('.dropdown').forEach(d => {
+        d.classList.remove('active');
+    });
+    
+    // Check if we're already on services.php
+    const currentPage = window.location.pathname.split('/').pop();
+    
+    if (currentPage === 'services.php') {
+        // If on services.php, smooth scroll to section
+        smoothScrollToServicesSection(section);
+    } else {
+        // If not on services.php, navigate to services.php with section parameter
+        window.location.href = 'services.php?section=' + section;
+    }
+}
+
+// Smooth scroll function for services.php sections
+function smoothScrollToServicesSection(section) {
+    // Map section names to element IDs
+    const sectionMap = {
+        'auto-acquisition': 'auto-acquisition',
+        'housing': 'housing',
+        'car-insurance': 'car-insurance',
+        'housing-insurance': 'housing-insurance',
+        'life-insurance': 'life-insurance',
+        'second-hand': 'second-hand',
+        'sangla': 'sangla',
+        'trade-in': 'trade-in'
+    };
+    
+    const elementId = sectionMap[section];
+    if (!elementId) return;
+    
+    const targetElement = document.getElementById(elementId);
+    if (targetElement) {
+        // Get navbar height for offset
+        const navbar = document.querySelector('.navbar');
+        const navbarHeight = navbar ? navbar.offsetHeight : 80;
+        
+        // Calculate position with offset
+        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - navbarHeight - 20; // Extra 20px padding
+        
+        // Smooth scroll
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+        });
+        
+        // Add highlight effect
+        targetElement.style.transition = 'background-color 0.5s ease, box-shadow 0.5s ease, transform 0.5s ease';
+        targetElement.style.backgroundColor = 'rgba(238, 184, 46, 0.1)';
+        targetElement.style.boxShadow = '0 0 0 4px rgba(238, 184, 46, 0.3)';
+        targetElement.style.transform = 'scale(1.02)';
+        
+        setTimeout(() => {
+            targetElement.style.backgroundColor = '';
+            targetElement.style.boxShadow = '';
+            targetElement.style.transform = '';
+        }, 1500);
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     const navbar = document.querySelector('.navbar');
     const logoLink = document.getElementById('secretLogo');
@@ -764,27 +965,47 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-        anchor.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href !== '#' && href.length > 1) {
-                e.preventDefault();
-                const target = document.querySelector(href);
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    
-                    // Close mobile menu if open
-                    if (window.innerWidth <= 767 && isMenuOpen) {
-                        closeMobileMenu();
-                    }
-                }
-            }
-        });
-    });
+    // Check for section parameter when page loads (for team.php)
+    const urlParams = new URLSearchParams(window.location.search);
+    const sectionParam = urlParams.get('section');
+    
+    if (sectionParam && window.location.pathname.includes('team.php')) {
+        // Small delay to ensure DOM is fully loaded
+        setTimeout(() => {
+            smoothScrollToSection(sectionParam);
+        }, 300);
+    }
+    
+    // Check for section parameter when page loads (for services.php)
+    if (sectionParam && window.location.pathname.includes('services.php')) {
+        // Small delay to ensure DOM is fully loaded
+        setTimeout(() => {
+            smoothScrollToServicesSection(sectionParam);
+        }, 300);
+    }
+    
+    // Handle hash links for team.php
+    if (window.location.hash && window.location.pathname.includes('team.php')) {
+        const hash = window.location.hash.substring(1); // Remove the #
+        if (hash === 'ceo' || hash === 'leadership' || hash === 'specialists') {
+            setTimeout(() => {
+                smoothScrollToSection(hash);
+            }, 300);
+        }
+    }
+    
+    // Handle hash links for services.php
+    if (window.location.hash && window.location.pathname.includes('services.php')) {
+        const hash = window.location.hash.substring(1); // Remove the #
+        const validSections = ['auto-acquisition', 'housing', 'car-insurance', 'housing-insurance', 
+                              'life-insurance', 'second-hand', 'sangla', 'trade-in'];
+        
+        if (validSections.includes(hash)) {
+            setTimeout(() => {
+                smoothScrollToServicesSection(hash);
+            }, 300);
+        }
+    }
     
     // ============================================
     // SECRET ADMIN ACCESS FEATURES - SAME AS YOURS
