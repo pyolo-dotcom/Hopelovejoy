@@ -73,7 +73,7 @@
                 </div>
             </div>
 
-            <!-- Newsletter & Social -->
+            <!-- Social Media Section - FIXED FOR MOBILE -->
             <div class="footer-col fade-in-right">
                 <div class="social-section zoom-in">
                     <h5>Follow Us</h5>
@@ -112,24 +112,30 @@
     /* Import Font Awesome */
     @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
     
-    /* Root Variables */
+    /* Root Variables - UPDATED TO BLACK & GOLD THEME */
     :root {
         --primary-color: #eeb82e;
-        --secondary-color: #2c2b29;
-        --dark-bg: #1a1a1a;
-        --light-bg: #302f2d;
+        --primary-dark: #cc9b27;
+        --primary-light: #ffd95e;
+        --bg-dark: #000000;
+        --bg-medium: #0d0d0d;
+        --bg-light: #1a1a1a;
         --text-light: #ffffff;
         --text-gray: #cccccc;
-        --text-dark: #666666;
-        --accent-color: #3a3835;
-        --shadow: 0 4px 20px rgba(0,0,0,0.2);
+        --text-dark: #999999;
+        --border-color: rgba(238, 184, 46, 0.2);
+        --hover-bg: rgba(238, 184, 46, 0.1);
+        --shadow: 0 4px 20px rgba(0,0,0,0.5);
         --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         --border-radius: 8px;
     }
 
-    /* Footer Styling */
+    /* Footer Styling - UPDATED GRADIENT */
     .site-footer {
-        background: linear-gradient(135deg, var(--dark-bg) 0%, var(--light-bg) 100%);
+        background: linear-gradient(180deg, 
+            var(--bg-dark) 0%, 
+            var(--bg-medium) 50%, 
+            var(--bg-dark) 100%);
         color: var(--text-gray);
         padding: 70px 0 0;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -138,6 +144,7 @@
         overflow: hidden;
         width: 100%;
         clear: both;
+        border-top: 2px solid var(--border-color);
     }
 
     .site-footer::before {
@@ -147,8 +154,22 @@
         left: 0;
         right: 0;
         height: 4px;
-        background: linear-gradient(90deg, var(--primary-color) 0%, transparent 100%);
+        background: linear-gradient(90deg, 
+            transparent 0%, 
+            var(--primary-color) 50%, 
+            transparent 100%);
         animation: slideInLine 1s ease-out;
+    }
+
+    .site-footer::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at 50% 0%, rgba(238,184,46,0.05) 0%, transparent 70%);
+        pointer-events: none;
     }
 
     @keyframes slideInLine {
@@ -164,6 +185,8 @@
         max-width: 1300px;
         margin: 0 auto;
         padding: 0 30px;
+        position: relative;
+        z-index: 2;
     }
 
     /* Footer Content Layout */
@@ -193,7 +216,7 @@
     .footer-logo {
         width: 120px;
         height: 120px;
-        background: var(--light-bg);
+        background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-medium) 100%);
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -209,7 +232,7 @@
 
     .footer-logo:hover {
         transform: scale(1.05) rotate(5deg);
-        border-color: #ffd966;
+        border-color: var(--primary-light);
         box-shadow: 0 0 30px rgba(238, 184, 46, 0.5);
     }
 
@@ -232,16 +255,16 @@
         right: 0;
         bottom: 0;
         border-radius: 50%;
-        background: linear-gradient(135deg, rgba(238,184,46,0.1) 0%, transparent 70%);
+        background: linear-gradient(135deg, rgba(238,184,46,0.2) 0%, transparent 70%);
         animation: pulseGlow 2s infinite;
     }
 
     @keyframes pulseGlow {
         0%, 100% {
-            opacity: 0.5;
+            opacity: 0.3;
         }
         50% {
-            opacity: 1;
+            opacity: 0.8;
         }
     }
 
@@ -251,10 +274,12 @@
         position: relative;
         z-index: 1;
         transition: var(--transition);
+        filter: drop-shadow(0 2px 5px rgba(238,184,46,0.3));
     }
 
     .footer-logo:hover img {
         transform: scale(1.1);
+        filter: drop-shadow(0 4px 10px rgba(238,184,46,0.5));
     }
 
     .company-name {
@@ -266,6 +291,7 @@
         letter-spacing: 1px;
         position: relative;
         display: inline-block;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
     }
 
     .company-name::after {
@@ -278,6 +304,7 @@
         height: 2px;
         background: var(--primary-color);
         transition: width 0.3s ease;
+        box-shadow: 0 0 10px var(--primary-color);
     }
 
     .logo-section:hover .company-name::after {
@@ -291,11 +318,12 @@
         margin-bottom: 10px;
         font-style: italic;
         transition: var(--transition);
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
     }
 
     .logo-section:hover .tagline {
         transform: scale(1.05);
-        color: #ffd966;
+        color: var(--primary-light);
     }
 
     .company-mission {
@@ -322,6 +350,7 @@
         align-items: center;
         gap: 10px;
         transition: var(--transition);
+        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
     }
 
     .footer-title::after {
@@ -333,6 +362,7 @@
         height: 2px;
         background: var(--primary-color);
         transition: width 0.3s ease;
+        box-shadow: 0 0 10px var(--primary-color);
     }
 
     .footer-col:hover .footer-title::after {
@@ -343,10 +373,12 @@
         color: var(--primary-color);
         font-size: 1rem;
         transition: var(--transition);
+        filter: drop-shadow(0 2px 4px rgba(238,184,46,0.3));
     }
 
     .footer-col:hover .footer-title i {
         transform: rotate(360deg);
+        color: var(--primary-light);
     }
 
     /* Quick Links */
@@ -371,6 +403,24 @@
         padding: 8px 0;
         transition: var(--transition);
         border-radius: 4px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .footer-links a::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, var(--hover-bg), transparent);
+        transition: left 0.5s ease;
+        z-index: -1;
+    }
+
+    .footer-links a:hover::before {
+        left: 100%;
     }
 
     .footer-links a i {
@@ -381,13 +431,14 @@
 
     .footer-links a:hover {
         color: var(--text-light);
-        background: rgba(238,184,46,0.1);
+        background: var(--hover-bg);
         padding-left: 15px;
         transform: translateX(5px);
     }
 
     .footer-links a:hover i {
         transform: translateX(8px) scale(1.2);
+        color: var(--primary-light);
     }
 
     /* Contact Info */
@@ -404,10 +455,28 @@
         transition: var(--transition);
         padding: 5px;
         border-radius: var(--border-radius);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .contact-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, var(--hover-bg), transparent);
+        transition: left 0.5s ease;
+        z-index: -1;
+    }
+
+    .contact-item:hover::before {
+        left: 100%;
     }
 
     .contact-item:hover {
-        background: rgba(238,184,46,0.1);
+        background: var(--hover-bg);
         transform: translateX(10px);
     }
 
@@ -417,10 +486,12 @@
         margin-top: 3px;
         min-width: 20px;
         transition: var(--transition);
+        filter: drop-shadow(0 2px 4px rgba(238,184,46,0.3));
     }
 
     .contact-item:hover i {
         transform: scale(1.2) rotate(360deg);
+        color: var(--primary-light);
     }
 
     .contact-item div {
@@ -447,7 +518,11 @@
         color: var(--text-light);
     }
 
-    /* Social Section */
+    /* Social Section - FIXED FOR MOBILE */
+    .social-section {
+        text-align: left;
+    }
+
     .social-section h5 {
         color: var(--text-light);
         font-size: 1rem;
@@ -455,6 +530,7 @@
         font-weight: 600;
         position: relative;
         display: inline-block;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
     }
 
     .social-section h5::after {
@@ -466,6 +542,7 @@
         height: 2px;
         background: var(--primary-color);
         transition: width 0.3s ease;
+        box-shadow: 0 0 10px var(--primary-color);
     }
 
     .social-section:hover h5::after {
@@ -475,14 +552,16 @@
     .social-icons {
         display: flex;
         flex-wrap: wrap;
-        gap: 10px;
+        gap: 15px;
+        justify-content: flex-start;
+        align-items: center;
     }
 
     .social-icon {
         position: relative;
-        width: 40px;
-        height: 40px;
-        background: var(--accent-color);
+        width: 45px;
+        height: 45px;
+        background: linear-gradient(135deg, var(--bg-medium) 0%, var(--bg-dark) 100%);
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -490,8 +569,12 @@
         color: var(--text-light);
         text-decoration: none;
         transition: var(--transition);
-        font-size: 1.1rem;
+        font-size: 1.2rem;
         animation: bounceIn 0.5s ease-out;
+        border: 2px solid var(--border-color);
+        overflow: hidden;
+        margin: 0; /* Remove any default margin */
+        flex-shrink: 0; /* Prevent icons from shrinking */
     }
 
     @keyframes bounceIn {
@@ -511,8 +594,25 @@
         }
     }
 
+    .social-icon::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: left 0.5s ease;
+    }
+
+    .social-icon:hover::before {
+        left: 100%;
+    }
+
     .social-icon:hover {
         transform: translateY(-5px) scale(1.1);
+        border-color: var(--primary-color);
+        box-shadow: 0 5px 15px rgba(238,184,46,0.3);
     }
 
     .social-icon .tooltip {
@@ -521,7 +621,7 @@
         left: 50%;
         transform: translateX(-50%);
         background: var(--primary-color);
-        color: var(--secondary-color);
+        color: var(--bg-dark);
         padding: 5px 10px;
         border-radius: 4px;
         font-size: 0.8rem;
@@ -531,6 +631,10 @@
         transition: var(--transition);
         margin-bottom: 10px;
         font-weight: 600;
+        border: 2px solid var(--bg-dark);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        pointer-events: none; /* Para hindi mag-interfere sa click */
+        z-index: 10;
     }
 
     .social-icon:hover .tooltip {
@@ -539,19 +643,39 @@
         transform: translateX(-50%) translateY(-5px);
     }
 
-    .social-icon.facebook:hover { background: #1877f2; }
-    .social-icon.email:hover { background: #ea4335; }
+    .social-icon.facebook:hover { 
+        background: #1877f2;
+        border-color: #1877f2;
+    }
+    
+    .social-icon.email:hover { 
+        background: #ea4335;
+        border-color: #ea4335;
+    }
+
+    .social-icon i {
+        transition: var(--transition);
+        position: relative;
+        z-index: 2;
+    }
+
+    .social-icon:hover i {
+        transform: scale(1.1);
+    }
 
     /* ========== FIXED BACK TO TOP BUTTON WITH PERFECT ARROW ALIGNMENT ========== */
     .footer-bottom {
-        background: rgba(0,0,0,0.3);
+        background: linear-gradient(180deg, 
+            rgba(0,0,0,0.5) 0%, 
+            rgba(13,13,13,0.8) 100%);
         padding: 20px 0;
-        border-top: 1px solid rgba(255,255,255,0.1);
+        border-top: 2px solid var(--border-color);
         position: relative;
         overflow: hidden;
         width: 100%;
         clear: both;
         z-index: 10;
+        backdrop-filter: blur(5px);
     }
 
     .footer-bottom::before {
@@ -606,6 +730,7 @@
     .copyright:hover #current-year {
         transform: scale(1.1);
         display: inline-block;
+        color: var(--primary-light);
     }
 
     /* BACK TO TOP BUTTON - PERFECTLY ALIGNED ARROW */
@@ -627,20 +752,18 @@
         justify-content: center !important;
         width: 45px !important;
         height: 45px !important;
-        background-color: #eeb82e !important;
+        background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%) !important;
         border-radius: 50% !important;
-        color: #2c2b29 !important;
+        color: var(--bg-dark) !important;
         text-decoration: none !important;
         transition: all 0.3s ease !important;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.2) !important;
+        box-shadow: 0 4px 20px rgba(238,184,46,0.3) !important;
         opacity: 1 !important;
         visibility: visible !important;
         cursor: pointer !important;
         border: 2px solid rgba(255,255,255,0.2) !important;
-        /* Remove any default padding/margin that might affect alignment */
         padding: 0 !important;
         margin: 0 !important;
-        /* Ensure perfect centering */
         text-align: center !important;
         line-height: 1 !important;
     }
@@ -648,45 +771,41 @@
     .back-to-top-btn i {
         display: inline-block !important;
         font-size: 22px !important;
-        color: #2c2b29 !important;
+        color: var(--bg-dark) !important;
         transition: transform 0.3s ease !important;
-        /* Perfectly center the arrow */
         line-height: 1 !important;
         vertical-align: middle !important;
-        /* Remove any inherited styles */
         margin: 0 !important;
         padding: 0 !important;
-        /* Ensure arrow points up correctly */
         transform: rotate(0deg) !important;
-        /* Fix for Font Awesome alignment */
         position: relative !important;
-        top: -1px !important; /* Fine-tune vertical alignment */
+        top: -1px !important;
     }
 
     .back-to-top-btn:hover {
-        background-color: #ffcc33 !important;
+        background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-color) 100%) !important;
         transform: translateY(-8px) scale(1.1) !important;
-        box-shadow: 0 8px 25px rgba(238,184,46,0.4) !important;
+        box-shadow: 0 8px 25px rgba(238,184,46,0.5) !important;
         border-color: rgba(255,255,255,0.4) !important;
     }
 
     .back-to-top-btn:hover i {
-        transform: translateY(-3px) !important;
+        transform: translateY(-3px) scale(1.1) !important;
     }
 
     /* Pulse animation */
     @keyframes pulse {
         0% {
             transform: scale(1);
-            box-shadow: 0 4px 20px rgba(238,184,46,0.2);
+            box-shadow: 0 4px 20px rgba(238,184,46,0.3);
         }
         50% {
             transform: scale(1.05);
-            box-shadow: 0 8px 30px rgba(238,184,46,0.4);
+            box-shadow: 0 8px 30px rgba(238,184,46,0.5);
         }
         100% {
             transform: scale(1);
-            box-shadow: 0 4px 20px rgba(238,184,46,0.2);
+            box-shadow: 0 4px 20px rgba(238,184,46,0.3);
         }
     }
 
@@ -804,7 +923,7 @@
         transition-delay: 0.6s;
     }
 
-    /* Mobile Responsive */
+    /* Mobile Responsive - FIXED SOCIAL ICONS */
     @media screen and (max-width: 1024px) {
         .footer-content {
             grid-template-columns: repeat(2, 1fr);
@@ -834,6 +953,25 @@
         
         .footer-col {
             padding: 0;
+            width: 100%;
+        }
+        
+        /* Social section mobile fix */
+        .social-section {
+            text-align: center;
+            width: 100%;
+        }
+        
+        .social-icons {
+            justify-content: center !important;
+            gap: 20px !important;
+        }
+        
+        .social-icon {
+            width: 50px !important;
+            height: 50px !important;
+            font-size: 1.3rem !important;
+            margin: 0 !important;
         }
         
         .footer-logo {
@@ -865,7 +1003,22 @@
         
         .back-to-top-btn i {
             font-size: 20px !important;
-            top: 0px !important; /* Adjust for mobile */
+            top: 0px !important;
+        }
+        
+        /* Center align contact items on mobile */
+        .contact-item {
+            flex-direction: row;
+            text-align: left;
+            justify-content: flex-start;
+        }
+        
+        .footer-title {
+            justify-content: flex-start;
+        }
+        
+        .footer-links {
+            text-align: left;
         }
     }
 
@@ -878,17 +1031,25 @@
             padding: 0 15px;
         }
         
+        /* Further social icons optimization for very small screens */
+        .social-icons {
+            gap: 15px !important;
+        }
+        
+        .social-icon {
+            width: 45px !important;
+            height: 45px !important;
+            font-size: 1.2rem !important;
+        }
+        
         .contact-item {
-            flex-direction: column;
-            gap: 5px;
+            flex-direction: row;
+            gap: 10px;
+            text-align: left;
         }
         
         .contact-item i {
-            margin-top: 0;
-        }
-        
-        .social-icons {
-            justify-content: center;
+            margin: 0;
         }
         
         .footer-logo {
@@ -911,6 +1072,45 @@
         }
     }
 
+    /* Extra small devices */
+    @media screen and (max-width: 360px) {
+        .social-icons {
+            gap: 12px !important;
+        }
+        
+        .social-icon {
+            width: 40px !important;
+            height: 40px !important;
+            font-size: 1.1rem !important;
+        }
+        
+        .contact-item {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .contact-item i {
+            margin: 0 0 5px 0;
+        }
+        
+        .contact-item div {
+            text-align: center;
+        }
+        
+        .footer-title {
+            justify-content: center;
+        }
+        
+        .footer-links {
+            text-align: center;
+        }
+        
+        .footer-links a {
+            justify-content: center;
+        }
+    }
+
     /* Emergency fix para siguradong perfect ang alignment */
     .back-to-top,
     .back-to-top-btn,
@@ -920,6 +1120,24 @@
         justify-content: center !important;
         opacity: 1 !important;
         visibility: visible !important;
+    }
+
+    /* Scrollbar styling para sa footer (optional) */
+    .site-footer ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    .site-footer ::-webkit-scrollbar-track {
+        background: var(--bg-dark);
+    }
+
+    .site-footer ::-webkit-scrollbar-thumb {
+        background: var(--primary-color);
+        border-radius: 5px;
+    }
+
+    .site-footer ::-webkit-scrollbar-thumb:hover {
+        background: var(--primary-dark);
     }
 </style>
 

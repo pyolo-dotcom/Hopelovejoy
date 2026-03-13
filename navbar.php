@@ -101,12 +101,18 @@
     /* Import Font Awesome */
     @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
     
-    /* Root Variables */
+    /* Root Variables - UPDATED TO BLACK & GOLD THEME */
     :root {
         --primary-color: #eeb82e;
-        --secondary-color: #2c2b29;
+        --primary-dark: #cc9b27;
+        --primary-light: #ffd95e;
+        --bg-dark: #000000;
+        --bg-medium: #0d0d0d;
+        --bg-light: #1a1a1a;
         --text-light: #ffffff;
         --text-gray: #cccccc;
+        --text-dark: #999999;
+        --border-color: rgba(238, 184, 46, 0.2);
         --hover-bg: rgba(238, 184, 46, 0.1);
         --transition: all 0.3s ease;
         --border-radius: 8px;
@@ -115,7 +121,9 @@
 
     /* === FIXED: Navbar Base Styles - STICKY SA ITAAS === */
     .navbar {
-        background-color: var(--secondary-color);
+        background: linear-gradient(180deg, 
+            var(--bg-dark) 0%, 
+            var(--bg-medium) 100%);
         height: var(--nav-height);
         display: flex;
         justify-content: space-between;
@@ -126,13 +134,17 @@
         left: 0;
         right: 0;
         z-index: 1000;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         width: 100%;
+        border-bottom: 2px solid var(--border-color);
     }
 
     .navbar.scrolled {
-        background-color: rgba(44, 43, 41, 0.98);
+        background: linear-gradient(180deg, 
+            rgba(0, 0, 0, 0.98) 0%, 
+            rgba(13, 13, 13, 0.98) 100%);
         backdrop-filter: blur(10px);
+        border-bottom-color: rgba(238, 184, 46, 0.3);
     }
 
     /* Nav Brand */
@@ -147,6 +159,24 @@
         display: flex;
         align-items: center;
         text-decoration: none;
+        position: relative;
+    }
+
+    .logo-link::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--primary-color);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+        border-radius: 2px;
+    }
+
+    .logo-link:hover::after {
+        transform: scaleX(1);
     }
 
     .navbar-logo {
@@ -154,10 +184,12 @@
         height: 40px;
         object-fit: contain;
         transition: var(--transition);
+        filter: drop-shadow(0 2px 5px rgba(238, 184, 46, 0.3));
     }
 
     .logo-link:hover .navbar-logo {
-        transform: scale(1.05);
+        transform: scale(1.1) rotate(5deg);
+        filter: drop-shadow(0 4px 10px rgba(238, 184, 46, 0.5));
     }
 
     .brand-name {
@@ -170,10 +202,29 @@
         transition: var(--transition);
         line-height: 1.2;
         white-space: nowrap;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        position: relative;
+    }
+
+    .brand-name::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--primary-color);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+        border-radius: 2px;
     }
 
     .brand-name:hover {
-        color: var(--text-light);
+        color: var(--primary-light);
+    }
+
+    .brand-name:hover::after {
+        transform: scaleX(1);
     }
 
     /* Navigation Links - Mobile First */
@@ -184,15 +235,16 @@
         width: 85%;
         max-width: 400px;
         height: calc(100vh - var(--nav-height));
-        background: var(--secondary-color);
+        background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-medium) 100%);
         flex-direction: column;
         align-items: stretch;
         padding: 30px 25px;
         transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 1001;
         overflow-y: auto;
-        box-shadow: 5px 0 25px rgba(0, 0, 0, 0.3);
+        box-shadow: 5px 0 25px rgba(0, 0, 0, 0.5);
         display: flex;
+        border-right: 2px solid var(--border-color);
     }
 
     .nav-links.active {
@@ -216,6 +268,27 @@
         cursor: pointer;
         width: 100%;
         box-sizing: border-box;
+        background: transparent;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .nav-links > a::before,
+    .dropbtn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, var(--hover-bg), transparent);
+        transition: left 0.5s ease;
+        z-index: -1;
+    }
+
+    .nav-links > a:hover::before,
+    .dropbtn:hover::before {
+        left: 100%;
     }
 
     .nav-links > a i,
@@ -223,6 +296,14 @@
         font-size: 1.3rem;
         width: 25px;
         text-align: center;
+        color: var(--primary-color);
+        transition: var(--transition);
+    }
+
+    .nav-links > a:hover i,
+    .dropbtn:hover i:not(.dropdown-icon) {
+        transform: scale(1.1);
+        color: var(--primary-light);
     }
 
     .nav-links > a:hover,
@@ -236,6 +317,8 @@
     .dropdown-icon {
         margin-left: auto;
         transition: transform 0.3s ease;
+        color: var(--primary-color);
+        font-size: 0.8rem;
     }
 
     .dropdown.active .dropdown-icon {
@@ -267,6 +350,25 @@
         border-radius: var(--border-radius);
         margin: 5px 0;
         border-left: 2px solid transparent;
+        background: rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .dropdown-content a::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(238, 184, 46, 0.1), transparent);
+        transition: left 0.5s ease;
+    }
+
+    .dropdown-content a:hover::before {
+        left: 100%;
     }
 
     .dropdown-content a:hover {
@@ -274,12 +376,18 @@
         color: var(--text-light) !important;
         border-left-color: var(--primary-color);
         padding-left: 25px;
+        transform: translateX(5px);
     }
 
     .dropdown-content a i {
         color: var(--primary-color);
         width: 20px;
         text-align: center;
+        transition: transform 0.3s ease;
+    }
+
+    .dropdown-content a:hover i {
+        transform: scale(1.2) rotate(5deg);
     }
 
     /* Services Dropdown Grid */
@@ -323,18 +431,22 @@
         background-color: var(--primary-color);
         transition: var(--transition);
         border-radius: 3px;
+        box-shadow: 0 0 5px rgba(238, 184, 46, 0.5);
     }
 
     .burger.active .burger-line:nth-child(1) {
         transform: rotate(45deg) translate(6px, 6px);
+        background-color: var(--primary-light);
     }
 
     .burger.active .burger-line:nth-child(2) {
         opacity: 0;
+        transform: translateX(-10px);
     }
 
     .burger.active .burger-line:nth-child(3) {
         transform: rotate(-45deg) translate(6px, -6px);
+        background-color: var(--primary-light);
     }
 
     /* Mobile Overlay */
@@ -344,7 +456,7 @@
         left: 0;
         width: 100%;
         height: calc(100vh - var(--nav-height));
-        background: rgba(0, 0, 0, 0.5);
+        background: rgba(0, 0, 0, 0.7);
         backdrop-filter: blur(5px);
         z-index: 1000;
         opacity: 0;
@@ -393,6 +505,7 @@
             background: transparent;
             padding: 0;
             box-shadow: none;
+            border-right: none;
             overflow: visible;
             display: flex;
             align-items: center;
@@ -407,12 +520,18 @@
             margin: 0 2px;
             position: relative;
             white-space: nowrap;
+            background: transparent;
         }
         
         .nav-links > a i,
         .dropbtn i:not(.dropdown-icon) {
             font-size: 1.1rem;
             width: auto;
+        }
+        
+        .nav-links > a.active {
+            background: var(--hover-bg);
+            border-left: none;
         }
         
         .nav-links > a.active::after {
@@ -425,6 +544,7 @@
             height: 3px;
             background: var(--primary-color);
             border-radius: 2px;
+            box-shadow: 0 0 10px var(--primary-color);
         }
         
         /* Dropdown Styles for Desktop - ENHANCED ANIMATIONS */
@@ -437,8 +557,8 @@
             top: 100%;
             left: 0;
             min-width: 250px;
-            background: var(--secondary-color);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-medium) 100%);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             border-radius: var(--border-radius);
             padding: 10px 0;
             display: block;
@@ -452,6 +572,7 @@
             pointer-events: none;
             margin-top: 10px;
             transform-origin: top center;
+            border: 2px solid var(--border-color);
         }
         
         /* Add a transparent bridge between dropdown button and content */
@@ -479,6 +600,8 @@
             transform: translateX(-10px);
             opacity: 0;
             animation: slideInItem 0.3s ease forwards;
+            margin: 5px 10px;
+            background: rgba(0, 0, 0, 0.3);
         }
         
         .dropdown-content a:nth-child(1) { animation-delay: 0.05s; }
@@ -501,29 +624,13 @@
             overflow: hidden;
         }
         
-        /* Add hover effect with icon animation */
-        .services-dropdown .dropdown-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(238, 184, 46, 0.1), transparent);
-            transition: left 0.5s ease;
-        }
-        
-        .services-dropdown .dropdown-item:hover::before {
-            left: 100%;
-        }
-        
         .services-dropdown .dropdown-item i {
             transition: transform 0.3s ease, color 0.3s ease;
         }
         
         .services-dropdown .dropdown-item:hover i {
             transform: scale(1.2) rotate(5deg);
-            color: var(--primary-color);
+            color: var(--primary-light);
         }
         
         /* Stagger animations for services grid */
@@ -552,6 +659,7 @@
         .dropdown-content a:hover {
             padding-left: 25px;
             background: var(--hover-bg);
+            transform: translateX(5px);
         }
         
         .burger {
@@ -679,6 +787,35 @@
     /* === FIXED: Para hindi matabunan ng navbar ang content === */
     body {
         padding-top: var(--nav-height);
+    }
+
+    /* Active link indicator */
+    .nav-links > a.active {
+        color: var(--primary-color);
+        font-weight: 600;
+        position: relative;
+    }
+
+    .nav-links > a.active i {
+        color: var(--primary-color);
+    }
+
+    /* Scrollbar styling for dropdowns */
+    .nav-links::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    .nav-links::-webkit-scrollbar-track {
+        background: var(--bg-dark);
+    }
+
+    .nav-links::-webkit-scrollbar-thumb {
+        background: var(--primary-color);
+        border-radius: 5px;
+    }
+
+    .nav-links::-webkit-scrollbar-thumb:hover {
+        background: var(--primary-dark);
     }
 </style>
 
@@ -1086,7 +1223,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 {
                     text: 'Go to Admin',
                     icon: 'fa-sign-in-alt',
-                    color: '#2c2b29',
+                    color: '#000000',
                     bgColor: '#eeb82e',
                     action: function() {
                         window.location.href = 'admin_login.php';
@@ -1120,7 +1257,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 {
                     text: 'Continue',
                     icon: 'fa-rocket',
-                    color: '#2c2b29',
+                    color: '#000000',
                     bgColor: '#eeb82e',
                     action: function() {
                         window.location.href = 'admin_login.php';
@@ -1154,7 +1291,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 {
                     text: 'Go to Admin Panel',
                     icon: 'fa-rocket',
-                    color: '#2c2b29',
+                    color: '#000000',
                     bgColor: '#eeb82e',
                     action: function() {
                         window.location.href = 'admin_login.php';
@@ -1202,10 +1339,10 @@ document.addEventListener('DOMContentLoaded', function() {
             animation: modalFadeIn 0.3s ease-out;
         `;
         
-        // Create modal content
+        // Create modal content - UPDATED TO BLACK & GOLD THEME
         modal.innerHTML = `
             <div class="secret-modal-content" style="
-                background: linear-gradient(135deg, #1a1a1a 0%, #2c2b29 100%);
+                background: linear-gradient(135deg, #000000 0%, #0d0d0d 100%);
                 padding: 40px;
                 border-radius: 20px;
                 box-shadow: 0 20px 60px rgba(0,0,0,0.6);
@@ -1285,15 +1422,15 @@ document.addEventListener('DOMContentLoaded', function() {
                                style="
                                    width: 100%;
                                    padding: 15px 20px;
-                                   border: 2px solid rgba(255,255,255,0.2);
+                                   border: 2px solid rgba(238,184,46,0.3);
                                    border-radius: 10px;
                                    font-size: 1rem;
-                                   background: rgba(255,255,255,0.1);
+                                   background: rgba(0,0,0,0.5);
                                    color: white;
                                    transition: all 0.3s ease;
                                "
                                onfocus="this.style.borderColor='${config.iconColor}'; this.style.boxShadow='0 0 0 3px ${config.iconColor}20'"
-                               onblur="this.style.borderColor='rgba(255,255,255,0.2)'; this.style.boxShadow='none'">
+                               onblur="this.style.borderColor='rgba(238,184,46,0.3)'; this.style.boxShadow='none'">
                         <div id="passwordError" style="
                             color: #ff6b6b;
                             margin-top: 10px;
@@ -1324,6 +1461,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             justify-content: center;
                             gap: 10px;
                             flex: 1;
+                            border: 2px solid transparent;
                         ">
                             <i class="fas ${btn.icon}"></i> ${btn.text}
                         </button>
@@ -1367,6 +1505,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .secret-admin-modal button:hover {
                 transform: translateY(-3px);
                 box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+                border-color: ${config.iconColor} !important;
             }
         `;
         document.head.appendChild(style);

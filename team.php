@@ -25,7 +25,12 @@ require_once 'config.php';
         }
 
         body {
-            background-color: white;
+            background: linear-gradient(180deg, 
+                #000000 0%, 
+                #0d0d0d 25%, 
+                #1a1a1a 50%, 
+                #0d0d0d 75%, 
+                #000000 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -200,23 +205,24 @@ require_once 'config.php';
         .team-page-header {
             text-align: center;
             padding: 60px 20px 40px;
-            background-color: white;
+            background: transparent;
         }
 
         .team-page-title {
             font-family: 'Roboto Serif', serif;
             font-size: 4rem;
             margin-bottom: 20px;
-            color: #2c2b29;
+            color: #eeb82e;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
         .team-page-subtitle {
             font-family: 'Roboto Serif', serif;
             font-size: 1.5rem;
-            color: #666;
+            color: #cccccc;
             max-width: 800px;
             margin: 0 auto 30px;
             line-height: 1.6;
@@ -224,14 +230,15 @@ require_once 'config.php';
 
         /* CEO Section - SMALLER VERSION */
         .ceo-section {
-            background: linear-gradient(135deg, #2c2b29 0%, #3a3937 100%);
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
             padding: 50px 20px;
             margin: 30px 0;
             border-radius: 15px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            scroll-margin-top: 100px; /* Important for smooth scroll offset */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            scroll-margin-top: 100px;
+            border: 2px solid rgba(238, 184, 46, 0.3);
         }
 
         .ceo-section::before {
@@ -242,6 +249,17 @@ require_once 'config.php';
             right: 0;
             height: 4px;
             background: linear-gradient(90deg, #eeb82e 0%, #ffd700 50%, #eeb82e 100%);
+        }
+
+        .ceo-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 0%, rgba(238,184,46,0.05) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .ceo-container {
@@ -265,8 +283,23 @@ require_once 'config.php';
             border-radius: 0;
             overflow: hidden;
             border: 6px solid rgba(238, 184, 46, 0.3);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 20px rgba(238,184,46,0.2);
             position: relative;
+        }
+
+        .ceo-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(238,184,46,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .ceo-section:hover .ceo-image::after {
+            left: 100%;
         }
 
         .ceo-image img {
@@ -274,6 +307,10 @@ require_once 'config.php';
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
+        }
+
+        .ceo-section:hover .ceo-image img {
+            transform: scale(1.05);
         }
 
         .ceo-details {
@@ -285,19 +322,20 @@ require_once 'config.php';
             font-family: 'Roboto Serif', serif;
             font-size: 2.2rem;
             margin-bottom: 10px;
-            color: #fff;
+            color: #eeb82e;
         }
 
         .ceo-position {
             font-size: 1.1rem;
-            color: #eeb82e;
+            color: #ffffff;
             margin-bottom: 20px;
             font-weight: 600;
+            opacity: 0.9;
         }
 
         .ceo-experience {
             font-size: 1rem;
-            color: #ddd;
+            color: #cccccc;
             margin-bottom: 20px;
             padding-left: 15px;
             border-left: 3px solid #eeb82e;
@@ -306,7 +344,7 @@ require_once 'config.php';
         .ceo-message {
             font-size: 1rem;
             line-height: 1.6;
-            color: #ddd;
+            color: #cccccc;
             margin-bottom: 25px;
             font-style: italic;
         }
@@ -341,12 +379,15 @@ require_once 'config.php';
             transition: all 0.3s ease;
             font-size: 1rem;
             cursor: pointer;
+            border: 2px solid rgba(238, 184, 46, 0.3);
         }
 
         .ceo-contact-icon:hover {
             background: #eeb82e;
-            color: #2c2b29;
-            transform: translateY(-3px);
+            color: #000000;
+            transform: translateY(-3px) scale(1.1);
+            border-color: #eeb82e;
+            box-shadow: 0 5px 15px rgba(238,184,46,0.4);
         }
 
         .ceo-contact-icon.link {
@@ -357,23 +398,25 @@ require_once 'config.php';
         .team-category {
             margin-bottom: 80px;
             padding: 20px;
-            scroll-margin-top: 100px; /* Important for smooth scroll offset */
+            scroll-margin-top: 100px;
+            background: transparent;
         }
 
         .category-title {
             font-family: 'Roboto Serif', serif;
             font-size: 2.5rem;
-            color: #2c2b29;
+            color: #eeb82e;
             margin-bottom: 40px;
             padding-bottom: 15px;
             border-bottom: 3px solid #eeb82e;
             text-align: center;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
         .team-category-description {
             font-family: 'Roboto Serif', serif;
             font-size: 1.1rem;
-            color: #555;
+            color: #cccccc;
             line-height: 1.8;
             max-width: 800px;
             margin: 0 auto 40px;
@@ -394,19 +437,22 @@ require_once 'config.php';
         .team-member-smaller {
             width: 280px;
             text-align: center;
-            background: white;
+            background: rgba(26, 26, 26, 0.9);
             border-radius: 15px;
             padding: 25px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            border: 2px solid rgba(238, 184, 46, 0.2);
+            backdrop-filter: blur(5px);
         }
 
         .team-member-smaller:hover {
             transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(238, 184, 46, 0.15);
+            box-shadow: 0 15px 30px rgba(238, 184, 46, 0.3);
+            border-color: #eeb82e;
         }
 
         .team-member-img-smaller {
@@ -417,6 +463,22 @@ require_once 'config.php';
             margin: 0 auto 20px;
             border: 4px solid #eeb82e;
             position: relative;
+            box-shadow: 0 5px 15px rgba(238,184,46,0.2);
+        }
+
+        .team-member-img-smaller::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(238,184,46,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .team-member-smaller:hover .team-member-img-smaller::after {
+            left: 100%;
         }
 
         .team-member-img-smaller img {
@@ -433,27 +495,28 @@ require_once 'config.php';
         .team-member-smaller h3 {
             font-family: 'Roboto Serif', serif;
             font-size: 1.4rem;
-            color: #2c2b29;
+            color: #eeb82e;
             margin-bottom: 8px;
         }
 
         .team-member-smaller .position {
-            color: #eeb82e;
+            color: #ffffff;
             font-weight: 600;
             font-size: 1rem;
             margin-bottom: 15px;
             display: block;
+            opacity: 0.9;
         }
 
         .team-member-smaller .experience {
-            color: #666;
+            color: #cccccc;
             font-size: 0.9rem;
             margin-bottom: 15px;
             display: block;
         }
 
         .team-member-smaller .bio {
-            color: #555;
+            color: #cccccc;
             font-size: 0.95rem;
             line-height: 1.6;
             margin-bottom: 20px;
@@ -472,41 +535,47 @@ require_once 'config.php';
         .contact-icon-smaller {
             width: 40px;
             height: 40px;
-            background: #f8f8f8;
+            background: rgba(0, 0, 0, 0.5);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #2c2b29;
+            color: #eeb82e;
             text-decoration: none;
             transition: all 0.3s ease;
             font-size: 1rem;
             cursor: pointer;
+            border: 2px solid rgba(238, 184, 46, 0.3);
         }
 
         .contact-icon-smaller:hover {
             background: #eeb82e;
-            color: white;
-            transform: scale(1.1);
+            color: #000000;
+            transform: scale(1.1) translateY(-3px);
+            border-color: #eeb82e;
+            box-shadow: 0 5px 15px rgba(238,184,46,0.4);
         }
 
         /* Original team member style for other sections */
         .team-member {
             width: 300px;
             text-align: center;
-            background: white;
+            background: rgba(26, 26, 26, 0.9);
             border-radius: 15px;
             padding: 30px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            border: 2px solid rgba(238, 184, 46, 0.2);
+            backdrop-filter: blur(5px);
         }
 
         .team-member:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(238, 184, 46, 0.15);
+            box-shadow: 0 15px 30px rgba(238, 184, 46, 0.3);
+            border-color: #eeb82e;
         }
 
         .team-member-img {
@@ -517,6 +586,22 @@ require_once 'config.php';
             margin: 0 auto 20px;
             border: 4px solid #eeb82e;
             position: relative;
+            box-shadow: 0 5px 15px rgba(238,184,46,0.2);
+        }
+
+        .team-member-img::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(238,184,46,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .team-member:hover .team-member-img::after {
+            left: 100%;
         }
 
         .team-member-img img {
@@ -533,27 +618,28 @@ require_once 'config.php';
         .team-member h3 {
             font-family: 'Roboto Serif', serif;
             font-size: 1.5rem;
-            color: #2c2b29;
+            color: #eeb82e;
             margin-bottom: 10px;
         }
 
         .team-member .position {
-            color: #eeb82e;
+            color: #ffffff;
             font-weight: 600;
             font-size: 1.1rem;
             margin-bottom: 15px;
             display: block;
+            opacity: 0.9;
         }
 
         .team-member .experience {
-            color: #666;
+            color: #cccccc;
             font-size: 1rem;
             margin-bottom: 15px;
             display: block;
         }
 
         .team-member .bio {
-            color: #555;
+            color: #cccccc;
             font-size: 1rem;
             line-height: 1.7;
             margin-bottom: 20px;
@@ -572,21 +658,24 @@ require_once 'config.php';
         .contact-icon {
             width: 45px;
             height: 45px;
-            background: #f8f8f8;
+            background: rgba(0, 0, 0, 0.5);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #2c2b29;
+            color: #eeb82e;
             text-decoration: none;
             transition: all 0.3s ease;
             cursor: pointer;
+            border: 2px solid rgba(238, 184, 46, 0.3);
         }
 
         .contact-icon:hover {
             background: #eeb82e;
-            color: white;
-            transform: scale(1.1);
+            color: #000000;
+            transform: scale(1.1) translateY(-3px);
+            border-color: #eeb82e;
+            box-shadow: 0 5px 15px rgba(238,184,46,0.4);
         }
 
         /* Read More/Less button */
@@ -602,11 +691,248 @@ require_once 'config.php';
         }
 
         .read-more-btn:hover {
-            color: #2c2b29;
+            color: #ffffff;
             text-decoration: underline;
         }
 
-        /* Mobile Responsive Styles for TEAM CONTENT ONLY */
+        /* Tooltip styles for all contact icons */
+        .contact-icon,
+        .contact-icon-smaller,
+        .ceo-contact-icon {
+            position: relative;
+        }
+
+        .contact-icon.tooltip::before,
+        .contact-icon-smaller.tooltip::before,
+        .ceo-contact-icon.tooltip::before {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-bottom: 8px;
+            background-color: #eeb82e;
+            color: #000000;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 100;
+            border: 2px solid #000000;
+            font-weight: 600;
+        }
+
+        .contact-icon.tooltip::after,
+        .contact-icon-smaller.tooltip::after,
+        .ceo-contact-icon.tooltip::after {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-bottom: 2px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #eeb82e transparent transparent transparent;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 100;
+        }
+
+        .contact-icon.tooltip:hover::before,
+        .contact-icon.tooltip:hover::after,
+        .contact-icon-smaller.tooltip:hover::before,
+        .contact-icon-smaller.tooltip:hover::after,
+        .ceo-contact-icon.tooltip:hover::before,
+        .ceo-contact-icon.tooltip:hover::after {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+            margin: 15% auto;
+            padding: 30px;
+            border: 3px solid #eeb82e;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(238,184,46,0.3);
+            text-align: center;
+            position: relative;
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-content h3 {
+            font-family: 'Roboto Serif', serif;
+            color: #eeb82e;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .modal-content p {
+            margin: 10px 0;
+            font-size: 1.1rem;
+            color: #cccccc;
+        }
+
+        .modal-content strong {
+            color: #eeb82e;
+        }
+
+        .contact-info-container {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            text-align: left;
+            border: 1px solid rgba(238,184,46,0.3);
+        }
+
+        .contact-info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(238,184,46,0.2);
+        }
+
+        .contact-info-row:last-child {
+            border-bottom: none;
+        }
+
+        .contact-info-label {
+            font-weight: bold;
+            color: #eeb82e;
+            min-width: 80px;
+        }
+
+        .contact-info-value {
+            flex: 1;
+            color: #ffffff;
+            margin-left: 10px;
+            word-break: break-all;
+        }
+
+        .copy-btn {
+            background-color: #eeb82e;
+            color: #000000;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            margin-left: 10px;
+            font-weight: 600;
+            border: 2px solid transparent;
+        }
+
+        .copy-btn:hover {
+            background-color: #ffd95e;
+            transform: scale(1.05);
+            border-color: #ffffff;
+        }
+
+        .copy-btn.copied {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .close {
+            color: #eeb82e;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: -20px;
+            margin-right: -10px;
+            transition: all 0.3s ease;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #ffffff;
+            transform: scale(1.2);
+        }
+        
+        /* Highlight animation for sections */
+        .section-highlight {
+            animation: sectionPulse 1.5s ease;
+        }
+        
+        @keyframes sectionPulse {
+            0% {
+                background-color: rgba(238, 184, 46, 0);
+                box-shadow: 0 0 0 0 rgba(238, 184, 46, 0);
+            }
+            20% {
+                background-color: rgba(238, 184, 46, 0.2);
+                box-shadow: 0 0 0 10px rgba(238, 184, 46, 0.2);
+            }
+            50% {
+                background-color: rgba(238, 184, 46, 0.1);
+                box-shadow: 0 0 0 5px rgba(238, 184, 46, 0.1);
+            }
+            100% {
+                background-color: rgba(238, 184, 46, 0);
+                box-shadow: 0 0 0 0 rgba(238, 184, 46, 0);
+            }
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #eeb82e;
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #cc9b27;
+        }
+
+        /* Selection color */
+        ::selection {
+            background: #eeb82e;
+            color: #000000;
+        }
+
+        /* Mobile Responsive Styles */
         @media screen and (max-width: 768px) {
             /* Team Page mobile adjustments */
             .team-page-title {
@@ -678,7 +1004,6 @@ require_once 'config.php';
                 max-width: 350px;
             }
 
-            /* Mobile adjustments for smaller team member cards */
             .team-member-smaller {
                 padding: 20px;
             }
@@ -698,7 +1023,6 @@ require_once 'config.php';
         }
 
         @media screen and (max-width: 480px) {
-            /* Team Page very small screens */
             .team-page-title {
                 font-size: 2.2rem;
             }
@@ -707,7 +1031,6 @@ require_once 'config.php';
                 font-size: 1rem;
             }
 
-            /* CEO Section very small screens */
             .ceo-image {
                 width: 160px;
                 height: 160px;
@@ -734,195 +1057,6 @@ require_once 'config.php';
             .team-member-img-smaller {
                 width: 160px;
                 height: 160px;
-            }
-        }
-
-        /* Tooltip styles for all contact icons */
-        .contact-icon,
-        .contact-icon-smaller,
-        .ceo-contact-icon {
-            position: relative;
-        }
-
-        .contact-icon.tooltip::before,
-        .contact-icon-smaller.tooltip::before,
-        .ceo-contact-icon.tooltip::before {
-            content: attr(data-tooltip);
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            margin-bottom: 8px;
-            background-color: #333;
-            color: white;
-            padding: 6px 12px;
-            border-radius: 4px;
-            font-size: 12px;
-            white-space: nowrap;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-            z-index: 100;
-        }
-
-        .contact-icon.tooltip::after,
-        .contact-icon-smaller.tooltip::after,
-        .ceo-contact-icon.tooltip::after {
-            content: '';
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            margin-bottom: 2px;
-            border-width: 5px;
-            border-style: solid;
-            border-color: #333 transparent transparent transparent;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-            z-index: 100;
-        }
-
-        .contact-icon.tooltip:hover::before,
-        .contact-icon.tooltip:hover::after,
-        .contact-icon-smaller.tooltip:hover::before,
-        .contact-icon-smaller.tooltip:hover::after,
-        .ceo-contact-icon.tooltip:hover::before,
-        .ceo-contact-icon.tooltip:hover::after {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-        }
-
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto;
-            padding: 30px;
-            border: 1px solid #888;
-            width: 90%;
-            max-width: 400px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            text-align: center;
-        }
-
-        .modal-content h3 {
-            font-family: 'Roboto Serif', serif;
-            color: #2c2b29;
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-        }
-
-        .modal-content p {
-            margin: 10px 0;
-            font-size: 1.1rem;
-            color: #555;
-        }
-
-        .modal-content strong {
-            color: #eeb82e;
-        }
-
-        .contact-info-container {
-            background-color: #f9f9f9;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-            text-align: left;
-        }
-
-        .contact-info-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 8px 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        .contact-info-row:last-child {
-            border-bottom: none;
-        }
-
-        .contact-info-label {
-            font-weight: bold;
-            color: #2c2b29;
-            min-width: 80px;
-        }
-
-        .contact-info-value {
-            flex: 1;
-            color: #555;
-            margin-left: 10px;
-            word-break: break-all;
-        }
-
-        .copy-btn {
-            background-color: #eeb82e;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: background-color 0.3s ease;
-            margin-left: 10px;
-        }
-
-        .copy-btn:hover {
-            background-color: #d4a324;
-        }
-
-        .copy-btn.copied {
-            background-color: #4CAF50;
-        }
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: -20px;
-            margin-right: -10px;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: #eeb82e;
-        }
-        
-        /* Highlight animation for sections */
-        .section-highlight {
-            animation: sectionPulse 1.5s ease;
-        }
-        
-        @keyframes sectionPulse {
-            0% {
-                background-color: rgba(238, 184, 46, 0);
-                box-shadow: 0 0 0 0 rgba(238, 184, 46, 0);
-            }
-            20% {
-                background-color: rgba(238, 184, 46, 0.2);
-                box-shadow: 0 0 0 10px rgba(238, 184, 46, 0.2);
-            }
-            50% {
-                background-color: rgba(238, 184, 46, 0.1);
-                box-shadow: 0 0 0 5px rgba(238, 184, 46, 0.1);
-            }
-            100% {
-                background-color: rgba(238, 184, 46, 0);
-                box-shadow: 0 0 0 0 rgba(238, 184, 46, 0);
             }
         }
     </style>
@@ -1047,7 +1181,7 @@ require_once 'config.php';
                 <?php 
                     endwhile;
                 else:
-                    echo '<p style="grid-column: 1 / -1; text-align: center; color: #666;">No leadership team members found.</p>';
+                    echo '<p style="grid-column: 1 / -1; text-align: center; color: #eeb82e;">No leadership team members found.</p>';
                 endif;
                 ?>
             </div>
@@ -1107,7 +1241,7 @@ require_once 'config.php';
                 <?php 
                     endwhile;
                 else:
-                    echo '<p style="grid-column: 1 / -1; text-align: center; color: #666;">No account specialists found.</p>';
+                    echo '<p style="grid-column: 1 / -1; text-align: center; color: #eeb82e;">No account specialists found.</p>';
                 endif;
                 ?>
             </div>
@@ -1195,7 +1329,7 @@ require_once 'config.php';
                 </div>
             </div>
             
-            <div style="margin-top: 20px; font-size: 0.9rem; color: #777;">
+            <div style="margin-top: 20px; font-size: 0.9rem; color: #999;">
                 <p>Click "Copy" to copy the information to your clipboard</p>
             </div>
         </div>

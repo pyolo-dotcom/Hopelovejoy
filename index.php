@@ -21,42 +21,85 @@
         /* === FIXED: Para iisa lang ang scrollbar (default browser scroll lang) === */
         html {
             overflow-x: hidden;
-            overflow-y: auto; /* Default browser scroll */
+            overflow-y: auto;
             width: 100%;
             height: 100%;
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: white;
+            background: linear-gradient(180deg, 
+                #000000 0%, 
+                #0d0d0d 25%, 
+                #1a1a1a 50%, 
+                #0d0d0d 75%, 
+                #000000 100%);
             min-height: 100%;
             display: flex;
             flex-direction: column;
             overflow-x: hidden;
-            overflow-y: visible; /* Huwag gumawa ng sariling scroll */
+            overflow-y: visible;
             width: 100%;
             position: relative;
         }
 
-        /* Main content styling */
+        /* Main content styling - para tuloy-tuloy ang sections */
         .main-content {
-            padding: 100px 20px 20px;
-            max-width: 1200px;
+            padding: 100px 0 0;
+            max-width: 1400px;
             margin: 0 auto;
             flex: 1;
             width: 100%;
-            overflow: visible; /* IMPORTANT: Huwag magkaroon ng scroll */
+            overflow: visible;
         }
 
-        /* Hero Carousel Section */
+        /* Container para sa bawat section - para consistent ang padding */
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+            width: 100%;
+        }
+
+        /* Para walang white lines sa pagitan ng sections */
+        .hero-carousel-section,
+        .about-us-section,
+        .mission-vision-section,
+        .sales-section,
+        .awards-section,
+        .bank-partners-section,
+        .affiliated-section {
+            position: relative;
+            width: 100%;
+            background: transparent;
+        }
+
+        /* Subtle separator gamit ang gold line */
+        .section-separator {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(238, 184, 46, 0.2) 20%, 
+                rgba(238, 184, 46, 0.5) 50%, 
+                rgba(238, 184, 46, 0.2) 80%, 
+                transparent 100%);
+            margin: 0 auto;
+        }
+
+        /* Hero Carousel Section - FIXED ALIGNMENT */
         .hero-carousel-section {
             padding: 0;
-            margin-bottom: 30px;
+            margin-bottom: 0;
             position: relative;
             min-height: 80vh;
-            background-color: white;
-            border-radius: 15px;
-            overflow: hidden; /* Keep this for carousel */
+            background: transparent;
+            border-radius: 0;
+            overflow: hidden;
             width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .hero-carousel-container {
@@ -64,6 +107,8 @@
             height: 100%;
             position: relative;
             overflow: hidden;
+            display: flex;
+            align-items: center;
         }
 
         .hero-carousel-track {
@@ -71,6 +116,7 @@
             height: 100%;
             transition: transform 0.8s ease-in-out;
             width: 100%;
+            align-items: center;
         }
 
         .hero-carousel-slide {
@@ -78,7 +124,7 @@
             height: 100%;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             padding: 0 50px;
             gap: 50px;
             flex-wrap: wrap;
@@ -88,11 +134,12 @@
         .hero-text-content {
             flex: 1;
             min-width: 300px;
-            max-width: 100%;
+            max-width: 600px;
+            text-align: left;
         }
 
         .hero-text-content h1 {
-            color: #2c2b29;
+            color: #eeb82e;
             margin-bottom: 15px;
             font-size: 5rem;
             font-family: 'Roboto Serif', serif;
@@ -101,19 +148,20 @@
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.8s ease, transform 0.8s ease;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
         .hero-text-content p {
-            color: #555;
             line-height: 1.6;
             margin-bottom: 15px;
             font-family: 'WindSong', cursive;
             font-size: 3.2rem;
             font-weight: 500;
-            color: #eeb82e;
+            color: #ffffff;
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
         }
 
         .hero-carousel-slide.active .hero-text-content h1,
@@ -131,6 +179,8 @@
             opacity: 0;
             transform: translateX(30px);
             transition: opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s;
+            box-shadow: 0 10px 30px rgba(238, 184, 46, 0.3);
+            border: none;
         }
 
         .hero-carousel-slide.active img {
@@ -152,27 +202,26 @@
             pointer-events: none;
         }
 
-        /* Line style dots container */
         .hero-carousel-dots {
             display: flex;
             gap: 12px;
             padding: 10px 20px;
-            background: rgba(44, 43, 41, 0.85);
+            background: rgba(0, 0, 0, 0.6);
             border-radius: 25px;
             backdrop-filter: blur(8px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
             pointer-events: auto;
             max-width: 90%;
             flex-wrap: wrap;
             justify-content: center;
+            border: 1px solid rgba(238, 184, 46, 0.3);
         }
 
-        /* Line style dots (pahabang rectangles) */
         .hero-carousel-dot {
             width: 40px;
             height: 6px;
             border-radius: 3px;
-            background: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.2);
             border: none;
             cursor: pointer;
             transition: all 0.4s ease;
@@ -183,13 +232,11 @@
             flex-shrink: 0;
         }
 
-        /* Hover effect para sa lines */
         .hero-carousel-dot:hover {
-            background: rgba(238, 184, 46, 0.7);
+            background: #eeb82e;
             transform: scaleX(1.2);
         }
 
-        /* Active line - mas maliwanag at mas mahaba */
         .hero-carousel-dot.active {
             background: #eeb82e;
             transform: scaleX(1.3);
@@ -205,62 +252,15 @@
             height: 100%;
             background: linear-gradient(90deg, 
                 transparent 0%, 
-                rgba(255, 255, 255, 0.3) 50%, 
+                rgba(255, 255, 255, 0.2) 50%, 
                 transparent 100%);
             animation: shine 2s infinite;
             border-radius: 3px;
         }
 
         @keyframes shine {
-            0% {
-                transform: translateX(-100%);
-            }
-            100% {
-                transform: translateX(100%);
-            }
-        }
-
-        /* Mobile adjustments */
-        @media screen and (max-width: 768px) {
-            .hero-carousel-nav {
-                bottom: 20px;
-            }
-            
-            .hero-carousel-dots {
-                padding: 8px 15px;
-                gap: 10px;
-            }
-            
-            .hero-carousel-dot {
-                width: 30px;
-                height: 5px;
-                border-radius: 2.5px;
-            }
-            
-            .hero-carousel-dot:hover {
-                transform: scaleX(1.1);
-            }
-            
-            .hero-carousel-dot.active {
-                transform: scaleX(1.2);
-            }
-        }
-
-        @media screen and (max-width: 480px) {
-            .hero-carousel-nav {
-                bottom: 15px;
-            }
-            
-            .hero-carousel-dots {
-                padding: 6px 12px;
-                gap: 8px;
-            }
-            
-            .hero-carousel-dot {
-                width: 25px;
-                height: 4px;
-                border-radius: 2px;
-            }
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
         }
 
         /* SCROLL ANIMATION CLASSES */
@@ -308,17 +308,6 @@
             transform: scale(1);
         }
 
-        .rotate-in {
-            opacity: 0;
-            transform: rotate(-5deg) scale(0.9);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .rotate-in.active {
-            opacity: 1;
-            transform: rotate(0) scale(1);
-        }
-
         .slide-up {
             opacity: 0;
             transform: translateY(60px);
@@ -330,83 +319,38 @@
             transform: translateY(0);
         }
 
-        /* Stagger animations for children */
+        /* Stagger animations */
         .stagger-children > * {
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.5s ease, transform 0.5s ease;
         }
 
-        .stagger-children.active > *:nth-child(1) {
-            opacity: 1;
-            transform: translateY(0);
-            transition-delay: 0.1s;
-        }
+        .stagger-children.active > *:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.1s; }
+        .stagger-children.active > *:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.2s; }
+        .stagger-children.active > *:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.3s; }
+        .stagger-children.active > *:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.4s; }
+        .stagger-children.active > *:nth-child(5) { opacity: 1; transform: translateY(0); transition-delay: 0.5s; }
+        .stagger-children.active > *:nth-child(6) { opacity: 1; transform: translateY(0); transition-delay: 0.6s; }
 
-        .stagger-children.active > *:nth-child(2) {
-            opacity: 1;
-            transform: translateY(0);
-            transition-delay: 0.2s;
-        }
-
-        .stagger-children.active > *:nth-child(3) {
-            opacity: 1;
-            transform: translateY(0);
-            transition-delay: 0.3s;
-        }
-
-        .stagger-children.active > *:nth-child(4) {
-            opacity: 1;
-            transform: translateY(0);
-            transition-delay: 0.4s;
-        }
-
-        .stagger-children.active > *:nth-child(5) {
-            opacity: 1;
-            transform: translateY(0);
-            transition-delay: 0.5s;
-        }
-
-        .stagger-children.active > *:nth-child(6) {
-            opacity: 1;
-            transform: translateY(0);
-            transition-delay: 0.6s;
-        }
-
-        /* Pulse animation */
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-
-        /* About Us Section - Simple white design */
+        /* About Us Section */
         .about-us-section {
-            padding: 80px 20px;
-            background-color: white;
+            padding: 0;
+            background: transparent;
             text-align: center;
             width: 100%;
-            overflow: visible; /* IMPORTANT: Huwag magkaroon ng scroll */
+            overflow: visible;
         }
 
         .about-us-title {
             font-family: 'Roboto Serif', serif;
             font-size: 3rem;
             margin-bottom: 50px;
-            color: #2c2b29;
+            color: #eeb82e;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
         .about-us-container {
@@ -430,7 +374,7 @@
             font-family: 'Roboto Serif', serif;
             font-size: 1.1rem;
             line-height: 1.8;
-            color: #444;
+            color: #cccccc;
             margin-bottom: 20px;
         }
 
@@ -440,16 +384,8 @@
             max-width: 100%;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .about-us-map h3 {
-            font-family: 'Roboto Serif', serif;
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: #333;
-            font-weight: 600;
-            text-align: left;
+            box-shadow: 0 5px 15px rgba(238, 184, 46, 0.2);
+            border: 2px solid #eeb82e;
         }
 
         .about-us-map img {
@@ -463,32 +399,190 @@
             transform: scale(1.05);
         }
 
-        /* SALES Section - CAROUSEL */
+        /* Mission & Vision Section */
+        .mission-vision-section {
+            padding: 0;
+            background: transparent;
+            text-align: center;
+            width: 100%;
+            overflow: visible;
+        }
+
+        .mission-vision-title {
+            font-family: 'Roboto Serif', serif;
+            font-size: 3rem;
+            margin-bottom: 50px;
+            color: #eeb82e;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .mission-vision-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .mission-card, .vision-card {
+            flex: 1;
+            min-width: 300px;
+            max-width: 100%;
+            background: rgba(26, 26, 26, 0.7);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
+            height: 100%;
+            border: 1px solid rgba(51, 51, 51, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .mission-card:hover, .vision-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(238, 184, 46, 0.2);
+            border-color: #eeb82e;
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(26,26,26,0.8) 100%);
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #eeb82e;
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            color: #eeb82e;
+            margin-bottom: 15px;
+        }
+
+        .card-header h3 {
+            color: #eeb82e;
+            font-family: 'Roboto Serif', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .card-subtitle {
+            display: inline-block;
+            background: rgba(238, 184, 46, 0.1);
+            color: #eeb82e;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 5px;
+            border: 1px solid #eeb82e;
+        }
+
+        .card-body {
+            padding: 35px;
+            text-align: left;
+            background: rgba(26, 26, 26, 0.7);
+        }
+
+        .card-body p {
+            color: #cccccc;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, rgba(238, 184, 46, 0.1) 0%, rgba(238, 184, 46, 0.05) 100%);
+            border-left: 4px solid #eeb82e;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .highlight p {
+            color: #eeb82e;
+            font-weight: 600;
+            font-style: italic;
+            margin: 0;
+        }
+
+        .core-values {
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(51, 51, 51, 0.5);
+        }
+
+        .core-values h4 {
+            font-family: 'Roboto Serif', serif;
+            font-size: 1.2rem;
+            color: #eeb82e;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .core-values ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .core-values li {
+            color: #cccccc;
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .core-values li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #eeb82e;
+            font-weight: bold;
+        }
+
+        /* SALES Section */
         .sales-section {
-            padding: 80px 20px;
-            background-color: white;
+            padding: 0;
+            background: transparent;
             text-align: center;
             position: relative;
             width: 100%;
-            overflow: visible; /* IMPORTANT: Huwag magkaroon ng scroll */
+            overflow: visible;
         }
 
         .sales-title {
             font-family: 'Roboto Serif', serif;
             font-size: 3rem;
             margin-bottom: 50px;
-            color: #2c2b29;
+            color: #eeb82e;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
-        /* Carousel Container */
         .carousel-container {
             position: relative;
             max-width: 1200px;
             margin: 0 auto;
-            overflow: hidden; /* Keep this for carousel */
+            overflow: hidden;
             padding: 0 60px;
             width: 100%;
         }
@@ -512,16 +606,22 @@
         }
 
         .sales-item {
-            background: white;
+            background: rgba(26, 26, 26, 0.7);
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(238, 184, 46, 0.1);
             height: 100%;
             position: relative;
             width: 100%;
+            border: 1px solid rgba(51, 51, 51, 0.5);
+            backdrop-filter: blur(5px);
         }
 
-        /* MALAKING IMAGE - PINALAKI KO DITO */
+        .sales-item:hover {
+            border-color: #eeb82e;
+            box-shadow: 0 10px 25px rgba(238, 184, 46, 0.2);
+        }
+
         .item-img {
             width: 100%;
             height: 350px;
@@ -533,6 +633,7 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
+            border: none;
         }
 
         .item-img:hover img {
@@ -542,19 +643,20 @@
         .item-info {
             padding: 20px;
             text-align: center;
+            background: rgba(26, 26, 26, 0.7);
         }
 
         .item-info h3 {
             font-family: 'Roboto Serif', serif;
             font-size: 1.2rem;
-            color: #2c2b29;
+            color: #eeb82e;
             margin-bottom: 5px;
         }
 
         .item-category {
             display: inline-block;
             background: #eeb82e;
-            color: #2c2b29;
+            color: #000000;
             padding: 4px 12px;
             border-radius: 20px;
             font-size: 0.8rem;
@@ -564,7 +666,7 @@
         }
 
         .item-description {
-            color: #666;
+            color: #cccccc;
             font-size: 0.9rem;
             line-height: 1.5;
             margin-bottom: 10px;
@@ -573,7 +675,7 @@
 
         .item-price {
             font-weight: 700;
-            color: #2c2b29;
+            color: #eeb82e;
             font-size: 1.1rem;
             margin-bottom: 5px;
         }
@@ -584,13 +686,12 @@
             font-style: italic;
         }
 
-        /* Carousel Navigation Buttons */
         .carousel-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: #2c2b29;
-            border: none;
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px solid #eeb82e;
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -602,23 +703,17 @@
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
 
         .carousel-btn:hover {
             background: #eeb82e;
-            color: #2c2b29;
+            color: #000000;
         }
 
-        .carousel-btn.prev {
-            left: 0;
-        }
+        .carousel-btn.prev { left: 0; }
+        .carousel-btn.next { right: 0; }
 
-        .carousel-btn.next {
-            right: 0;
-        }
-
-        /* Carousel Dots */
         .carousel-dots {
             display: flex;
             justify-content: center;
@@ -631,7 +726,7 @@
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background: #ddd;
+            background: #333;
             border: none;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -642,23 +737,24 @@
             transform: scale(1.2);
         }
 
-        /* Awards & Recognition Section */
+        /* Awards Section */
         .awards-section {
-            padding: 80px 20px;
-            background-color: white;
+            padding: 0;
+            background: transparent;
             text-align: center;
             width: 100%;
-            overflow: visible; /* IMPORTANT: Huwag magkaroon ng scroll */
+            overflow: visible;
         }
 
         .awards-title {
             font-family: 'Roboto Serif', serif;
             font-size: 3rem;
             margin-bottom: 50px;
-            color: #2c2b29;
+            color: #eeb82e;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
         .awards-container {
@@ -672,26 +768,27 @@
         }
 
         .award-card {
-            background: white;
+            background: rgba(26, 26, 26, 0.7);
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
             height: 100%;
-            border: 1px solid #f0f0f0;
+            border: 1px solid rgba(51, 51, 51, 0.5);
             width: 100%;
+            backdrop-filter: blur(5px);
         }
 
         .award-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(238, 184, 46, 0.15);
+            box-shadow: 0 15px 40px rgba(238, 184, 46, 0.2);
             border-color: #eeb82e;
         }
 
         .award-header {
-            background: linear-gradient(135deg, #2c2b29 0%, #3a3937 100%);
+            background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(26,26,26,0.8) 100%);
             padding: 0;
             text-align: center;
             position: relative;
@@ -731,13 +828,9 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 1.15;
+            opacity: 0.15;
             filter: brightness(0.8);
             transition: transform 0.5s ease;
-        }
-
-        .award-image-container:hover .award-image-bg {
-            transform: scale(1.1);
         }
 
         .award-main-image {
@@ -747,6 +840,10 @@
             max-height: 150px;
             object-fit: contain;
             transition: all 0.3s ease;
+            border: 2px solid #eeb82e;
+            border-radius: 10px;
+            background: #000000;
+            padding: 5px;
         }
 
         .award-card:hover .award-main-image {
@@ -758,11 +855,11 @@
             z-index: 3;
             padding: 20px;
             width: 100%;
-            background: rgba(44, 43, 41, 0.8);
+            background: rgba(0, 0, 0, 0.7);
         }
 
         .award-header h3 {
-            color: white;
+            color: #eeb82e;
             font-family: 'Roboto Serif', serif;
             font-size: 1.5rem;
             font-weight: 600;
@@ -773,13 +870,13 @@
         .award-year {
             display: inline-block;
             background: #eeb82e;
-            color: #2c2b29;
+            color: #000000;
             padding: 5px 15px;
             border-radius: 20px;
             font-size: 0.9rem;
             font-weight: 600;
             margin-top: 5px;
-            border: 2px solid #2c2b29;
+            border: 2px solid #000000;
         }
 
         .award-body {
@@ -787,10 +884,11 @@
             flex-grow: 1;
             display: flex;
             flex-direction: column;
+            background: rgba(26, 26, 26, 0.7);
         }
 
         .award-body p {
-            color: #555;
+            color: #cccccc;
             line-height: 1.7;
             margin-bottom: 20px;
             font-size: 1rem;
@@ -802,427 +900,42 @@
             align-items: center;
             gap: 15px;
             padding-top: 20px;
-            border-top: 1px solid #eee;
+            border-top: 1px solid rgba(51, 51, 51, 0.5);
             flex-wrap: wrap;
             justify-content: center;
         }
 
-        .issuer-icon {
-            width: 50px;
-            height: 50px;
-            background: #f8f8f8;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: #eeb82e;
-        }
-
         .issuer-info h4 {
-            color: #2c2b29;
+            color: #eeb82e;
             font-family: 'Roboto Serif', serif;
             font-size: 1.1rem;
             margin-bottom: 5px;
         }
 
         .issuer-info p {
-            color: #777;
+            color: #999;
             font-size: 0.9rem;
             margin: 0;
-        }
-
-        .partner-content {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .partner-content h3 {
-            font-family: 'Roboto Serif', serif;
-            font-size: 1.5rem;
-            color: #2c2b29;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .partner-category {
-            display: inline-block;
-            background: #eeb82e;
-            color: #2c2b29;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
-
-        .partner-content p {
-            color: #555;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-            flex-grow: 1;
-        }
-
-        .partner-years {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-            color: #777;
-            font-size: 0.9rem;
-            flex-wrap: wrap;
-        }
-
-        .partner-years i {
-            color: #eeb82e;
-        }
-
-        /* Mission & Vision Section */
-        .mission-vision-section {
-            padding: 80px 20px;
-            background-color: transparent;
-            text-align: center;
-            width: 100%;
-            overflow: visible; /* IMPORTANT: Huwag magkaroon ng scroll */
-        }
-
-        .mission-vision-title {
-            font-family: 'Roboto Serif', serif;
-            font-size: 3rem;
-            margin-bottom: 50px;
-            color: #2c2b29;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .mission-vision-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            gap: 40px;
-            flex-wrap: wrap;
-            width: 100%;
-        }
-
-        .mission-card, .vision-card {
-            flex: 1;
-            min-width: 300px;
-            max-width: 100%;
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            height: 100%;
-        }
-
-        .mission-card:hover, .vision-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(238, 184, 46, 0.15);
-        }
-
-        .card-header {
-            background: linear-gradient(135deg, #2c2b29 0%, #3a3937 100%);
-            padding: 30px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: #eeb82e;
-        }
-
-        .mission-card .card-header {
-            border-bottom: 4px solid #e74c3c;
-        }
-
-        .vision-card .card-header {
-            border-bottom: 4px solid #3498db;
-        }
-
-        .card-icon {
-            font-size: 3rem;
-            color: #eeb82e;
-            margin-bottom: 15px;
-        }
-
-        .card-header h3 {
-            color: white;
-            font-family: 'Roboto Serif', serif;
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .card-subtitle {
-            display: inline-block;
-            background: rgba(238, 184, 46, 0.2);
-            color: #eeb82e;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-top: 5px;
-            border: 1px solid #eeb82e;
-        }
-
-        .card-body {
-            padding: 35px;
-            text-align: left;
-        }
-
-        .card-body p {
-            color: #555;
-            line-height: 1.8;
-            margin-bottom: 20px;
-            font-size: 1.05rem;
-        }
-
-        .highlight {
-            background: linear-gradient(120deg, rgba(238, 184, 46, 0.1) 0%, rgba(238, 184, 46, 0.05) 100%);
-            border-left: 4px solid #eeb82e;
-            padding: 20px;
-            margin: 25px 0;
-            border-radius: 0 8px 8px 0;
-        }
-
-        .highlight p {
-            color: #2c2b29;
-            font-weight: 600;
-            font-style: italic;
-            margin: 0;
-        }
-
-        .core-values {
-            margin-top: 25px;
-            padding-top: 25px;
-            border-top: 1px solid #eee;
-        }
-
-        .core-values h4 {
-            font-family: 'Roboto Serif', serif;
-            font-size: 1.2rem;
-            color: #2c2b29;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .core-values h4 i {
-            color: #eeb82e;
-        }
-
-        .core-values ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .core-values li {
-            color: #666;
-            margin-bottom: 10px;
-            padding-left: 25px;
-            position: relative;
-            line-height: 1.6;
-        }
-
-        .core-values li:before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #eeb82e;
-            font-weight: bold;
-        }
-
-        /* Affiliated Houses Section */
-        .affiliated-section {
-            padding: 80px 20px;
-            text-align: center;
-            width: 100%;
-            overflow: visible; /* IMPORTANT: Huwag magkaroon ng scroll */
-        }
-
-        .affiliated-title {
-            font-family: 'Roboto Serif', serif;
-            font-size: 3rem;
-            margin-bottom: 50px;
-            color: #2c2b29;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .affiliated-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            padding: 20px;
-            width: 100%;
-        }
-
-        .affiliated-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            border: 1px solid #f0f0f0;
-            padding: 30px;
-            width: 100%;
-        }
-
-        .affiliated-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(238, 184, 46, 0.15);
-            border-color: #eeb82e;
-        }
-
-        .affiliated-logo {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #f8f8f8;
-            border-radius: 50%;
-            padding: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .affiliated-card:hover .affiliated-logo {
-            background: #fff9e6;
-            transform: scale(1.05);
-        }
-
-        .logo-placeholder {
-            width: 80px;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #eeb82e;
-            border-radius: 50%;
-            color: #2c2b29;
-            font-size: 2.5rem;
-        }
-
-        .affiliated-content {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .affiliated-content h3 {
-            font-family: 'Roboto Serif', serif;
-            font-size: 1.5rem;
-            color: #2c2b29;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .affiliated-category {
-            display: inline-block;
-            background: #eeb82e;
-            color: #2c2b29;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
-
-        .affiliated-content p {
-            color: #555;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-            flex-grow: 1;
-        }
-
-        .affiliated-years {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-            color: #777;
-            font-size: 0.9rem;
-            flex-wrap: wrap;
-        }
-
-        .affiliated-years i {
-            color: #eeb82e;
-        }
-
-        .affiliated-logo-img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            transition: transform 0.3s ease;
-        }
-
-        .affiliated-card:hover .affiliated-logo-img {
-            transform: scale(1.05);
-        }
-
-        .affiliated-logo {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: white;
-            border-radius: 10px;
-            padding: 15px;
-            transition: all 0.3s ease;
-            border: 2px solid #f0f0f0;
-        }
-
-        .affiliated-card:hover .affiliated-logo {
-            background: #fff9e6;
-            transform: scale(1.05);
-            border-color: #eeb82e;
         }
 
         /* Bank & Car Partners Sections */
         .bank-partners-section {
-            padding: 80px 20px;
-            background-color: white;
+            padding: 0;
+            background: transparent;
             text-align: center;
             width: 100%;
-            overflow: visible; /* IMPORTANT: Huwag magkaroon ng scroll */
+            overflow: visible;
         }
 
         .bank-partners-title {
             font-family: 'Roboto Serif', serif;
             font-size: 3rem;
             margin-bottom: 50px;
-            color: #2c2b29;
+            color: #eeb82e;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
         .bank-partners-container {
@@ -1236,20 +949,21 @@
         }
 
         .bank-logo {
-            background: white;
+            background: rgba(26, 26, 26, 0.7);
             border-radius: 10px;
             padding: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             height: 120px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
             transition: all 0.3s ease;
-            border: 2px solid transparent;
+            border: 2px solid rgba(51, 51, 51, 0.5);
             position: relative;
             overflow: hidden;
             cursor: default;
             width: 100%;
+            backdrop-filter: blur(5px);
         }
 
         .bank-logo::before {
@@ -1259,21 +973,10 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(238, 184, 46, 0.1) 0%, rgba(44, 43, 41, 0.1) 100%);
+            background: linear-gradient(135deg, rgba(238, 184, 46, 0.1) 0%, rgba(238, 184, 46, 0.05) 100%);
             opacity: 0;
             transition: opacity 0.3s ease;
             z-index: 1;
-        }
-
-        .bank-logo::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.7s ease;
         }
 
         .bank-logo:hover {
@@ -1286,23 +989,139 @@
             opacity: 1;
         }
 
-        .bank-logo:hover::after {
-            left: 100%;
-        }
-
         .bank-logo img {
             max-width: 100%;
             max-height: 80px;
             object-fit: contain;
             transition: all 0.3s ease;
-            filter: grayscale(20%);
+            filter: brightness(0.9);
             position: relative;
             z-index: 2;
         }
 
         .bank-logo:hover img {
             transform: scale(1.1);
-            filter: grayscale(0%);
+            filter: brightness(1);
+        }
+
+        /* Affiliated Houses Section */
+        .affiliated-section {
+            padding: 0;
+            text-align: center;
+            width: 100%;
+            overflow: visible;
+            background: transparent;
+        }
+
+        .affiliated-title {
+            font-family: 'Roboto Serif', serif;
+            font-size: 3rem;
+            margin-bottom: 50px;
+            color: #eeb82e;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .affiliated-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .affiliated-card {
+            background: rgba(26, 26, 26, 0.7);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border: 1px solid rgba(51, 51, 51, 0.5);
+            padding: 30px;
+            width: 100%;
+            backdrop-filter: blur(5px);
+        }
+
+        .affiliated-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(238, 184, 46, 0.2);
+            border-color: #eeb82e;
+        }
+
+        .affiliated-logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000000;
+            border-radius: 50%;
+            padding: 20px;
+            transition: all 0.3s ease;
+            border: 2px solid #eeb82e;
+        }
+
+        .affiliated-card:hover .affiliated-logo {
+            transform: scale(1.05);
+        }
+
+        .affiliated-content h3 {
+            font-family: 'Roboto Serif', serif;
+            font-size: 1.5rem;
+            color: #eeb82e;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .affiliated-category {
+            display: inline-block;
+            background: #eeb82e;
+            color: #000000;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .affiliated-content p {
+            color: #cccccc;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            flex-grow: 1;
+        }
+
+        .affiliated-years {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(51, 51, 51, 0.5);
+            color: #999;
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+        }
+
+        .affiliated-years i {
+            color: #eeb82e;
+        }
+
+        .affiliated-logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
         }
 
         /* MODAL STYLES */
@@ -1358,36 +1177,37 @@
             max-height: 85vh;
             object-fit: contain;
             border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 40px rgba(238, 184, 46, 0.3);
             margin: 0 auto;
+            border: none;
         }
 
         .close-modal {
             position: fixed;
             top: 20px;
             right: 20px;
-            color: white;
+            color: #eeb82e;
             font-size: 45px;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
             z-index: 10000;
-            background: rgba(44, 43, 41, 0.95);
+            background: rgba(0, 0, 0, 0.6);
             width: 60px;
             height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            border: 3px solid #eeb82e;
+            border: 2px solid #eeb82e;
             box-shadow: 0 4px 20px rgba(0,0,0,0.5);
             backdrop-filter: blur(5px);
         }
 
         .close-modal:hover {
-            color: #eeb82e;
+            color: #ffffff;
             transform: scale(1.1) rotate(90deg);
-            background: rgba(44, 43, 41, 1);
+            background: rgba(238, 184, 46, 0.2);
         }
 
         .modal-caption {
@@ -1398,12 +1218,12 @@
             text-align: center;
             color: white;
             padding: 18px 30px;
-            background: rgba(44, 43, 41, 0.95);
+            background: rgba(0, 0, 0, 0.7);
             width: fit-content;
             max-width: 90%;
             border-radius: 60px;
             font-family: 'Roboto Serif', serif;
-            border: 3px solid #eeb82e;
+            border: 2px solid #eeb82e;
             box-shadow: 0 4px 20px rgba(0,0,0,0.4);
             backdrop-filter: blur(5px);
             z-index: 10001;
@@ -1429,202 +1249,107 @@
             opacity: 0.9;
         }
 
-        /* Mobile Responsive Modal Styles */
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #eeb82e;
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #cc9b27;
+        }
+
+        /* Selection color */
+        ::selection {
+            background: #eeb82e;
+            color: #000000;
+        }
+
+        /* Mobile Responsive */
         @media screen and (max-width: 768px) {
-            .modal-image {
-                max-width: 98%;
-                max-height: 80vh;
-            }
-
-            .close-modal {
-                top: 15px;
-                right: 15px;
-                font-size: 40px;
-                width: 55px;
-                height: 55px;
-                border-width: 3px;
-            }
-
-            .modal-caption {
-                bottom: 25px;
-                padding: 15px 25px;
-                border-radius: 50px;
-                border-width: 2px;
-            }
-
-            .modal-caption h3 {
-                font-size: 1.3rem;
-                margin-bottom: 5px;
-            }
-
-            .modal-caption p {
-                font-size: 1.1rem;
-            }
-        }
-
-        @media screen and (max-width: 480px) {
-            .modal-image {
-                max-width: 100%;
-                max-height: 75vh;
-                border-radius: 12px;
-            }
-
-            .close-modal {
-                top: 12px;
-                right: 12px;
-                font-size: 35px;
-                width: 50px;
-                height: 50px;
-                border-width: 2px;
-            }
-
-            .modal-caption {
-                bottom: 20px;
-                padding: 12px 20px;
-                border-radius: 40px;
-                border-width: 2px;
-            }
-
-            .modal-caption h3 {
-                font-size: 1.2rem;
-                margin-bottom: 4px;
-            }
-
-            .modal-caption p {
-                font-size: 1rem;
-            }
-        }
-
-        /* Landscape Mode Support */
-        @media screen and (max-height: 500px) and (orientation: landscape) {
-            .modal-image {
-                max-height: 70vh;
-            }
-
-            .modal-caption {
-                bottom: 15px;
-                padding: 10px 20px;
-            }
-
-            .modal-caption h3 {
-                font-size: 1rem;
-            }
-
-            .modal-caption p {
-                font-size: 0.9rem;
-            }
-
-            .close-modal {
-                top: 10px;
-                right: 10px;
-                width: 45px;
-                height: 45px;
-                font-size: 30px;
-            }
-        }
-
-        .award-image-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            min-height: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            cursor: pointer;
-        }
-
-        .award-image-container:hover .award-image-bg {
-            transform: scale(1.05);
-        }
-
-        .award-image-container:hover::after {
-            content: 'Click to view full image';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(44, 43, 41, 0.85);
-            color: white;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            z-index: 10;
-            border: 2px solid #eeb82e;
-            white-space: nowrap;
-        }
-
-        /* Mobile Responsive Styles */
-        @media screen and (max-width: 768px) {
-
-            .logo-circle {
-                width: 120px;
-                height: 120px;
-            }
-
-            .logo-circle img {
-                width: 90px;
-            }
-
-            .brand-name {
-                font-size: 1rem;
+            .section-container {
+                padding: 60px 20px;
             }
 
             .hero-carousel-section {
                 min-height: 70vh;
             }
 
-            .hero-carousel-slide {
-                padding: 40px 20px;
-                flex-direction: column;
-                text-align: center;
-                gap: 30px;
-            }
-
-            .hero-text-content h1 {
-                font-size: 3rem;
-            }
-
-            .hero-text-content p {
-                font-size: 2.2rem;
-            }
-
-            .hero-carousel-slide img {
-                width: 100%;
-                max-width: 400px;
-                margin: 0 auto;
-            }
-
             .hero-carousel-nav {
                 bottom: 20px;
             }
-
+            
             .hero-carousel-dots {
                 padding: 8px 15px;
                 gap: 10px;
             }
-
+            
             .hero-carousel-dot {
                 width: 30px;
                 height: 5px;
-                border-radius: 2.5px;
             }
-
-            .hero-carousel-dot:hover {
-                transform: scaleX(1.1);
+            
+            .hero-carousel-slide {
+                padding: 30px 20px;
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+                justify-content: center;
+                align-items: center;
             }
-
-            .hero-carousel-dot.active {
-                transform: scaleX(1.2);
+            
+            .hero-text-content {
+                text-align: center;
+                min-width: auto;
+                width: 100%;
+                max-width: 100%;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .hero-text-content h1 {
+                font-size: 3rem;
+                text-align: center;
+                width: 100%;
+            }
+            
+            .hero-text-content p {
+                font-size: 2.2rem;
+                text-align: center;
+                width: 100%;
+            }
+            
+            .hero-carousel-slide img {
+                width: 100%;
+                max-width: 400px;
+                margin: 0 auto;
+                display: block;
+                transform: translateX(0) translateY(20px);
+            }
+            
+            .hero-carousel-slide.active img {
+                transform: translateX(0) translateY(0);
             }
 
             .about-us-title,
             .sales-title,
             .awards-title,
             .bank-partners-title,
-            .affiliated-title {
+            .affiliated-title,
+            .mission-vision-title {
                 font-size: 2.2rem;
+                margin-bottom: 40px;
             }
 
             .carousel-slide {
@@ -1639,129 +1364,10 @@
                 width: 40px;
                 height: 40px;
                 font-size: 1rem;
-            }
-
-            .awards-container {
-                grid-template-columns: 1fr;
-                gap: 30px;
-                padding: 10px;
-            }
-
-            .award-card {
-                margin: 0;
-            }
-
-            .awards-title {
-                font-size: 2.2rem;
-            }
-
-            .award-header {
-                min-height: 160px;
-            }
-
-            .award-main-image {
-                max-width: 120px;
-                max-height: 120px;
-            }
-
-            .award-header h3 {
-                font-size: 1.3rem;
-            }
-
-            .partners-title {
-                font-size: 2.2rem;
-            }
-            
-            .partners-container {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: 20px;
-                padding: 10px;
-            }
-            
-            .partner-card {
-                padding: 20px;
-            }
-            
-            .partner-logo {
-                width: 100px;
-                height: 100px;
-            }
-            
-            .partner-content h3 {
-                font-size: 1.3rem;
-            }
-
-            .mission-vision-title {
-                font-size: 2.2rem;
-            }
-            
-            .mission-vision-container {
-                flex-direction: column;
-                gap: 30px;
-            }
-            
-            .card-body {
-                padding: 25px;
-            }
-            
-            .card-header {
-                padding: 25px;
-            }
-            
-            .card-header h3 {
-                font-size: 1.5rem;
-            }
-            
-            .card-body p {
-                font-size: 1rem;
-            }
-
-            .affiliated-title {
-                font-size: 2.2rem;
-            }
-            
-            .affiliated-container {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-                gap: 20px;
-                padding: 10px;
-            }
-            
-            .affiliated-card {
-                padding: 20px;
-            }
-            
-            .affiliated-logo {
-                width: 100px;
-                height: 100px;
-                margin-bottom: 20px;
-            }
-            
-            .logo-placeholder {
-                width: 60px;
-                height: 60px;
-                font-size: 2rem;
-            }
-            
-            .affiliated-content h3 {
-                font-size: 1.3rem;
             }
 
             .item-img {
                 height: 300px;
-            }
-            
-            .carousel-slide {
-                min-width: calc(50% - 15px);
-            }
-            
-            .carousel-container {
-                padding: 0 50px;
-            }
-            
-            .carousel-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
             }
 
             .bank-partners-container {
@@ -1774,85 +1380,84 @@
                 height: 100px;
                 padding: 15px;
             }
-
-            .modal-content {
-                max-width: 95%;
-                max-height: 95%;
+            
+            .about-us-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
             }
             
-            .close-modal {
-                top: 10px;
-                right: 15px;
-                font-size: 30px;
-                width: 40px;
-                height: 40px;
+            .about-us-text {
+                text-align: center;
             }
             
-            .modal-caption {
-                bottom: 10px;
-                padding: 8px 15px;
-                font-size: 0.9rem;
+            .mission-vision-container {
+                flex-direction: column;
+                gap: 30px;
             }
             
-            .award-image-container:hover::after {
-                font-size: 0.7rem;
-                padding: 6px 12px;
-                white-space: normal;
-                width: 80%;
+            .awards-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 10px;
+            }
+            
+            .affiliated-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 10px;
             }
         }
 
         @media screen and (max-width: 480px) {
-            .logo-circle {
-                width: 100px;
-                height: 100px;
-                margin-top: -10px;
-            }
-
-            .logo-circle img {
-                width: 70px;
-            }
-
-            .brand-name {
-                font-size: 0.8rem;
-                max-width: 120px;
-                line-height: 1.1;
-            }
-
-            .footer-col {
-                flex: 0 0 100%;
-                min-width: 100%;
-            }
-
-            .site-footer {
-                padding: 30px 0;
+            .section-container {
+                padding: 40px 15px;
             }
 
             .hero-carousel-section {
                 min-height: 60vh;
             }
 
-            .hero-text-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-text-content p {
-                font-size: 1.8rem;
-            }
-
             .hero-carousel-nav {
                 bottom: 15px;
             }
-
+            
             .hero-carousel-dots {
                 padding: 6px 12px;
                 gap: 8px;
             }
-
+            
             .hero-carousel-dot {
                 width: 25px;
                 height: 4px;
-                border-radius: 2px;
+            }
+            
+            .hero-carousel-slide {
+                padding: 20px 15px;
+                gap: 15px;
+            }
+            
+            .hero-text-content h1 {
+                font-size: 2.5rem;
+                margin-bottom: 10px;
+            }
+            
+            .hero-text-content p {
+                font-size: 1.8rem;
+            }
+            
+            .hero-carousel-slide img {
+                max-width: 280px;
+            }
+
+            .about-us-title,
+            .sales-title,
+            .awards-title,
+            .bank-partners-title,
+            .affiliated-title,
+            .mission-vision-title {
+                font-size: 1.8rem;
+                margin-bottom: 30px;
             }
 
             .carousel-slide {
@@ -1863,94 +1468,10 @@
                 height: 250px;
             }
             
-            .carousel-slide {
-                min-width: 100%;
-            }
-            
             .carousel-container {
                 padding: 0 40px;
             }
 
-            .award-header {
-                padding: 20px;
-            }
-
-            .award-body {
-                padding: 20px;
-            }
-
-            .award-header h3 {
-                font-size: 1.3rem;
-            }
-
-            .awards-title {
-                font-size: 1.8rem;
-            }
-
-            .award-header {
-                min-height: 140px;
-            }
-
-            .award-main-image {
-                max-width: 100px;
-                max-height: 100px;
-            }
-
-            .award-header h3 {
-                font-size: 1.2rem;
-            }
-
-            .award-body {
-                padding: 20px;
-            }
-
-            .partners-title {
-                font-size: 1.8rem;
-            }
-            
-            .partners-container {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-            
-            .partner-card {
-                margin: 0;
-            }
-
-            .mission-vision-title {
-                font-size: 1.8rem;
-            }
-            
-            .card-body {
-                padding: 20px;
-            }
-            
-            .card-header {
-                padding: 20px;
-            }
-            
-            .highlight {
-                padding: 15px;
-            }
-
-            .affiliated-title {
-                font-size: 1.8rem;
-            }
-            
-            .affiliated-container {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-            
-            .affiliated-card {
-                margin: 0;
-            }
-
-            .bank-partners-title {
-                font-size: 1.8rem;
-                margin-bottom: 30px;
-            }
-            
             .bank-partners-container {
                 grid-template-columns: repeat(3, 1fr);
                 gap: 10px;
@@ -1960,38 +1481,25 @@
                 height: 80px;
                 padding: 10px;
             }
+        }
 
-            .close-modal {
-                top: 5px;
-                right: 10px;
-                font-size: 25px;
-                width: 35px;
-                height: 35px;
+        /* Extra small devices */
+        @media screen and (max-width: 360px) {
+            .hero-carousel-slide img {
+                max-width: 240px;
             }
             
-            .modal-caption {
-                bottom: 5px;
-                padding: 5px 10px;
-                font-size: 0.8rem;
+            .hero-text-content h1 {
+                font-size: 2.2rem;
             }
             
-            .modal-caption h3 {
-                font-size: 0.9rem;
+            .hero-text-content p {
+                font-size: 1.5rem;
             }
-        }
 
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropbtn {
-            cursor: pointer;
-        }
-
-        .dropbtn .fa-caret-down {
-            font-size: 0.8em;
-            margin-left: 5px;
+            .bank-partners-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
@@ -2041,369 +1549,396 @@
                 </div>
             </div>
 
-            <!-- Navigation Dots Only - LINE STYLE -->
+            <!-- Navigation Dots -->
             <div class="hero-carousel-nav">
                 <div class="hero-carousel-dots" id="heroCarouselDots"></div>
             </div>
         </div>
 
-        <!-- About Us Section - Simple white design -->
+        <!-- About Us Section -->
         <div class="about-us-section fade-in">
-            <h2 class="about-us-title slide-up">ABOUT US</h2>
-            <div class="about-us-container">
-                <div class="about-us-text fade-in-left">
-                    <p>Hope Specialist is a trusted financial services company established in 2022, dedicated to helping individuals and families turn their goals into reality. We specialize in assisting clients with car acquisition and financing, while also offering a wide range of services related to housing, real estate, and insurance solutions.</p>
-                    <p>Located at Brgy. Concepcion, Maharlika Hi-way, Cabanatuan City, Nueva Ecija, Hope Specialist has built a strong reputation by delivering reliable, transparent, and client-focused services. Through our growing network of partnerships with banks, car dealers, real estate developers, and housing providers, we make the process of owning a car, home, or property more accessible and stress-free.</p>
-                </div>
-                <div class="about-us-map fade-in-right">
-                    <img src="img/indexpics.jpg" alt="Location Map">
+            <div class="section-container">
+                <h2 class="about-us-title slide-up">ABOUT US</h2>
+                <div class="about-us-container">
+                    <div class="about-us-text fade-in-left">
+                        <p>Hope Specialist is a trusted financial services company established in 2022, dedicated to helping individuals and families turn their goals into reality. We specialize in assisting clients with car acquisition and financing, while also offering a wide range of services related to housing, real estate, and insurance solutions.</p>
+                        <p>Located at Brgy. Concepcion, Maharlika Hi-way, Cabanatuan City, Nueva Ecija, Hope Specialist has built a strong reputation by delivering reliable, transparent, and client-focused services. Through our growing network of partnerships with banks, car dealers, real estate developers, and housing providers, we make the process of owning a car, home, or property more accessible and stress-free.</p>
+                    </div>
+                    <div class="about-us-map fade-in-right">
+                        <img src="img/indexpics.jpg" alt="Location Map">
+                    </div>
                 </div>
             </div>
         </div>
+
+        <!-- Subtle Separator -->
+        <div class="section-separator"></div>
 
         <!-- Mission & Vision Section -->
         <div class="mission-vision-section fade-in">
-            <h2 class="mission-vision-title slide-up">MISSION & VISION</h2>
-            
-            <div class="mission-vision-container stagger-children">
-                <!-- Mission Card -->
-                <div class="mission-card zoom-in">
-                    <div class="card-header">
-                        <div class="card-icon">
-                            <i class="fas fa-bullseye"></i>
-                        </div>
-                        <h3>Our Mission</h3>
-                        <span class="card-subtitle">Driving Excellence</span>
-                    </div>
-                    <div class="card-body">
-                        <p>To provide good and quality services to our clients and exceed their expectations, maintaining their loyalty for a lifetime.</p>
-                        
-                        <p>We aim to form partnerships with any bank and dealer to ensure long-term market leadership and profitability through teamwork, integrity, and excellence.</p>
-                        
-                        <div class="highlight">
-                            <p>Our ultimate goal is to become the preferred choice for our clients, ensuring their satisfaction and trust for a lifetime.</p>
-                        </div>
-                        
-                        <div class="core-values">
-                            <h4><i class="fas fa-star"></i> Core Values</h4>
-                            <ul>
-                                <li><strong>Integrity:</strong> Upholding the highest ethical standards in all our dealings</li>
-                                <li><strong>Excellence:</strong> Delivering superior quality in every service we provide</li>
-                                <li><strong>Teamwork:</strong> Collaborating effectively to achieve common goals</li>
-                                <li><strong>Client Focus:</strong> Prioritizing client needs and building lasting relationships</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+            <div class="section-container">
+                <h2 class="mission-vision-title slide-up">MISSION & VISION</h2>
                 
-                <!-- Vision Card -->
-                <div class="vision-card zoom-in">
-                    <div class="card-header">
-                        <div class="card-icon">
-                            <i class="fas fa-eye"></i>
+                <div class="mission-vision-container stagger-children">
+                    <!-- Mission Card -->
+                    <div class="mission-card zoom-in">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-bullseye"></i>
+                            </div>
+                            <h3>Our Mission</h3>
+                            <span class="card-subtitle">Driving Excellence</span>
                         </div>
-                        <h3>Our Vision</h3>
-                        <span class="card-subtitle">Shaping the Future</span>
+                        <div class="card-body">
+                            <p>To provide good and quality services to our clients and exceed their expectations, maintaining their loyalty for a lifetime.</p>
+                            
+                            <p>We aim to form partnerships with any bank and dealer to ensure long-term market leadership and profitability through teamwork, integrity, and excellence.</p>
+                            
+                            <div class="highlight">
+                                <p>Our ultimate goal is to become the preferred choice for our clients, ensuring their satisfaction and trust for a lifetime.</p>
+                            </div>
+                            
+                            <div class="core-values">
+                                <h4><i class="fas fa-star"></i> Core Values</h4>
+                                <ul>
+                                    <li><strong>Integrity:</strong> Upholding the highest ethical standards in all our dealings</li>
+                                    <li><strong>Excellence:</strong> Delivering superior quality in every service we provide</li>
+                                    <li><strong>Teamwork:</strong> Collaborating effectively to achieve common goals</li>
+                                    <li><strong>Client Focus:</strong> Prioritizing client needs and building lasting relationships</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <p>To be recognized as a leading marketing arm—an agency that continuously raises the bar for operations, sales, and service.</p>
-                        
-                        <p>Our goal is to help our partners, clients, and agents achieve better futures, guaranteeing market dealership longevity, profitability, and lasting customer loyalty.</p>
-                        
-                        <div class="highlight">
-                            <p>We envision a future where every partnership we forge and every service we deliver contributes to sustainable growth and mutual success.</p>
+                    
+                    <!-- Vision Card -->
+                    <div class="vision-card zoom-in">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <h3>Our Vision</h3>
+                            <span class="card-subtitle">Shaping the Future</span>
                         </div>
-                        
-                        <div class="core-values">
-                            <h4><i class="fas fa-chart-line"></i> Strategic Goals</h4>
-                            <ul>
-                                <li><strong>Market Leadership:</strong> Becoming the top choice in our industry</li>
-                                <li><strong>Innovation:</strong> Continuously improving our processes and services</li>
-                                <li><strong>Sustainability:</strong> Building lasting relationships and sustainable growth</li>
-                                <li><strong>Community Impact:</strong> Contributing positively to our business community</li>
-                            </ul>
+                        <div class="card-body">
+                            <p>To be recognized as a leading marketing arm—an agency that continuously raises the bar for operations, sales, and service.</p>
+                            
+                            <p>Our goal is to help our partners, clients, and agents achieve better futures, guaranteeing market dealership longevity, profitability, and lasting customer loyalty.</p>
+                            
+                            <div class="highlight">
+                                <p>We envision a future where every partnership we forge and every service we deliver contributes to sustainable growth and mutual success.</p>
+                            </div>
+                            
+                            <div class="core-values">
+                                <h4><i class="fas fa-chart-line"></i> Strategic Goals</h4>
+                                <ul>
+                                    <li><strong>Market Leadership:</strong> Becoming the top choice in our industry</li>
+                                    <li><strong>Innovation:</strong> Continuously improving our processes and services</li>
+                                    <li><strong>Sustainability:</strong> Building lasting relationships and sustainable growth</li>
+                                    <li><strong>Community Impact:</strong> Contributing positively to our business community</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- SALES Section - PAST SALES HISTORY -->
+        <!-- Subtle Separator -->
+        <div class="section-separator"></div>
+
+        <!-- SALES Section -->
         <div class="sales-section fade-in">
-            <h2 class="sales-title slide-up">PAST SALES HISTORY</h2>
-            
-            <div class="carousel-container">
-                <div class="carousel-track" id="carouselTrack">
-                    <?php
-                    // Include database connection
-                    require_once 'config.php';
-                    
-                    // Query to fetch active past sales
-                    $sql = "SELECT * FROM past_sales WHERE is_active = 1 ORDER BY sale_date DESC";
-                    $result = mysqli_query($conn, $sql);
-                    
-                    if (mysqli_num_rows($result) > 0) {
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            $image_path = $row['image_path'];
-                            $title = htmlspecialchars($row['title']);
-                            $description = htmlspecialchars($row['description']);
-                            $price = $row['price'] ? '₱' . number_format($row['price'], 2) : '';
-                            $category = $row['category'];
-                            
-                            echo '
-                            <!-- Vehicle Sale -->
-                            <div class="carousel-slide">
-                                <div class="sales-item">
-                                    <div class="item-img">
-                                        <img src="' . $image_path . '" alt="' . $title . '" 
-                                            onerror="this.src=\'https://via.placeholder.com/400x350?text=No+Image\'">
-                                    </div>
-                                    <div class="item-info">
-                                        <h3>' . $title . '</h3>
-                                        <div class="item-category">' . ucfirst($category) . '</div>';
-                            
-                            if (!empty($description)) {
-                                echo '<p class="item-description">' . $description . '</p>';
-                            }
-                            
-                            if (!empty($price)) {
-                                echo '<div class="item-price">' . $price . '</div>';
-                            }
-                            
-                            echo '
-                                        <div class="item-date">' . date('M d, Y', strtotime($row['sale_date'])) . '</div>
-                                    </div>
-                                </div>
-                            </div>';
-                        }
-                    } else {                        
-                        $default_images = [
-                            'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80',
-                            'https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80',
-                            'https://images.unsplash.com/photo-1556189250-72ba954cfc2b?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80'
-                        ];
+            <div class="section-container">
+                <h2 class="sales-title slide-up">PAST SALES HISTORY</h2>
+                
+                <div class="carousel-container">
+                    <div class="carousel-track" id="carouselTrack">
+                        <?php
+                        // Include database connection
+                        require_once 'config.php';
                         
-                        foreach ($default_images as $image) {
+                        // Query to fetch active past sales
+                        $sql = "SELECT * FROM past_sales WHERE is_active = 1 ORDER BY sale_date DESC";
+                        $result = mysqli_query($conn, $sql);
+                        
+                        if (mysqli_num_rows($result) > 0) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                $image_path = $row['image_path'];
+                                $title = htmlspecialchars($row['title']);
+                                $description = htmlspecialchars($row['description']);
+                                $price = $row['price'] ? '₱' . number_format($row['price'], 2) : '';
+                                $category = $row['category'];
+                                
+                                echo '
+                                <div class="carousel-slide">
+                                    <div class="sales-item">
+                                        <div class="item-img">
+                                            <img src="' . $image_path . '" alt="' . $title . '" 
+                                                onerror="this.src=\'https://via.placeholder.com/400x350?text=No+Image\'">
+                                        </div>
+                                        <div class="item-info">
+                                            <h3>' . $title . '</h3>
+                                            <div class="item-category">' . ucfirst($category) . '</div>';
+                                
+                                if (!empty($description)) {
+                                    echo '<p class="item-description">' . $description . '</p>';
+                                }
+                                
+                                if (!empty($price)) {
+                                    echo '<div class="item-price">' . $price . '</div>';
+                                }
+                                
+                                echo '
+                                            <div class="item-date">' . date('M d, Y', strtotime($row['sale_date'])) . '</div>
+                                        </div>
+                                    </div>
+                                </div>';
+                            }
+                        } else {                        
+                            $default_images = [
+                                'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80',
+                                'https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80',
+                                'https://images.unsplash.com/photo-1556189250-72ba954cfc2b?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80'
+                            ];
+                            
+                            foreach ($default_images as $image) {
+                                echo '
+                                <div class="carousel-slide">
+                                    <div class="sales-item">
+                                        <div class="item-img">
+                                            <img src="' . $image . '" alt="Past Sale">
+                                        </div>
+                                    </div>
+                                </div>';
+                            }
+                        }
+                        ?>
+                    </div>
+                    
+                    <button class="carousel-btn prev" id="prevBtn">&#10094;</button>
+                    <button class="carousel-btn next" id="nextBtn">&#10095;</button>
+                </div>
+                
+                <div class="carousel-dots" id="carouselDots"></div>
+            </div>
+        </div>
+
+        <!-- Subtle Separator -->
+        <div class="section-separator"></div>
+
+        <!-- Awards & Recognition Section -->
+        <div class="awards-section fade-in" id="awards">
+            <div class="section-container">
+                <h2 class="awards-title slide-up">AWARDS & RECOGNITION</h2>
+                
+                <div class="awards-container stagger-children">
+                    <?php
+                    // Fetch active awards from database
+                    require_once 'config.php';
+                    $awards_sql = "SELECT * FROM awards WHERE is_active = 1 ORDER BY display_order ASC, award_year DESC";
+                    $awards_result = mysqli_query($conn, $awards_sql);
+                    
+                    if (mysqli_num_rows($awards_result) > 0) {
+                        while ($award = mysqli_fetch_assoc($awards_result)) {
+                            $title = htmlspecialchars($award['title']);
+                            $description = htmlspecialchars($award['description']);
+                            $year = htmlspecialchars($award['award_year']);
+                            $issuer = htmlspecialchars($award['issuer']);
+                            $issuer_category = htmlspecialchars($award['issuer_category']);
+                            $bg_image = $award['background_image_path'];
+                            $award_image = !empty($award['image_path']) ? $award['image_path'] : '';
+                            
                             echo '
-                            <div class="carousel-slide">
-                                <div class="sales-item">
-                                    <div class="item-img">
-                                        <img src="' . $image . '" alt="Past Sale">
+                            <div class="award-card zoom-in">
+                                <div class="award-header">
+                                    <div class="award-image-container" 
+                                        onclick="openModal(\'' . $bg_image . '\', \'' . addslashes($title) . '\', \'' . $year . '\')">
+                                        <img src="' . $bg_image . '" alt="' . $title . ' Background" class="award-image-bg">
+                                        ' . (!empty($award_image) ? '<img src="' . $award_image . '" alt="' . $title . '" class="award-main-image">' : '') . '
+                                        <div class="award-header-content">
+                                            <h3>' . $title . '</h3>
+                                            <span class="award-year">' . $year . '</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="award-body">
+                                    <p>' . $description . '</p>
+                                    <div class="award-issuer">
+                                        <div class="issuer-info">
+                                            <h4>' . $issuer . '</h4>
+                                            ' . (!empty($issuer_category) ? '<p>' . $issuer_category . '</p>' : '') . '
+                                        </div>
                                     </div>
                                 </div>
                             </div>';
                         }
+                    } else {
+                        echo '<p style="color: #eeb82e;">No awards to display.</p>';
                     }
-                    
                     ?>
                 </div>
-                
-                <button class="carousel-btn prev" id="prevBtn">&#10094;</button>
-                <button class="carousel-btn next" id="nextBtn">&#10095;</button>
             </div>
-            
-            <div class="carousel-dots" id="carouselDots"></div>
         </div>
 
-        <!-- Awards & Recognition Section - UPDATED WITH DYNAMIC DATA -->
-        <div class="awards-section fade-in" id="awards">
-            <h2 class="awards-title slide-up">AWARDS & RECOGNITION</h2>
-            
-            <div class="awards-container stagger-children">
-                <?php
-                // Fetch active awards from database
-                require_once 'config.php';
-                $awards_sql = "SELECT * FROM awards WHERE is_active = 1 ORDER BY display_order ASC, award_year DESC";
-                $awards_result = mysqli_query($conn, $awards_sql);
-                
-                if (mysqli_num_rows($awards_result) > 0) {
-                    while ($award = mysqli_fetch_assoc($awards_result)) {
-                        $title = htmlspecialchars($award['title']);
-                        $description = htmlspecialchars($award['description']);
-                        $year = htmlspecialchars($award['award_year']);
-                        $issuer = htmlspecialchars($award['issuer']);
-                        $issuer_category = htmlspecialchars($award['issuer_category']);
-                        $bg_image = $award['background_image_path'];
-                        $award_image = !empty($award['image_path']) ? $award['image_path'] : '';
-                        
-                        echo '
-                        <div class="award-card zoom-in">
-                            <div class="award-header">
-                                <div class="award-image-container" 
-                                    onclick="openModal(\'' . $bg_image . '\', \'' . addslashes($title) . '\', \'' . $year . '\')">
-                                    <!-- Background Image -->
-                                    <img src="' . $bg_image . '" alt="' . $title . ' Background" class="award-image-bg">
-                                    ' . (!empty($award_image) ? '<img src="' . $award_image . '" alt="' . $title . '" class="award-main-image">' : '') . '
-                                    <div class="award-header-content">
-                                        <h3>' . $title . '</h3>
-                                        <span class="award-year">' . $year . '</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="award-body">
-                                <p>' . $description . '</p>
-                                <div class="award-issuer" style="justify-content: center;">
-                                    <div class="issuer-info" style="text-align: center;">
-                                        <h4>' . $issuer . '</h4>
-                                        ' . (!empty($issuer_category) ? '<p>' . $issuer_category . '</p>' : '') . '
-                                    </div>
-                                </div>
-                            </div>
-                        </div>';
-                    }
-                } else {
-                    echo '<p>No awards to display.</p>';
-                }
-                ?>
-            </div>
-        </div>
+        <!-- Subtle Separator -->
+        <div class="section-separator"></div>
 
         <!-- AFFILIATED BANKS Section -->
         <div class="bank-partners-section fade-in">
-            <h2 class="bank-partners-title slide-up">AFFILIATED BANKS</h2>
+            <div class="section-container">
+                <h2 class="bank-partners-title slide-up">AFFILIATED BANKS</h2>
 
-            <?php
-            // Include database connection
-            require_once 'config.php';
-            
-            // Query to fetch active banks
-            $banks_sql = "SELECT * FROM affiliated_banks WHERE is_active = 1 ORDER BY display_order ASC, name ASC";
-            $banks_result = mysqli_query($conn, $banks_sql);
-            ?>
-            
-            <div class="bank-partners-container stagger-children">
-                <?php if (mysqli_num_rows($banks_result) > 0): ?>
-                    <?php while ($bank = mysqli_fetch_assoc($banks_result)): ?>
-                        <div class="bank-logo zoom-in">
-                            <img src="<?php echo $bank['logo_path']; ?>" 
-                                alt="<?php echo htmlspecialchars($bank['name']); ?>"
-                                onerror="this.src='https://via.placeholder.com/150x100?text=Bank+Logo'">
-                        </div>
-                    <?php endwhile; ?>
-                <?php else: ?>
-                    <p>No affiliated banks to display.</p>
-                <?php endif; ?>
-            </div>
-        </div>
-
-        <!-- AFFILIATED CAR COMPANIES Section -->
-        <div class="bank-partners-section fade-in">
-            <h2 class="bank-partners-title slide-up">AFFILIATED CAR COMPANIES</h2>
-
-            <?php
-            // Query to fetch active car companies
-            $cars_sql = "SELECT * FROM affiliated_cars WHERE is_active = 1 ORDER BY display_order ASC, name ASC";
-            $cars_result = mysqli_query($conn, $cars_sql);
-            ?>
-            
-            <div class="bank-partners-container stagger-children">
-                <?php if (mysqli_num_rows($cars_result) > 0): ?>
-                    <?php while ($car = mysqli_fetch_assoc($cars_result)): ?>
-                        <div class="bank-logo zoom-in">
-                            <img src="<?php echo $car['logo_path']; ?>" 
-                                alt="<?php echo htmlspecialchars($car['name']); ?>"
-                                onerror="this.src='https://via.placeholder.com/150x100?text=Car+Logo'">
-                        </div>
-                    <?php endwhile; ?>
-                <?php else: ?>
-                    <p>No affiliated car companies to display.</p>
-                <?php endif; ?>
-            </div>
-        </div>
-
-        <!-- Affiliated Houses Section -->
-        <div class="affiliated-section fade-in" id="affiliated">
-            <h2 class="affiliated-title slide-up">AFFILIATED HOUSES</h2>
-            
-            <div class="affiliated-container stagger-children">
                 <?php
                 // Include database connection
                 require_once 'config.php';
                 
-                // Query to fetch active affiliated houses
-                $affiliated_sql = "SELECT * FROM affiliated_houses WHERE is_active = 1 ORDER BY display_order ASC, name ASC";
-                $affiliated_result = mysqli_query($conn, $affiliated_sql);
-                
-                if (mysqli_num_rows($affiliated_result) > 0) {
-                    while ($affiliated = mysqli_fetch_assoc($affiliated_result)) {
-                        $name = htmlspecialchars($affiliated['name']);
-                        $category = htmlspecialchars($affiliated['category']);
-                        $description = htmlspecialchars($affiliated['description']);
-                        $image_path = $affiliated['image_path'];
-                        $years = htmlspecialchars($affiliated['years_affiliated']);
-                        
-                        echo '
-                        <div class="affiliated-card zoom-in">
-                            <div class="affiliated-logo">
-                                <img src="' . $image_path . '" alt="' . $name . ' Logo" class="affiliated-logo-img"
-                                    onerror="this.src=\'https://via.placeholder.com/100x100?text=' . urlencode($name) . '\'">
-                            </div>
-                            <div class="affiliated-content">
-                                <h3>' . $name . '</h3>
-                                <span class="affiliated-category">' . $category . '</span>
-                                <p>' . $description . '</p>
-                                <div class="affiliated-years">
-                                    <i class="fas fa-handshake"></i>
-                                    <span>' . $years . '</span>
-                                </div>
-                            </div>
-                        </div>';
-                    }
-                } else {
-                    $default_houses = [
-                        [
-                            'name' => 'DMCI Homes',
-                            'category' => 'Real Estate Developer',
-                            'description' => 'Premium residential condominiums and house and lot developments.',
-                            'image' => 'https://via.placeholder.com/100x100?text=DMCI',
-                            'years' => 'Partner since 2022'
-                        ],
-                        [
-                            'name' => 'Ayala Land',
-                            'category' => 'Real Estate Developer',
-                            'description' => 'Masterplanned communities and residential developments.',
-                            'image' => 'https://via.placeholder.com/100x100?text=Ayala',
-                            'years' => 'Partner since 2022'
-                        ],
-                        [
-                            'name' => 'SMDC',
-                            'category' => 'Real Estate Developer',
-                            'description' => 'Condominium developments in prime locations.',
-                            'image' => 'https://via.placeholder.com/100x100?text=SMDC',
-                            'years' => 'Partner since 2023'
-                        ]
-                    ];
-                    
-                    foreach ($default_houses as $house) {
-                        echo '
-                        <div class="affiliated-card">
-                            <div class="affiliated-logo">
-                                <img src="' . $house['image'] . '" alt="' . $house['name'] . ' Logo" class="affiliated-logo-img">
-                            </div>
-                            <div class="affiliated-content">
-                                <h3>' . $house['name'] . '</h3>
-                                <span class="affiliated-category">' . $house['category'] . '</span>
-                                <p>' . $house['description'] . '</p>
-                                <div class="affiliated-years">
-                                    <i class="fas fa-handshake"></i>
-                                    <span>' . $house['years'] . '</span>
-                                </div>
-                            </div>
-                        </div>';
-                    }
-                }
+                // Query to fetch active banks
+                $banks_sql = "SELECT * FROM affiliated_banks WHERE is_active = 1 ORDER BY display_order ASC, name ASC";
+                $banks_result = mysqli_query($conn, $banks_sql);
                 ?>
+                
+                <div class="bank-partners-container stagger-children">
+                    <?php if (mysqli_num_rows($banks_result) > 0): ?>
+                        <?php while ($bank = mysqli_fetch_assoc($banks_result)): ?>
+                            <div class="bank-logo zoom-in">
+                                <img src="<?php echo $bank['logo_path']; ?>" 
+                                    alt="<?php echo htmlspecialchars($bank['name']); ?>"
+                                    onerror="this.src='https://via.placeholder.com/150x100?text=Bank+Logo'">
+                            </div>
+                        <?php endwhile; ?>
+                    <?php else: ?>
+                        <p style="color: #eeb82e;">No affiliated banks to display.</p>
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
 
+        <!-- Subtle Separator -->
+        <div class="section-separator"></div>
+
+        <!-- AFFILIATED CAR COMPANIES Section -->
+        <div class="bank-partners-section fade-in">
+            <div class="section-container">
+                <h2 class="bank-partners-title slide-up">AFFILIATED CAR COMPANIES</h2>
+
+                <?php
+                // Query to fetch active car companies
+                $cars_sql = "SELECT * FROM affiliated_cars WHERE is_active = 1 ORDER BY display_order ASC, name ASC";
+                $cars_result = mysqli_query($conn, $cars_sql);
+                ?>
+                
+                <div class="bank-partners-container stagger-children">
+                    <?php if (mysqli_num_rows($cars_result) > 0): ?>
+                        <?php while ($car = mysqli_fetch_assoc($cars_result)): ?>
+                            <div class="bank-logo zoom-in">
+                                <img src="<?php echo $car['logo_path']; ?>" 
+                                    alt="<?php echo htmlspecialchars($car['name']); ?>"
+                                    onerror="this.src='https://via.placeholder.com/150x100?text=Car+Logo'">
+                            </div>
+                        <?php endwhile; ?>
+                    <?php else: ?>
+                        <p style="color: #eeb82e;">No affiliated car companies to display.</p>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subtle Separator -->
+        <div class="section-separator"></div>
+
+        <!-- Affiliated Houses Section -->
+        <div class="affiliated-section fade-in" id="affiliated">
+            <div class="section-container">
+                <h2 class="affiliated-title slide-up">AFFILIATED HOUSES</h2>
+                
+                <div class="affiliated-container stagger-children">
+                    <?php
+                    // Include database connection
+                    require_once 'config.php';
+                    
+                    // Query to fetch active affiliated houses
+                    $affiliated_sql = "SELECT * FROM affiliated_houses WHERE is_active = 1 ORDER BY display_order ASC, name ASC";
+                    $affiliated_result = mysqli_query($conn, $affiliated_sql);
+                    
+                    if (mysqli_num_rows($affiliated_result) > 0) {
+                        while ($affiliated = mysqli_fetch_assoc($affiliated_result)) {
+                            $name = htmlspecialchars($affiliated['name']);
+                            $category = htmlspecialchars($affiliated['category']);
+                            $description = htmlspecialchars($affiliated['description']);
+                            $image_path = $affiliated['image_path'];
+                            $years = htmlspecialchars($affiliated['years_affiliated']);
+                            
+                            echo '
+                            <div class="affiliated-card zoom-in">
+                                <div class="affiliated-logo">
+                                    <img src="' . $image_path . '" alt="' . $name . ' Logo" class="affiliated-logo-img"
+                                        onerror="this.src=\'https://via.placeholder.com/100x100?text=' . urlencode($name) . '\'">
+                                </div>
+                                <div class="affiliated-content">
+                                    <h3>' . $name . '</h3>
+                                    <span class="affiliated-category">' . $category . '</span>
+                                    <p>' . $description . '</p>
+                                    <div class="affiliated-years">
+                                        <i class="fas fa-handshake"></i>
+                                        <span>' . $years . '</span>
+                                    </div>
+                                </div>
+                            </div>';
+                        }
+                    } else {
+                        $default_houses = [
+                            [
+                                'name' => 'DMCI Homes',
+                                'category' => 'Real Estate Developer',
+                                'description' => 'Premium residential condominiums and house and lot developments.',
+                                'image' => 'https://via.placeholder.com/100x100?text=DMCI',
+                                'years' => 'Partner since 2022'
+                            ],
+                            [
+                                'name' => 'Ayala Land',
+                                'category' => 'Real Estate Developer',
+                                'description' => 'Masterplanned communities and residential developments.',
+                                'image' => 'https://via.placeholder.com/100x100?text=Ayala',
+                                'years' => 'Partner since 2022'
+                            ],
+                            [
+                                'name' => 'SMDC',
+                                'category' => 'Real Estate Developer',
+                                'description' => 'Condominium developments in prime locations.',
+                                'image' => 'https://via.placeholder.com/100x100?text=SMDC',
+                                'years' => 'Partner since 2023'
+                            ]
+                        ];
+                        
+                        foreach ($default_houses as $house) {
+                            echo '
+                            <div class="affiliated-card">
+                                <div class="affiliated-logo">
+                                    <img src="' . $house['image'] . '" alt="' . $house['name'] . ' Logo" class="affiliated-logo-img">
+                                </div>
+                                <div class="affiliated-content">
+                                    <h3>' . $house['name'] . '</h3>
+                                    <span class="affiliated-category">' . $house['category'] . '</span>
+                                    <p>' . $house['description'] . '</p>
+                                    <div class="affiliated-years">
+                                        <i class="fas fa-handshake"></i>
+                                    <span>' . $house['years'] . '</span>
+                                    </div>
+                                </div>
+                            </div>';
+                        }
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
     </div>
 
     <?php include 'footer.php'; ?>
 
     <script>
-        // Hero Carousel Functionality - LINE STYLE DOTS
+        // Hero Carousel Functionality
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize Hero Carousel
             const heroTrack = document.getElementById('heroCarouselTrack');
             const heroDotsContainer = document.getElementById('heroCarouselDots');
             
@@ -2412,9 +1947,8 @@
             const heroSlides = Array.from(heroTrack.children);
             let heroCurrentIndex = 0;
             let heroAutoPlayInterval;
-            const autoPlayIntervalTime = 5000; // 5 seconds
+            const autoPlayIntervalTime = 5000;
             
-            // Create line dots for hero carousel
             function createHeroDots() {
                 heroDotsContainer.innerHTML = '';
                 
@@ -2429,22 +1963,17 @@
                 }
             }
             
-            // Update hero carousel position
             function updateHeroCarousel() {
-                // Remove active class from all slides
                 heroSlides.forEach(slide => {
                     slide.classList.remove('active');
                 });
                 
-                // Add active class to current slide
                 heroSlides[heroCurrentIndex].classList.add('active');
                 
-                // Move track
                 const slideWidth = heroSlides[0].offsetWidth;
                 const offset = -heroCurrentIndex * slideWidth;
                 heroTrack.style.transform = `translateX(${offset}px)`;
                 
-                // Update line dots
                 const heroDots = Array.from(heroDotsContainer.children);
                 heroDots.forEach((dot, index) => {
                     dot.classList.toggle('active', index === heroCurrentIndex);
@@ -2454,7 +1983,7 @@
             function goToHeroSlide(index) {
                 heroCurrentIndex = index;
                 updateHeroCarousel();
-                resetHeroAutoPlay(); // Reset timer when user clicks a line
+                resetHeroAutoPlay();
             }
             
             function nextHeroSlide() {
@@ -2475,20 +2004,7 @@
                 startHeroAutoPlay();
             }
             
-            // Keyboard navigation (optional)
-            document.addEventListener('keydown', (e) => {
-                if(e.key === 'ArrowLeft') {
-                    heroCurrentIndex = (heroCurrentIndex - 1 + heroSlides.length) % heroSlides.length;
-                    updateHeroCarousel();
-                    resetHeroAutoPlay();
-                } else if(e.key === 'ArrowRight') {
-                    heroCurrentIndex = (heroCurrentIndex + 1) % heroSlides.length;
-                    updateHeroCarousel();
-                    resetHeroAutoPlay();
-                }
-            });
-            
-            // Touch/swipe support for mobile
+            // Touch/swipe support
             let touchStartX = 0;
             let touchEndX = 0;
             
@@ -2507,42 +2023,20 @@
                 const swipeThreshold = 50;
                 
                 if(touchStartX - touchEndX > swipeThreshold) {
-                    // Swipe left - next slide
                     heroCurrentIndex = (heroCurrentIndex + 1) % heroSlides.length;
                     updateHeroCarousel();
                 } else if(touchEndX - touchStartX > swipeThreshold) {
-                    // Swipe right - previous slide
                     heroCurrentIndex = (heroCurrentIndex - 1 + heroSlides.length) % heroSlides.length;
                     updateHeroCarousel();
                 }
             }
             
-            // Pause auto-play on hover
             const heroSection = document.querySelector('.hero-carousel-section');
             if (heroSection) {
                 heroSection.addEventListener('mouseenter', stopHeroAutoPlay);
                 heroSection.addEventListener('mouseleave', startHeroAutoPlay);
             }
             
-            // Pause auto-play when user interacts with line dots
-            if (heroDotsContainer) {
-                heroDotsContainer.addEventListener('mouseenter', stopHeroAutoPlay);
-                heroDotsContainer.addEventListener('mouseleave', startHeroAutoPlay);
-            }
-            
-            // Handle window resize
-            let resizeTimer;
-            window.addEventListener('resize', function() {
-                clearTimeout(resizeTimer);
-                resizeTimer = setTimeout(function() {
-                    updateHeroCarousel();
-                    if (typeof updateCarousel === 'function') updateCarousel();
-                    if (typeof updateSlidesPerView === 'function') updateSlidesPerView();
-                    if (typeof createDots === 'function') createDots();
-                }, 250);
-            });
-            
-            // Initialize hero carousel
             createHeroDots();
             startHeroAutoPlay();
 
@@ -2556,9 +2050,8 @@
             
             const slides = Array.from(track.children);
             let currentIndex = 0;
-            let slidesPerView = 3; // Default for desktop
+            let slidesPerView = 3;
             
-            // Update slides per view based on screen size
             function updateSlidesPerView() {
                 if (window.innerWidth <= 480) {
                     slidesPerView = 1;
@@ -2569,7 +2062,6 @@
                 }
             }
             
-            // Create dots
             function createDots() {
                 if (!dotsContainer) return;
                 dotsContainer.innerHTML = '';
@@ -2584,15 +2076,13 @@
                 }
             }
             
-            // Update carousel position
             function updateCarousel() {
                 if (slides.length === 0) return;
                 
                 const slideWidth = slides[0].offsetWidth;
-                const offset = -currentIndex * (slideWidth + 30); // 30px is the gap
+                const offset = -currentIndex * (slideWidth + 30);
                 track.style.transform = `translateX(${offset}px)`;
                 
-                // Update dots
                 if (dotsContainer) {
                     const dots = Array.from(dotsContainer.children);
                     const activeDotIndex = Math.floor(currentIndex / slidesPerView);
@@ -2606,10 +2096,8 @@
                 const totalSlides = slides.length;
                 const maxIndex = totalSlides - slidesPerView;
                 
-                // Calculate the actual slide index
                 currentIndex = index * slidesPerView;
                 
-                // Make sure we don't go beyond the last slide
                 if (currentIndex > maxIndex) {
                     currentIndex = maxIndex;
                 }
@@ -2624,7 +2112,7 @@
                 if (currentIndex < maxIndex) {
                     currentIndex += 1;
                 } else {
-                    currentIndex = 0; // Loop back to start
+                    currentIndex = 0;
                 }
                 updateCarousel();
             }
@@ -2636,19 +2124,16 @@
                     currentIndex -= 1;
                 } else {
                     const maxIndex = totalSlides - slidesPerView;
-                    currentIndex = maxIndex; // Loop to end
+                    currentIndex = maxIndex;
                 }
                 updateCarousel();
             }
             
-            // Event listeners
             if (nextBtn) nextBtn.addEventListener('click', nextSlide);
             if (prevBtn) prevBtn.addEventListener('click', prevSlide);
             
-            // Auto-play functionality
             let autoPlayInterval = setInterval(nextSlide, 4000);
             
-            // Pause auto-play on hover
             if (track) {
                 track.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
                 track.addEventListener('mouseleave', () => {
@@ -2656,17 +2141,16 @@
                 });
             }
             
-            // Initialize sales carousel
             updateSlidesPerView();
             createDots();
             updateCarousel();
 
-            // SCROLL ANIMATION FUNCTIONALITY
-            const animatedElements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .zoom-in, .rotate-in, .slide-up, .stagger-children');
+            // SCROLL ANIMATION
+            const animatedElements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .zoom-in, .slide-up, .stagger-children');
             
             function checkScroll() {
                 const windowHeight = window.innerHeight;
-                const triggerPoint = windowHeight * 0.8; // 80% ng window height
+                const triggerPoint = windowHeight * 0.8;
                 
                 animatedElements.forEach(element => {
                     const elementTop = element.getBoundingClientRect().top;
@@ -2677,10 +2161,8 @@
                 });
             }
             
-            // Initial check
             checkScroll();
             
-            // Check on scroll with throttling for performance
             let isScrolling = false;
             window.addEventListener('scroll', function() {
                 if (!isScrolling) {
@@ -2691,9 +2173,21 @@
                     isScrolling = true;
                 }
             });
+
+            // Handle window resize
+            let resizeTimer;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(function() {
+                    updateHeroCarousel();
+                    updateSlidesPerView();
+                    createDots();
+                    updateCarousel();
+                }, 250);
+            });
         });
 
-        // MODAL FUNCTIONALITY - UPDATED FOR 6.3 INCH SCREEN
+        // MODAL FUNCTIONALITY
         function openModal(imageSrc, title, year) {
             const modal = document.getElementById('imageModal');
             const modalImg = document.getElementById('modalImage');
@@ -2705,13 +2199,9 @@
             modalTitle.textContent = title;
             modalYear.textContent = year + ' Award';
             
-            // Prevent body scroll when modal is open
             document.body.style.overflow = 'hidden';
-            
-            // Add keyboard support
             document.addEventListener('keydown', handleKeyPress);
             
-            // Force image to use full screen
             setTimeout(() => {
                 modalImg.style.maxHeight = window.innerHeight * 0.85 + 'px';
                 modalImg.style.maxWidth = '100%';
@@ -2722,10 +2212,7 @@
             const modal = document.getElementById('imageModal');
             modal.style.display = "none";
             
-            // Restore body scroll
             document.body.style.overflow = 'auto';
-            
-            // Remove keyboard event listener
             document.removeEventListener('keydown', handleKeyPress);
         }
 
@@ -2735,37 +2222,31 @@
             }
         }
 
-        // Add click events for modal
         document.addEventListener('DOMContentLoaded', function() {
             const modal = document.getElementById('imageModal');
             const closeBtn = document.querySelector('.close-modal');
             
             if (modal && closeBtn) {
-                // Close modal when clicking X
                 closeBtn.addEventListener('click', closeModal);
                 
-                // Close modal when clicking outside the image
                 modal.addEventListener('click', function(event) {
                     if (event.target === modal) {
                         closeModal();
                     }
                 });
                 
-                // Add touch support for mobile
                 modal.addEventListener('touchstart', function(event) {
                     if (event.target === modal) {
                         closeModal();
                     }
                 }, { passive: true });
                 
-                // Prevent zooming issues on mobile
                 modal.addEventListener('touchmove', function(event) {
                     if (event.target === modal || event.target.classList.contains('modal-image')) {
                         event.preventDefault();
                     }
                 }, { passive: false });
                 
-                // Handle orientation change
                 window.addEventListener('resize', function() {
                     if (modal.style.display === 'block') {
                         const modalImg = document.getElementById('modalImage');
@@ -2776,7 +2257,7 @@
         });
     </script>
 
-    <!-- Modal for Fullscreen Image - UPDATED STRUCTURE FOR 6.3 INCH SCREEN -->
+    <!-- Modal for Fullscreen Image -->
     <div id="imageModal" class="modal">
         <span class="close-modal">&times;</span>
         <div class="modal-content">
