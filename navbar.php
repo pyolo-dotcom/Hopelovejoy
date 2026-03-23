@@ -608,24 +608,49 @@
         .dropdown-content a:nth-child(2) { animation-delay: 0.1s; }
         .dropdown-content a:nth-child(3) { animation-delay: 0.15s; }
         
-        /* Services dropdown specific - Enhanced version */
+        /* Services dropdown specific - COMPACT VERSION */
         .services-dropdown {
-            width: 600px !important;
-            left: -250px;
-            padding: 20px;
+            width: 550px !important;
+            left: -200px;
+            padding: 15px;
             transform-origin: top center;
+            border-radius: 12px;
         }
         
+        /* Grid layout for services - 2 columns for compact design */
+        .services-dropdown .dropdown-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+        
+        /* Service items styling - compact */
         .services-dropdown .dropdown-item {
+            padding: 10px 12px !important;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-radius: 8px;
+            font-size: 0.85rem !important;
+            transition: all 0.3s ease;
+            background: rgba(0, 0, 0, 0.3);
+            margin: 0 !important;
             transform: translateX(-10px);
             opacity: 0;
             animation: slideInItem 0.3s ease forwards;
-            position: relative;
-            overflow: hidden;
         }
         
         .services-dropdown .dropdown-item i {
+            font-size: 0.9rem !important;
+            width: 20px;
+            text-align: center;
             transition: transform 0.3s ease, color 0.3s ease;
+        }
+        
+        .services-dropdown .dropdown-item:hover {
+            background: var(--hover-bg);
+            transform: translateX(5px);
+            padding-left: 17px !important;
         }
         
         .services-dropdown .dropdown-item:hover i {
@@ -703,13 +728,24 @@
             font-size: 1rem;
         }
         
+        /* Larger desktop services dropdown - slightly bigger but still compact */
         .services-dropdown {
-            width: 650px !important;
-            left: -300px;
+            width: 580px !important;
+            left: -230px;
+            padding: 18px;
         }
         
-        .dropdown-grid {
-            gap: 12px;
+        .services-dropdown .dropdown-grid {
+            gap: 10px;
+        }
+        
+        .services-dropdown .dropdown-item {
+            padding: 12px 15px !important;
+            font-size: 0.9rem;
+        }
+        
+        .services-dropdown .dropdown-item i {
+            font-size: 1rem !important;
         }
     }
 
