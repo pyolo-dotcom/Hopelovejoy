@@ -9,6 +9,12 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
     exit();
 }
 
+// Get return tab (which tab to redirect back to)
+$return_tab = isset($_GET['tab']) ? $_GET['tab'] : 'past_sales';
+if (isset($_POST['return_tab'])) {
+    $return_tab = $_POST['return_tab'];
+}
+
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $title = mysqli_real_escape_string($conn, $_POST['title']);
@@ -16,6 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $category = mysqli_real_escape_string($conn, $_POST['category']);
     $sale_date = mysqli_real_escape_string($conn, $_POST['sale_date']);
     $price = !empty($_POST['price']) ? floatval($_POST['price']) : NULL;
+    $is_active = isset($_POST['is_active']) ? intval($_POST['is_active']) : 1;
     
     // Handle file upload
     $image_path = '';
@@ -52,8 +59,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     description = '$description',
                     category = '$category',
                     sale_date = '$sale_date',
-                    price = " . ($price ? "'$price'" : "NULL") . ",
+                    price = " . ($price !== NULL ? "'$price'" : "NULL") . ",
                     image_path = '$image_path',
+                    is_active = $is_active,
                     updated_at = NOW()
                     WHERE id = $id";
         } else {
@@ -62,7 +70,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     description = '$description',
                     category = '$category',
                     sale_date = '$sale_date',
-                    price = " . ($price ? "'$price'" : "NULL") . ",
+                    price = " . ($price !== NULL ? "'$price'" : "NULL") . ",
+                    is_active = $is_active,
                     updated_at = NOW()
                     WHERE id = $id";
         }
@@ -70,19 +79,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $message = "Sale updated successfully!";
     } else {
         // Insert new record
-        $sql = "INSERT INTO past_sales (title, description, category, sale_date, price, image_path) 
+        if (empty($image_path)) {
+            $_SESSION['error'] = "Image is required for new sales!";
+            header("Location: admin_dashboard.php?tab=$return_tab");
+            exit();
+        }
+        
+        $sql = "INSERT INTO past_sales (title, description, category, sale_date, price, image_path, is_active) 
                 VALUES ('$title', '$description', '$category', '$sale_date', 
-                " . ($price ? "'$price'" : "NULL") . ", '$image_path')";
+                " . ($price !== NULL ? "'$price'" : "NULL") . ", '$image_path', $is_active)";
         $message = "Sale added successfully!";
     }
     
     if (mysqli_query($conn, $sql)) {
-        $_SESSION['success_message'] = $message;
+        $_SESSION['success'] = $message;
     } else {
-        $_SESSION['error_message'] = "Error: " . mysqli_error($conn);
+        $_SESSION['error'] = "Error: " . mysqli_error($conn);
     }
     
-    header('Location: admin_dashboard.php');
+    // Redirect back to the same tab
+    header("Location: admin_dashboard.php?tab=$return_tab");
     exit();
 }
 ?>

@@ -9,6 +9,12 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
     exit();
 }
 
+// Get return tab (which tab to redirect back to)
+$return_tab = isset($_GET['tab']) ? $_GET['tab'] : 'affiliated_banks';
+if (isset($_POST['return_tab'])) {
+    $return_tab = $_POST['return_tab'];
+}
+
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = mysqli_real_escape_string($conn, $_POST['name']);
@@ -65,8 +71,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         // Insert new record
         if (empty($logo_path)) {
-            $_SESSION['error_message'] = "Please upload a logo";
-            header('Location: admin_dashboard.php');
+            $_SESSION['error'] = "Please upload a logo for the bank!";
+            header("Location: admin_dashboard.php?tab=$return_tab");
             exit();
         }
         
@@ -76,12 +82,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     
     if (mysqli_query($conn, $sql)) {
-        $_SESSION['success_message'] = $message;
+        $_SESSION['success'] = $message;
     } else {
-        $_SESSION['error_message'] = "Error: " . mysqli_error($conn);
+        $_SESSION['error'] = "Error: " . mysqli_error($conn);
     }
     
-    header('Location: admin_dashboard.php');
+    // Redirect back to the same tab
+    header("Location: admin_dashboard.php?tab=$return_tab");
     exit();
 }
 ?>

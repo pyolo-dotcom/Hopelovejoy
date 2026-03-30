@@ -9,6 +9,12 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
     exit();
 }
 
+// Get return tab (which tab to redirect back to)
+$return_tab = isset($_GET['tab']) ? $_GET['tab'] : 'team_members';
+if (isset($_POST['return_tab'])) {
+    $return_tab = $_POST['return_tab'];
+}
+
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = mysqli_real_escape_string($conn, $_POST['name']);
@@ -18,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $display_order = isset($_POST['display_order']) ? intval($_POST['display_order']) : 0;
     $is_active = isset($_POST['is_active']) ? intval($_POST['is_active']) : 1;
     
-    // NEW: Contact Information
+    // Contact Information
     $phone = isset($_POST['phone']) ? mysqli_real_escape_string($conn, $_POST['phone']) : '';
     $email = isset($_POST['email']) ? mysqli_real_escape_string($conn, $_POST['email']) : '';
     $facebook_link = isset($_POST['facebook_link']) ? mysqli_real_escape_string($conn, $_POST['facebook_link']) : '';
@@ -85,12 +91,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         // Insert new record
         if (empty($image_path)) {
-            $_SESSION['error_message'] = "Please upload an image";
-            header('Location: admin_dashboard.php?tab=team_members');
+            $_SESSION['error'] = "Please upload an image for the team member!";
+            header("Location: admin_dashboard.php?tab=$return_tab");
             exit();
         }
         
-        $sql = "INSERT INTO team_members (name, position,  description, category, display_order, is_active, phone, email, facebook_link, image_path) 
+        $sql = "INSERT INTO team_members (name, position, description, category, display_order, is_active, phone, email, facebook_link, image_path) 
                 VALUES ('$name', '$position', '$description', '$category', $display_order, $is_active, '$phone', '$email', '$facebook_link', '$image_path')";
         $message = "Team member added successfully!";
     }
@@ -101,7 +107,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['error'] = "Error: " . mysqli_error($conn);
     }
     
-    header('Location: admin_dashboard.php?tab=team_members');
+    // Redirect back to the same tab
+    header("Location: admin_dashboard.php?tab=$return_tab");
     exit();
 }
 ?>

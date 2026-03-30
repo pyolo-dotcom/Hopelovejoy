@@ -9,6 +9,12 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
     exit();
 }
 
+// Get return tab (which tab to redirect back to)
+$return_tab = isset($_GET['tab']) ? $_GET['tab'] : 'awards';
+if (isset($_POST['return_tab'])) {
+    $return_tab = $_POST['return_tab'];
+}
+
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $title = mysqli_real_escape_string($conn, $_POST['title']);
@@ -91,24 +97,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         // Insert new record - require background image
         if (empty($background_image_path)) {
-            $_SESSION['error_message'] = "Please upload a background image";
-            header('Location: admin_dashboard.php?tab=awards');
+            $_SESSION['error'] = "Please upload a background image for the award!";
+            header("Location: admin_dashboard.php?tab=$return_tab");
             exit();
         }
         
         $sql = "INSERT INTO awards (title, description, award_year, issuer, issuer_category, image_path, background_image_path, display_order, is_active) 
-                VALUES ('$title', '$description', '$award_year', '$issuer', '$issuer_category', '$image_path', '$background_image_path', $display_order, $is_active)";
+                VALUES ('$title', '$description', '$award_year', '$issuer', '$issuer_category', " . (empty($image_path) ? "NULL" : "'$image_path'") . ", '$background_image_path', $display_order, $is_active)";
         
         $message = "Award added successfully!";
     }
     
     if (mysqli_query($conn, $sql)) {
-        $_SESSION['success_message'] = $message;
+        $_SESSION['success'] = $message;
     } else {
-        $_SESSION['error_message'] = "Error: " . mysqli_error($conn);
+        $_SESSION['error'] = "Error: " . mysqli_error($conn);
     }
     
-    header('Location: admin_dashboard.php?tab=awards');
+    // Redirect back to the same tab
+    header("Location: admin_dashboard.php?tab=$return_tab");
     exit();
 }
 ?>

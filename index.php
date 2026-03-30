@@ -1533,7 +1533,7 @@
                     <div class="hero-carousel-slide">
                         <div class="hero-text-content">
                             <h1>Trusted Accounting</h1>
-                            <p>Partners Since 2010</p>
+                            <p>Partners Since 2022</p>
                         </div>
                         <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Team Collaboration">
                     </div>
